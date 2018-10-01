@@ -1,0 +1,150 @@
+#avatar2{
+    border-radius: 50%;
+    height : 200px;
+    width : 200px;
+}
+#profile-container{
+    border-right: none !important;
+    border-bottom: none;
+    border-left: 1px solid rgba(211 , 211 , 211 , .4);
+    border-top: 1px solid rgba(211 , 211 , 211 , .4);
+}
+#fund-account-button , #withdraw-button{
+    width : 210px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 10px;
+    color : #fff;
+    font-weight: bold;
+    font-family: Cairo;
+    font-size: 15px;
+}
+.btn.btn-default.login-warning-modal-button{
+
+    background-color : #337ab7;
+    border : 1px solid #337ab7;
+    color : #fff;
+}
+
+.btn.btn-default.login-warning-modal-button:hover {
+    opacity: .6;
+}
+
+.img-responsive.modal-login-icon{
+    display: inline-block;
+    width : 35px;
+    }
+.signup-here-text{
+    font-weight: bold;
+    color :rgba(0 , 0 , 0 , .8);
+    font-size: 14px;
+}
+
+#success_message{ display: none;}
+.error-mgs{
+    color : tomato;
+    position: relative;
+    top : 10px;
+}
+
+
+.input-group.has-success {
+    border-color: #2b542c;
+}
+.input-group.has-error{
+    border-color: #a94442;
+    }
+
+.input-group.has-success:focus{
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 6px #67b168;
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 6px #67b168;
+
+}
+
+.input-group.has-error:focus{
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+}
+
+
+.form-control.has-success {
+    background-image: url('../img/has-success.png');
+}
+.form-control.has-error{
+    background-image: url('../img/has-error.png');
+
+}
+
+
+.form-control{
+    background-size : 15px 15px;
+    background-repeat: no-repeat;
+    background-position-x: 95%;
+    background-position-y:8px;
+    
+}
+
+select , .input-group > input[type="date"]{
+    cursor : pointer;
+}
+.toggle-login-forms{
+
+    cursor: pointer;
+    color : #337ab7;
+    text-decoration: underline;
+    position: relative;
+
+}
+.toggle-login-forms.signup , .toggle-login-forms.login{
+    float: right;
+    position: relative;
+    right : -12px;
+    top : 10px;
+}
+.toggle-login-forms.forgot{
+    position: relative;
+    float: right;
+}
+#signup-form , #forgot-password-form{
+    display: none;
+}
+#show-forgot-password{
+    color : #337ab7;
+    text-decoration: underline;
+    cursor: pointer;
+  
+}
+
+.alert{
+    display: none;
+    
+    
+}
+
+.remember-me-text{
+    font-family: Cairo;
+    font-size : 16px;
+    position:  relative;
+    left : 8px;
+    top : -1px;
+}
+
+#remember-me{
+    cursor: pointer;
+}
+.login-text{
+    position: relative;
+    top : 25px;
+}
+
+.form-wait-texts{
+    font-weight: bold;
+    position: relative;
+    top : -10px;
+    color : grey;
+    font-family: Cairo;
+}
+.fa.user-online-status{
+    color : green;
+    
+}

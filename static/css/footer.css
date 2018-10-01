@@ -1,0 +1,55 @@
+.footer {
+    background-color: #f8f8f8;
+    position: fixed;
+    bottom: 0;
+    height: 70px;
+    display: block;
+    width : 100%
+}
+.img-responsive.app-download-logo{
+    width: 100px;
+    display: inline-block;
+   
+    position: relative;
+    left : 20px;
+
+}
+
+.footer.default-footer{
+    padding-top : 20px;
+    z-index: 2;
+
+        border : 1px solid rgba(212 , 212 , 212 , .5);
+}
+.text-muted.footer-text{
+    position: relative;
+    border : 0px solid grey;
+    top : -5px;
+    color : rgba(185, 43, 39 , .7);
+    font-family: Cairo;
+    font-size: 18px;
+    cursor: pointer;
+    margin-left : auto;
+    margin-right : auto;
+   
+    display: block;
+    border : 0px solid grey;
+        text-align: center;
+    font-weight: normal;
+}
+
+@media only screen and (max-width: 348px) {
+    .text-muted.footer-text{
+    font-size : 14px;
+    }
+    
+    .img-responsive.app-download-logo{
+        width : 90px;
+    }
+}
+
+.container.hidden-footer-div{
+    border : 0px solid grey;
+    height : 100px;
+    visibility: hidden;
+}
