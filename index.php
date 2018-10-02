@@ -150,6 +150,7 @@ if (isset($_GET['action']) && !empty($_GET['action'])){
             $HomePage->update_multiple_fields($HomePage->users_table_name , ["bank_name" => $about_to_be_changed_bank_details_user["bank_name"] , "account_name" => $about_to_be_changed_bank_details_user["account_name"] , "account_number" => $about_to_be_changed_bank_details_user["account_number"] ] , "user_id='{$about_to_be_changed_bank_details_user['user_id']}'");
             $about_to_be_changed_bank_details_user_details = $HomePage->fetch_data_from_table($HomePage->users_table_name , "user_id" , $about_to_be_changed_bank_details_user["user_id"])[0];
             $HomePage->delete_record($HomePage->pending_bank_details_table_name , 'verification_code' , $code);
+            $HomePage->update_multiple_fields($HomePage->withdrawals_table_name , ["bank_name" => $about_to_be_changed_bank_details_user["bank_name"] , "account_name" => $about_to_be_changed_bank_details_user["account_name"] , "account_number" => $about_to_be_changed_bank_details_user["account_number"]] , "user_id = '{$about_to_be_changed_bank_details_user['user_id']}'" );
             break;
 
 

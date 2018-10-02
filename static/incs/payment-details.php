@@ -43,7 +43,7 @@
             <div class="col-md-4 inputGroupContainer">
                 <div class="input-group">
                     <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                    <input id="bank-account-name" value='<?php echo ($HomePage->loggedInUserDetails["account_name"] == "0") ? "": $HomePage->loggedInUserDetails['account_name'] ?>' name="bank-account-name" placeholder="John Doe" class="form-control"  type="text" />
+                    <input id="bank-account-name" value='<?php echo ($HomePage->loggedInUserDetails["account_name"] == "0") ? "": ucwords($HomePage->loggedInUserDetails['account_name']); ?>' name="bank-account-name" placeholder="John Doe" class="form-control"  type="text" />
                 </div>
                 <span id="bank-account-name-error-span" class="error-mgs"></span>
             </div>

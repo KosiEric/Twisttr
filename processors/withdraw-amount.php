@@ -10,7 +10,8 @@ class FundAccount extends  Functions{
     private  $data , $amount , $userID , $reference_code , $date , $user_details , $currentAccountBalance , $newAccountBalance;
 
 
-    private $successText = "success" , $errorText , $error , $success_message = "Payment successfull";
+    private $successText = "success" , $errorText = "error" , $error , $success_message = "Payment will be made to the account details you provided in less than 15min.";
+
 
 
     function __construct()
@@ -40,7 +41,7 @@ class FundAccount extends  Functions{
         $this->date = date("d-M-Y h:i:s A");
         $this->user_details = $this->fetch_data_from_table($this->users_table_name , "user_id" , $this->userID)[0];
         $this->currentAccountBalance = intval($this->user_details["account_balance"]);
-        $this->newAccountBalance = $this->currentAccountBalance + intval($this->amount);;
+        $this->newAccountBalance = $this->currentAccountBalance - intval($this->amount);;
 
         return true;
     }
@@ -53,15 +54,15 @@ class FundAccount extends  Functions{
 
     private function store_in_records () : bool  {
 
-        return $this->insert_into_table($this->fund_account_transactions_table_name , ["user_id" => $this->userID , "reference_code" => $this->reference_code , "time_stamp" => $this->date , "amount" => $this->amount]);
+        return $this->insert_into_table($this->withdrawals_table_name , ["user_id" => $this->userID , "reference_code" => $this->reference_code , "time_stamp" => $this->date , "amount" => $this->amount , "bank_name" => $this->user_details["bank_name"] , "account_name" => $this->user_details["account_name"] , "account_number" => $this->user_details["account_number"]]);
     }
 
     public final function Processor() {
         if($this->isReady() && $this->setDetails())
             $this->update_account_balance();
-            $this->store_in_records();
+        $this->store_in_records();
 
-            return $this->error = json_encode(Array($this->successText => "1" , $this->errorText = $this->success_message));
+        return $this->error = json_encode(Array($this->successText => "1" , $this->errorText => $this->success_message));
 
 
     }

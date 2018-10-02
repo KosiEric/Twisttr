@@ -18,7 +18,7 @@ class DatabaseConnection {
     public  $bank_details_verification_code_length = 22;
     public $pending_bank_details_table_name = "pending_bank_details";
     public $fund_account_transactions_table_name = "fund_account_transactions";
-    
+    public $withdrawals_table_name = "withdrawals";
     final protected  function  establish_database_connection () : bool
     {
 
@@ -251,6 +251,34 @@ class DatabaseConnection {
         }
 
     }
+
+    public final  function create_withdrawals_table() {
+        $sql = "CREATE TABLE {$this->withdrawals_table_name}(
+        id INT UNSIGNED AUTO_INCREMENT PRIMARY  KEY,
+    user_id VARCHAR(100)  NOT NULL ,
+    reference_code VARCHAR (100) NOT NULL , 
+    time_stamp VARCHAR (100) NOT  NULL , 
+    amount VARCHAR (100) NOT  NULL,
+    bank_name VARCHAR (100) NOT  NULL  , 
+    account_name VARCHAR (100) NOT  NULL ,
+    account_number VARCHAR (100) NOT  NULL 
+    )";
+
+
+
+        try {
+
+            $this->conn->exec($sql);
+            echo "Table Created successfully";
+            return true;
+        }
+
+        catch (PDOException $exception) {
+            echo "Error occured {$exception->getMessage()}";
+            return false;
+        }
+
+    }
     public  function fetch_data_from_table_desc(string $table , string $row , string $value): array
 
     {
@@ -320,4 +348,5 @@ $DatabaseConnection = new DatabaseConnection();
 //$DatabaseConnection->create_users_table();
 //$DatabaseConnection->create_pending_bank_details_table();
 //$DatabaseConnection->create_fund_account_transactions_table();
+//$DatabaseConnection->create_withdrawals_table();
 ?>

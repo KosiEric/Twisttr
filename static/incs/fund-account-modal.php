@@ -53,7 +53,38 @@
 
 
                         </div>
-                        <div role="tabpanel" class="tab-pane" id="withdrawTab">browseTab</div>
+                        <div role="tabpanel" class="tab-pane" id="withdrawTab">
+
+<form id="withdraw-form" enctype="application/x-www-form-urlencoded">
+    <?php $can_withdraw = ($HomePage->loggedInUserDetails["account_balance"] >= $HomePage->WebsiteDetails->minimumWithdrawalAmount) ? true : false;?>
+       <fieldset id = "withdraw-form-fieldset" <?php echo ($can_withdraw && $HomePage->loggedInUserDetails["bank_name"] == '0')? "disabled = 'diabled'" : "" ?> <?php echo (!$can_withdraw)? "disabled='disabled'" : "";?>>
+                           <label for="withdraw-amount">Amount</label>
+                            <div class="input-group">
+                                <span class="input-group-addon">&#8358;</span>
+                                <input type="text" name="withdraw-fund-amount" id="withdraw-amount" class="form-control" />
+
+                            </div>
+
+           <div class="alert alert-success withdraw-server-messages" role="alert" id="withdraw-success-message"></div>
+           <div class="alert alert-info withdraw-server-messages" role="alert" id="withdraw-error-message"></div>
+
+           <span class="error-mgs" id="withdraw-amount-error-message"><?php echo ($can_withdraw && $HomePage->loggedInUserDetails["bank_name"] == '0')? "Please enter your bank details first" : "" ?><?php echo (!$can_withdraw)? "Sorry, minimum withdrawal amount is &#8358;{$HomePage->WebsiteDetails->minimumWithdrawalAmount}" : "";?></span>
+           <!-- Button
+          -->
+                            <div class="control-group">
+                                <label class="control-label" for="withdraw-from-account-action-button"></label>
+                                <div class="controls">
+                                    <button type="submit" id="withdraw-from-account-action-button" name="signin" class="btn btn-success">Withdraw</button>
+                                </div>
+                            </div>
+           <span class="error-mgs" id="note-withdraw-charge-message">Note: Transfer fee of  &#8358;<?php echo $HomePage->WebsiteDetails->transferFee?> will be charged for the transfer.</span>
+
+       </fieldset>
+
+    <?php echo ($can_withdraw && $HomePage->loggedInUserDetails["bank_name"] == '0')? "<script>window.alert('Bank details not entered');</script>" : "" ?>
+
+</form>
+                        </div>
                     </div>
                 </div>
             </div>

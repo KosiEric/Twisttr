@@ -36,6 +36,9 @@ abstract class WebsiteConfigurationSettings {
     public  $ContactEmail;
     public  $CookieUserKey = "current_user";
     public  $ErrorPage = "/404.php";
+    public  $minimumWithdrawalAmount = 500;
+    public  $transferFee = 100;
+
 
 
 

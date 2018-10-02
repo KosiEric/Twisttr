@@ -68,13 +68,7 @@ this.preventFormSubmission = function (e) {
     this.minimumAgeForRegistration = 18;
 
 
-    //Some(if not all) Strings (words) necessary for validation.
 
-    this.words = {passwordsDonotMatchText : "passwords do not match" , enterPasswordAgainText : "enter password again" ,
-        usernameText : "username" , emptyBankNameText : "enter your bank name" , bankAccountNumberText : "account number" ,  nameText : "name" ,bankAccountNameText : "bank account name" , genderText : "gender" , birthdayText : "birthday" ,
-    emailText : "email" , statusMessageText : "status message" , passwordText : "password" , instragramUsernameText : "Instagram username" , twitterUsernameText : "Twitter username" , passwordAgainText : "password again" , "contactText" : "contact" ,
-        emptyBirthDayText : "enter your date of birth" , invalidBirthdayText : "enter a valid birthday" , emptyGenderText : "select your gender" , birthdayIsLessThan18YearsText : "users must be 18 years or above to participate"};
-    
    //All the files necessary for processing requests
     this.processorsFolder = '/processors/';
 
@@ -95,13 +89,15 @@ this.preventFormSubmission = function (e) {
        logoutFile :parent.processorsFolder+'logout.php' ,
        editAccountDetailsFile : parent.processorsFolder + 'edit-account-details.php',
        moreAccountDetailsFile : parent.processorsFolder + "more-account-details.php" ,
-       fundAccountFile : parent.processorsFolder + 'fund-account.php'
+       fundAccountFile : parent.processorsFolder + 'fund-account.php' ,
+       withdrawAmountFile : parent.processorsFolder + 'withdraw-amount.php'
    };
 
 
     //Necessary constants
 
     this.constants = {fullnameMinLength : 2,
+        minWithdrawalAmount : 500,
         fullnameMaxLength : 60,
         minUsernameLength : 5,
         maxUsernameLength : 12,
@@ -122,7 +118,14 @@ this.preventFormSubmission = function (e) {
         maxStatusMessageLength : 140
         
     };
-    
+
+    //Some(if not all) Strings (words) necessary for validation.
+
+    this.words = {withdrawAmountExceedAccountBalanceText : "Transaction failed : insufficient funds" , withdrawAmountIsLessThanMinimumText : "withdraw amount is less than minimum of &#8358;" + parent.constants.minWithdrawalAmount , passwordsDonotMatchText : "passwords do not match" , enterPasswordAgainText : "enter password again" ,
+        usernameText : "username" , emptyBankNameText : "enter your bank name" , bankAccountNumberText : "account number" ,  nameText : "name" ,bankAccountNameText : "bank account name" , genderText : "gender" , birthdayText : "birthday" ,
+        emailText : "email" , statusMessageText : "status message" , passwordText : "password" , instragramUsernameText : "Instagram username" , twitterUsernameText : "Twitter username" , passwordAgainText : "password again" , "contactText" : "contact" ,
+        emptyBirthDayText : "enter your date of birth" , withdrawalAmount : "withdrawal amount" ,   enterValidWithdrawalAmountText : "enter a valid withdrawal amount" , invalidBirthdayText : "enter a valid birthday" , emptyGenderText : "select your gender" , birthdayIsLessThan18YearsText : "users must be 18 years or above to participate"};
+
 
     //Necessary Regular expressions
     

@@ -58,11 +58,97 @@ function  WebPage() {
 
 
 
-
         this.userDetails = parent.pageInformation.attr('data-user-details');
 
         this.userDetails = JSON.parse(this.userDetails);
 
+
+        withdrawForm = $('#withdraw-form');
+
+        withdrawFormFieldset = $('#withdraw-amount-fieldset');
+
+
+        withdrawAmount = $('#withdraw-amount');
+
+        withdrawSeverMessages = $('.withdraw-server-messages');
+        withdrawSuccessMessage = $('#withdraw-success-message');
+        withdrawErrorMessage = $('#withdraw-error-message');
+        withdrawAmountErrorMessage = $('#withdraw-amount-error-message');
+
+        withdrawForm.on('submit' , function (e) {
+
+            parent.defaults.preventFormSubmission(e);
+
+            if(parent.defaults.isEmptyField(withdrawAmount.val()) ||  isNaN(withdrawAmount.val())){
+                withdrawAmountErrorMessage.text(parent.defaults.words.enterValidWithdrawalAmountText);
+                return;
+
+            }
+
+
+            withdrawAmountValue = Math.ceil((parseInt(withdrawAmount.val()) / 100)) * 100;
+
+            withdrawAmount.val(withdrawAmountValue);
+
+
+
+            if(withdrawAmountValue < parent.defaults.constants.minWithdrawalAmount) {
+
+                withdrawAmountErrorMessage.html(parent.defaults.words.withdrawAmountIsLessThanMinimumText);
+                return;
+            }
+            else if(withdrawAmountValue > parent.userDetails.account_balance) {
+                withdrawAmountErrorMessage.text(parent.defaults.words.withdrawAmountExceedAccountBalanceText);
+            }
+
+            else {
+                //withdrawFormFieldset.prop("disabled" , true);
+                withdrawSeverMessages.css("display" , "none");
+
+
+
+                withdrawAmountErrorMessage.text("");
+
+
+                data = {"userID" : parent.userDetails.user_id , "amount" : withdrawAmountValue , "referenceCode" : Math.floor((Math.random() * 1000000000) + 1)};
+                data = JSON.stringify(data);
+
+
+                $.post(parent.defaults.files.withdrawAmountFile , {data: data}).done(function (data) {
+
+                    console.log(data);
+                    data = JSON.parse(data);
+                    if(data[parent.defaults.jsonSuccessText] == "1"){
+
+                        withdrawSuccessMessage.css("display" , "block");
+                        withdrawSuccessMessage.text(data[parent.defaults.jsonErrorText]);
+
+                        setTimeout(function () {
+
+                            window.location.reload();
+                        } , 4000);
+
+                        return;
+                    }
+
+                    withdrawFormFieldset.prop("disabled" , false);
+                    withdrawErrorMessage.css("display" , "block");
+                    withdrawErrorMessage.text(data[parent.defaults.jsonErrorText]);
+
+
+
+
+
+                });
+
+
+
+
+            }
+
+
+
+        });
 
 
         //More details form
