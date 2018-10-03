@@ -1,6 +1,4 @@
 
-
-<?php echo $HomePage->Header->DisplayHeader() ?>
 <div id="user-profile-2" class="user-profile">
     <div class="tabbable">
         <ul class="nav nav-tabs padding-18">

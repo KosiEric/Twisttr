@@ -1,7 +1,8 @@
 
 
-<?php echo $HomePage->Header->DisplayHeader() ?>
+
 <?php require_once $HomePage->WebsiteDetails->INCS_FOLDER.'fund-account-modal.php';?>
+<?php require_once $HomePage->WebsiteDetails->INCS_FOLDER.'choose-play-amount-modal.php';?>
 
 <div id="user-profile-2" class="user-profile">
     <div class="tabbable">

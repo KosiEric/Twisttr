@@ -75,22 +75,30 @@ $HomePage = new HomePage();
     <?php echo $HomePage->DefaultHeaders->GetDefaultPageHeadTags(); ?>
     <link rel="stylesheet" type="text/css" href="<?php echo $HomePage->WebsiteDetails->CSS_FOLDER ?>profile.css" />
     <link rel="stylesheet" type="text/css" href="<?php echo $HomePage->WebsiteDetails->CSS_FOLDER ?>new-profile.css" />
-    <script type="text/javascript" language="JavaScript" src="<?php echo  $HomePage->WebsiteDetails->JS_FOLDER; ?>defaults.js"></script>
     <script type="text/javascript" language="JavaScript" src="<?php echo $HomePage->WebsiteDetails->JS_FOLDER; ?>main.js"></script>
-    <script type="text/javascript" language="JavaScript" src="<?php echo  $HomePage->WebsiteDetails->JS_FOLDER; ?>control.js"></script>
+    <script type="text/javascript" language="JavaScript" src="<?php echo  $HomePage->WebsiteDetails->JS_FOLDER; ?>defaults.js"></script>
+
+       <?php //echo  '<script src="https://js.paystack.co/v1/inline.js"; ></script>';  ?>
+        <script type="text/javascript" language="JavaScript" src="<?php echo  $HomePage->WebsiteDetails->JS_FOLDER; ?>GameControl.js"></script>
+        <script type="text/javascript" language="JavaScript" src="<?php echo  $HomePage->WebsiteDetails->JS_FOLDER; ?>control.js"></script>
+
+
+
 
     <link rel="stylesheet" type="text/css" href="<?php echo  $HomePage->WebsiteDetails->CSS_FOLDER; ?>defaults.css" />
     <link rel="stylesheet" type="text/css" href="<?php echo  $HomePage->WebsiteDetails->CSS_FOLDER; ?>footer.css" />
     <link rel="stylesheet" type="text/css" href="<?php echo  $HomePage->WebsiteDetails->CSS_FOLDER; ?>control.css" />
-    <?php if($HomePage->UserFunctions->isLoggedInUser()){ ?>
-    <script src="https://js.paystack.co/v1/inline.js"></script>
-    <?php } ?>
+    <link rel="stylesheet" type="text/css" href="<?php echo  $HomePage->WebsiteDetails->CSS_FOLDER; ?>game.css" />
+
 </head>
 
 
 <body>
-
+<?php echo $HomePage->Header->DisplayHeader(); ?>
+<div class="page" id="home-page">
 <?php
+
+
 $email_about_to_be_verified = false;
 $account_about_to_be_recovered = false;
 $about_to_be_verified_user="";
@@ -158,6 +166,7 @@ if (isset($_GET['action']) && !empty($_GET['action'])){
     }
 
 }
+
 
 if ($email_about_to_be_verified){ ?>
 
@@ -244,7 +253,17 @@ else {
 ?>
 <input type="hidden" data-bank-details-about-to-be-changed = "<?php echo ($about_to_change_bank_details)?"1" : "0";?>" data-account-about-to-be-recovered = "<?php echo ($account_about_to_be_recovered)?"1" : "0";?>" data-email-about-to-be-verified = "<?php echo ($email_about_to_be_verified)? '1' : '0'?>" data-user-details = '<?php echo (empty($HomePage->UserFunctions->user_details))?'0' : json_encode($HomePage->UserFunctions->user_details , true)?>' id="page-information" data-verified-email = "<?php echo ($HomePage->UserFunctions->isVerifiedEmail())?"1":"0"; ?>" data-logged-in-user = "<?php echo ($HomePage->UserFunctions->isLoggedInUser())? '1':'0'?>"/>
 
+</div>
 
+<div id="game-page" class="container page">
+                 <div id="game-start-circle-container">
+                    <div class="circle circle1">
+                        <a href="#section_1"><h2><span id="game-number-of-players-start-count">10</span><small id="game-start-users-text">users</small><br /><p>Joined</p></h2></a>
+                    </div>
+                 </div>
+
+
+</div>
 <?php require_once $HomePage->WebsiteDetails->INCS_FOLDER.'footer.php'; ?>
 </body>
 

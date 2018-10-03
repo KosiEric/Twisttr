@@ -1,5 +1,5 @@
 function  WebPage() {
-    parent = this;
+    var parent = this;
     this.pageInformation = $('#page-information');
     this.isLoggedInUser = (this.pageInformation.attr('data-logged-in-user') == 1);
     this.defaults = new Defaults();
@@ -58,7 +58,7 @@ function  WebPage() {
 
 
 
-        this.userDetails = parent.pageInformation.attr('data-user-details');
+        this.userDetails = this.pageInformation.attr('data-user-details');
 
         this.userDetails = JSON.parse(this.userDetails);
 
@@ -66,6 +66,8 @@ function  WebPage() {
         withdrawForm = $('#withdraw-form');
 
         withdrawFormFieldset = $('#withdraw-amount-fieldset');
+
+
 
 
         withdrawAmount = $('#withdraw-amount');
@@ -86,7 +88,7 @@ function  WebPage() {
             }
 
 
-            withdrawAmountValue = Math.ceil((parseInt(withdrawAmount.val()) / 100)) * 100;
+            withdrawAmountValue = Math.round((parseInt(withdrawAmount.val()) / 10)) * 10;
 
             withdrawAmount.val(withdrawAmountValue);
 
@@ -808,6 +810,7 @@ function  WebPage() {
 
                       this.loginForm.on('submit' , function (e) {
 
+
                           parent.defaults.preventFormSubmission(e);
 
                           loginType = "username";
@@ -1090,8 +1093,8 @@ function  WebPage() {
 
                               else {
 
-                                  parent.signupErrorMessage.css("display" , 'block');
-                                  parent.signupErrorMessage.text(data.error);
+                                  parent.signupSuccessMessage.css("display" , 'block');
+                                  parent.signupSuccessMessage.text(data.error);
                                   setTimeout(function () {
 
                                       window.location.href = "/";
@@ -1120,9 +1123,9 @@ function  WebPage() {
 
 
 
-    emailAboutToBeVerified = (parent.pageInformation.attr('data-email-about-to-be-verified') == 1);
-    accountAboutToBeRecovered = (parent.pageInformation.attr('data-account-about-to-be-recovered') == 1);
-    bankDetailsAboutToBeChanged = (parent.pageInformation.attr('data-bank-details-about-to-be-changed') == 1);
+    emailAboutToBeVerified = (this.pageInformation.attr('data-email-about-to-be-verified') == 1);
+    accountAboutToBeRecovered = (this.pageInformation.attr('data-account-about-to-be-recovered') == 1);
+    bankDetailsAboutToBeChanged = (this.pageInformation.attr('data-bank-details-about-to-be-changed') == 1);
 
     if(bankDetailsAboutToBeChanged){
 

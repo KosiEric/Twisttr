@@ -81,7 +81,6 @@
 
        </fieldset>
 
-    <?php echo ($can_withdraw && $HomePage->loggedInUserDetails["bank_name"] == '0')? "<script>window.alert('Bank details not entered');</script>" : "" ?>
 
 </form>
                         </div>

@@ -18,6 +18,7 @@ class DatabaseConnection {
     public  $bank_details_verification_code_length = 22;
     public $pending_bank_details_table_name = "pending_bank_details";
     public $fund_account_transactions_table_name = "fund_account_transactions";
+    public $games_table_name = "games";
     public $withdrawals_table_name = "withdrawals";
     final protected  function  establish_database_connection () : bool
     {
@@ -200,7 +201,7 @@ class DatabaseConnection {
     total_points VARCHAR (100) DEFAULT '0',
     current_point VARCHAR (100) DEFAULT '0' ,
     current_game_id VARCHAR (100) DEFAULT '0'  , 
-    total_wins VARCHAR (100) NOT NULL  , 
+    total_wins VARCHAR (100) NOT NULL DEFAULT  '0', 
     total_games_played VARCHAR (100) DEFAULT '0' ,
     total_amount_won VARCHAR (100) DEFAULT '0',
     last_win_date VARCHAR (100) DEFAULT '0' ,
@@ -227,6 +228,36 @@ class DatabaseConnection {
     }
 
 
+    public final  function  create_games_table() : bool  {
+
+        $sql = "CREATE TABLE {$this->games_table_name}(
+        id INT UNSIGNED AUTO_INCREMENT PRIMARY  KEY,
+        
+    game_id VARCHAR (100) NOT NULL , 
+    words VARCHAR (100) NOT NULL  , 
+    amount VARCHAR (100) NOT  NULL,
+    started VARCHAR (100) NOT  NULL  DEFAULT  '0' ,
+    start_time VARCHAR (100) NOT  NULL , 
+    current_word VARCHAR (100) NOT NULL ,
+    number_of_players VARCHAR (100) NOT  NULL DEFAULT '0'
+    )";
+
+        try {
+
+            $this->conn->exec($sql);
+            echo "Table Created successfully";
+            return true;
+        }
+
+        catch (PDOException $exception) {
+            echo "Error occured {$exception->getMessage()}";
+            return false;
+        }
+
+
+
+    }
+
     public function create_fund_account_transactions_table() {
 
         $sql = "CREATE TABLE {$this->fund_account_transactions_table_name}(
@@ -235,6 +266,8 @@ class DatabaseConnection {
     reference_code VARCHAR (100) NOT NULL , 
     time_stamp VARCHAR (100) NOT  NULL , 
     amount VARCHAR (100) NOT  NULL)";
+
+
 
 
 
@@ -261,7 +294,7 @@ class DatabaseConnection {
     amount VARCHAR (100) NOT  NULL,
     bank_name VARCHAR (100) NOT  NULL  , 
     account_name VARCHAR (100) NOT  NULL ,
-    account_number VARCHAR (100) NOT  NULL 
+    account_number VARCHAR (100) NOT  NULL  
     )";
 
 
@@ -339,6 +372,16 @@ class DatabaseConnection {
         return $record;
     }
 
+    public  final  function fetch_data_from_table_with_conditions(string  $table , string $conditions){
+        $sql = "SELECT * FROM $table  WHERE $conditions";
+        $result = $this->conn->prepare($sql);
+        $result->execute();
+        $set_type_record = $result->setFetchMode(PDO::FETCH_ASSOC);
+        $record = $result->fetchAll();
+        return $record;
+
+    }
+
 
 
 }
@@ -349,4 +392,5 @@ $DatabaseConnection = new DatabaseConnection();
 //$DatabaseConnection->create_pending_bank_details_table();
 //$DatabaseConnection->create_fund_account_transactions_table();
 //$DatabaseConnection->create_withdrawals_table();
+//$DatabaseConnection->create_games_table();
 ?>

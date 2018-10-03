@@ -90,7 +90,9 @@ this.preventFormSubmission = function (e) {
        editAccountDetailsFile : parent.processorsFolder + 'edit-account-details.php',
        moreAccountDetailsFile : parent.processorsFolder + "more-account-details.php" ,
        fundAccountFile : parent.processorsFolder + 'fund-account.php' ,
-       withdrawAmountFile : parent.processorsFolder + 'withdraw-amount.php'
+       withdrawAmountFile : parent.processorsFolder + 'withdraw-amount.php' ,
+       getUserAccountBalanceFile : parent.processorsFolder + 'get-user-account-balance.php',
+       gameControlFile : parent.processorsFolder + 'game-control.php'
    };
 
 
@@ -121,7 +123,7 @@ this.preventFormSubmission = function (e) {
 
     //Some(if not all) Strings (words) necessary for validation.
 
-    this.words = {withdrawAmountExceedAccountBalanceText : "Transaction failed : insufficient funds" , withdrawAmountIsLessThanMinimumText : "withdraw amount is less than minimum of &#8358;" + parent.constants.minWithdrawalAmount , passwordsDonotMatchText : "passwords do not match" , enterPasswordAgainText : "enter password again" ,
+    this.words = {playAmountIsLessThanAccountBalanceText: "insufficient funds , try another plan , or fund your account" , withdrawAmountExceedAccountBalanceText : "Transaction failed : insufficient funds" , withdrawAmountIsLessThanMinimumText : "withdraw amount is less than minimum of &#8358;" + parent.constants.minWithdrawalAmount , passwordsDonotMatchText : "passwords do not match" , enterPasswordAgainText : "enter password again" ,
         usernameText : "username" , emptyBankNameText : "enter your bank name" , bankAccountNumberText : "account number" ,  nameText : "name" ,bankAccountNameText : "bank account name" , genderText : "gender" , birthdayText : "birthday" ,
         emailText : "email" , statusMessageText : "status message" , passwordText : "password" , instragramUsernameText : "Instagram username" , twitterUsernameText : "Twitter username" , passwordAgainText : "password again" , "contactText" : "contact" ,
         emptyBirthDayText : "enter your date of birth" , withdrawalAmount : "withdrawal amount" ,   enterValidWithdrawalAmountText : "enter a valid withdrawal amount" , invalidBirthdayText : "enter a valid birthday" , emptyGenderText : "select your gender" , birthdayIsLessThan18YearsText : "users must be 18 years or above to participate"};

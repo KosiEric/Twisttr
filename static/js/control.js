@@ -52,7 +52,29 @@ if(webPageObject.isLoggedInUser){
 
     fundAccountAmountOptions = $('#fund-account-amount-options');
     fundAccountActionButton = $('#fund-account-action-button');
+    playAmountModal  = $('#play-amount-modal');
+    playAmountActionButtun = $('#play-amount-action-button');
+    playAmountOptions = $('#play-amount-options');
 
+    playAmountErrorMessage = $('#play-amount-error-message');
+    playAmountActionButtun.on('click' , function (e) {
+       webPageObject.defaults.preventFormSubmission(e);
+
+       $.post(webPageObject.defaults.files.getUserAccountBalanceFile , {'userID' : webPageObject.userDetails.user_id}).done(function (data) {
+
+           accountBalance = parseInt(data);
+
+           playAmount = Number($('#'+playAmountOptions.attr('id') + " option:selected").attr("value"));
+
+           if(accountBalance < playAmount)
+               return playAmountErrorMessage.text(webPageObject.defaults.words.playAmountIsLessThanAccountBalanceText);
+           gameClass = new GameClass();
+           gameClass.addUserToGame(playAmount);
+
+
+       });
+
+    });
 
 
     fundAccountActionButton.on('click' , function (e) {

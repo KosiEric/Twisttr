@@ -87,7 +87,7 @@ class EditUserAccountDetails extends  Functions {
 
     private function  updateRecord() : bool  {
 
-        return $this->update_multiple_fields($this->users_table_name , ["fullname" => $this->fullname , "email" => $this->email , "username" => $this->username , "phone" => $this->phone , "password" => $this->password] ,
+        return $this->update_multiple_fields($this->users_table_name , ["fullname" => $this->fullname , "email" => $this->email , "username" => $this->username , "username_text" =>$this->username , "phone" => $this->phone , "password" => $this->password] ,
             "user_id = '{$this->userID}'");
     }
 
