@@ -40,7 +40,7 @@ abstract class WebsiteConfigurationSettings {
     public  $transferFee = 100;
     public  $NumberOfRandomWords = 10;
     public  $GameIDLength = 6;
-    public  $MaximumNumberOfPlayers = 10;
+    public  $MaximumNumberOfPlayers = 5;
 
 
 

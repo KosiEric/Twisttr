@@ -17,6 +17,8 @@ function  GameClass () {
     this.addUserToGame = function (amount) {
 
 
+        parent.webPage.playActionLink.attr('href' , "#");
+
         this.pageClass = $('.page');
         this.gamePage = $('#game-page');
 
@@ -32,8 +34,10 @@ function  GameClass () {
 
         $.post(parent.gameControlFile, {data: data}, function (resp) {
 
-            //resp = JSON.parse(resp);
-            //parent.gameNumberOfPlayersStartCount.text(resp.players);
+            var resp = JSON.parse(resp);
+            parent.gameNumberOfPlayersStartCount.text(resp.players);
+
+            console.log(resp);
 
 
             parent.pageClass.css("display", "none");
@@ -54,7 +58,17 @@ function  GameClass () {
             getNumberOfJoinedPlayers.postMessage(data);
 
             getNumberOfJoinedPlayers.onmessage = function (ev) {
-                console.log(ev.data);
+
+                resp = JSON.parse(ev.data);
+
+                console.log(resp);
+                if(resp.start !== "1") {
+
+                    parent.gameNumberOfPlayersStartCount.text(resp.players);
+
+
+                }
+
 
             }
 

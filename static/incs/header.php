@@ -51,7 +51,7 @@ class Header extends WebsiteHeader {
           <li class="border-down-shown active-header-li"><a href="#" class="header-list-links"><i class="fa fa-home  header-home-icon header-icons"></i> Home</a></li>
           <li class="border-down-shown inactive-header-li"><a href="#" class="header-list-links"><i class="fa fa-bell  header-notification-icon header-icons"></i>Notifications<span class="badge game-play-count">0</span></a></li>          
 
-          <li class="border-down-shown inactive-header-li"><a href="#play-amount-modal" data-toggle="modal" class="header-list-links"><i class="fa fa-location-arrow  header-play-icon header-icons"></i>Play <span class="badge game-play-count">10</span></a></li>
+          <li class="border-down-shown inactive-header-li"><a href="#play-amount-modal" id="play-action-link" data-toggle="modal" class="header-list-links"><i class="fa fa-location-arrow  header-play-icon header-icons"></i>Play <span class="badge game-play-count" id="number-of-players-count">10</span></a></li>
 <li class="border-down-shown inactive-header-li" id="header-search-form-li"><form class="form-inline header-search-user-form"><fieldset {$this->tryDisableSearchForm}>
     <input class="form-control form-control-sm ml-3 w-75 search-user-input" style="background-image: url({$this->SearchIcon})" type="text" placeholder="Search for  user" aria-label="Search">
 </fieldset></form></li>          

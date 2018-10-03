@@ -68,7 +68,7 @@ class GameControl extends  Functions
 
 
         $this->gameUserCanPlay = $this->fetch_data_from_table_with_conditions($this->games_table_name,
-            "amount = '{$this->amount}' and started = '0' and number_of_players <= '{$this->config->MaximumNumberOfPlayers}'");
+            "amount = '{$this->amount}' and started = '0' and number_of_players < {$this->config->MaximumNumberOfPlayers}");
 
         if (!empty($this->gameUserCanPlay)) {
 
@@ -97,6 +97,22 @@ class GameControl extends  Functions
     }
 
 
+    private function get_total_number_of_players_playing_now () {
+        $total_number_of_users_playing = count($this->fetch_data_from_table_with_conditions($this->games_table_name , "started='1'"));
+        $total_number_of_users_playing = $total_number_of_users_playing * $this->config->MaximumNumberOfPlayers;
+
+        $total_number_of_players_waiting = 0;
+
+        $all_awaiting_games = $this->fetch_data_from_table_with_conditions($this->games_table_name , "started='0'");
+
+        foreach ($all_awaiting_games as $awaiting_game){
+
+            $total_number_of_players_waiting += intval($awaiting_game["number_of_players"]);
+        }
+
+
+        return $total_number_of_players_waiting + $total_number_of_users_playing;
+    }
     private function add_current_user_to_game()
     {
         if ($this->any_existing_game_user_can_play()) {
@@ -120,7 +136,7 @@ class GameControl extends  Functions
     {
 
 
-        $this->userCurrentGameDetail = $this->fetch_data_from_table_with_conditions($this->games_table_name, 'game_id', $this->user_details["game_id_about_to_play"])[0];
+        $this->userCurrentGameDetail = $this->fetch_data_from_table($this->games_table_name, 'game_id', $this->user_details["game_id_about_to_play"])[0];
         $number_of_players = $this->userCurrentGameDetail["number_of_players"];
         if ($number_of_players == $this->config->MaximumNumberOfPlayers) {
             $this->showGameChat = true;
@@ -150,7 +166,10 @@ class GameControl extends  Functions
                         $start = "1";
                     }
                     return json_encode(Array("start" => $start, "players" => $players));
-
+                    break;
+                case 'get_total_number_of_players' :
+                    $players = $this->get_total_number_of_players_playing_now();
+                    return json_encode(["players" => $players]);
 
             }
         }

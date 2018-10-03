@@ -7,6 +7,7 @@ function  WebPage() {
     this.headerSearchFormLi = $('#header-search-form-li');
 
 
+    this.playActionLink = $('#play-action-link');
 
     this.showLoginWarning = function () {
         this.loginWarning.modal('show');
@@ -24,6 +25,29 @@ function  WebPage() {
     this.headerNavigationLinks = $('.border-down-shown');
 
    //Login
+
+
+    this.numberOfPlayersCount = $('#number-of-players-count');
+    var data = {
+        "action": 'get_total_number_of_players',
+        "userID": 'NXKNyt',
+        "amount": 1000,
+        "file": parent.defaults.files.gameControlFile
+    };
+
+
+    data = JSON.stringify(data);
+
+    this.updateNumOfPlayersWorker = new Worker('/static/js/update_total_number_of_players.js');
+    this.updateNumOfPlayersWorker.postMessage(data);
+    this.updateNumOfPlayersWorker.onmessage =function (ev) {
+//         console.log(ev.data);
+        data = JSON.parse(ev.data);
+        parent.numberOfPlayersCount.text(data.players);
+
+    };
+
+
 
 
 
