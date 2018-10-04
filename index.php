@@ -75,6 +75,7 @@ $HomePage = new HomePage();
     <?php echo $HomePage->DefaultHeaders->GetDefaultPageHeadTags(); ?>
     <link rel="stylesheet" type="text/css" href="<?php echo $HomePage->WebsiteDetails->CSS_FOLDER ?>profile.css" />
     <link rel="stylesheet" type="text/css" href="<?php echo $HomePage->WebsiteDetails->CSS_FOLDER ?>new-profile.css" />
+    <link rel="stylesheet" type="text/css" href="<?php echo $HomePage->WebsiteDetails->CSS_FOLDER ?>cairo.css" />
     <script type="text/javascript" language="JavaScript" src="<?php echo $HomePage->WebsiteDetails->JS_FOLDER; ?>main.js"></script>
     <script type="text/javascript" language="JavaScript" src="<?php echo  $HomePage->WebsiteDetails->JS_FOLDER; ?>defaults.js"></script>
 
@@ -89,12 +90,33 @@ $HomePage = new HomePage();
     <link rel="stylesheet" type="text/css" href="<?php echo  $HomePage->WebsiteDetails->CSS_FOLDER; ?>footer.css" />
     <link rel="stylesheet" type="text/css" href="<?php echo  $HomePage->WebsiteDetails->CSS_FOLDER; ?>control.css" />
     <link rel="stylesheet" type="text/css" href="<?php echo  $HomePage->WebsiteDetails->CSS_FOLDER; ?>game.css" />
-
+    <link rel="stylesheet" type="text/css" href="<?php echo  $HomePage->WebsiteDetails->CSS_FOLDER; ?>browser-warning.css" />
+    <link rel="stylesheet" type="text/css" media="screen and (max-width:612px)" href="/chatfiles/chatstyle_mini.css" />
+    <link rel="stylesheet" type="text/css"  media="screen and (min-width:612px)" href="/chatfiles/chatstyle.css"/>
+    <link rel="stylesheet" type="text/css" href="/chatfiles/main.css" />
 </head>
 
 
 <body>
-<?php echo $HomePage->Header->DisplayHeader(); ?>
+
+<?php echo $HomePage->Header->DisplayHeader();
+
+
+if(!isset($_SESSION['username'])){
+    $_SESSION['username'] = $HomePage->generateID(4);
+
+}
+
+require_once 'chat.php';
+
+
+?>
+
+
+
+
+
+
 <div class="page" id="home-page">
 <?php
 
@@ -255,6 +277,9 @@ else {
 
 </div>
 
+
+<?php require_once $HomePage->WebsiteDetails->INCS_FOLDER.'browser-warning.php'; ?>
+
 <div id="game-page" class="container page">
                  <div id="game-start-circle-container">
                     <div class="circle circle1">
@@ -262,6 +287,8 @@ else {
                     </div>
                  </div>
 
+
+    <button type="button" id="exit-game-button" class="btn btn-warning btn-circle btn-xl">Exit</button>
 
 </div>
 <?php require_once $HomePage->WebsiteDetails->INCS_FOLDER.'footer.php'; ?>

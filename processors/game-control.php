@@ -146,6 +146,16 @@ class GameControl extends  Functions
 
     }
 
+    private  function  exit_user_from_game() {
+        $this->userCurrentGameDetail = $this->fetch_data_from_table($this->games_table_name, 'game_id', $this->user_details["game_id_about_to_play"])[0];
+        $number_of_players = $this->userCurrentGameDetail["number_of_players"];
+
+        $new_number_of_players = $number_of_players - 1;
+        $this->update_record($this->games_table_name , "number_of_players" , $new_number_of_players , 'game_id' , $this->userCurrentGameDetail["game_id"]);
+        $this->update_record($this->users_table_name , "game_id_about_to_play" , "0" , 'user_id' , $this->userID);
+        return true;
+    }
+
     public function Processor()
     {
 
@@ -170,6 +180,9 @@ class GameControl extends  Functions
                 case 'get_total_number_of_players' :
                     $players = $this->get_total_number_of_players_playing_now();
                     return json_encode(["players" => $players]);
+                case 'exit_user_from_game' :
+                     $this->exit_user_from_game();
+                     return json_encode(["success" => "1"]);
 
             }
         }

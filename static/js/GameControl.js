@@ -4,9 +4,27 @@ function  GameClass () {
 
     this.webPage = new WebPage();
     this.gameControlFile = this.webPage.defaults.files.gameControlFile;
-
-    this.gameActions = {addNewUserToGame: "add_new_user_to_game", updateNumberOfPlayers: 'update_number_of_players'};
+    this.exitGameButton = $('#exit-game-button');
+    this.gameActions = {exitUserFromGame : "exit_user_from_game"  , addNewUserToGame: "add_new_user_to_game" , updateNumberOfPlayers: 'update_number_of_players'};
     this.userID = this.webPage.userDetails.user_id;
+
+
+
+
+
+    this.exitGameButton.on('click' , function () {
+
+        var data = {"userID" : parent.userID , "amount" : playAmount , "action" : parent.gameActions.exitUserFromGame};
+        data = JSON.stringify(data);
+        $.post(parent.gameControlFile , {data:data}).done(function (resp) {
+            var resp = JSON.parse(resp);
+            if(resp.success == "1"){
+                window.location.reload();
+            }
+
+
+        });
+    });
 
 
     var parent = this;
@@ -37,7 +55,6 @@ function  GameClass () {
             var resp = JSON.parse(resp);
             parent.gameNumberOfPlayersStartCount.text(resp.players);
 
-            console.log(resp);
 
 
             parent.pageClass.css("display", "none");
@@ -61,7 +78,7 @@ function  GameClass () {
 
                 resp = JSON.parse(ev.data);
 
-                console.log(resp);
+
                 if(resp.start !== "1") {
 
                     parent.gameNumberOfPlayersStartCount.text(resp.players);

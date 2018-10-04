@@ -41,6 +41,8 @@ function  Defaults() {
 
     var parent = this;
 
+
+
     this.errorMessage = "";
 
     this.isEmptyField = function (value = "none") {

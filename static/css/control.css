@@ -13,6 +13,36 @@
     color : #1b6d85;
     font-weight: bold;
 }
-#game-page{
+.page{
+    display: block;
+}
+#game-page , .unsupported.page{
     display: none;
 }
+
+
+#exit-game-button{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    top : 30px;
+    background-color : #fff;
+    color : grey;
+    border : 1px solid grey;
+    border-radius: px;
+    width : 90px;
+    height : 40px;
+    font-family: Cairo;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+#exit-game-button:hover{
+    background-color : rgba(0 , 0 , 0 , .5);
+    color : #fff;
+}
+ul , li {
+    font-family: Cairo;
+}
+

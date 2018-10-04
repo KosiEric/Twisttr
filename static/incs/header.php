@@ -30,7 +30,7 @@ class Header extends WebsiteHeader {
 
              $this->PageHeader = <<<FullHeader
 
- <div class="header-nav-container">
+ <div class="header-nav-container" id="main-site-header">
   <nav class="navbar navbar-default header-nav-white-bg">
     <div class="container-fluid">
       <div class="navbar-header">
@@ -49,7 +49,10 @@ class Header extends WebsiteHeader {
        <div id="navbar1" class="navbar-collapse collapse">
         <ul class="nav navbar-nav navbar-left">
           <li class="border-down-shown active-header-li"><a href="#" class="header-list-links"><i class="fa fa-home  header-home-icon header-icons"></i> Home</a></li>
-          <li class="border-down-shown inactive-header-li"><a href="#" class="header-list-links"><i class="fa fa-bell  header-notification-icon header-icons"></i>Notifications<span class="badge game-play-count">0</span></a></li>          
+          <li class="border-down-shown inactive-header-li"><a href="#" class="header-list-links"><i class="fa fa-bell  header-notification-icon header-icons"></i>Notifications<span class="badge game-play-count">0</span></a>
+
+          
+          </li>          
 
           <li class="border-down-shown inactive-header-li"><a href="#play-amount-modal" id="play-action-link" data-toggle="modal" class="header-list-links"><i class="fa fa-location-arrow  header-play-icon header-icons"></i>Play <span class="badge game-play-count" id="number-of-players-count">10</span></a></li>
 <li class="border-down-shown inactive-header-li" id="header-search-form-li"><form class="form-inline header-search-user-form"><fieldset {$this->tryDisableSearchForm}>
@@ -62,8 +65,8 @@ class Header extends WebsiteHeader {
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">More <span class="caret"></span></a>
             <ul class="dropdown-menu" role="menu">
-              <li class="header-more-action-li"><a href="#"><i class="fa fa-bar-chart header-more-actions-icon"></i><span class="header-li-link-text more-actions-li-text">Stats for Nerds</span></a></li>
-              <li class="header-more-action-li"><a href="#" class="header-list-links header-more-actions-icon"><i class="fa fa-bookmark header-more-actions-icon"></i><span class="header-li-link-text more-actions-li-text">View leaderboard</span></a></li>
+              <li class="header-more-action-li"><a href="#"><i class="fa fa-comment-o header-more-actions-icon"></i><span class="header-li-link-text more-actions-li-text">Chat</span></a></li>
+              <li class="header-more-action-li"><a href="#" class="header-list-links header-more-actions-icon"><i class="fa fa-bookmark header-more-actions-icon"></i><span class="header-li-link-text more-actions-li-text">Our Blog</span></a></li>
               <li class="header-more-action-li"><a href="#" class="header-list-links header-more-actions-icon"><i class="fa fa-share-alt header-more-actions-icon"></i><span class="header-li-link-text more-actions-li-text">Transfer to account</span></a></li>
               <li class="divider"><a href="#"></a></li>
               <li><a href="#" class="header-list-links">Close <i class="fa fa-times header-close-icon"></i> </a></li>

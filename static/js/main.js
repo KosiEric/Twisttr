@@ -3,6 +3,73 @@ function  WebPage() {
     this.pageInformation = $('#page-information');
     this.isLoggedInUser = (this.pageInformation.attr('data-logged-in-user') == 1);
     this.defaults = new Defaults();
+    this.unsupportedBrowserWarning = $('.unsupported.page');
+    this.browserWarningImages = $('.img-responsive.browsers');
+
+
+    /*
+    The function function below  toggles the display of  document objects (elements , classes) it accepts first and array
+     containing the DOM objects and second the new value of the css "display" property
+     */
+
+    this.toggleDisplay = function ( elems , value) {
+
+        for(var i = 0; i < elems.length; ++i) {
+             elems[i].css('display', value);
+        }
+    };
+
+
+
+
+    /*
+    The function below tries to check for unsupported browsers that don't support JavaScript WebWorkers which are
+    Javascript's own way of Multi-threading.
+
+    WebWorkers are highly optimised in this application because of the fact that we want some Gaming functions to execute at
+    the background without interfering with user experience such as slow browser execution of scripts
+
+
+    The function also checks for Javascript XMLHttpRequest which is needed for communicating with the server
+    without any need for page refresh
+
+
+
+    */
+
+
+
+
+
+    this.tryCheckBrowserSupport = function () {
+
+        var isSupportedBrowser = true;
+
+        isSupportedBrowser = (isSupportedBrowser && typeof(Worker) != "undefined" && typeof (XMLHttpRequest) != "undefined");
+
+
+        this.showBrowserWarning = function () {
+
+    /* Toggles the display of header , footer and main site i.e hides the elements by setting their css "display" property to "none"  */        parent.toggleDisplay([$('.pages') ,  $('#home-page'), parent.mainSiteFooter , parent.mainSiteHeader] , 'none');
+            parent.toggleDisplay([parent.unsupportedBrowserWarning] , 'block');
+
+            parent.browserWarningImages.each(function (index) {
+               $(this).attr('src' , $(this).attr('data-src'));
+            });
+        };
+
+       return action = (!isSupportedBrowser)? this.showBrowserWarning() : "";
+
+
+    };
+    this.mainSiteHeader = $('#main-site-header');
+    this.mainSiteFooter = $('#main-site-footer');
+
+
+   /* Check  the browser support*/  this.tryCheckBrowserSupport();
+
+
+
 
     this.headerSearchFormLi = $('#header-search-form-li');
 
@@ -34,6 +101,8 @@ function  WebPage() {
         "amount": 1000,
         "file": parent.defaults.files.gameControlFile
     };
+
+
 
 
     data = JSON.stringify(data);
