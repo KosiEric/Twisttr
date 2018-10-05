@@ -1,7 +1,8 @@
 /* chat */
 #chatarea {
- margin:2px auto;
- width:100%;
+ margin-left:auto;
+ margin-right : auto
+ width:245px;
  position:relative;
  background-color:#e1e1fe;
  border:1px solid silver;

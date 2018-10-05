@@ -2,4 +2,41 @@
     position: relative;
     left : 10px;
     top : 5px;
+   
+}
+
+
+#chat-container{
+    position: fixed;
+    z-index: 20;
+    left : 0;
+    right : 0;
+    top : 0;
+    bottom: 0;
+    
+    background-color : rgba(0 , 0 , 0 , .5);
+    display: none;
+}
+
+
+
+#chatarea{
+    position: relative;
+    top : 20px;
+}
+#close-chat-window-non-logged {
+    color : rgb(0 , 0 , 156);
+    position: relative;
+    display: block;
+    border : 1px solid grey;
+    width: 100px;
+    margin-left : auto;
+    margin-right: auto;
+    margin-top: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+#logoutchat{
+    
+    font-size: 13px !important;
 }

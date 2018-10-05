@@ -1,23 +1,62 @@
 function  WebPage() {
     var parent = this;
+
+    /*
+The function function below  toggles the display of  document objects (elements , classes) it accepts first and array
+containing the DOM objects and second the new value of the css "display" property
+*/
+
+    this.toggleDisplay = function ( elems , value) {
+
+        for(var i = 0; i < elems.length; ++i) {
+            elems[i].css('display', value);
+        }
+    };
+
+
+
     this.pageInformation = $('#page-information');
     this.isLoggedInUser = (this.pageInformation.attr('data-logged-in-user') == 1);
     this.defaults = new Defaults();
     this.unsupportedBrowserWarning = $('.unsupported.page');
     this.browserWarningImages = $('.img-responsive.browsers');
+    this.chatContainer = $('#chat-container');
+    this.chatWrapper = $('#chat-wrapper');
+    this.showChatWindow = $('#show-chat-window');
+    this.closeChatWindowNonLogged = $('#close-chat-window-non-logged');
 
 
-    /*
-    The function function below  toggles the display of  document objects (elements , classes) it accepts first and array
-     containing the DOM objects and second the new value of the css "display" property
-     */
+    this.closeChatWindowNonLogged.on('click' , function (t) {
 
-    this.toggleDisplay = function ( elems , value) {
+        delCookie('name_c');
+        parent.chatContainer.hide();
+    });
+    this.showChatWindow.on('click' , function (t) {
 
-        for(var i = 0; i < elems.length; ++i) {
-             elems[i].css('display', value);
-        }
-    };
+        parent.chatContainer.fadeIn('slow' , function () {
+            parent.chatContainer.css('position' , 'fixed');
+        });
+
+    });
+
+
+
+
+    this.logoutChatLink = $('#logoutchat');
+
+
+
+
+
+
+    this.logoutChatLink.on('click' , function () {
+       parent.chatContainer.hide();
+
+    });
+
+
+
+
 
 
 

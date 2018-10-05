@@ -94,7 +94,8 @@ this.preventFormSubmission = function (e) {
        fundAccountFile : parent.processorsFolder + 'fund-account.php' ,
        withdrawAmountFile : parent.processorsFolder + 'withdraw-amount.php' ,
        getUserAccountBalanceFile : parent.processorsFolder + 'get-user-account-balance.php',
-       gameControlFile : parent.processorsFolder + 'game-control.php'
+       gameControlFile : parent.processorsFolder + 'game-control.php' ,
+       chatFile : 'chat.php'
    };
 
 

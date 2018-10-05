@@ -1,12 +1,12 @@
 /* chat */
 #chatarea {
- margin:2px auto;
- width:100%;
- position:relative;
+ margin-left:auto;
+ margin-right : auto;
+ width:600px;
  background-color:#e1e1fe;
  border:1px solid silver;
  font-family:Calibri, sans-serif;
- font-size:14px;
+ font-size:15px;
  text-align:left;
  background: -moz-linear-gradient(top left, #dadafe, #dedffe, #fefeff);          /* for Firefox */
  /* for Safari, Chrome */
@@ -16,27 +16,22 @@
  background: linear-gradient(top left, #dadafe, #dedffe, #fefeff);          /* W3C Markup */
 }
 #chatarea #chlogged {
- margin:3px 1px;
  border:1px solid red;
  padding:2px 1px;
  text-align:center;
  font-style:italic;
-}
-#chatarea img{
- height:16px;
- border:none;
 }
 #chatwindow {
  margin:0;
  padding:0;
 }
 #chatrooms {
- margin:3px auto 0 1px;
- width:99%;
+ margin:3px auto 0px 2px;
+ width:78%;
 }
 #chatrooms .chatroom {
- margin-right:2px;
- margin-left:2px;
+ margin-right:3px;
+ margin-left:4px;
  border-top:1px solid blue;
  border-right:1px solid blue;
  border-left:1px solid blue;
@@ -44,7 +39,6 @@
  cursor:pointer;
  padding:2px 3px 2px 4px;
  font-weight:700;
- font-size:0.9em;
  -moz-border-top-left-radius:0.6em;
  -webkit-border-top-left-radius:0.6em;
  -khtml-border-top-left-radius:0.6em;
@@ -60,28 +54,58 @@
 }
 #chatrooms #s_room {
  background-color:#fefe89;
+ color:#0001d8;
  box-shadow:0.1em 0.1em 0.15em #a0a1da inset;
  -webkit-box-shadow:0.1em 0.1em 0.15em #a0a1da;    /* Safari and Chrome */
 }
 #chatusersli span, #chats q { display:none; }
-#chatusers { display:none; }
+#chatusers {
+ top:3px;
+ right:2px;
+ width:18.8%;
+ height:349px;
+ position:absolute;
+ background-color:#f9fbef;
+ overflow:auto;
+ font-size:13px;
+ padding:2px 3px;
+ box-shadow:0.15em 0.15em 0.22em #a0a1d8;
+ -webkit-box-shadow:0.15em 0.15em 0.22em #a0a1d8;    /* Safari and Chrome */
+ -moz-border-radius:0.58em;
+ -webkit-border-radius:0.58em;
+ -khtml-border-radius:0.58em;
+ border-radius:0.58em;
+}
+#chatusers #onl {
+ width:100%;
+ margin:2px auto;
+ font-weight:bold;
+ text-decoration:underline;
+ font-style:italic;
+ text-align:center;
+}
+#chatusers ul {
+ margin:0px auto 0px 15px;
+ padding:0px;
+}
 #chats {
- margin:2px 3px 1px 1px;
- height:262px;
+ margin:2px auto 3px 2px;
+ width:78%;
+ height:330px;
  border:1px solid #aaaafe;
  background-color:#fdfdfe;
  overflow:auto;
- padding:1px;
- box-shadow:0.16em 0.16em 0.2em #a0a1d2;
- -webkit-box-shadow:0.16em 0.16em 0.2em #a0a1d2;    /* Safari and Chrome */
+ padding:2px;
+ box-shadow:0.18em 0.18em 0.2em #a0a1d2;
+ -webkit-box-shadow:0.18em 0.18em 0.2em #a0a1d2;    /* Safari and Chrome */
  -moz-border-radius:0.8em;
  -webkit-border-radius:0.8em;
  -khtml-border-radius:0.8em;
  border-radius:0.8em;
 }
 #chats p {
- margin:1px auto 1px 1px;
- padding:1px;
+ margin:1px auto 2px 1px;
+ padding:1px 1px 2px 1px;
  -moz-border-top-left-radius:0.7em;
  -webkit-border-top-left-radius:0.7em;
  -khtml-border-top-left-radius:0.7em;
@@ -90,43 +114,43 @@
  -khtml-border-bottom-right-radius:1em;
  border-top-left-radius:0.7em;
  border-bottom-right-radius:1em;
- background-color:#e9fbe9;
- background: -moz-linear-gradient(top, #daf9da, #f8f9fe);          /* for Firefox */
+ background-color:#e0fbe1;
+ background: -moz-linear-gradient(top, #daf9da, #fbfefb);          /* for Firefox */
  /* for Safari, Chrome */
- background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0.5, #daf9da), color-stop(1, #f8f9fe));
+ background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0.5, #daf9da), color-stop(1, #fbfefb));
 
- background-image: -o-linear-gradient(top, #daf9da, #f8f9fe);          /* Opera 11.1+ */
- background: linear-gradient(top, #daf9da, #f8f9fe);          /* W3C Markup */
+ background-image: -o-linear-gradient(top, #daf9da, #fbfefb);          /* Opera 11.1+ */
+ background: linear-gradient(top, #daf9da, #fbfefb);          /* W3C Markup */
 }
 #chats p:nth-child(odd) {
  background-color:#f0f1fe;
  background: -moz-linear-gradient(top, #eeeefe, #fbfbfe);          /* for Firefox */
  /* for Safari, Chrome */
- background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0.5, #efeffe), color-stop(1, #fbfbfe));
+ background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0.5, #eeeefe), color-stop(1, #fbfbfe));
 
- background-image: -o-linear-gradient(top, #efeffe, #fbfbfe);          /* Opera 11.1+ */
- background: linear-gradient(top, #efeffe, #fbfbfe);          /* W3C Markup */
+ background-image: -o-linear-gradient(top, #eeeefe, #fbfbfe);          /* Opera 11.1+ */
+ background: linear-gradient(top, #eeeefe, #fbfbfe);          /* W3C Markup */
 }
 #chats p:last-child {
- margin:1px auto 6px 1px;
+ margin:2px auto 8px 1px;
  background:#fefed0;
- border:1px solid #abcdef;
- border-bottom:none;
+  border:2px solid #abcdef;
+  border-bottom:none;
  -moz-border-radius:0.7em;
  -webkit-border-radius:0.7em;
  -khtml-border-radius:0.em;
  border-radius:0.7em;
 }
- #chats .chatusr {
+#chats .chatusr {
  font-weight:bold;
 }
 #chats p em {
  margin:0;
- font-size:9px;
+ font-size:10px;
 }
 #chats .chat {
  display:block;
- margin:0px auto 0px 27px;
+ margin:0px auto 0px 29px;
  padding:0px 1px;
  line-height:97%;
  text-indent:-8px;
@@ -142,11 +166,7 @@
 }
 
 #playbeep {
- position:absolute;
- top:1px;
- right:1px;
- width:18px;
- height:18px;
+ margin:0 auto 0 18px;
  border:none;
  cursor:pointer;
 }
@@ -155,11 +175,12 @@
 
 #form_chat {
  clear:both;
- margin:8px auto 2px auto;
+ margin:-8px auto 2px auto;
  padding:2px;
 }
 #form_chat #chatex img{
- margin:auto 1px;
+ margin:auto 2px;
+ border:none;
  cursor:pointer;
 }
 #name_code, #chatex {
@@ -177,16 +198,20 @@ padding:2px;
 color:blue;
 }
 #adchat {
- width:73%;
- height:16px;
+ width:67%;
+ height:20px;
  background-color:#d8fed9;
 color:#0101de;
 font-size:0.9em;
-padding-top:2px;
- -moz-border-radius:0.8em;
- -webkit-border-radius:0.8em;
- -khtml-border-radius:0.8em;
- border-radius:0.8em;
+padding:1px 2px 0 8px;
+ -moz-border-top-left-radius:0.9em;
+ -webkit-border-top-left-radius:0.9em;
+ -khtml-border-top-left-radius:0.9em;
+ border-top-left-radius:0.9em;
+ -moz-border-bottom-left-radius:0.9em;
+ -webkit-border-bottom-left-radius:0.9em;
+ -khtml-border-bottom-left-radius:0.9em;
+ border-bottom-left-radius:0.9em;
 }
 #adchat:focus { background-color:#fefed8; }
 #enterchat {
@@ -194,12 +219,12 @@ margin:3px auto;
 cursor:pointer;
 text-decoration:underline;
 font-style:italic;
-font-size:15px;
+font-size:17px;
 color:#0101da;
 }
 #logoutchat {
-margin:8px auto 1px 2%;
-width:92px;
+margin:5px auto 1px 2%;
+width:95px;
 cursor:pointer;
 text-align:left;
 text-decoration:underline;
@@ -214,6 +239,6 @@ color:green;
 }
 #chatadd #mp {
 margin:2px auto;
-font-size:6px;
+font-size:7px;
 color:#bcdeff;
 }

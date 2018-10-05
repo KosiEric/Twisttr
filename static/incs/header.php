@@ -65,7 +65,7 @@ class Header extends WebsiteHeader {
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">More <span class="caret"></span></a>
             <ul class="dropdown-menu" role="menu">
-              <li class="header-more-action-li"><a href="#"><i class="fa fa-comment-o header-more-actions-icon"></i><span class="header-li-link-text more-actions-li-text">Chat</span></a></li>
+              <li class="header-more-action-li"><a href="#" id="show-chat-window"><i class="fa fa-comment-o header-more-actions-icon"></i><span class="header-li-link-text more-actions-li-text">Chat</span></a></li>
               <li class="header-more-action-li"><a href="#" class="header-list-links header-more-actions-icon"><i class="fa fa-bookmark header-more-actions-icon"></i><span class="header-li-link-text more-actions-li-text">Our Blog</span></a></li>
               <li class="header-more-action-li"><a href="#" class="header-list-links header-more-actions-icon"><i class="fa fa-share-alt header-more-actions-icon"></i><span class="header-li-link-text more-actions-li-text">Transfer to account</span></a></li>
               <li class="divider"><a href="#"></a></li>

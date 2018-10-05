@@ -10,7 +10,10 @@ var getchat = function() {return 'chattxt/'+chatroom+'.txt';};        // TXT fil
 var ajxsend = 0;                                 // to control accessing Ajax 
 var lastaddedc = 1;                                // stores Timestamp of last added chat
 var playbeep = 2;                                // if 1 not beep, if 2 beep
-var beepfile = 'beep1.wav';                      // the name of WAV file used for beep sound
+var beepfile = 'beep1.wav'; // the name of WAV file used for beep sound
+var d = new Date();
+var  joinTime = d.getTime();
+console.log(joinTime);
 
 /** Functions for cookie **/
 
@@ -217,6 +220,7 @@ function addChatS(text) {
   if (chatuserset == 1) {
     var chat = text.adchat.value.length;
 
+
     // check number of characters in field that adds chat text
     if(chat < 2 || chat > 200) {
       alert(texts.err_textchat);
@@ -380,12 +384,33 @@ function setHtmlChat(objChat) {
   var nrchats = objChat.chats.length;
 
   // if last-added-chat changed, define $chatrooms html; else gets content from #chats ttag
+   var justJoined = false;
   if(objChat.time != lastaddedc) {
     // if chat lines, and first chat line not empty, traverses the array with chat line and sets <p> with each chat line data
     if(nrchats > 0 && objChat.chats[0].chat != '') {
+      var counter = 0;
       for(var i=0; i<nrchats; i++) {
-        chatrows += '<p><span class="chatusr">&bull; '+ objChat.chats[i].user +' - </span><em>'+ objChat.chats[i].date +'</em><span class="chat">- '+ bbcodeParser.bbcodeToHtml(objChat.chats[i].chat) +'</span></p>';
+        var myCustDate = objChat.chats[i].date.split(" ");
+
+        var postDate = new Date(objChat.chats[i].date);
+
+        var postTime = postDate.getTime() ;
+
+        if(postTime > joinTime) {
+          counter ++;
+          chatrows += '<p><span class="chatusr">&bull; ' + objChat.chats[i].user + ' - </span><span data-livestamp=' + Math.round(postTime / 1000) + '>' + objChat.chats[i].date + '</span><span class="chat">- ' + bbcodeParser.bbcodeToHtml(objChat.chats[i].chat) + '</span></p>';
+        }
+
+
+
       }
+
+
+      if(counter == 0){
+          chatrows += '<p><span class="chatusr">'+ texts.notchat +'</p>';
+      }
+
+
     }
     else chatrows += '<p><span class="chatusr">'+ texts.notchat +'</p>';
 

@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 // Config.php needed for getting some details about the Website
 
 require_once '../config/config.php';
@@ -23,7 +23,7 @@ class UserLogin extends  Functions
     private $successText = "success"; //successText needed for avoiding mispellings;
     private $errorText = "error"; // errorText needed for avoiding mispellings as well
 
-    private $data , $username , $password , $remember_me , $login_type;
+    private $data , $username , $password , $remember_me , $login_type , $user_details;
 
 
 
@@ -111,7 +111,9 @@ class UserLogin extends  Functions
         if($this->isReady()){
             if($this->setDetails()){
                 if($this->isValidLoginDetails()){
-                    $user_id = $this->fetch_data_from_table($this->users_table_name , $this->login_type , $this->username)[0]['user_id'];
+                    $this->user_details = $this->fetch_data_from_table($this->users_table_name , $this->login_type , $this->username)[0];
+                    $user_id = $this->user_details['user_id'];
+                    $_SESSION['username'] = $this->user_details["username"];
                     $time = time();
 
                     if($this->remember_me == "1") {

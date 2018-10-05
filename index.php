@@ -1,5 +1,6 @@
 <?php
 
+session_start();
 require_once  $_SERVER['DOCUMENT_ROOT'].'/static/incs/header.php';
 require_once  $_SERVER['DOCUMENT_ROOT'].'/funcs/user_functions.php';
 
@@ -106,12 +107,13 @@ if(!isset($_SESSION['username'])){
     $_SESSION['username'] = $HomePage->generateID(4);
 
 }
-
-require_once 'chat.php';
-
-
 ?>
 
+<div id="chat-container">
+<div id="chat-wrapper">
+    <?php require_once 'chat.php'; ?>
+</div>
+</div>
 
 
 

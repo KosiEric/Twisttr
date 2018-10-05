@@ -12,7 +12,7 @@ if($this->chatadd === 1) {
 }
 else if(defined('CHATUSER')) {
   echo '<input type="hidden" name="chatuser" id="chatuser" value="'. CHATUSER. '" />
-   <span id="enterchat" onclick="enterChat()">'.sprintf($this->lsite['enterchat'], CHATUSER).'</span>';
+   <span id="enterchat" onclick="enterChat()">'.sprintf($this->lsite['enterchat'], CHATUSER).'</span>'."<span id = 'close-chat-window-non-logged'>Close window</span>";
 }
 
 // Add or not button for links
@@ -38,7 +38,7 @@ $alink = (CHATLINK === 1) ? '<img src="chatex/url.png" alt="URL" title="Link" on
   <img src="chatex/9.gif" alt=":-*" title=":-*" onclick="addSmile(':-*', 'adchat');" /></div>
   <input type="text" name="adchat" id="adchat" size="88" maxlength="200" /> &nbsp; 
   <input type="submit" value="<?php echo $this->lsite['chat']; ?>" id="submit"/>
-  <div id="logoutchat" onclick="delCookie('name_c')"><?php echo $this->lsite['logoutchat']; ?></div>
+  <div id="logoutchat"><?php echo $this->lsite['logoutchat']; ?></div>
   <a href="http://coursesweb.net/" title="Web Programming Development Courses" target="_blank" id="mp">CoursesWeb.net</a>
  </div>
 </form>

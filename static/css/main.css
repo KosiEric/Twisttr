@@ -1,0 +1,11 @@
+#number-of-users{
+    position: relative;
+    left : 10px;
+    top : 5px;
+}
+
+#chat-container{
+    position: absolute;
+    z-index: 2;
+    
+}

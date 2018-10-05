@@ -1,6 +1,6 @@
 <?php
 // Chat Simple, from: http://coursesweb.net/php-mysq/
-
+date_default_timezone_set("Africa/Lagos");
 class ChatSimple {
   public $maxrows = 30;
   public $chatrooms = array();            // for chat rooms
@@ -94,7 +94,7 @@ class ChatSimple {
         // if text added, keep the last $maxrows rows, add the new chat data
         if(strlen($adchat)<1 || strlen($adchat)<201) {
           $chatrows['chats'] = array_slice($chatrows['chats'], -($this->maxrows));
-          $chatrows['chats'][] = array('user'=>$this->chatuser, 'date'=>date('j F H:i'), 'chat'=>$adchat);
+          $chatrows['chats'][] = array('user'=>$this->chatuser, 'date'=>date('j F Y h:i:s a'), 'chat'=>$adchat);
 
           // if chat in 1st line is empty, remove 1st array with chat line data
           if($chatrows['chats'][0]['chat'] == '') array_shift($chatrows['chats']);

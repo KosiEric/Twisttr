@@ -13,7 +13,7 @@ $chatrooms[] = 'Ask admin';
 
 
 // password used to empty chat rooms after this page is accessed with ?mod=admin
-define('CADMPASS', 'mandate27');
+define('CADMPASS', '');
 
 /* For example, access in your browser
     http://domain/chatfiles/setchat.php?mod=admin

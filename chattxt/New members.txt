@@ -1,1 +1,1 @@
-{"time":1538670241,"users":[],"chats":[{"user":"P5YL","date":"4 October 18:23","chat":"brotherly??"},{"user":"P5YL","date":"4 October 18:23","chat":"hw e dey be la"},{"user":"P5YL","date":"4 October 18:24","chat":"bruh me just dey oh"}]}
+{"time":"","users":{"1538727768":"megakosi"},"chats":[{"user":"","date":"","chat":""}]}
