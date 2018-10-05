@@ -90,6 +90,7 @@ $HomePage = new HomePage();
     <link rel="stylesheet" type="text/css" href="<?php echo  $HomePage->WebsiteDetails->CSS_FOLDER; ?>defaults.css" />
     <link rel="stylesheet" type="text/css" href="<?php echo  $HomePage->WebsiteDetails->CSS_FOLDER; ?>footer.css" />
     <link rel="stylesheet" type="text/css" href="<?php echo  $HomePage->WebsiteDetails->CSS_FOLDER; ?>control.css" />
+    <link rel="stylesheet" type="text/css" href="<?php echo  $HomePage->WebsiteDetails->CSS_FOLDER; ?>notifications.css" />
     <link rel="stylesheet" type="text/css" href="<?php echo  $HomePage->WebsiteDetails->CSS_FOLDER; ?>game.css" />
     <link rel="stylesheet" type="text/css" href="<?php echo  $HomePage->WebsiteDetails->CSS_FOLDER; ?>browser-warning.css" />
     <link rel="stylesheet" type="text/css" media="screen and (max-width:612px)" href="/chatfiles/chatstyle_mini.css" />
@@ -99,7 +100,8 @@ $HomePage = new HomePage();
 
 
 <body>
-
+<div class="unsupported page">
+</div>
 <?php echo $HomePage->Header->DisplayHeader();
 
 
@@ -279,8 +281,6 @@ else {
 
 </div>
 
-
-<?php require_once $HomePage->WebsiteDetails->INCS_FOLDER.'browser-warning.php'; ?>
 
 <div id="game-page" class="container page">
                  <div id="game-start-circle-container">

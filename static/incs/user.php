@@ -139,7 +139,7 @@
                                     </div>
 
                                     <div class="profile-info-value">
-                                        <?php  echo ($HomePage->loggedInUserDetails["twitter_account"] == 0)?
+                                        <?php  echo ($HomePage->loggedInUserDetails["twitter_account"] == '0')?
                                             "<a href='{$HomePage->WebsiteDetails->TwitterHandle}'>Follow us on Twitter</a>" : "<a href='{$HomePage->loggedInUserDetails['twitter_account']}>Twitter handle</a>"; ?>
 
 
@@ -163,8 +163,8 @@
                                 </div>
 
                                 <div class="widget-body">
-                                    <div class="widget-main">
-                                        <?php echo ($HomePage->loggedInUserDetails["status_text"] == 0) ? "Nothing here" : $HomePage->loggedInUserDetails["status_text"]?>
+                                    <div class="widget-main" id="profile-status-message">
+                                        <?php echo ($HomePage->loggedInUserDetails["status_text"] == '0') ? "Nothing here" : $HomePage->loggedInUserDetails["status_text"]?>
                                     </div>
                                 </div>
                             </div>

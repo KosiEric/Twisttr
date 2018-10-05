@@ -1,6 +1,6 @@
 <?php
 
-date_default_timezone_set("UTC");
+date_default_timezone_set("Africa/Lagos");
 class DatabaseConnection {
 
 
@@ -21,6 +21,7 @@ class DatabaseConnection {
     public $fund_account_transactions_table_name = "fund_account_transactions";
     public $games_table_name = "games";
     public $withdrawals_table_name = "withdrawals";
+    public $notifications_table_name = "notifications";
     final protected  function  establish_database_connection () : bool
     {
 
@@ -148,7 +149,26 @@ class DatabaseConnection {
 
 
     }
+/*
 
+
+
+    You can add a new column at the end of your table
+
+    ALTER TABLE assessment ADD q6 VARCHAR( 255 )
+
+    Add column to the begining of table
+
+    ALTER TABLE assessment ADD q6 VARCHAR( 255 ) FIRST
+
+    Add column next to a specified column
+
+    ALTER TABLE assessment ADD q6 VARCHAR( 255 ) after q5
+
+
+
+
+*/
 
     public final function  create_users_table () : bool {
 
@@ -169,7 +189,7 @@ class DatabaseConnection {
     game_id VARCHAR (100) NOT NULL UNIQUE ,
     password_reset_code  VARCHAR (100) DEFAULT '0' UNIQUE , 
     email_verification_code VARCHAR (100) DEFAULT  '0' UNIQUE ,
-    
+    number_of_read_notifications VARCHAR (100) NOT NULL DEFAULT  '0',
     bank_name VARCHAR (100) DEFAULT '0' ,
     account_name VARCHAR (100) DEFAULT '0',
     account_number VARCHAR (100) DEFAULT '0', 
@@ -286,6 +306,32 @@ class DatabaseConnection {
 
     }
 
+    public function create_notifications_table(){
+        $sql = "CREATE TABLE {$this->notifications_table_name}(
+        id INT UNSIGNED AUTO_INCREMENT PRIMARY  KEY,
+    message VARCHAR(100)  NOT NULL ,
+    link VARCHAR (100) NOT NULL , 
+    
+    `time_stamp` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP, 
+    
+    title VARCHAR (100) NOT  NULL)";
+
+
+
+
+
+        try {
+
+            $this->conn->exec($sql);
+            echo "Table Created successfully";
+            return true;
+        }
+
+        catch (PDOException $exception) {
+            echo "Error occured {$exception->getMessage()}";
+            return false;
+        }
+    }
     public final  function create_withdrawals_table() {
         $sql = "CREATE TABLE {$this->withdrawals_table_name}(
         id INT UNSIGNED AUTO_INCREMENT PRIMARY  KEY,
@@ -394,4 +440,5 @@ $DatabaseConnection = new DatabaseConnection();
 //$DatabaseConnection->create_fund_account_transactions_table();
 //$DatabaseConnection->create_withdrawals_table();
 //$DatabaseConnection->create_games_table();
+//$DatabaseConnection->create_notifications_table();
 ?>

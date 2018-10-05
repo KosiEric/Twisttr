@@ -9,11 +9,10 @@ var setchat = 'chatfiles/setchat.php';           // file accesed when add chat, 
 var getchat = function() {return 'chattxt/'+chatroom+'.txt';};        // TXT file with chat content of current room
 var ajxsend = 0;                                 // to control accessing Ajax 
 var lastaddedc = 1;                                // stores Timestamp of last added chat
-var playbeep = 2;                                // if 1 not beep, if 2 beep
+var playbeep = 1;                                // if 1 not beep, if 2 beep
 var beepfile = 'beep1.wav'; // the name of WAV file used for beep sound
 var d = new Date();
 var  joinTime = d.getTime();
-console.log(joinTime);
 
 /** Functions for cookie **/
 

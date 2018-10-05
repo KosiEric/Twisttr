@@ -55,6 +55,16 @@ function  Defaults() {
 
     };
 
+    this.loadFile = function (data = "data" , url , elem , callback  ) {
+
+        $.post(url , {data : data}).done(function (t) {
+
+            elem.html(t);
+            callback(t);
+
+        });
+
+    };
 
 
 this.preventFormSubmission = function (e) {
@@ -73,7 +83,7 @@ this.preventFormSubmission = function (e) {
 
    //All the files necessary for processing requests
     this.processorsFolder = '/processors/';
-
+    this.incsFolder = '/static/incs/';
 
 
     //Json success and error
@@ -95,7 +105,8 @@ this.preventFormSubmission = function (e) {
        withdrawAmountFile : parent.processorsFolder + 'withdraw-amount.php' ,
        getUserAccountBalanceFile : parent.processorsFolder + 'get-user-account-balance.php',
        gameControlFile : parent.processorsFolder + 'game-control.php' ,
-       chatFile : 'chat.php'
+       chatFile : 'chat.php',
+       browserWarningFile : parent.incsFolder + 'browser-warning.php'
    };
 
 

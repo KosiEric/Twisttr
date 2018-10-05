@@ -90,11 +90,13 @@ containing the DOM objects and second the new value of the css "display" propert
         this.showBrowserWarning = function () {
 
     /* Toggles the display of header , footer and main site i.e hides the elements by setting their css "display" property to "none"  */        parent.toggleDisplay([$('.pages') ,  $('#home-page'), parent.mainSiteFooter , parent.mainSiteHeader] , 'none');
-            parent.toggleDisplay([parent.unsupportedBrowserWarning] , 'block');
 
-            parent.browserWarningImages.each(function (index) {
-               $(this).attr('src' , $(this).attr('data-src'));
+            parent.defaults.loadFile(null , parent.defaults.files.browserWarningFile , parent.unsupportedBrowserWarning , function (t) {
+                parent.toggleDisplay([parent.unsupportedBrowserWarning] , 'block');
+
+
             });
+
         };
 
        return action = (!isSupportedBrowser)? this.showBrowserWarning() : "";
@@ -300,7 +302,7 @@ containing the DOM objects and second the new value of the css "display" propert
         moreDetailsErrorMessage = $('#more-details-error-message');
         moreDetailsServerMessage = $('.more-details-server-messages');
         moreDetailsWaitText = $('#more-details-wait-text');
-
+        profileStatusMessage = $('#profile-status-message');
 
 
 
@@ -337,6 +339,10 @@ containing the DOM objects and second the new value of the css "display" propert
 
             $.post(parent.defaults.files.moreAccountDetailsFile, {data: data}).done(function (data, status) {
 
+
+                if(!parent.defaults.isEmptyField(statusMessage.val())){
+                    profileStatusMessage.text(statusMessage.val());
+                }
 
                 data  = JSON.parse(data);
 
