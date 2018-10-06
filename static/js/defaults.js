@@ -55,8 +55,9 @@ function  Defaults() {
 
     };
 
-    this.loadFile = function (data = "data" , url , elem , callback  ) {
+    this.loadFile = function (data  , url , elem , callback  ) {
 
+        data = (data == null) ? "data" : data;
         $.post(url , {data : data}).done(function (t) {
            if(elem) elem.html(t);
 

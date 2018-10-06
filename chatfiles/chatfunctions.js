@@ -9,10 +9,11 @@ var setchat = 'chatfiles/setchat.php';           // file accesed when add chat, 
 var getchat = function() {return 'chattxt/'+chatroom+'.txt';};        // TXT file with chat content of current room
 var ajxsend = 0;                                 // to control accessing Ajax
 var lastaddedc = 1;                                // stores Timestamp of last added chat
-var playbeep = 1;                                // if 1 not beep, if 2 beep
+var playbeep = 2;                                // if 1 not beep, if 2 beep
 var beepfile = 'beep1.wav'; // the name of WAV file used for beep sound
 var d = new Date();
 var  joinTime = d.getTime();
+var allUsersOnline;
 
 /** Functions for cookie **/
 
@@ -380,7 +381,6 @@ function ajaxF(file, parameters) {
 function setHtmlChat(objChat) {
     var chatrows = '';       // stores the area with chat lines
     var chatusers = '';       // stores the area with online users
-    console.log(objChat);
     var nrchats = objChat.chats.length;
 
 
@@ -399,7 +399,7 @@ function setHtmlChat(objChat) {
 
                 if(postTime > joinTime) {
                     counter ++;
-                    chatrows += '<p><span class="chatusr">&bull; ' + objChat.chats[i].user + ' - </span><span data-livestamp=' + Math.round(postTime / 1000) + '>' + objChat.chats[i].date + '</span><span class="chat">- ' + bbcodeParser.bbcodeToHtml(objChat.chats[i].chat) + '</span></p>';
+                    chatrows += '<p><span class="chatusr">&bull; ' + objChat.chats[i].user + ' - </span><span data-livestamp =\"'+ Math.round(postTime / 1000) + '\">' + objChat.chats[i].date + '</span><span class="chat">- ' + bbcodeParser.bbcodeToHtml(objChat.chats[i].chat) + '</span></p>';
                 }
 
 
@@ -431,8 +431,13 @@ function setHtmlChat(objChat) {
         users.sort(function(a, b) {
             var textA = a.toUpperCase();
             var textB = b.toUpperCase();
+
+            allUsersOnline = users;
+            console.log(allUsersOnline);
+
             return (textA < textB) ? -1 : (textA > textB) ? 1 : 0;
         });
+
         chatusers += '<ul id="chatusersli"><li>'+ users.join('</li><li>') +'</li></ul>';
     }
     else chatusers = texts.no1online;
@@ -465,4 +470,4 @@ function apelAjax() {
 
     setTimeout('apelAjax()', 1900);
 }
-//apelAjax();    // Calls Ajax function
+apelAjax();    // Calls Ajax function
