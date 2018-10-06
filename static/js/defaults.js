@@ -58,9 +58,9 @@ function  Defaults() {
     this.loadFile = function (data = "data" , url , elem , callback  ) {
 
         $.post(url , {data : data}).done(function (t) {
+           if(elem) elem.html(t);
 
-            elem.html(t);
-            callback(t);
+           callback(t);
 
         });
 
@@ -106,7 +106,8 @@ this.preventFormSubmission = function (e) {
        getUserAccountBalanceFile : parent.processorsFolder + 'get-user-account-balance.php',
        gameControlFile : parent.processorsFolder + 'game-control.php' ,
        chatFile : 'chat.php',
-       browserWarningFile : parent.incsFolder + 'browser-warning.php'
+       browserWarningFile : parent.incsFolder + 'browser-warning.php' ,
+       notificationsFile : parent.processorsFolder + 'notifications.php'
    };
 
 

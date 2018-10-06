@@ -380,9 +380,7 @@ function ajaxF(file, parameters) {
 function setHtmlChat(objChat) {
     var chatrows = '';       // stores the area with chat lines
     var chatusers = '';       // stores the area with online users
-    console.log(objChat);
     var nrchats = objChat.chats.length;
-
 
     // if last-added-chat changed, define $chatrooms html; else gets content from #chats ttag
     var justJoined = false;

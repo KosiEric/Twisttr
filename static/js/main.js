@@ -24,6 +24,21 @@ containing the DOM objects and second the new value of the css "display" propert
     this.chatWrapper = $('#chat-wrapper');
     this.showChatWindow = $('#show-chat-window');
     this.closeChatWindowNonLogged = $('#close-chat-window-non-logged');
+    this.notificationsHeaderContainer = $('#notifications-header-container');
+    this.loadMoreNotificationsSpinner = $('#load-more-notifications-spinner');
+    this.notificationsPanelBody = $("#notifications-panel-body");
+    this.toggleNotificationsActionLink = $('#toggle-notifications-action-link');
+    this.closeNotificationsPanelAction = $('#close-notifications-panel-action');
+    this.notificationsList = $('#notifications-list');
+    this.loadMoreNotificationsAction= $('#load-more-notifications-action');
+    this.notificationsHeaderCount = $('#notifications-header-count');
+
+    this.closeNotificationsPanelAction.on('click' , function (t) {
+
+        parent.notificationsHeaderContainer.css('display' , 'none');
+    });
+
+
 
 
     this.closeChatWindowNonLogged.on('click' , function (t) {
@@ -38,6 +53,9 @@ containing the DOM objects and second the new value of the css "display" propert
         });
 
     });
+
+
+
 
 
 
@@ -200,6 +218,52 @@ containing the DOM objects and second the new value of the css "display" propert
         withdrawForm = $('#withdraw-form');
 
         withdrawFormFieldset = $('#withdraw-amount-fieldset');
+
+
+        function loadMoreNotifications() {
+            var start =  Number(parent.notificationsHeaderContainer.attr('data-start'));
+            var data = {'userID' : parent.userDetails.user_id , 'start' : start };
+
+            data = JSON.stringify(data);
+            parent.loadMoreNotificationsAction.css("pointer-events" , "none");
+
+            parent.toggleNotificationsActionLink.css('pointer-events' , "none");
+            parent.defaults.loadFile(data , parent.defaults.files.notificationsFile , null , function (t) {
+
+                var t = JSON.parse(t);
+
+                var newStartPosition = start + t.start;
+                parent.toggleNotificationsActionLink.css('pointer-events' , "initial");
+                parent.notificationsList.append(t.data);
+                parent.notificationsHeaderContainer.css('display' , 'block');
+                parent.notificationsHeaderContainer.attr({'data-loaded' : '1' , 'data-start' : newStartPosition});
+                parent.loadMoreNotificationsAction.css("pointer-events" , "all");
+                parent.notificationsHeaderCount.text("");
+                if(t.data == ""){
+
+                    parent.loadMoreNotificationsAction.css("display" , "none");
+
+                }
+            });
+
+        }
+
+        parent.loadMoreNotificationsAction.on('click' , loadMoreNotifications);
+
+        this.toggleNotificationsActionLink.on('click' , function (t) {
+
+
+
+            if(parent.notificationsHeaderContainer.css('display') == 'none' && parent.notificationsHeaderContainer.attr('data-loaded') == '0'){
+
+                loadMoreNotifications();
+
+            }
+            else {
+
+                parent.notificationsHeaderContainer.css('display' , 'block');
+            }
+        });
 
 
 

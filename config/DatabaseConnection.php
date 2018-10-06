@@ -309,13 +309,14 @@ class DatabaseConnection {
     public function create_notifications_table(){
         $sql = "CREATE TABLE {$this->notifications_table_name}(
         id INT UNSIGNED AUTO_INCREMENT PRIMARY  KEY,
+     title VARCHAR (100) NOT  NULL ,
+
     message VARCHAR(100)  NOT NULL ,
     link VARCHAR (100) NOT NULL , 
     
-    `time_stamp` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP, 
+    time_stamp TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP 
     
-    title VARCHAR (100) NOT  NULL)";
-
+   )";
 
 
 

@@ -2,7 +2,7 @@
 
 
 require_once $_SERVER['DOCUMENT_ROOT'].'/config/classes.php';
-
+require_once $_SERVER['DOCUMENT_ROOT'].'/config/functions.php';
 
 
 class Header extends WebsiteHeader {
@@ -13,7 +13,22 @@ class Header extends WebsiteHeader {
          private $userManagementFunctions;
          private $isLoggedInUser;
 
+         private $funtions;
          private $tryDisableSearchForm; //Disabling the search Form for Non-logged users
+
+
+         private function getNumberOfUnreadNotifications () {
+             $unread_notifications = 0;
+             if($this->isLoggedInUser) {
+                 $total_notifications = $this->funtions->fetch_data_from_table_with_conditions($this->funtions->notifications_table_name,
+                     "id != 0");
+                 $total_notifications = count($total_notifications);
+                 $read_notifications = (int)$this->userManagementFunctions->user_details["number_of_read_notifications"];
+                 $unread_notifications = $total_notifications - $read_notifications;
+             }
+
+             return ($unread_notifications == 0) ? "" : $unread_notifications;
+         }
 
 
          function __construct()
@@ -26,7 +41,7 @@ class Header extends WebsiteHeader {
              $this->isLoggedInUser = $this->userManagementFunctions->isLoggedInUser();
              $this->tryDisableSearchForm = (!$this->isLoggedInUser)?"disabled='disabled'" : "";
 
-
+             $this->funtions = new Functions();
 
              $this->PageHeader = <<<FullHeader
 
@@ -49,13 +64,53 @@ class Header extends WebsiteHeader {
        <div id="navbar1" class="navbar-collapse collapse">
         <ul class="nav navbar-nav navbar-left">
           <li class="border-down-shown active-header-li"><a href="#" class="header-list-links"><i class="fa fa-home  header-home-icon header-icons"></i> Home</a></li>
-          <li class="border-down-shown inactive-header-li"><a href="#" class="header-list-links"><i class="fa fa-bell  header-notification-icon header-icons"></i>Notifications<span class="badge game-play-count">0</span></a>
+          <li class="border-down-shown inactive-header-li"><a id="toggle-notifications-action-link" href="#" class="header-list-links"><i class="fa fa-bell  header-notification-icon header-icons"></i>Notifications<span id = "notifications-header-count" class="badge game-play-count">{$this->getNumberOfUnreadNotifications()}</span></a>
 
           
           </li>          
 
-          <li class="border-down-shown inactive-header-li" id="notifications-header-container">
-         
+          <li class="border-down-shown inactive-header-li" data-loaded = "0" data-start = "0" id="notifications-header-container">
+         <div class="container" id="notifs-container">
+    <div class="arrow-up"></div>
+
+    <div class="row">
+        <div class="col-md-5">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <span class="fa fa-bell"></span><span class="notification-span-site-name">{$this->SiteName}</span>
+                    <div class="btn-group pull-right">
+                        <button type="button" id="close-notifications-panel-action" class="btn btn-default btn-xs dropdown-toggles" data-toggles="dropdown">
+                            <span class="fa fa-close"></span>
+                        </button>
+                        <ul class="dropdown-menu slidedown" style="display: none;">
+                            <li><a href="#"><span class="glyphicon glyphicon-refresh"></span>Refresh</a></li>
+                            <li><a href="#"><span class="glyphicon glyphicon-ok-sign"></span>Available</a></li>
+                            <li><a href="#"><span class="glyphicon glyphicon-remove"></span>Busy</a></li>
+                            <li><a href="#"><span class="glyphicon glyphicon-time"></span>Away</a></li>
+                            <li class="divider"></li>
+                            <li><a href="#"><span class="glyphicon glyphicon-off"></span>Sign Out</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="panel-body" id="notifications-panel-body">
+                    <ul class="chat" id="notifications-list">
+                   <img data-src="{$this->IMG_FOLDER}spin.gif" id="load-more-notifications-spinner"/>
+                    </ul>
+                    <span id="load-more-notifications-action">Load more</span>
+                </div>
+                <div class="panel-footer">
+                    <div class="input-group" style="display: none;">
+                        <input  id="btn-input" type="text" class="form-control input-sm" placeholder="Type your message here..." />
+                        <span class="input-group-btn">
+                            <button class="btn btn-warning btn-sm" id="btn-chat">
+                                Send</button>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
           </li>          
 
           <li class="border-down-shown inactive-header-li"><a href="#play-amount-modal" id="play-action-link" data-toggle="modal" class="header-list-links"><i class="fa fa-location-arrow  header-play-icon header-icons"></i>Play <span class="badge game-play-count" id="number-of-players-count">10</span></a></li>

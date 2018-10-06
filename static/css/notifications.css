@@ -60,7 +60,7 @@
 #notifications-header-container{
     position:absolute;
     z-index:3;
-    
+    display: none;
    }
 @media only screen and (min-width:766px){
     
@@ -68,12 +68,50 @@
      position: absolute;
      top : 60px;
      left : 50%;
+     
 }
     
-    #notifis-container{
+    #notifs-container{
         position: relative;
         left : -50%;
     }
+}
+
+#notifications-header-container a:hover{
+text-decoration: none;
+    
+}
+
+@media only screen and (max-width:766px){
+    
+ #notifications-header-container{
+    
+     width : 100%;
+    }
+    
+    .even-time{
+        display: inline-block;
+        position: relative;
+      
+        font-weight: bold;
+        display: inline-block;
+        
+           
+        
+    }
+    .odd-timestamp{
+        font-weight: bold;
+       
+    }
+    .even-message{
+        display: block !important;
+        margin-top : 20px !important;
+    }
+   
+
+}
+#notifications-panel-body , .even-message , .even-time , .odd-timestamp{
+    font-family: Cairo
 }
 .arrow-up {
     width: 0;
@@ -84,4 +122,52 @@
     border-bottom: 8px solid #337ab7 ;
     left : 40px;
     position: relative;
+}
+ 
+#load-more-notifications-spinner {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    position: absolute;
+    top : 50px;
+    height : 30px;
+    left : 46%;
+    top : 40%;
+    z-index: 3;
+    
+}
+
+#notifs-container {
+   //display : none;
+}
+.img-circle.notifis-favicon{
+    width : 35px;
+    border : 1px solid rgba(192 , 192 , 192 , .5);
+}
+.notification-span-site-name{
+    position: relative;
+    left : 10px;
+}
+.odd-timestamp{
+    display: block !important;
+}
+.odd-title.primary-font{
+    position: relative;
+    left : 10px;
+    top : 2px 
+}
+.odd-message{
+    left : 10px;
+    position: relative;
+    top :5px;
+}
+#load-more-notifications-action{
+    color : deepskyblue;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    font-family: Cairo;
+    cursor: pointer;
+    font-size: 15px;
 }
