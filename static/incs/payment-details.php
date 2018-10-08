@@ -39,7 +39,7 @@
 
 
         <div class="form-group">
-            <label class="col-md-4 control-label" for="fullname">Account Name</label>
+            <label class="col-md-4 control-label" for="bank-account-name">Account Name</label>
             <div class="col-md-4 inputGroupContainer">
                 <div class="input-group">
                     <span class="input-group-addon"><i class="fa fa-user"></i></span>

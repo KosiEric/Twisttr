@@ -64,7 +64,7 @@ class Header extends WebsiteHeader {
        <div id="navbar1" class="navbar-collapse collapse">
         <ul class="nav navbar-nav navbar-left">
           <li class="border-down-shown active-header-li"><a href="#" class="header-list-links"><i class="fa fa-home  header-home-icon header-icons"></i> Home</a></li>
-          <li class="border-down-shown inactive-header-li"><a id="toggle-notifications-action-link" href="#" class="header-list-links"><i class="fa fa-bell  header-notification-icon header-icons"></i>Notifications<span id = "notifications-header-count" class="badge game-play-count">{$this->getNumberOfUnreadNotifications()}</span></a>
+          <li class="border-down-shown inactive-header-li" id="main-notification-li"><a id="toggle-notifications-action-link" href="#" class="header-list-links"><i class="fa fa-bell  header-notification-icon header-icons"></i>Notifications<span id = "notifications-header-count" class="badge game-play-count">{$this->getNumberOfUnreadNotifications()}</span></a>
 
           
           </li>          

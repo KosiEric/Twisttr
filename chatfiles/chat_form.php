@@ -20,8 +20,10 @@ $alink = (CHATLINK === 1) ? '<img src="chatex/url.png" alt="URL" title="Link" on
 ?>
 </div>
  <div id="chatadd">
+
   <div id="chatex">
-  <img src="chatex/bold.png" alt="B" onclick="addChatBIU('[b]','[/b]', 'adchat');" />
+      <span id="chat-emoticons-container" dir="ltr">
+      <img src="chatex/bold.png" alt="B" onclick="addChatBIU('[b]','[/b]', 'adchat');" />
   <img src="chatex/italic.png" alt="I" onclick="addChatBIU('[i]','[/i]', 'adchat');" />
   <img src="chatex/underline.png" alt="U" onclick="addChatBIU('[u]','[/u]', 'adchat');" />
   <?php echo $alink; ?>
@@ -35,9 +37,11 @@ $alink = (CHATLINK === 1) ? '<img src="chatex/url.png" alt="URL" title="Link" on
   <img src="chatex/6.gif" alt=":=)" title=":=)" onclick="addSmile(':=)', 'adchat');" />
   <img src="chatex/7.gif" alt=":|H" title=":|H" onclick="addSmile(':|H', 'adchat');" />
   <img src="chatex/8.gif" alt=":X" title=":X" onclick="addSmile(':X', 'adchat');" />
-  <img src="chatex/9.gif" alt=":-*" title=":-*" onclick="addSmile(':-*', 'adchat');" /></div>
-  <input type="text" name="adchat" id="adchat" size="88" maxlength="200" /> &nbsp; 
-  <input type="submit" value="<?php echo $this->lsite['chat']; ?>" id="submit"/>
+  <img src="chatex/9.gif" alt=":-*" title=":-*" onclick="addSmile(':-*', 'adchat');" />
+  </span>
+ </div>
+  <input type="text" name="adchat" class="chat-text" id="adchat" size="88" maxlength="200" placeholder="Write your message..."/> &nbsp;
+     <button type="submit" class="chat-send-message-button btn btn-default"  id="submit"><i class="fa fa-location-arrow" id="send-chat-message-icon"></i> </button>
   <div id="logoutchat"><?php echo $this->lsite['logoutchat']; ?></div>
   <a href="http://coursesweb.net/" title="Web Programming Development Courses" target="_blank" id="mp">CoursesWeb.net</a>
  </div>

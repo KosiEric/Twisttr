@@ -14,7 +14,7 @@ function  GameClass () {
 
     this.exitGameButton.on('click' , function () {
 
-        var data = {"userID" : parent.userID , "amount" : playAmount , "action" : parent.gameActions.exitUserFromGame};
+        data = {"userID" : parent.userID , "amount" : playAmount , "action" : parent.gameActions.exitUserFromGame};
         data = JSON.stringify(data);
         $.post(parent.gameControlFile , {data:data}).done(function (resp) {
             var resp = JSON.parse(resp);
@@ -27,7 +27,7 @@ function  GameClass () {
     });
 
 
-    var parent = this;
+    parent = this;
 
     this.response = "";
     this.gameNumberOfPlayersStartCount = $('#game-number-of-players-start-count');
@@ -43,7 +43,7 @@ function  GameClass () {
         this.playAmountModal = $('#play-amount-modal');
 
 
-        var data = {"action": parent.gameActions.addNewUserToGame, "userID": parent.userID, "amount": amount};
+        data = {"action": parent.gameActions.addNewUserToGame, "userID": parent.userID, "amount": amount};
 
         data = JSON.stringify(data);
 
@@ -52,7 +52,7 @@ function  GameClass () {
 
         $.post(parent.gameControlFile, {data: data}, function (resp) {
 
-            var resp = JSON.parse(resp);
+            resp = JSON.parse(resp);
             parent.gameNumberOfPlayersStartCount.text(resp.players);
 
 

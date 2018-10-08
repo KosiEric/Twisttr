@@ -214,7 +214,7 @@
                 <div class="col-md-4 inputGroupContainer">
                     <div class="input-group">
                         <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-                        <input  name="birthday" placeholder="" class="form-control"  id="birthday" type="date" />
+                        <input  name="birthday" placeholder="" class="form-control" required pattern="[0-9]{4}/[0-9]{2}/[0-9]{2}" value="17/18/1996" id="birthday" type="date" />
                     </div>
                     <span id="reg-form-birthday-error-span" class="error-mgs"></span>
                 </div>

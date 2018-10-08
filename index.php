@@ -95,8 +95,8 @@ $HomePage = new HomePage();
     <link rel="stylesheet" type="text/css" href="<?php echo  $HomePage->WebsiteDetails->CSS_FOLDER; ?>browser-warning.css" />
     <link rel="stylesheet" type="text/css" media="screen and (max-width:612px)" href="/chatfiles/chatstyle_mini.css" />
     <link rel="stylesheet" type="text/css"  media="screen and (min-width:612px)" href="/chatfiles/chatstyle.css"/>
-    <link rel="stylesheet" type="text/css" href="/chatfiles/main.css" />
-</head>
+    <link rel="stylesheet" type="text/css"   href="/chatfiles/main.css"/>
+ </head>
 
 
 <body>

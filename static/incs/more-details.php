@@ -19,7 +19,7 @@
 
 
         <div class="form-group">
-            <label class="col-md-4 control-label" for="facebook-name">Instagram username</label>
+            <label class="col-md-4 control-label" for="instagram-username">Instagram username</label>
             <div class="col-md-4 selectContainer">
                 <div class="input-group">
                     <span class="input-group-addon"><i class="fa fa-instagram"></i></span>
@@ -32,7 +32,7 @@
 
 
         <div class="form-group">
-            <label class="col-md-4 control-label" for="fullname">Twitter username</label>
+            <label class="col-md-4 control-label" for="twitter-username">Twitter username</label>
             <div class="col-md-4 inputGroupContainer">
                 <div class="input-group">
                     <span class="input-group-addon"><i class="fa fa-at"></i></span>

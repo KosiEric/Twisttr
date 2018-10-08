@@ -1,5 +1,9 @@
 function  WebPage() {
-    var parent = this;
+   var  parent = this , data ;
+
+   //Warning //
+
+   //Remember to create a default user on line 177
 
     /*
 The function function below  toggles the display of  document objects (elements , classes) it accepts first and array
@@ -33,23 +37,38 @@ containing the DOM objects and second the new value of the css "display" propert
     this.loadMoreNotificationsAction= $('#load-more-notifications-action');
     this.notificationsHeaderCount = $('#notifications-header-count');
 
-    this.closeNotificationsPanelAction.on('click' , function (t) {
+
+    /*
+    There is a cancel icon in the Website Notification the function closes the notification panel when the cancel button is clicked
+   */
+
+
+    this.closeNotificationsPanelAction.on('click' , function () {
 
         parent.notificationsHeaderContainer.css('display' , 'none');
     });
 
 
+    this.notificationsHeaderContainer.on('mouseleave' ,function (e) {
+                parent.notificationsHeaderContainer.hide();
+
+    });
 
 
-    this.closeChatWindowNonLogged.on('click' , function (t) {
+    // closes the chat window for Non-logged users
+
+    this.closeChatWindowNonLogged.on('click' , function () {
 
         delCookie('name_c');
         parent.chatContainer.hide();
     });
-    this.showChatWindow.on('click' , function (t) {
+
+
+    //Fades in the chat window in to the view
+    this.showChatWindow.on('click' , function () {
 
         parent.chatContainer.fadeIn('slow' , function () {
-            parent.chatContainer.css('position' , 'fixed');
+            /* Makes sure the chat window is fixed even on user scroll */parent.chatContainer.css('position' , 'fixed');
         });
 
     });
@@ -109,7 +128,7 @@ containing the DOM objects and second the new value of the css "display" propert
 
     /* Toggles the display of header , footer and main site i.e hides the elements by setting their css "display" property to "none"  */        parent.toggleDisplay([$('.pages') ,  $('#home-page'), parent.mainSiteFooter , parent.mainSiteHeader] , 'none');
 
-            parent.defaults.loadFile(null , parent.defaults.files.browserWarningFile , parent.unsupportedBrowserWarning , function (t) {
+            parent.defaults.loadFile(null , parent.defaults.files.browserWarningFile , parent.unsupportedBrowserWarning , function () {
                 parent.toggleDisplay([parent.unsupportedBrowserWarning] , 'block');
 
 
@@ -121,9 +140,11 @@ containing the DOM objects and second the new value of the css "display" propert
 
 
     };
+
+
     this.mainSiteHeader = $('#main-site-header');
     this.mainSiteFooter = $('#main-site-footer');
-
+    this.mainNotificationLi = $('#main-notification-li');
 
    /* Check  the browser support*/  this.tryCheckBrowserSupport();
 
@@ -154,7 +175,9 @@ containing the DOM objects and second the new value of the css "display" propert
 
 
     this.numberOfPlayersCount = $('#number-of-players-count');
-    var data = {
+
+
+    data = {
         "action": 'get_total_number_of_players',
         "userID": 'NXKNyt',
         "amount": 1000,
@@ -185,8 +208,9 @@ containing the DOM objects and second the new value of the css "display" propert
 
     this.headerNavigationLinks.on('click' , function () {
 
+        var elemID = $(this).attr('id');
 
-        if ($(this).attr('id') != parent.headerSearchFormLi.attr('id')) {
+        if (elemID != parent.headerSearchFormLi.attr('id') && elemID != parent.notificationsHeaderContainer.attr('id')) {
             parent.headerNavigationLinks.removeClass(parent.activeHeaderClass);
 
             $(this).addClass(parent.activeHeaderClass);
@@ -222,7 +246,7 @@ containing the DOM objects and second the new value of the css "display" propert
 
         function loadMoreNotifications() {
             var start =  Number(parent.notificationsHeaderContainer.attr('data-start'));
-            var data = {'userID' : parent.userDetails.user_id , 'start' : start };
+            data = {'userID' : parent.userDetails.user_id , 'start' : start };
 
             data = JSON.stringify(data);
             parent.loadMoreNotificationsAction.css("pointer-events" , "none");
