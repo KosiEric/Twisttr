@@ -86,9 +86,12 @@ $HomePage = new HomePage();
     <link rel="stylesheet" type="text/css" href="<?php echo  $HomePage->WebsiteDetails->CSS_FOLDER; ?>defaults.css" />
     <link rel="stylesheet" type="text/css" href="<?php echo  $HomePage->WebsiteDetails->CSS_FOLDER; ?>footer.css" />
     <link rel="stylesheet" type="text/css" href="<?php echo  $HomePage->WebsiteDetails->CSS_FOLDER; ?>control.css" />
-    <link rel="stylesheet" type="text/css" href="<?php echo  $HomePage->WebsiteDetails->CSS_FOLDER; ?>game.css" />
+
+
     <link rel="stylesheet" type="text/css" href="<?php echo  $HomePage->WebsiteDetails->CSS_FOLDER; ?>jquery.mCustomScrollbar.min.css" />
     <link rel="stylesheet" type="text/css" href="<?php echo  $HomePage->WebsiteDetails->CSS_FOLDER; ?>start.css" />
+    <script type="text/javascript" src="<?php echo  $HomePage->WebsiteDetails->JS_FOLDER; ?>jquery.mCustomScrollbar.concat.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="<?php echo  $HomePage->WebsiteDetails->CSS_FOLDER; ?>game.css" />
 
     <script type="text/javascript" src="<?php echo  $HomePage->WebsiteDetails->JS_FOLDER; ?>start.js"></script>
 </head>
@@ -285,7 +288,7 @@ else {
 </div>
 <?php
 
-require_once $HomePage->WebsiteDetails->INCS_FOLDER.'game.php';
+if($HomePage->UserFunctions->isLoggedInUser()) require_once $HomePage->WebsiteDetails->INCS_FOLDER.'game.php';
 
 ?>
 <script type="text/javascript" language="JavaScript" src="<?php echo $HomePage->WebsiteDetails->JS_FOLDER; ?>main.js"></script>

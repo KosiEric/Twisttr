@@ -26,13 +26,17 @@ Hope you like it :)
 
 <div class="chat">
     <div class="chat-title">
-        <h1><?php echo $HomePage->WebsiteDetails->SiteName; ?></h1>
+        <h1><?php echo $HomePage->WebsiteDetails->SiteName; ?> <span id="game-potential-winning-container"><span>&#8358;</span> <span id="potential-winning">1000</span></span></h1>
         <h2 id="game-words">Mandate , Nigeria</h2>
         <figure class="avatar">
             <img src="<?php echo $HomePage->WebsiteDetails->IMG_FOLDER.'favicon.png'; ?>" /></figure>
     </div>
     <div class="messages">
         <div class="messages-content"></div>
+    </div>
+    <div id="game-hint-container">
+    <span id="game-hints">try another word and i mean it and am also serious</span>
+    <span id="game-hint-arrow" class="arrow-down"></span>
     </div>
     <div class="message-box">
         <textarea type="text" class="message-input" placeholder="Type word..."></textarea>
