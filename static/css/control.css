@@ -46,3 +46,11 @@ ul , li {
     font-family: Cairo;
 }
 
+#chat-container{
+    display: none;
+}
+#notifications-header-container{
+    position:absolute;
+    z-index:3;
+    display: none;
+}

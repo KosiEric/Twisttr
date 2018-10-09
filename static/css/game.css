@@ -99,10 +99,10 @@
     font-size: 12px;
 }
 .page , #main-site-footer , #main-site-header{
-    display: none;
+   // display: none;
 }
 #game-page.container{
-    display: block  !important;
+    display: none  !important;
 }
 
 

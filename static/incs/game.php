@@ -13,7 +13,7 @@ Hope you like it :)
 
 -->
 
-<div class="chat">
+<div class="chat" style="display: none;">
     <div class="chat-title">
         <h1><?php echo $HomePage->WebsiteDetails->SiteName; ?></h1>
         <h2 id="game-words">Mandate , Nigeria</h2>

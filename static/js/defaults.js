@@ -1,6 +1,10 @@
 function useStrict() {
     "use strict";
 }
+$.ajaxSetup({
+    cache: true
+});
+
 
 
 useStrict();
@@ -37,6 +41,13 @@ if (!String.format) {
 
 function  Defaults() {
 
+    $.ajaxSetup({
+        cache: true
+    });
+
+
+
+
 
 
     var parent = this;
@@ -57,7 +68,7 @@ function  Defaults() {
 
     this.loadFile = function (data  , url , elem , callback  ) {
 
-        data = (data == null) ? "data" : data;
+        data = (data == null) ? {data : "data"} : data;
         $.post(url , {data : data}).done(function (t) {
            if(elem) elem.html(t);
 
@@ -85,7 +96,8 @@ this.preventFormSubmission = function (e) {
    //All the files necessary for processing requests
     this.processorsFolder = '/processors/';
     this.incsFolder = '/static/incs/';
-
+    this.chatFiles = '/chatfiles/';
+    this.cssFolder = '/static/css/';
 
     //Json success and error
 
@@ -108,7 +120,9 @@ this.preventFormSubmission = function (e) {
        gameControlFile : parent.processorsFolder + 'game-control.php' ,
        chatFile : 'chat.php',
        browserWarningFile : parent.incsFolder + 'browser-warning.php' ,
-       notificationsFile : parent.processorsFolder + 'notifications.php'
+       notificationsFile : parent.processorsFolder + 'notifications.php',
+       javascriptFolder : '/static/js/',
+       chatfunctions : parent.chatFiles + 'chatfunctions.js'
    };
 
 

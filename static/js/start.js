@@ -58,7 +58,7 @@ $(document).ready(function() {
         'Time to make a new codepen',
         'Bye',
         ':)'
-    ]
+    ];
 
     function fakeMessage() {
         if ($('.message-input').val() != '') {

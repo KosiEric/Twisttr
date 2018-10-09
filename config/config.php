@@ -11,7 +11,7 @@ abstract class WebsiteConfigurationSettings {
     public  $FacebookUrl = "";
     public  $TwitterUrl  = "";
     public  $SiteAuthor = "Kosi Eric";
-    public  $WebsiteCategory = "Entertainment,Sports,Game,Bookmarking";
+    public  $WebsiteCategory = "Online Gaming";
     public  $MaximumUsernameLength = 16;
     public  $minimumUsernameLength = 2;
     public  $TwitterHandle = "";

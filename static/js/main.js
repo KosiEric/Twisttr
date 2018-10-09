@@ -1,5 +1,20 @@
 function  WebPage() {
    var  parent = this , data ;
+   this.defaults = new Defaults();
+
+
+   //Load certain scripts that ain't required immediately
+
+
+    this.gameFilesLoaded = false;
+    this.chatFilesLoaded = false;
+    this.notificationsFilesLoaded = false;
+
+
+
+
+
+
 
    //Warning //
 
@@ -21,13 +36,11 @@ containing the DOM objects and second the new value of the css "display" propert
 
     this.pageInformation = $('#page-information');
     this.isLoggedInUser = (this.pageInformation.attr('data-logged-in-user') == 1);
-    this.defaults = new Defaults();
     this.unsupportedBrowserWarning = $('.unsupported.page');
     this.browserWarningImages = $('.img-responsive.browsers');
     this.chatContainer = $('#chat-container');
     this.chatWrapper = $('#chat-wrapper');
     this.showChatWindow = $('#show-chat-window');
-    this.closeChatWindowNonLogged = $('#close-chat-window-non-logged');
     this.notificationsHeaderContainer = $('#notifications-header-container');
     this.loadMoreNotificationsSpinner = $('#load-more-notifications-spinner');
     this.notificationsPanelBody = $("#notifications-panel-body");
@@ -57,17 +70,66 @@ containing the DOM objects and second the new value of the css "display" propert
 
     // closes the chat window for Non-logged users
 
-    this.closeChatWindowNonLogged.on('click' , function () {
-
-        delCookie('name_c');
-        parent.chatContainer.hide();
-    });
 
 
     //Fades in the chat window in to the view
     this.showChatWindow.on('click' , function () {
 
-        parent.chatContainer.fadeIn('slow' , function () {
+        if(!parent.chatFilesLoaded) {
+
+
+                $('<link>')
+                    .appendTo('head')
+                    .attr({
+                        type: 'text/css',
+                        rel: 'stylesheet',
+                        href: parent.defaults.chatFiles + 'chatstyle_mini.css',
+                        media : "screen and (max-width:612px)"
+                    });
+                $('<link>')
+                    .appendTo('head')
+                    .attr({
+                        type: 'text/css',
+                        rel: 'stylesheet',
+                        href: parent.defaults.chatFiles + 'chatstyle.css',
+                        media : "screen and (min-width:612px)"
+                    });
+                $('<link>')
+                    .appendTo('head')
+                    .attr({
+                        type: 'text/css',
+                        rel: 'stylesheet',
+                        href: parent.defaults.chatFiles + 'main.css'
+                    });
+
+
+
+
+
+               $.getScript(parent.defaults.files.chatfunctions);
+
+                $('#chat-container').fadeIn('slow' , function () {
+                    /* Makes sure the chat window is fixed even on user scroll */parent.chatContainer.css('position' , 'fixed');
+                });
+
+
+                parent.closeChatWindowNonLogged = $('#close-chat-window-non-logged');
+                parent.closeChatWindowNonLogged.on('click' , function () {
+
+                    delCookie('name_c');
+                    parent.chatContainer.hide();
+                });
+
+                 parent.chatFilesLoaded = true;
+
+
+
+
+
+        }
+
+
+        $('#chat-container').fadeIn('slow' , function () {
             /* Makes sure the chat window is fixed even on user scroll */parent.chatContainer.css('position' , 'fixed');
         });
 
@@ -245,6 +307,18 @@ containing the DOM objects and second the new value of the css "display" propert
 
 
         function loadMoreNotifications() {
+
+            if(!parent.notificationsFilesLoaded){
+                $('<link>')
+                    .appendTo('head')
+                    .attr({
+                        type: 'text/css',
+                        rel: 'stylesheet',
+                        href: parent.defaults.cssFolder + 'notifications.css'
+                    });
+            }
+
+
             var start =  Number(parent.notificationsHeaderContainer.attr('data-start'));
             data = {'userID' : parent.userDetails.user_id , 'start' : start };
 
@@ -288,6 +362,22 @@ containing the DOM objects and second the new value of the css "display" propert
                 parent.notificationsHeaderContainer.css('display' , 'block');
             }
         });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -1517,4 +1607,7 @@ containing the DOM objects and second the new value of the css "display" propert
 }
 
 
+$(document).ready(function () {
 
+    var webPage = new WebPage();
+});
