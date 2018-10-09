@@ -83,8 +83,10 @@ $HomePage = new HomePage();
        <?php //echo  '<script src="https://js.paystack.co/v1/inline.js"; ></script>';  ?>
         <script type="text/javascript" language="JavaScript" src="<?php echo  $HomePage->WebsiteDetails->JS_FOLDER; ?>GameControl.js"></script>
         <script type="text/javascript" language="JavaScript" src="<?php echo  $HomePage->WebsiteDetails->JS_FOLDER; ?>control.js"></script>
+         <script type="text/javascript" language="JavaScript" src="<?php echo  $HomePage->WebsiteDetails->JS_FOLDER; ?>start.js"></script>
 
-
+    <script type='text/javascript' src='/JavaScriptSpellCheck/include.js'></script>
+    <script type="text/javascript" src="<?php echo  $HomePage->WebsiteDetails->JS_FOLDER.'jquery.mCustomScrollbar.concat.min.js'; ?>"></script>
 
 
     <link rel="stylesheet" type="text/css" href="<?php echo  $HomePage->WebsiteDetails->CSS_FOLDER; ?>defaults.css" />
@@ -96,10 +98,14 @@ $HomePage = new HomePage();
     <link rel="stylesheet" type="text/css" media="screen and (max-width:612px)" href="/chatfiles/chatstyle_mini.css" />
     <link rel="stylesheet" type="text/css"  media="screen and (min-width:612px)" href="/chatfiles/chatstyle.css"/>
     <link rel="stylesheet" type="text/css"   href="/chatfiles/main.css"/>
+    <link rel="stylesheet" type="text/css" href="<?php echo $HomePage->WebsiteDetails->CSS_FOLDER.'jquery.mCustomScrollbar.min.css'?>" />
+    <link rel="stylesheet" type="text/css" href="<?php echo $HomePage->WebsiteDetails->CSS_FOLDER.'start.css'?>" />
+
  </head>
 
 
 <body>
+
 <div class="unsupported page">
 </div>
 <?php echo $HomePage->Header->DisplayHeader();
@@ -292,7 +298,14 @@ else {
 
     <button type="button" id="exit-game-button" class="btn btn-warning btn-circle btn-xl">Exit</button>
 
+
 </div>
+<?php
+
+require_once $HomePage->WebsiteDetails->INCS_FOLDER.'game.php';
+
+?>
+
 <?php require_once $HomePage->WebsiteDetails->INCS_FOLDER.'footer.php'; ?>
 </body>
 
