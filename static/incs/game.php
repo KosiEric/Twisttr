@@ -1,5 +1,16 @@
 
+<div id="game-page" class="container page">
+    <div id="game-start-circle-container">
+        <div class="circle circle1">
+            <a href="#section_1"><h2><span id="game-number-of-players-start-count">10</span><small id="game-start-users-text">users</small><br /><p>Joined</p></h2></a>
+        </div>
+    </div>
 
+
+    <button type="button" id="exit-game-button" class="btn btn-warning btn-circle btn-xl">Exit</button>
+
+
+</div>
 
 <!--
 
@@ -13,7 +24,7 @@ Hope you like it :)
 
 -->
 
-<div class="chat" style="display: none;">
+<div class="chat">
     <div class="chat-title">
         <h1><?php echo $HomePage->WebsiteDetails->SiteName; ?></h1>
         <h2 id="game-words">Mandate , Nigeria</h2>

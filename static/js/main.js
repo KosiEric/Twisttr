@@ -10,7 +10,7 @@ function  WebPage() {
     this.chatFilesLoaded = false;
     this.notificationsFilesLoaded = false;
 
-
+    this.loadedUnspportedBrowserFile = false;
 
 
 
@@ -190,7 +190,10 @@ containing the DOM objects and second the new value of the css "display" propert
 
     /* Toggles the display of header , footer and main site i.e hides the elements by setting their css "display" property to "none"  */        parent.toggleDisplay([$('.pages') ,  $('#home-page'), parent.mainSiteFooter , parent.mainSiteHeader] , 'none');
 
+            if(!parent.loadedUnspportedBrowserFile) $('<link>').appendTo('head').attr({'rel' : "stylesheet" , 'href' : parent.defaults.cssFolder + 'browser-warning.css' , 'type' : 'text/css'});
+            parent.loadedUnspportedBrowserFile = true;
             parent.defaults.loadFile(null , parent.defaults.files.browserWarningFile , parent.unsupportedBrowserWarning , function () {
+
                 parent.toggleDisplay([parent.unsupportedBrowserWarning] , 'block');
 
 

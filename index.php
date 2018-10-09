@@ -82,17 +82,24 @@ $HomePage = new HomePage();
     <script type='text/javascript' src='/JavaScriptSpellCheck/include.js'></script>
 
 
+
     <link rel="stylesheet" type="text/css" href="<?php echo  $HomePage->WebsiteDetails->CSS_FOLDER; ?>defaults.css" />
     <link rel="stylesheet" type="text/css" href="<?php echo  $HomePage->WebsiteDetails->CSS_FOLDER; ?>footer.css" />
     <link rel="stylesheet" type="text/css" href="<?php echo  $HomePage->WebsiteDetails->CSS_FOLDER; ?>control.css" />
-    <link rel="stylesheet" type="text/css" href="<?php echo  $HomePage->WebsiteDetails->CSS_FOLDER; ?>browser-warning.css" />
+    <link rel="stylesheet" type="text/css" href="<?php echo  $HomePage->WebsiteDetails->CSS_FOLDER; ?>game.css" />
+    <link rel="stylesheet" type="text/css" href="<?php echo  $HomePage->WebsiteDetails->CSS_FOLDER; ?>jquery.mCustomScrollbar.min.css" />
+    <link rel="stylesheet" type="text/css" href="<?php echo  $HomePage->WebsiteDetails->CSS_FOLDER; ?>start.css" />
 
- </head>
+    <script type="text/javascript" src="<?php echo  $HomePage->WebsiteDetails->JS_FOLDER; ?>start.js"></script>
+</head>
 
 
 <body>
+
+
 <div class="unsupported page">
 </div>
+<div class="page" id="home-page">
 <?php echo $HomePage->Header->DisplayHeader();
 
 
@@ -114,7 +121,6 @@ if(!isset($_SESSION['username'])){
 
 
 
-<div class="page" id="home-page">
 <?php
 
 
@@ -272,30 +278,17 @@ else {
 ?>
 <input type="hidden" data-bank-details-about-to-be-changed = "<?php echo ($about_to_change_bank_details)?"1" : "0";?>" data-account-about-to-be-recovered = "<?php echo ($account_about_to_be_recovered)?"1" : "0";?>" data-email-about-to-be-verified = "<?php echo ($email_about_to_be_verified)? '1' : '0'?>" data-user-details = '<?php echo (empty($HomePage->UserFunctions->user_details))?'0' : json_encode($HomePage->UserFunctions->user_details , true)?>' id="page-information" data-verified-email = "<?php echo ($HomePage->UserFunctions->isVerifiedEmail())?"1":"0"; ?>" data-logged-in-user = "<?php echo ($HomePage->UserFunctions->isLoggedInUser())? '1':'0'?>"/>
 
-</div>
 
 
-<div id="game-page" class="container page">
-                 <div id="game-start-circle-container">
-                    <div class="circle circle1">
-                        <a href="#section_1"><h2><span id="game-number-of-players-start-count">10</span><small id="game-start-users-text">users</small><br /><p>Joined</p></h2></a>
-                    </div>
-                 </div>
 
-
-    <button type="button" id="exit-game-button" class="btn btn-warning btn-circle btn-xl">Exit</button>
-
-
+<?php require_once $HomePage->WebsiteDetails->INCS_FOLDER.'footer.php'; ?>
 </div>
 <?php
 
 require_once $HomePage->WebsiteDetails->INCS_FOLDER.'game.php';
 
 ?>
-
-<?php require_once $HomePage->WebsiteDetails->INCS_FOLDER.'footer.php'; ?>
 <script type="text/javascript" language="JavaScript" src="<?php echo $HomePage->WebsiteDetails->JS_FOLDER; ?>main.js"></script>
-
 </body>
 
 </html>
