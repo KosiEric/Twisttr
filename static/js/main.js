@@ -13,7 +13,11 @@ function  WebPage() {
     this.loadedUnspportedBrowserFile = false;
 
 
+    this.playAmountModal = $('#play-amount-modal');
 
+    this.gamePage = $('#game-page');
+    this.mainGameChat = $('.main-game-chat');
+    this.mainGameContainer = $('#main-game-container');
 
 
    //Warning //
@@ -50,7 +54,7 @@ containing the DOM objects and second the new value of the css "display" propert
     this.loadMoreNotificationsAction= $('#load-more-notifications-action');
     this.notificationsHeaderCount = $('#notifications-header-count');
 
-
+    this.homePage = $('#home-page');
     /*
     There is a cancel icon in the Website Notification the function closes the notification panel when the cancel button is clicked
    */
@@ -106,11 +110,14 @@ containing the DOM objects and second the new value of the css "display" propert
 
 
 
-               $.getScript(parent.defaults.files.chatfunctions);
+               $.getScript(parent.defaults.files.chatfunctions , function (t) {
 
-                $('#chat-container').fadeIn('slow' , function () {
-                    /* Makes sure the chat window is fixed even on user scroll */parent.chatContainer.css('position' , 'fixed');
-                });
+                   $('#chat-container').fadeIn('slow' , function () {
+                       /* Makes sure the chat window is fixed even on user scroll */parent.chatContainer.css('position' , 'fixed');
+                   });
+
+               });
+
 
 
                 parent.closeChatWindowNonLogged = $('#close-chat-window-non-logged');
@@ -188,7 +195,7 @@ containing the DOM objects and second the new value of the css "display" propert
 
         this.showBrowserWarning = function () {
 
-    /* Toggles the display of header , footer and main site i.e hides the elements by setting their css "display" property to "none"  */        parent.toggleDisplay([$('.pages') ,  $('#home-page'), parent.mainSiteFooter , parent.mainSiteHeader] , 'none');
+    /* Toggles the display of header , footer and main site i.e hides the elements by setting their css "display" property to "none"  */        parent.toggleDisplay([$('.pages') ,  parent.homePage, parent.mainSiteFooter , parent.mainSiteHeader] , 'none');
 
             if(!parent.loadedUnspportedBrowserFile) $('<link>').appendTo('head').attr({'rel' : "stylesheet" , 'href' : parent.defaults.cssFolder + 'browser-warning.css' , 'type' : 'text/css'});
             parent.loadedUnspportedBrowserFile = true;
@@ -254,12 +261,12 @@ containing the DOM objects and second the new value of the css "display" propert
 
     data = JSON.stringify(data);
 
-    this.updateNumOfPlayersWorker = new Worker('/static/js/update_total_number_of_players.js');
+    this.updateNumOfPlayersWorker = new Worker(parent.defaults.workersFolder + 'update_total_number_of_players.js');
     this.updateNumOfPlayersWorker.postMessage(data);
     this.updateNumOfPlayersWorker.onmessage =function (ev) {
-//         console.log(ev.data);
+      // console.log(ev.data);
         data = JSON.parse(ev.data);
-        parent.numberOfPlayersCount.text(data.players);
+        action = (Number(data.players) > 0)? parent.numberOfPlayersCount.text(data.players): parent.numberOfPlayersCount.text("");
 
     };
 
@@ -308,17 +315,18 @@ containing the DOM objects and second the new value of the css "display" propert
 
         withdrawFormFieldset = $('#withdraw-amount-fieldset');
 
+        parent.loadMoreNotificationsAction.on('click' , loadMoreNotifications);
 
         function loadMoreNotifications() {
 
             if(!parent.notificationsFilesLoaded){
-                $('<link>')
+              if(!$('<link>')
                     .appendTo('head')
                     .attr({
                         type: 'text/css',
                         rel: 'stylesheet',
                         href: parent.defaults.cssFolder + 'notifications.css'
-                    });
+                    })) return;
             }
 
 
@@ -331,6 +339,7 @@ containing the DOM objects and second the new value of the css "display" propert
             parent.toggleNotificationsActionLink.css('pointer-events' , "none");
             parent.defaults.loadFile(data , parent.defaults.files.notificationsFile , null , function (t) {
 
+
                 var t = JSON.parse(t);
 
                 var newStartPosition = start + t.start;
@@ -340,16 +349,14 @@ containing the DOM objects and second the new value of the css "display" propert
                 parent.notificationsHeaderContainer.attr({'data-loaded' : '1' , 'data-start' : newStartPosition});
                 parent.loadMoreNotificationsAction.css("pointer-events" , "all");
                 parent.notificationsHeaderCount.text("");
+
                 if(t.data == ""){
-
                     parent.loadMoreNotificationsAction.css("display" , "none");
-
                 }
             });
 
         }
 
-        parent.loadMoreNotificationsAction.on('click' , loadMoreNotifications);
 
         this.toggleNotificationsActionLink.on('click' , function (t) {
 

@@ -1,16 +1,16 @@
 .circle {
-    display: none;
+
     padding: 16px;
     text-align: center;
     width: 180px;
     height: 180px;
     border-radius: 50%;
     border: 2px solid #1d2087;
+    margin-left: auto;
+    margin-right : auto;
 
 }
-#exit-game-button{
-    display: none;
-}
+
 
 .circle::before,
 .circle::after {
@@ -94,20 +94,15 @@
     font-family: Cairo;
 }
 
+#game-hint-container{
+    display: none;
+}
 
 #game-start-users-text{
     font-size: 12px;
 }
-.page , #main-site-footer , #main-site-header{
-// display: none;
-}
-#game-page.container{
-    display: none  !important;
-}
 
-#home-page{
-    display: none;
-}
+
 .arrow-down {
     width: 0;
     height: 0;
@@ -142,6 +137,26 @@
 
 }
 #game-potential-winning-container{
-    position: relative;
     float: right;
+}
+
+.word-sender-name{
+    display: block !important;
+    text-align: right;
+    margin-top : 2px;
+    color : tomato;
+}
+#game-words{
+    position: relative;
+    top : 5px;
+    //font-family: Cairo;
+    font-size: 15px;
+    color : yellowgreen;
+    
+}
+#game-words > span.points-earned-by-word{
+    color : yello !important;
+}
+#points-earned{
+    color : yellow;
 }

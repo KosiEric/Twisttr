@@ -2,7 +2,7 @@ function useStrict() {
     "use strict";
 }
 $.ajaxSetup({
-    cache: true
+    cache: false
 });
 
 
@@ -95,11 +95,16 @@ this.preventFormSubmission = function (e) {
 
    //All the files necessary for processing requests
     this.processorsFolder = '/processors/';
-    this.incsFolder = '/static/incs/';
+    this.staticFolder = '/static/';
+    this.incsFolder = this.staticFolder + 'incs/';
     this.chatFiles = '/chatfiles/';
-    this.cssFolder = '/static/css/';
+    this.cssFolder = this.staticFolder + 'css/';
+    this.imgFolder = this.staticFolder + 'img/';
+    this.jsFolder = this.staticFolder + 'js/';
+    this.workersFolder = this.jsFolder + 'workers/';
 
-    //Json success and error
+
+        //Json success and error
 
     this.jsonErrorText = "error";
     this.jsonSuccessText = "success";
@@ -168,6 +173,8 @@ this.preventFormSubmission = function (e) {
         passwordRegEx : /^[a-zA-Z0-9]{5,18}$/,
         phoneRegEx  :  /^(\d{11,11})$/,
         bankNameRegEx : /^[a-zA-Z ]{2,60}$/,
+        gameWordsRegEx : /^[a-zA-Z ]{2,60}$/,
+
         bankAccountNumberRegEx : /^(\d{10,10})$/ ,
         twitterUsernameRegEx : /^[a-zA-Z0-9._-]{2,100}$/ ,
         instagramUsernameRegEx : /^[a-zA-Z0-9._-]{2,100}$/ ,

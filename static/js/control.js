@@ -1,7 +1,7 @@
 $(document).ready(function () {
     webPageObject = new WebPage();
 
-
+    var playAmount =0;
     function payWithPaystack(email , amount , name , originalAmount){
         var handler = PaystackPop.setup({
             key: 'pk_test_6e24123adb39a373e1fb9f978dc287e5a7e626c3',
@@ -58,18 +58,39 @@ if(webPageObject.isLoggedInUser){
 
     playAmountErrorMessage = $('#play-amount-error-message');
     playAmountActionButtun.on('click' , function (e) {
+
        webPageObject.defaults.preventFormSubmission(e);
+
+       webPageObject.playAmountModal.modal('hide');
+
+
+
+
 
        $.post(webPageObject.defaults.files.getUserAccountBalanceFile , {'userID' : webPageObject.userDetails.user_id}).done(function (data) {
 
            accountBalance = parseInt(data);
 
-           playAmount = Number($('#'+playAmountOptions.attr('id') + " option:selected").attr("value"));
+          var  playAmount = Number($('#'+playAmountOptions.attr('id') + " option:selected").attr("value"));
 
            if(accountBalance < playAmount)
                return playAmountErrorMessage.text(webPageObject.defaults.words.playAmountIsLessThanAccountBalanceText);
-           gameClass = new GameClass();
-           gameClass.addUserToGame(playAmount);
+
+           if(!$('<link>').appendTo('head').attr({'rel' : 'stylesheet' , 'type' : 'text/css' , 'href' : webPageObject.defaults.cssFolder+'game.css'})) return;
+           webPageObject.homePage.hide();
+           webPageObject.gamePage.css('display' , 'block');
+           webPageObject.mainGameContainer.css('display' , 'block');
+
+
+           $.getScript(webPageObject.defaults.jsFolder+'GameControl.js' , function (t) {
+
+               var gameClass = new GameClass();
+               playAmount = Number($('#'+playAmountOptions.attr('id') + " option:selected").attr("value"));
+               gameClass.addUserToGame(playAmount);
+
+           });
+
+
 
 
        });

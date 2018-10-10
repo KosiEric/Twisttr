@@ -1,5 +1,5 @@
 
-<div id="game-page" class="container page">
+<div id="game-page" class="container-fluid page">
     <div id="game-start-circle-container">
         <div class="circle circle1">
             <a href="#section_1"><h2><span id="game-number-of-players-start-count">10</span><small id="game-start-users-text">users</small><br /><p>Joined</p></h2></a>
@@ -24,10 +24,10 @@ Hope you like it :)
 
 -->
 
-<div class="chat">
+<div class="chat main-game-chat">
     <div class="chat-title">
         <h1><?php echo $HomePage->WebsiteDetails->SiteName; ?> <span id="game-potential-winning-container"><span>&#8358;</span> <span id="potential-winning">1000</span></span></h1>
-        <h2 id="game-words">Mandate , Nigeria</h2>
+        <h2 id="game-words">Mandate,Standard,Status </h2>
         <figure class="avatar">
             <img src="<?php echo $HomePage->WebsiteDetails->IMG_FOLDER.'favicon.png'; ?>" /></figure>
     </div>
@@ -45,4 +45,3 @@ Hope you like it :)
 
 </div>
 <div class="bg"></div>
-

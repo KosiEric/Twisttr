@@ -1,1 +1,1 @@
-{"time":1539087899,"users":{"1539087899":"DGY7"},"chats":[{"user":"DGY7","date":"9 October 2018 01:09:10 pm","chat":"hello"},{"user":"DGY7","date":"9 October 2018 01:24:59 pm","chat":"Hello people"}]}
+{"time":1539087899,"users":[],"chats":[{"user":"DGY7","date":"9 October 2018 01:09:10 pm","chat":"hello"},{"user":"DGY7","date":"9 October 2018 01:24:59 pm","chat":"Hello people"}]}
