@@ -82,7 +82,7 @@ if(webPageObject.isLoggedInUser){
            webPageObject.mainGameContainer.css('display' , 'block');
 
 
-           $.getScript(webPageObject.defaults.jsFolder+'GameControl.js' , function (t) {
+           $.getScript(webPageObject.defaults.jsFolder+'GameControl.js' , function () {
 
                var gameClass = new GameClass();
                playAmount = Number($('#'+playAmountOptions.attr('id') + " option:selected").attr("value"));
@@ -104,8 +104,11 @@ if(webPageObject.isLoggedInUser){
         fundAmount = originalAmountInNaira * 100;
         fundAmount = fundAmount + ((1.5/100) * fundAmount);
 
+        $.getScript(webPageObject.defaults.files.paystackScript , function () {
 
-        payWithPaystack(webPageObject.userDetails.email , fundAmount , webPageObject.userDetails.fullname , originalAmountInNaira);
+            payWithPaystack(webPageObject.userDetails.email , fundAmount , webPageObject.userDetails.fullname , originalAmountInNaira);
+        });
+
 
     });
 

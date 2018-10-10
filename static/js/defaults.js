@@ -1,11 +1,13 @@
 function useStrict() {
     "use strict";
 }
+
+/*
 $.ajaxSetup({
     cache: false
 });
 
-
+*/
 
 useStrict();
 
@@ -127,8 +129,11 @@ this.preventFormSubmission = function (e) {
        browserWarningFile : parent.incsFolder + 'browser-warning.php' ,
        notificationsFile : parent.processorsFolder + 'notifications.php',
        javascriptFolder : '/static/js/',
-       chatfunctions : parent.chatFiles + 'chatfunctions.js'
+       chatfunctions : parent.chatFiles + 'chatfunctions.js',
+       paystackScript : "https://js.paystack.co/v1/inline.js" ,
+       spellcheckScript : "/JavaScriptSpellCheck/include.js"
    };
+
 
 
     //Necessary constants

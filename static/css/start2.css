@@ -449,3 +449,12 @@ Bounce
         transform: translateY(-10px);
     }
 }
+
+#game-words{
+    position: relative;
+    top : 5px;
+//font-family: Cairo;
+    font-size: 10px !important;
+    color : yellowgreen;
+
+}

@@ -146,16 +146,8 @@
     margin-top : 2px;
     color : tomato;
 }
-#game-words{
-    position: relative;
-    top : 5px;
-    //font-family: Cairo;
-    font-size: 15px;
-    color : yellowgreen;
-    
-}
 #game-words > span.points-earned-by-word{
-    color : yello !important;
+    color : yell !important;
 }
 #points-earned{
     color : yellow;

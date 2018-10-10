@@ -38,7 +38,7 @@ abstract class WebsiteConfigurationSettings {
     public  $ErrorPage = "/404.php";
     public  $minimumWithdrawalAmount = 500;
     public  $transferFee = 100;
-    public  $NumberOfRandomWords = 10;
+    public  $NumberOfRandomWords = 21;
     public  $GameIDLength = 6;
     public  $MaximumNumberOfPlayers = 3;
 

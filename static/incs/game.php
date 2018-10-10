@@ -1,4 +1,5 @@
 
+
 <div id="game-page" class="container-fluid page">
     <div id="game-start-circle-container">
         <div class="circle circle1">
@@ -13,21 +14,18 @@
 </div>
 
 <!--
-
 Follow me on
 Dribbble: https://dribbble.com/supahfunk
 Twitter: https://twitter.com/supahfunk
 Codepen: https://codepen.io/supah/
-
 It's just a concept, a fake chat to design a new daily UI for direct messaging.
 Hope you like it :)
-
 -->
 
 <div class="chat main-game-chat">
     <div class="chat-title">
         <h1><?php echo $HomePage->WebsiteDetails->SiteName; ?> <span id="game-potential-winning-container"><span>&#8358;</span> <span id="potential-winning">1000</span></span></h1>
-        <h2 id="game-words">Mandate,Standard,Status </h2>
+        <h2 id="game-words"></h2>
         <figure class="avatar">
             <img src="<?php echo $HomePage->WebsiteDetails->IMG_FOLDER.'favicon.png'; ?>" /></figure>
     </div>
@@ -35,8 +33,8 @@ Hope you like it :)
         <div class="messages-content"></div>
     </div>
     <div id="game-hint-container">
-    <span id="game-hints">try another word and i mean it and am also serious</span>
-    <span id="game-hint-arrow" class="arrow-down"></span>
+        <span id="game-hints">try another word and i mean it and am also serious</span>
+        <span id="game-hint-arrow" class="arrow-down"></span>
     </div>
     <div class="message-box">
         <textarea type="text" class="message-input" placeholder="Type word..."></textarea>

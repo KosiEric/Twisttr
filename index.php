@@ -77,9 +77,8 @@ $HomePage = new HomePage();
     <link rel="stylesheet" type="text/css" href="<?php echo $HomePage->WebsiteDetails->CSS_FOLDER ?>profile.css" />
     <link rel="stylesheet" type="text/css" href="<?php echo $HomePage->WebsiteDetails->CSS_FOLDER ?>new-profile.css" />
 
-       <?php //echo  '<script src="https://js.paystack.co/v1/inline.js"; ></script>';  ?>
 
-
+   <script type="text/javascript" src="/JavaScriptSpellCheck/include.js"></script>
 
 
     <link rel="stylesheet" type="text/css" href="<?php echo  $HomePage->WebsiteDetails->CSS_FOLDER; ?>defaults.css" />

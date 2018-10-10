@@ -11,7 +11,7 @@ class GameControl extends  Functions
 
     private $config, $data, $userID, $amount, $action, $game_id, $gameUserCanPlay, $gameIDUserCanPlay,
         $userCurrentGameDetail, $user_details, $showGameChat = false, $number_of_players_in_current_user_game , $gameFile,
-    $point , $time , $username , $gender , $game_10_words;
+    $point , $time , $username , $gender , $game_10_words , $start_time , $word_sent;
 
 
 
@@ -57,32 +57,40 @@ class GameControl extends  Functions
 
         $words = $words_generator->generateRandomWords();
         $words_to_json = json_encode($words);
-        $this->game_10_words = $words_to_json;
-        $start_time = time();
+        $this->game_10_words = $words;
+        $this->start_time = time() * 1000;
 
         $this->insert_into_table($this->games_table_name, ["game_id" => $this->game_id, "words" => $words_to_json, "amount" => $this->amount,
-            "started" => "0", "start_time" => $start_time, "number_of_players" => "1", "current_word" => $words[0]]);
+            "started" => "0", "start_time" => $this->start_time, "number_of_players" => "1", "current_word" => $words[0]]);
         $this->update_multiple_fields($this->users_table_name, ["game_id_about_to_play" => $this->game_id], "user_id='{$this->userID}'");
-        $this->gameFile = fopen($this->game_id.'.txt' , 'a');
-        fclose($this->gameFile);
+        //$this->gameFile = fopen($this->game_id.'.txt' , 'a');
+        //fclose($this->gameFile);
 
     }
 
     private function  add_word_to_game() : bool {
 
         $this->point = $this->data["point"];
-        $this->time = $this->data["time"];
         $this->username = $this->user_details["username"];
         $this->gender = $this->user_details["gender"];
+        $this->word_sent = $this->data['word'];
 
-        $this->update_multiple_fields($this->users_table_name , ['current_point' => "current_point + ".$this->point] , "users_id = '{$this->userID}'");
-        $data = json_encode(["point" => $this->point , "gender" => $this->gender , "time" => $this->time , "username" => $this->username]);
 
-        $this->game_id = $this->user_details["current_game_id"];
-        $this->gameFile  = fopen($this->game_id + ".txt" , "a");
-        fwrite($this->gameFile , $data."\n");
-        fclose($this->gameFile);
 
+
+
+        $this->game_id = $this->user_details["game_id_about_to_play"];
+
+
+        $this->point = (!empty($this->fetch_data_from_table_with_conditions($this->game_words_table_name , "word = '{$this->word_sent}' AND game_id = '{$this->game_id}'"))) ? 0 : $this->point;
+
+        $this->insert_into_table($this->game_words_table_name , ['game_id' => $this->game_id ,
+            'user_id' => $this->userID ,
+            'username' => $this->username ,
+            'word' => $this->word_sent ,
+            'point' => $this->point ,
+            'gender' => $this->gender,
+        ]);
 
         return true;
 
@@ -117,6 +125,8 @@ class GameControl extends  Functions
         $this->update_multiple_fields($this->games_table_name, ["number_of_players" => $number_of_existing_players], "game_id ='{$this->gameIDUserCanPlay}'");
         $this->update_multiple_fields($this->users_table_name, ["game_id_about_to_play" => $this->gameIDUserCanPlay], "user_id='{$this->userID}'");
         $this->game_10_words = $this->fetch_data_from_table($this->games_table_name , 'game_id' , $this->gameIDUserCanPlay)[0]["words"];
+        $this->game_10_words = json_decode($this->game_10_words);
+
         /* if players are complete game should start */
         if ($number_of_existing_players == $this->config->MaximumNumberOfPlayers) {
             /* tell javascript that the game has started */
@@ -124,9 +134,11 @@ class GameControl extends  Functions
             /* update current_game_id for all users in game */
             $this->update_record($this->users_table_name , 'current_game_id' , $this->gameIDUserCanPlay , 'game_id_about_to_play' , $this->gameIDUserCanPlay );
             /* Subtract the amount for all players */
-            $this->update_multiple_fields($this->users_table_name , ['account_balance' => " account_balance - {$this->amount}"] , "game_id_about_to_play = '{$this->gameIDUserCanPlay}'");
+            //$this->update_multiple_fields($this->users_table_name , ['account_balance' => " account_balance - {$this->amount}"] , "game_id_about_to_play = '{$this->gameIDUserCanPlay}'");
             /* Make sure all users point is set to 0  immediately game starts and ends*/
             $this->update_record($this->users_table_name , 'current_point' , 0 , 'game_id_about_to_play' , $this->gameIDUserCanPlay);
+            $this->start_time = time() * 1000;
+            $this->update_record($this->games_table_name , 'start_time' , $this->start_time , 'game_id' , $this->gameIDUserCanPlay);
             $this->showGameChat = true;
 
         }
@@ -170,6 +182,32 @@ class GameControl extends  Functions
 
     }
 
+    private function  getAllWords () {
+
+
+        $this->game_id = $this->user_details['game_id_about_to_play'];
+
+        $start = $this->data["start"];
+        $words = $this->fetch_data_from_table_with_conditions($this->game_words_table_name , "game_id = '{$this->game_id}' AND user_id != '{$this->userID}' ORDER BY id ASC LIMIT  {$start} , 100");
+        $new_start_position = count($words) + $start;
+// <span class="word-sender-name"> - <span id="points-earned" class="points-earned-by-word"> points</span> </span>
+        $data = "";
+
+        foreach ($words as $word){
+
+                $avatar = ($word["gender"] == "m") ? $this->config->IMG_FOLDER . 'avatar.png' : $this->config->IMG_FOLDER . 'avatar2.png';
+                $data .= <<<DATA
+<div class="message new"><figure class="avatar"><img src="$avatar" /></figure>{$word['word']}<span class="word-sender-name">{$word['username']} - <span id="points-earned" class="points-earned-by-word">{$word['point']} points</span> </span></div>';
+
+
+DATA;
+
+
+        }
+
+        return json_encode(["start" => $new_start_position , "data" => $data]);
+    }
+
     private function get_current_players_joined()
     {
 
@@ -178,6 +216,7 @@ class GameControl extends  Functions
         $this->gameIDUserCanPlay = $this->userCurrentGameDetail["game_id"];
         $number_of_players = $this->userCurrentGameDetail["number_of_players"];
         $this->game_10_words = $this->userCurrentGameDetail["words"];
+        $this->start_time = $this->userCurrentGameDetail["start_time"];
 
         if ($number_of_players == $this->config->MaximumNumberOfPlayers) {
             $this->showGameChat = true;
@@ -218,7 +257,8 @@ class GameControl extends  Functions
                     if ($this->showGameChat) {
                         $start = "1";
                     }
-                    return json_encode(Array("start" => $start, "players" => $players , "words" => $this->game_10_words));
+                    return json_encode(Array("start" => $start, "players" => $players , "words" => $this->game_10_words ,
+                        "start_time" => $this->start_time));
                     break;
 
                 case 'get_total_number_of_players' :
@@ -227,6 +267,7 @@ class GameControl extends  Functions
                     }
                     $players = $this->get_total_number_of_players_playing_now();
                     return json_encode(["players" => $players , "start" => $start]);
+                    break;
                 case 'exit_user_from_game' :
                      $this->exit_user_from_game();
                      return json_encode(["success" => "1"]);
@@ -234,7 +275,10 @@ class GameControl extends  Functions
                 case 'send_word' :
                     $this->add_word_to_game();
                     return json_encode(['success' => "1"]);
-
+                   break;
+                case 'get_all_words':
+                    return $this->getAllWords();
+                    break;
             }
         }
 

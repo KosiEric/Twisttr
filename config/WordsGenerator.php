@@ -6,7 +6,7 @@ class WordsGenerator extends Functions {
 
 
     private $config;
-    private $words = Array("principal" , "education" , "teacher" , "prefect" , "lecture" , "school" , "degree" , "award" , "pass" , "fail" , "repeat");
+    private $words = Array("anger" , "master" , "sister" , "charity" ,  "builder" , "android" , "building" , "calendar" , "remember" ,  "standard" , "article" , "mandate" , "acting" , "leader" , "follower", "kingsmen" ,  "principal" , "education" , "teacher" , "prefect" , "lecture" , "school" , "degree" , "award" , "pass" , "fail" , "repeat");
 
 
     function __construct()
@@ -24,6 +24,7 @@ class WordsGenerator extends Functions {
 
 
         $generated_words = Array();
+        shuffle($this->words);
 
         $random_keys = array_rand($this->words , $this->config->NumberOfRandomWords);
 

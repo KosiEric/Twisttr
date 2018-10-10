@@ -251,7 +251,7 @@ containing the DOM objects and second the new value of the css "display" propert
 
     data = {
         "action": 'get_total_number_of_players',
-        "userID": 'NXKNyt',
+        "userID": 'pvo8ka',
         "amount": 1000,
         "file": parent.defaults.files.gameControlFile
     };
@@ -264,7 +264,6 @@ containing the DOM objects and second the new value of the css "display" propert
     this.updateNumOfPlayersWorker = new Worker(parent.defaults.workersFolder + 'update_total_number_of_players.js');
     this.updateNumOfPlayersWorker.postMessage(data);
     this.updateNumOfPlayersWorker.onmessage =function (ev) {
-      // console.log(ev.data);
         data = JSON.parse(ev.data);
         action = (Number(data.players) > 0)? parent.numberOfPlayersCount.text(data.players): parent.numberOfPlayersCount.text("");
 
@@ -1300,7 +1299,7 @@ containing the DOM objects and second the new value of the css "display" propert
                       var isGender = function () {
 
 
-                          gender = $('#' + this.parent.gender.attr('id') + ' option:selected').attr('value');
+                          gender = $('#' + parent.gender.attr('id') + ' option:selected').attr('value');
                           returnValue = false;
 
                           if(gender == "") {

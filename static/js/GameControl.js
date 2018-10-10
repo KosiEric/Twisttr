@@ -8,11 +8,12 @@ function  GameClass () {
     this.exitGameButton = $('#exit-game-button');
     this.gameActions = {
         exitUserFromGame : "exit_user_from_game"  , addNewUserToGame: "add_new_user_to_game" ,
-        updateNumberOfPlayers: 'update_number_of_players' , getAllRoomDetails : 'get_all_words'   ,
+        updateNumberOfPlayers: 'update_number_of_players' , getAllWords : 'get_all_words'   ,
         getCurrentRankOfPlayers : 'get_current_rank_of_players' , sendWord : 'send_word' , getWinner : "get_winner"};
         this.userID = this.webPage.userDetails.user_id;
     this.gameWords = [];
     this.gameDetails = "";
+    this.gameStartTime = "";
 
 
 
@@ -92,9 +93,11 @@ function  GameClass () {
 
             getNumberOfJoinedPlayers.onmessage = function (ev) {
 
-                console.log(ev.data);
+
                 resp = JSON.parse(ev.data);
 
+               // console.log(resp);
+                //console.log(resp.words);
 
                 if(resp.start !== "1") {
 
@@ -108,7 +111,18 @@ function  GameClass () {
 
                     getNumberOfJoinedPlayers.terminate();
 
-                   // gameRoom = new GameRoom(parent.webPage , parent.webPage.defaults , parent , playAmount);
+                   $.getScript(webPageObject.defaults.jsFolder + 'jquery.mCustomScrollbar.concat.min.js' , function () {
+                       $.getScript(webPageObject.defaults.jsFolder + 'start.js' , function () {
+                           webPageObject.gamePage.hide();
+                           if(!$('<link>').appendTo('head').attr({'rel' : 'stylesheet' , 'type' : 'text/css' , 'href' : webPageObject.defaults.cssFolder+'jquery.mCustomScrollbar.min.css'})) return;
+
+                           if(!$('<link>').appendTo('head').attr({'rel' : 'stylesheet' , 'type' : 'text/css' , 'href' : webPageObject.defaults.cssFolder+'start2.css'})) return;
+
+                           gameRoom = new GameRoom(parent.webPage , parent.webPage.defaults , parent.playAmount , resp , parent);
+                       });
+
+                   });
+
                 }
 
 

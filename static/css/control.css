@@ -48,7 +48,8 @@ ul , li {
     z-index:3;
     display: none;
 }
-#main-game-container , .main-game-chat , .gamme-page{
+
+#main-game-container , .main-game-chat{
     display: none;
 }
 

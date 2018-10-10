@@ -22,6 +22,8 @@ class DatabaseConnection {
     public $games_table_name = "games";
     public $withdrawals_table_name = "withdrawals";
     public $notifications_table_name = "notifications";
+    public $game_words_table_name = "game_words";
+
     final protected  function  establish_database_connection () : bool
     {
 
@@ -255,7 +257,7 @@ class DatabaseConnection {
         id INT UNSIGNED AUTO_INCREMENT PRIMARY  KEY,
         
     game_id VARCHAR (100) NOT NULL , 
-    words VARCHAR (100) NOT NULL  , 
+    words VARCHAR (10000) NOT NULL  , 
     amount VARCHAR (100) NOT  NULL,
     started VARCHAR (100) NOT  NULL  DEFAULT  '0' ,
     start_time VARCHAR (100) NOT  NULL , 
@@ -332,6 +334,40 @@ class DatabaseConnection {
             echo "Error occured {$exception->getMessage()}";
             return false;
         }
+    }
+
+    public final  function create_game_words_table() {
+
+
+        $sql = "CREATE TABLE {$this->game_words_table_name}(
+        id INT UNSIGNED AUTO_INCREMENT PRIMARY  KEY,
+        game_id VARCHAR (100) NOT  NULL ,
+
+        user_id VARCHAR(100)  NOT NULL ,
+        username VARCHAR (100) NOT NULL , 
+        word VARCHAR (10000) NOT NULL , 
+        point VARCHAR (100) NOT NULL ,
+        gender VARCHAR (100) NOT  NULL ,
+        time_stamp TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP 
+        
+   )";
+
+
+
+
+        try {
+
+            $this->conn->exec($sql);
+            echo "Table Created successfully";
+            return true;
+        }
+
+        catch (PDOException $exception) {
+            echo "Error occured {$exception->getMessage()}";
+            return false;
+        }
+
+
     }
     public final  function create_withdrawals_table() {
         $sql = "CREATE TABLE {$this->withdrawals_table_name}(
@@ -432,6 +468,8 @@ class DatabaseConnection {
 
 
 
+
+
 }
 
 
@@ -442,4 +480,5 @@ $DatabaseConnection = new DatabaseConnection();
 //$DatabaseConnection->create_withdrawals_table();
 //$DatabaseConnection->create_games_table();
 //$DatabaseConnection->create_notifications_table();
+//$DatabaseConnection->create_game_words_table();
 ?>
