@@ -262,7 +262,8 @@ class DatabaseConnection {
     started VARCHAR (100) NOT  NULL  DEFAULT  '0' ,
     start_time VARCHAR (100) NOT  NULL , 
     current_word VARCHAR (100) NOT NULL ,
-    number_of_players VARCHAR (100) NOT  NULL DEFAULT '0'
+    number_of_players VARCHAR (100) NOT  NULL DEFAULT '0',
+    game_ended VARCHAR (100) NOT  NULL  DEFAULT  '0'
     )";
 
         try {

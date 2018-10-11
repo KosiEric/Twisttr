@@ -15,7 +15,7 @@ function  GameClass () {
     this.gameDetails = "";
     this.gameStartTime = "";
 
-
+    this.gameUsersPluralText = $('#game-start-users-text.game-users-plural');
 
 
     this.gameWords = {letterNotFoundInWords : function (letter) {
@@ -62,17 +62,17 @@ function  GameClass () {
         data = {"action": parent.gameActions.addNewUserToGame, "userID": parent.userID, "amount": amount};
 
         data = JSON.stringify(data);
-        console.log(data);
 
         this.playAmountModal.modal('hide');
 
         $.post(parent.gameControlFile, {data: data}, function (resp) {
 
-            console.log(resp);
+
             resp = JSON.parse(resp);
             parent.gameNumberOfPlayersStartCount.text(resp.players);
 
-
+            var gameMembersText = (resp.players > 1) ? "users" : "user";
+            parent.gameUsersPluralText.text(gameMembersText);
 
             parent.pageClass.css("display", "none");
             parent.gamePage.css("display", "block");
@@ -96,8 +96,9 @@ function  GameClass () {
 
                 resp = JSON.parse(ev.data);
 
-               // console.log(resp);
-                //console.log(resp.words);
+
+               var gameMembersText = (resp.players > 1) ? "users" : "user";
+               parent.gameUsersPluralText.text(gameMembersText);
 
                 if(resp.start !== "1") {
 

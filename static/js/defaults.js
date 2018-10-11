@@ -9,6 +9,11 @@ $.ajaxSetup({
 
 */
 
+
+
+
+
+
 useStrict();
 
 /*The function below i.e String.format works like this:
@@ -35,6 +40,9 @@ if (!String.format) {
         });
     };
 }
+
+
+
 
 
 //The class Below i.e Defaults contains all the necessary default functions and variables need to run the index.php
@@ -166,7 +174,7 @@ this.preventFormSubmission = function (e) {
     this.words = {playAmountIsLessThanAccountBalanceText: "insufficient funds , try another plan , or fund your account" , withdrawAmountExceedAccountBalanceText : "Transaction failed : insufficient funds" , withdrawAmountIsLessThanMinimumText : "withdraw amount is less than minimum of &#8358;" + parent.constants.minWithdrawalAmount , passwordsDonotMatchText : "passwords do not match" , enterPasswordAgainText : "enter password again" ,
         usernameText : "username" , emptyBankNameText : "enter your bank name" , bankAccountNumberText : "account number" ,  nameText : "name" ,bankAccountNameText : "bank account name" , genderText : "gender" , birthdayText : "birthday" ,
         emailText : "email" , statusMessageText : "status message" , passwordText : "password" , instragramUsernameText : "Instagram username" , twitterUsernameText : "Twitter username" , passwordAgainText : "password again" , "contactText" : "contact" ,
-        emptyBirthDayText : "enter your date of birth" , withdrawalAmount : "withdrawal amount" ,   enterValidWithdrawalAmountText : "enter a valid withdrawal amount" , invalidBirthdayText : "enter a valid birthday" , emptyGenderText : "select your gender" , birthdayIsLessThan18YearsText : "users must be 18 years or above to participate"};
+        emptyBirthDayText : "enter your date of birth" , usernameCannotBeDigitsOnlyText : "username can't be numbers only" , withdrawalAmount : "withdrawal amount" ,   enterValidWithdrawalAmountText : "enter a valid withdrawal amount" , invalidBirthdayText : "enter a valid birthday" , emptyGenderText : "select your gender" , birthdayIsLessThan18YearsText : "users must be 18 years or above to participate"};
 
 
     //Necessary Regular expressions

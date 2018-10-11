@@ -152,3 +152,10 @@
 #points-earned{
     color : yellow;
 }
+#game-countdown {
+    position: relative;
+    left : 30px;
+    font-weight: bolder !important;
+    font-family: Cairo;
+    font-stretch: 1px !important;
+}

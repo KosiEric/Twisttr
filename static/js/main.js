@@ -1334,6 +1334,9 @@ containing the DOM objects and second the new value of the css "display" propert
                       isEmail = parent.defaults.fieldValidator(parent.email , parent.defaults.words.emailText , parent.email.val() , parent.defaults.constants.minEmailLength , parent.defaults.constants.maxEmailLength , parent.defaults.regularExpressions.emailRegEx , parent.emailErrorSpan , true , parent.defaults.defaultInputParentClass);
 
                       isUsername = parent.defaults.fieldValidator(parent.username , parent.defaults.words.usernameText , parent.username.val() , parent.defaults.constants.minUsernameLength , parent.defaults.constants.maxUsernameLength , parent.defaults.regularExpressions.usernameRegEx , parent.usernameErrorSpan , true , parent.defaults.defaultInputParentClass);
+
+
+
                       isPassword = parent.defaults.fieldValidator(parent.password , parent.defaults.words.passwordText , parent.password.val() , parent.defaults.constants.minPasswordLength , parent.defaults.constants.maxPasswordLength , parent.defaults.regularExpressions.passwordRegEx , parent.passwordErrorSpan , true , parent.defaults.defaultInputParentClass);
 
 
@@ -1389,6 +1392,32 @@ containing the DOM objects and second the new value of the css "display" propert
 
 
                       if(isValidDetails){
+                          if(!isNaN(parent.username.val())) {
+                              parent.usernameErrorSpan.text(parent.defaults.words.usernameCannotBeDigitsOnlyText);
+                              parent.username.parent('.' +parent.defaults.defaultInputParentClass).removeClass(parent.defaults.defaultHasSuccessInputClass);
+
+
+
+                              parent.username.parent('.' +parent.defaults.defaultInputParentClass).addClass(parent.defaults.defaultHasErrorInputClass);
+                              parent.username.removeClass(parent.defaults.defaultHasSuccessInputClass);
+
+                              parent.username.addClass(parent.defaults.defaultHasErrorInputClass);
+                              return false;
+
+                          }
+
+                          else {
+
+
+                              parent.usernameErrorSpan.text("");
+
+                              parent.username.parent('.' +parent.defaults.defaultInputParentClass).removeClass(parent.defaults.defaultHasErrorInputClass);
+                              parent.username.parent('.' +parent.defaults.defaultInputParentClass).addClass(parent.defaults.defaultHasSuccessInputClass);
+                              parent.username.removeClass(parent.defaults.defaultHasErrorInputClass);
+                              parent.username.addClass(parent.defaults.defaultHasSuccessInputClass);
+                          }
+
+
                           parent.signupWaitText.css('display' , 'initial');
 
                           parent.signupErrorMessage.css('display' , 'none');

@@ -3,7 +3,7 @@ function GameRoom(webPage , defaults , playAmount , gameDetails , gameClass) {
     parent = this;
 
 
-    console.log(gameDetails);
+    this.gameCountdown = $('#game-countdown');
     this.webPage = webPage;
     this.defaults = defaults;
 
@@ -53,6 +53,7 @@ function GameRoom(webPage , defaults , playAmount , gameDetails , gameClass) {
 
     this.averageWordLength = Math.round(this.gameWordsToLetterArray.length / this.gameWords.length);
 
+    console.log(parent.averageWordLength);
     this.gameAvatar = {'m' : parent.webPage.defaults.imgFolder + 'avatar.png' , 'f' : parent.webPage.defaults.imgFolder + 'avatar2.png'};
     this.lastTimeUpdated = new Date().getTime();
 
@@ -62,7 +63,9 @@ function GameRoom(webPage , defaults , playAmount , gameDetails , gameClass) {
         i = 0;
     this.messages.mCustomScrollbar();
 
+      parent.endGame = function() {
 
+      };
 
 
        parent.getAllWordsTyped = function () {
@@ -82,12 +85,12 @@ function GameRoom(webPage , defaults , playAmount , gameDetails , gameClass) {
            getWordsWebWorker.postMessage(data);
 
            getWordsWebWorker.onmessage = function (ev) {
-             console.log(ev.data);
 
              var wordDetails = JSON.parse(ev.data);
 if(wordDetails.data != "") {
     $('<div class="message loading new"><figure class="avatar"><img src="/static/img/favicon.png" /></figure><span></span></div>').appendTo($('.mCSB_container'));
     parent.updateScrollbar();
+
 
 
     setTimeout(function () {
@@ -98,6 +101,11 @@ if(wordDetails.data != "") {
         i++;
     }, 1000);
 
+    if(wordDetails.end){
+
+        getWordsWebWorker.terminate();
+        parent.endGame();
+    }
 
 }
 
@@ -109,31 +117,49 @@ if(wordDetails.data != "") {
 
        };
 
+
       parent.getAllWordsTyped();
 
 
 
 
-/*
-    setInterval(function () {
-
-        parent.currentlyUsedWordsArray.splice(0, 3);
-        parent.currentlyUsedWords = parent.currentlyUsedWordsArray.slice(0, 3);
 
 
-        parent.gameWordsToLetterArray = parent.currentlyUsedWords.join("").split("");
+    self.changeWords = function () {
 
-        parent.gameWordsH2.text(parent.currentlyUsedWords.toString());
+        var changeGameWordsWorker = new Worker(parent.defaults.workersFolder + 'change_game_words.js');
 
+        data = {"currentlyUsedWordsArray" : parent.currentlyUsedWordsArray , "currentlyUsedWords" : parent.currentlyUsedWords};
+        data = JSON.stringify(data);
 
-        parent.averageWordLength = Math.round(parent.gameWordsToLetterArray.length / parent.gameWords.length);
-
-
-    }, 30000);
-
+        changeGameWordsWorker.postMessage(data);
 
 
-*/
+        changeGameWordsWorker.onmessage = function (ev) {
+
+            console.log(ev.data);
+
+            resp = JSON.parse(ev.data);
+
+
+            parent.currentlyUsedWords = resp.currentlyUsedWords;
+            parent.gameWordsH2.text(parent.currentlyUsedWords.toString());
+
+            parent.gameWordsToLetterArray = resp.gameWordsToLetterArray;
+            parent.averageWordLength = Math.round(resp.gameWordsToLetterArray.length / parent.gameWords.length);
+
+
+
+
+        };
+
+    };
+
+
+    self.changeWords();
+
+
+
 
 
 
@@ -228,14 +254,22 @@ if(wordDetails.data != "") {
 
             data = JSON.stringify(data);
 
-             console.log(data);
              sendWordWorker.postMessage(data);
 
             sendWordWorker.onmessage = function (ev) {
 
+                 var reply  = JSON.parse(ev.data);
 
                  parent.messageInput.val("");
-            };
+                $('<div class="message message-personal">' + msg + ' <span class="word-sender-name">' + parent.webPage.userDetails.username + ' - <span id="points-earned" class="points-earned-by-word">'+ reply.point + ' point</span> </span></div>').appendTo($('.mCSB_container')).addClass('new');
+                parent.setDate();
+                parent.messageInput.val(null);
+                parent.updateScrollbar();
+
+                if(reply.end) return parent.endGame();
+
+
+            } ;
 
 
 
@@ -248,17 +282,28 @@ if(wordDetails.data != "") {
 
 
 
-
-            $('<div class="message message-personal">' + msg + ' <span class="word-sender-name">' + parent.webPage.userDetails.username + ' - <span id="points-earned" class="points-earned-by-word">'+ point + ' point</span> </span></div>').appendTo($('.mCSB_container')).addClass('new');
-            parent.setDate();
-            parent.messageInput.val(null);
-            parent.updateScrollbar();
-
-
-            return;
+                        return;
         };
 
-        $('.message-submit').click(function () {
+    this.startCounter = function () {
+
+        var getCounter = new Worker(parent.defaults.workersFolder + 'game_countdown.js');
+
+        getCounter.postMessage(JSON.stringify({"start" : true}));
+
+        getCounter.onmessage = function (ev) {
+            resp = JSON.parse(ev.data);
+            parent.gameCountdown.text(resp.time);
+            if (resp.end){getCounter.terminate(); parent.endGame()};
+        }
+
+    };
+
+
+    this.startCounter();
+
+
+    $('.message-submit').click(function () {
             parent.insertMessage();
         });
 
@@ -268,44 +313,6 @@ if(wordDetails.data != "") {
                 return false;
             }
         });
-
-        var Fake = [
-            'Hi there, I\'m Fabio and you?',
-            'Nice to meet you',
-            'How are you?',
-            'Not too bad, thanks',
-            'What do you do?',
-            'That\'s awesome',
-            'Codepen is a nice place to stay',
-            'I think you\'re a nice person',
-            'Why do you think that?',
-            'Can you explain?',
-            'Anyway I\'ve gotta go now',
-            'It was a pleasure chat with you',
-            'Time to make a new codepen',
-            'Bye',
-            ':)'
-        ];
-
-        this.fakeMessage = function () {
-            if (parent.messageInput.val() != '') {
-                return false;
-            }
-            $('<div class="message loading new"><figure class="avatar"><img src="/static/img/favicon.png" /></figure><span></span></div>').appendTo($('.mCSB_container'));
-            parent.updateScrollbar();
-
-
-            setTimeout(function () {
-                $('.message.loading').remove();
-                $('*').appendTo($('.mCSB_container')).addClass('new');
-                parent.setDate();
-                parent.updateScrollbar();
-                i++;
-            }, 1000 + (Math.random() * 20) * 100);
-
-        }
-
-
 
 
 }

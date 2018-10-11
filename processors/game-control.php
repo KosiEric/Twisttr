@@ -11,7 +11,7 @@ class GameControl extends  Functions
 
     private $config, $data, $userID, $amount, $action, $game_id, $gameUserCanPlay, $gameIDUserCanPlay,
         $userCurrentGameDetail, $user_details, $showGameChat = false, $number_of_players_in_current_user_game , $gameFile,
-    $point , $time , $username , $gender , $game_10_words , $start_time , $word_sent;
+    $point , $time , $username , $gender , $game_10_words , $start_time , $word_sent , $game_ended = false;
 
 
 
@@ -63,8 +63,6 @@ class GameControl extends  Functions
         $this->insert_into_table($this->games_table_name, ["game_id" => $this->game_id, "words" => $words_to_json, "amount" => $this->amount,
             "started" => "0", "start_time" => $this->start_time, "number_of_players" => "1", "current_word" => $words[0]]);
         $this->update_multiple_fields($this->users_table_name, ["game_id_about_to_play" => $this->game_id], "user_id='{$this->userID}'");
-        //$this->gameFile = fopen($this->game_id.'.txt' , 'a');
-        //fclose($this->gameFile);
 
     }
 
@@ -84,6 +82,12 @@ class GameControl extends  Functions
 
         $this->point = (!empty($this->fetch_data_from_table_with_conditions($this->game_words_table_name , "word = '{$this->word_sent}' AND game_id = '{$this->game_id}'"))) ? 0 : $this->point;
 
+        $this->game_ended = ($this->fetch_data_from_table($this->games_table_name, 'game_id' , $this->game_id)[0]['game_ended']) == '1';
+        if($this->game_ended)
+        {
+            $this->point = 0;
+            return true;
+        }
         $this->insert_into_table($this->game_words_table_name , ['game_id' => $this->game_id ,
             'user_id' => $this->userID ,
             'username' => $this->username ,
@@ -205,7 +209,10 @@ DATA;
 
         }
 
-        return json_encode(["start" => $new_start_position , "data" => $data]);
+        $this->game_ended = $this->fetch_data_from_table($this->games_table_name , 'game_id' , $this->game_id)[0]['game_ended'] == '1';
+
+
+        return json_encode(["start" => $new_start_position , "data" => $data , "end" => $this->game_ended]);
     }
 
     private function get_current_players_joined()
@@ -274,7 +281,7 @@ DATA;
                      break;
                 case 'send_word' :
                     $this->add_word_to_game();
-                    return json_encode(['success' => "1"]);
+                    return json_encode(['success' => "1" , 'end' => $this->game_ended , 'point' => $this->point]);
                    break;
                 case 'get_all_words':
                     return $this->getAllWords();

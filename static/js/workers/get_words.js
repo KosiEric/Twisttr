@@ -12,7 +12,7 @@ self.onmessage = function (ev) {
        var  req = JSON.parse(ev.data);
        req.start = self.start;
         request( req.file , JSON.stringify(req) , function (resp) {
-            var respObj = JSON.parse(resp);
+             var respObj = JSON.parse(resp);
             self.start = Number(respObj.start);
             postMessage(resp);
         });

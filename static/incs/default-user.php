@@ -46,16 +46,17 @@
                             <i class="ace-icon fa fa-money bigger-120"></i>
                             <span class="bigger-110">Fund your account</span>
                         </a>
-
+<!--
                         <a href="#" class="btn btn-sm btn-block btn-primary" id="withdraw-button">
                             <i class="ace-icon fa fa-credit-card"></i>
                             <span class="bigger-110">Withdraw</span>
                         </a>
+    -->
                     </div><!-- /.col -->
 
                     <div class="col-xs-12 col-sm-9">
                         <h4 class="blue">
-                            <span class="middle">Kosi Eric <span class="profile-account-balance">₦2,000</span> </span>
+                            <span class="middle">John Doe <span class="profile-account-balance">₦2,000</span> </span>
 
                             <span class="label label-purple arrowed-in-right">
 									<i class="ace-icon fa fa-circle smaller-80 align-middle"></i>
@@ -68,7 +69,7 @@
                                 <div class="profile-info-name"> username </div>
 
                                 <div class="profile-info-value">
-                                    <span>realkosieric</span>
+                                    <span>johndoe</span>
                                 </div>
                             </div>
 
