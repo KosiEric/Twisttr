@@ -195,8 +195,7 @@ class DatabaseConnection {
     bank_name VARCHAR (100) DEFAULT '0' ,
     account_name VARCHAR (100) DEFAULT '0',
     account_number VARCHAR (100) DEFAULT '0', 
-    
-    
+  
     
     
     account_balance VARCHAR (100) DEFAULT '0' , 
@@ -229,7 +228,8 @@ class DatabaseConnection {
     total_amount_won VARCHAR (100) DEFAULT '0',
     last_win_date VARCHAR (100) DEFAULT '0' ,
     last_played_game_id VARCHAR (100) DEFAULT '0' , 
-    last_amount_won VARCHAR (100)DEFAULT '0' 
+    last_amount_won VARCHAR (100)DEFAULT '0' ,
+    last_played_date VARCHAR (100) DEFAULT  '0' 
     
     
     
@@ -464,6 +464,15 @@ class DatabaseConnection {
         $set_type_record = $result->setFetchMode(PDO::FETCH_ASSOC);
         $record = $result->fetchAll();
         return $record;
+
+    }
+
+    public final function executeSQL (string $sql){
+
+        $result = $this->conn->prepare($sql);
+        $result->execute();
+
+        return true;
 
     }
 

@@ -4,7 +4,7 @@ self.currentlyUsedWordsArray = [];
 self.currentlyUsedWords = [];
 self.gameWordsToLetterArray = [];
 
-
+self.resp = "";
 
 
 

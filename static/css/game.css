@@ -159,3 +159,8 @@
     font-family: Cairo;
     font-stretch: 1px !important;
 }
+#game-ranking-text{
+    color : #fff;
+    font-family: Cairo;
+    font-size: 14px;
+}

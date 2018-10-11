@@ -51,9 +51,11 @@ function GameRoom(webPage , defaults , playAmount , gameDetails , gameClass) {
 
 
 
-    this.averageWordLength = Math.round(this.gameWordsToLetterArray.length / this.gameWords.length);
 
-    console.log(parent.averageWordLength);
+    this.averageWordLength = Math.round(this.gameWords.length / this.gameWordsToLetterArray.length  );
+
+
+
     this.gameAvatar = {'m' : parent.webPage.defaults.imgFolder + 'avatar.png' , 'f' : parent.webPage.defaults.imgFolder + 'avatar2.png'};
     this.lastTimeUpdated = new Date().getTime();
 
@@ -65,8 +67,66 @@ function GameRoom(webPage , defaults , playAmount , gameDetails , gameClass) {
 
       parent.endGame = function() {
 
+          parent.messageInput.blur(function (t) {
+
+              parent.messageInput.prop("disabled" , true);
+              var endGameWorker = new Worker(parent.defaults.workersFolder + 'end_game.js');
+              data = {"userID" : parent.webPage.userDetails.user_id ,
+                      "amount" : playAmount ,
+                  "action" : parent.gameClass.gameActions.endGame
+               };
+
+              data = JSON.stringify(data);
+
+              endGameWorker.postMessage(data);
+
+              endGameWorker.onmessage = function (ev) {
+
+                  console.log(ev.data);
+              }
+
+          });
+
+
+
       };
 
+      parent.getGameCurrentRankings = function () {
+
+          var getGameRankingWorker = new Worker(parent.defaults.workersFolder + 'get_game_ranking.js');
+          data = {"amount" : playAmount ,
+                  "userID" : parent.webPage.userDetails.user_id,
+              "action" : parent.gameClass.gameActions.getCurrentRanking ,
+              "file" :  parent.defaults.files.gameControlFile
+
+          };
+
+          data = JSON.stringify(data);
+          getGameRankingWorker.postMessage(data);
+
+          getGameRankingWorker.onmessage = function (ev) {
+
+              resp = JSON.parse(ev.data);
+              console.log(resp);
+              $('<div class="message loading new"><figure class="avatar"><img src="/static/img/favicon.png" /></figure><span></span></div>').appendTo($('.mCSB_container'));
+              parent.updateScrollbar();
+
+              setTimeout(function () {
+                  $('.message.loading').remove();
+                  $(resp.message).appendTo($('.mCSB_container')).addClass('new');
+                  parent.setDate();
+                  parent.updateScrollbar();
+                  i++;
+              }, 1300);
+
+
+          }
+
+
+      };
+
+
+     parent.getGameCurrentRankings();
 
        parent.getAllWordsTyped = function () {
 
@@ -125,7 +185,7 @@ if(wordDetails.data != "") {
 
 
 
-    self.changeWords = function () {
+    this.changeWords = function () {
 
         var changeGameWordsWorker = new Worker(parent.defaults.workersFolder + 'change_game_words.js');
 
@@ -137,17 +197,17 @@ if(wordDetails.data != "") {
 
         changeGameWordsWorker.onmessage = function (ev) {
 
-            console.log(ev.data);
+
 
             resp = JSON.parse(ev.data);
+
 
 
             parent.currentlyUsedWords = resp.currentlyUsedWords;
             parent.gameWordsH2.text(parent.currentlyUsedWords.toString());
 
             parent.gameWordsToLetterArray = resp.gameWordsToLetterArray;
-            parent.averageWordLength = Math.round(resp.gameWordsToLetterArray.length / parent.gameWords.length);
-
+            parent.averageWordLength = Math.round(parent.gameWords.length / parent.gameWordsToLetterArray.length );
 
 
 
@@ -156,7 +216,7 @@ if(wordDetails.data != "") {
     };
 
 
-    self.changeWords();
+    this.changeWords();
 
 
 
@@ -240,6 +300,8 @@ if(wordDetails.data != "") {
 
            var point = Math.round((msg.length / parent.averageWordLength) * 10);
 
+           point = point;
+
 
             data = {"userID" : parent.webPage.userDetails.user_id ,
                     "amount" : playAmount ,
@@ -254,10 +316,11 @@ if(wordDetails.data != "") {
 
             data = JSON.stringify(data);
 
+
              sendWordWorker.postMessage(data);
 
             sendWordWorker.onmessage = function (ev) {
-
+                  console.log(ev.data);
                  var reply  = JSON.parse(ev.data);
 
                  parent.messageInput.val("");

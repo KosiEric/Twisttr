@@ -11,7 +11,8 @@ class GameControl extends  Functions
 
     private $config, $data, $userID, $amount, $action, $game_id, $gameUserCanPlay, $gameIDUserCanPlay,
         $userCurrentGameDetail, $user_details, $showGameChat = false, $number_of_players_in_current_user_game , $gameFile,
-    $point , $time , $username , $gender , $game_10_words , $start_time , $word_sent , $game_ended = false;
+    $point , $time , $username , $gender , $game_10_words , $start_time , $word_sent , $game_ended = false ,
+$potential_winning;
 
 
 
@@ -77,10 +78,12 @@ class GameControl extends  Functions
 
 
 
-        $this->game_id = $this->user_details["game_id_about_to_play"];
 
+        $this->userCurrentGameDetail = $this->fetch_data_from_table($this->games_table_name, 'game_id', $this->user_details["game_id_about_to_play"])[0];
 
-        $this->point = (!empty($this->fetch_data_from_table_with_conditions($this->game_words_table_name , "word = '{$this->word_sent}' AND game_id = '{$this->game_id}'"))) ? 0 : $this->point;
+         $this->game_id = $this->userCurrentGameDetail['game_id'];
+
+         $this->point = (!empty($this->fetch_data_from_table_with_conditions($this->game_words_table_name , "word = '{$this->word_sent}' AND game_id = '{$this->game_id}'"))) ? 0 : $this->point;
 
         $this->game_ended = ($this->fetch_data_from_table($this->games_table_name, 'game_id' , $this->game_id)[0]['game_ended']) == '1';
         if($this->game_ended)
@@ -96,8 +99,75 @@ class GameControl extends  Functions
             'gender' => $this->gender,
         ]);
 
+        $this->executeSQL("UPDATE {$this->users_table_name} SET current_point = current_point + {$this->point} WHERE user_id = '{$this->userID}'");
         return true;
 
+
+    }
+
+
+    private function  endGame() : string {
+
+        $this->game_id = $this->user_details["game_id_about_to_play"];
+        $players = $this->fetch_data_from_table_with_conditions($this->users_table_name , "game_id_about_to_play = '{$this->game_id}' ORDER BY current_point DESC");
+        $winner = $players[0];
+        $winner_id = $winner['user_id'];
+        $winner_current_point = $winner["current_point"];
+        $this->potential_winning = ($this->config->MaximumNumberOfPlayers -  1) * $this->amount;
+        $date = date("l jS \of F Y h:i:s A");
+        $this->update_multiple_fields($this->users_table_name ,
+            ["total_wins" => "total_wins + 1" ,
+                "total_amount_won" => "total_amount_won +{$this->potential_winning}"
+            ,   "last_amount_won" => "{$this->potential_winning}" ,
+                "last_win_date" => $date
+            ]
+
+            , "user_id = '{$winner_id}'");
+        $count = 0;
+        $user_position= 0;
+
+        $game_already_closed_before_now = $this->fetch_data_from_table($this->games_table_name , 'game_id' , $this->game_id)[0]['game_ended'] == '1';
+        if(!$game_already_closed_before_now)  $this->update_record($this->games_table_name , 'game_ended' , '1' , 'game_id' , $this->game_id);
+
+
+        foreach ($players as $player){
+            $count++;
+            if($player['user_id'] == $this->userID) $user_position = $count;
+            $player_id = $player["user_id"];
+            $current_point = $player["current_point"];
+        if(!$game_already_closed_before_now) {
+            $this->update_multiple_fields($this->users_table_name, [
+                "total_point" => "total_point + {$current_point}",
+                "total_games_played" => "total_games_played + 1",
+                "last_played_game_id" => "{$this->game_id}"
+                /*" last_played_date" => "{$date}" */
+            ] , "game_id_about_to_play = '{$this->game_id}'");
+        }
+
+        }
+
+        $user_position_string = "";
+        switch ($user_position){
+            case 2 :
+                $user_position_string = "2nd";
+                break;
+            case 3 :
+                $user_position_string = "3rd";
+                break;
+            default :
+                $user_position_string = $user_position."th";
+                break;
+
+
+
+        }
+
+        $message = ($winner_id == $this->userID) ? "Congrats! you just won &#8358; {$this->potential_winning} with {$winner_current_point} points"
+            : "{$winner['username']} won, with  total  of {$winner_current_point} points, you came {$user_position_string} with {$this->user_details['current_point']} points";
+if(!$game_already_closed_before_now) {
+    $this->update_record($this->users_table_name, "account_balance", "account_balance + {$this->potential_winning}", "user_id", $winner_id);
+}
+        return json_encode(["message" => $message , "end" => true]);
 
     }
 
@@ -243,6 +313,43 @@ DATA;
         return true;
     }
 
+    private function getGameRanking () : string {
+
+        $this->game_id = $this->user_details["game_id_about_to_play"];
+        $this->userCurrentGameDetail = $this->fetch_data_from_table($this->games_table_name, 'game_id', $this->game_id)[0];
+
+        if($this->userCurrentGameDetail['game_ended'] == '1') return $this->endGame();
+
+        $players = $this->fetch_data_from_table_with_conditions($this->users_table_name , "game_id_about_to_play = '{$this->game_id}' ORDER BY current_point DESC");
+
+        $message = "";
+        if(!empty($players)) {
+            $message = <<<MESSAGE
+            <div class="message new"><figure class="avatar"><img src="{$this->config->IMG_FOLDER}favicon.png" /></figure><span id="game-ranking-text">ranking</span>
+
+
+MESSAGE;
+
+            $count = 0;
+            foreach ($players as $player) {
+                $count++;
+
+                $message .= <<<MESSAGE
+
+<span class="word-sender-name">{$count}. {$player['username']} - <span id="points-earned" class="points-earned-by-word">{$player['current_point']} points</span> </span>
+MESSAGE;
+
+
+            }
+
+
+            $message .= "</div>";
+        }
+
+        return json_encode(["end" => false , "message" => $message]);
+
+    }
+
     public function Processor()
     {
 
@@ -285,6 +392,12 @@ DATA;
                    break;
                 case 'get_all_words':
                     return $this->getAllWords();
+                    break;
+                case 'end_game' :
+                    return $this->endGame();
+                    break;
+                case 'get_current_ranking' :
+                    return $this->getGameRanking();
                     break;
             }
         }

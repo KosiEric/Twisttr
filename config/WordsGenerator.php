@@ -7,9 +7,16 @@ class WordsGenerator extends Functions {
 
     private $config;
     private $words = Array(
-        "anger" , "master" , "sister" , "charity" ,  "builder" , "android" , "building" , "calendar" , "remember" ,  "standard" , "article" , "mandate" , "acting" , "leader" , "follower", "kingsmen" ,  "principal" , "education" , "teacher" , "prefect" , "lecture" , "school" , "degree" , "award" , "pass" , "fail" ,
-        "repeat" , "reality" , "command" , "estate" , "agile" , "development" , "football" ,  "mobility" , "riches" , "wealth" , "healthy" , "machine" , "sample" , "simple" , "courses",
-        "starting" , "start" , "started" , "christmas" , "england" , "wednesday" , "potential" , "cancer" , "founder" , "around" , "everyone" , "developer" , "envelope" , "street" , "everyone");
+        "anger" , "master" , "sister" , "charity" ,  "builder" , "android" , "building" , "calendar" , "remember" ,  "standard" ,
+        "article" , "mandate" , "acting" , "leader" , "follower", "kingsmen" ,  "principal" , "education" , "teacher" , "prefect" ,
+        "lecture" , "school" , "degree" , "award" , "pass" , "fail" , "repeat" , "reality" , "command" , "estate" , "agile" ,
+        "development" , "football" ,  "mobility" , "riches" , "wealth" , "healthy" , "machine" , "sample" , "simple" , "courses",
+        "starting" , "start" , "started" , "camera" , "commercial" , "treatment" , "received" , "change" , "chapter" ,
+        "christmas" , "england" , "wednesday" , "potential" , "cancer" , "founder" , "around" , "everyone" , "developer" ,
+        "envelope" , "street" , "everyone" , "weight", "time" , "domain" , "ethics" , "method" , "police" , "soldier" , "monday"
+    , "archive" , "domain" , "choose" , "amongst" , "customer" , "practice" , "death" , "capital" , "culture" , "brand" ,
+        "length" , "modified" , "string" , "background" , "approve" , "engage" , "internal" , "organ" , "econony" , "worse" ,
+        "partner");
 
 
     function __construct()

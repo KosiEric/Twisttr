@@ -9,7 +9,7 @@ function  GameClass () {
     this.gameActions = {
         exitUserFromGame : "exit_user_from_game"  , addNewUserToGame: "add_new_user_to_game" ,
         updateNumberOfPlayers: 'update_number_of_players' , getAllWords : 'get_all_words'   ,
-        getCurrentRankOfPlayers : 'get_current_rank_of_players' , sendWord : 'send_word' , getWinner : "get_winner"};
+        getCurrentRanking : 'get_current_ranking' , sendWord : 'send_word' , endGame : 'end_game' ,  getWinner : "get_winner"};
         this.userID = this.webPage.userDetails.user_id;
     this.gameWords = [];
     this.gameDetails = "";
