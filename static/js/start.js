@@ -107,7 +107,7 @@ function GameRoom(webPage , defaults , playAmount , gameDetails , gameClass) {
           getGameRankingWorker.onmessage = function (ev) {
 
               resp = JSON.parse(ev.data);
-              console.log(resp);
+
               $('<div class="message loading new"><figure class="avatar"><img src="/static/img/favicon.png" /></figure><span></span></div>').appendTo($('.mCSB_container'));
               parent.updateScrollbar();
 

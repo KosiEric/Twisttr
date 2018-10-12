@@ -117,7 +117,7 @@ $potential_winning;
         $date = date("l jS \of F Y h:i:s A");
         $this->update_multiple_fields($this->users_table_name ,
             ["total_wins" => "total_wins + 1" ,
-                "total_amount_won" => "total_amount_won +{$this->potential_winning}"
+                "total_amount_won" => "total_amount_won + {$this->potential_winning}"
             ,   "last_amount_won" => "{$this->potential_winning}" ,
                 "last_win_date" => $date
             ]
@@ -210,9 +210,11 @@ if(!$game_already_closed_before_now) {
             /* Subtract the amount for all players */
             //$this->update_multiple_fields($this->users_table_name , ['account_balance' => " account_balance - {$this->amount}"] , "game_id_about_to_play = '{$this->gameIDUserCanPlay}'");
             /* Make sure all users point is set to 0  immediately game starts and ends*/
+            $this->executeSQL("UPDATE {$this->users_table_name} SET account_balance = account_balance - {$this->amount} WHERE game_id_about_to_play = '{$this->game_id}'");
             $this->update_record($this->users_table_name , 'current_point' , 0 , 'game_id_about_to_play' , $this->gameIDUserCanPlay);
             $this->start_time = time() * 1000;
             $this->update_record($this->games_table_name , 'start_time' , $this->start_time , 'game_id' , $this->gameIDUserCanPlay);
+
             $this->showGameChat = true;
 
         }

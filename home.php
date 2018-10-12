@@ -1,11 +1,15 @@
+<?php require_once $_SERVER["DOCUMENT_ROOT"].'/config/config.php';
+$website_details = new WebsiteDetails();
+?>
+
 <!DOCTYPE html>
 <html lang="en-US">
   <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Awesome App</title>
-    <meta name="description" content="Awesome App Template built with Bootstrap Framework and Paperkit for creating App Landing Pages by TemplateFlip.com"/>
+    <title>Play <?php echo  $website_details->SiteName; ?> Now and Win</title>
+    <meta name="description" content="Play word game online and stand a chance of winning <?php echo  $website_details->Naira; ?>10000"/>
     <link href="https://fonts.googleapis.com/css?family=Dosis:600|Roboto:400,700" rel="stylesheet">
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -16,13 +20,13 @@
     <header>
       <div class="aa-header">
         <nav class="navbar navbar-expand-md navbar-transparent">
-          <div class="container"><img class="img-fluid pr-3 aa-logo-img" src="images/logo.png" alt="logo"><a class="navbar-brand px-0 py-0" href="#">Awesome App</a>
+          <div class="container"><img class="img-fluid pr-3 aa-logo-img" src="images/logo.png" alt="logo"><a class="navbar-brand px-0 py-0" href="#"><?php echo $website_details->SiteName; ?></a>
             <div class="collapse navbar-collapse">
               <ul class="navbar-nav ml-auto">
                 <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
                 <li class="nav-item"><a class="nav-link" href="#features">Features</a></li>
-                <li class="nav-item"><a class="nav-link" href="#pricing">Pricing</a></li>
-                <li class="nav-item"><a class="btn btn-outline-neutral btn-round" href="#download">Download Now</a></li>
+                <li class="nav-item"><a class="nav-link" href="#pricing">Prices</a></li>
+                <li class="nav-item"><a class="btn btn-outline-neutral btn-round" href="#download">Play Now</a></li>
               </ul>
             </div>
           </div>
@@ -30,12 +34,13 @@
         <div class="container aa-header-content text-left text-white">
           <div class="row">
             <div class="col-md-6 col-sm-12">
-              <h1 class="text-white mb-4">Awesome App <br/>App Landing Template</h1>
-              <p>An awesome landing page template to showcase your app features, screenshots, pricing, user testimonials and download links.</p>
+              <h1 class="text-white mb-4"><?php echo $website_details->SiteName; ?><br/>Play Now and Win.</h1>
+              <p>An awesome word Game,  where 10 players in each room play for 4min. Whoever wins Gets paid immediately</p>
+                <a href="#game-demo" id="game-demo-video-link" class="mt-4 btn btn-outline-neutral btn-round">Watch our demo Video</a>
               <ul class="py-1 list-unstyled">
-                <li class="py-2"><i class="fa fa-check-circle pr-4" aria-hidden="true"></i> Amazing Design to Present Your App</li>
-                <li class="py-2"><i class="fa fa-check-circle pr-4" aria-hidden="true"></i> Fully Responsive and Powered by Bootstrap &amp; PaperKit</li>
-                <li class="py-2"><i class="fa fa-check-circle pr-4" aria-hidden="true"></i> Very Easy to Customize and Setup</li>
+                <li class="py-2"><i class="fa fa-check-circle pr-4" aria-hidden="true"></i>You get paid immediately you request your money.</li>
+                <li class="py-2"><i class="fa fa-check-circle pr-4" aria-hidden="true"></i>easy payment system , no hassles </li>
+                <li class="py-2"><i class="fa fa-check-circle pr-4" aria-hidden="true"></i>24/7 live support for any Questions</li>
               </ul><a class="mt-4 btn btn-outline-neutral btn-round" href="#features">Start Exploring</a>
             </div>
             <div class="col-md-6 col-sm-12 text-right"><img class="img-fluid" src="images/1.jpg" alt="Image"></div>
@@ -115,7 +120,7 @@
 </div>
 <div class="aa-screenshots section">
   <div class="container text-center">
-    <h2 class="title pb-3">Take a look at our screenshots</h2>
+    <h2 class="title pb-3" id="game-demo">Watch our Demo Video</h2>
     <p class="pb-5">Add your app screenshots below. Make sure to make them lively by putting them inside real device mockups<br>Replace this text to describe the screenshots of your app.</p>
     <div class="row">
       <div class="col-md-12 mb-5">
@@ -146,41 +151,41 @@
 <div class="aa-price-package section" id="pricing">
   <div class="container">
     <div class="text-center">
-      <h2 class="title">We've got the perfect package for you </h2>
-      <p class="pb-5">A section to display your pricing structure. Make sure to highlight your most popular plan like shown below.<br/>Replace this text to describe your pricing plan.</p>
+      <h2 class="title">We've got the perfect packages for you </h2>
+      <p class="pb-5">Checkout our prices and go with the one that you feel most comfortable with<br/>We ensure that winners are paid within 15min of payment request</p>
     </div>
     <div class="row">
       <div class="col-lg-3 col-md-6">
-        <div class="card aa-price text-center">
+        <div class="card text-center aa-price aa-price-active">
           <div class="card-body">
             <div class="h5 mt-0">Basic</div>
-            <div class="aa-price-section"><sup>$</sup><span>12.0</span><small>/m</small></div>
+            <div class="aa-price-section bg-gradient text-white"><sup><?php echo  $website_details->Naira ?></sup><span>100.0</span><small>/game</small></div>
             <ul class="list-unstyled text-muted">
-              <li class="pt-3">One User</li>
-              <li>Multiple Access</li>
-              <li>SMS Support</li>
-              <li>24/7 Online Support</li>
+              <li class="pt-3">10 players</li>
+              <li>Game lasts for 4mins</li>
+              <li>Winner is rewarded with <?php echo  $website_details->Naira ?>900</li>
+              <li><?php echo  $website_details->Naira ?>100 will be charged for Transfer fee</li>
             </ul>
           </div>
           <div class="card-footer">
-            <p><a href="#" class="text-muted text-small">Start Free Trial</a></p><a class="btn btn-outline-default btn-round" href="#">Buy Now</a>
+            <p><a href="/play" class="text-muted text-small" > Check it out </a></p><a class="btn btn-round bg-gradient " href="/play">Play Now</a>
           </div>
         </div>
       </div>
       <div class="col-lg-3 col-md-6">
-        <div class="card text-center aa-price aa-price-active">
+        <div class="card aa-price text-center">
           <div class="card-body">
             <div class="h5 mt-0">Standard</div>
-            <div class="aa-price-section bg-gradient text-white"><sup>$</sup><span>24.0</span><small>/m</small></div>
+            <div class="aa-price-section"><sup><?php echo  $website_details->Naira ?></sup><span>200.0</span><small>/game</small></div>
             <ul class="list-unstyled text-muted">
-              <li class="pt-3">Five User</li>
-              <li>Multiple Access</li>
-              <li>SMS Support</li>
-              <li>24/7 Online Support</li>
+              <li class="pt-3">10 players</li>
+              <li>Game lasts for 4mins</li>
+              <li>Winner is rewarded with <?php echo  $website_details->Naira ?>1800</li>
+              <li><?php echo  $website_details->Naira ?>100 will be charged for Transfer fee</li>
             </ul>
           </div>
           <div class="card-footer">
-            <p><a href="#" class="text-muted text-small" > Start Free Trial</a></p><a class="btn btn-round bg-gradient " href="#">Buy Now</a>
+            <p><a href="#" class="text-muted text-small" > Check it out </a></p><a class="btn btn-outline-default btn-round " href="/play">Play Now</a>
           </div>
         </div>
       </div>
@@ -188,36 +193,37 @@
         <div class="card aa-price text-center">
           <div class="card-body">
             <div class="h5 mt-0">Premium</div>
-            <div class="aa-price-section"><sup>$</sup><span>250.0</span><small>/m</small></div>
+            <div class="aa-price-section"><sup><?php echo  $website_details->Naira ?></sup><span>500.0</span><small>/game</small></div>
             <ul class="list-unstyled text-muted">
-              <li class="pt-3">Twenty User</li>
-              <li>Multiple Access</li>
-              <li>SMS Support</li>
-              <li>24/7 Online Support</li>
+              <li class="pt-3">10 players</li>
+              <li>Game lasts for 4min.</li>
+              <li>Winner is rewarded with <?php echo  $website_details->Naira ?>4500</li>
+              <li><b><?php echo  $website_details->Naira ?>100 will be charged for Transfer fee</b></li>
             </ul>
           </div>
           <div class="card-footer">
-            <p><a href="#" class="text-muted text-small" > Start Free Trial</a></p><a class="btn btn-outline-default btn-round " href="#">Buy Now</a>
+            <p><a href="#" class="text-muted text-small" > Check it out</a></p><a class="btn btn-outline-default btn-round " href="/play">Play Now</a>
           </div>
         </div>
       </div>
-      <div class="col-lg-3 col-md-6">
-        <div class="card aa-price text-center">
-          <div class="card-body">
-            <div class="h5 mt-0">Enterprise</div>
-            <div class="aa-price-section"><sup>$</sup><span>999.0</span><small>/m</small></div>
-            <ul class="list-unstyled text-muted">
-              <li class="pt-3">Unlimited User</li>
-              <li>Multiple Access</li>
-              <li>SMS Support</li>
-              <li><b>24/7 Online Support</b></li>
-            </ul>
-          </div>
-          <div class="card-footer">
-            <p><a href="#" class="text-muted text-small" > Start Free Trial </a></p><a class="btn btn-outline-default btn-round " href="#">Buy Now</a>
-          </div>
+        <div class="col-lg-3 col-md-6">
+            <div class="card aa-price text-center">
+                <div class="card-body">
+                    <div class="h5 mt-0">Gold</div>
+                    <div class="aa-price-section"><sup><?php echo $website_details->Naira;?></sup><span>1000.0</span><small><?php /*/*/?>game</small></div>
+                    <ul class="list-unstyled text-muted">
+                        <li class="pt-3">10 members</li>
+                        <li>Game lasts for 4min.</li>
+                        <li>Winner is rewarded with <?php echo $website_details->Naira; ?>9000</li>
+                        <li><b><?php echo  $website_details->Naira ?>100 will be charged for Transfer fee</b></li>
+                    </ul>
+                </div>
+                <div class="card-footer">
+                    <p><a href="#" class="text-muted text-small"> Check it out </a></p><a class="btn btn-outline-default btn-round" href="/play">Play Now</a>
+                </div>
+            </div>
         </div>
-      </div>
+
     </div>
   </div>
 </div>
@@ -227,43 +233,43 @@
 <div class="aa-testimonials-section section">
   <div class="container">
     <div class="text-center">
-      <h2 class="title mt-0">What our customers are saying</h2>
-      <p>Real user testimonials are great way to attract new customers and increase their trust into using your app.<br/>Replace the testimonials below with the ones for your own app.</p>
+      <h2 class="title mt-0">What our users are saying</h2>
+      <p>Read real testimonials by some of our users.<br/>We are simply the best!.</p>
     </div>
     <div class="aa-testimonials">
       <div class="row">
         <div class="col-md-4 mb-3">
           <div class="aa-testimonials-body">
-            <p>Awesome App is awesome and I can't imagine working on my projects without it. It has saved me countless hours of time and has increased my productivity.</p>
+              <blockquote><strong>"<?php echo $website_details->SiteName?> is awesome and I can't believe how easily i won <?php echo $website_details->Naira; ?>9000 Just like that. I wish i had known this platform before now"</strong></blockquote>
             <div class="row pt-3">
-              <div class="col-lg-5 col-md-12"><img class="img-fluid" src="https://s3.amazonaws.com/uifaces/faces/twitter/mlane/128.jpg" alt="Face 1"/></div>
+              <div class="col-lg-5 col-md-12"><img class="testimonial-images" src="<?php echo $website_details->IMG_FOLDER;?>rowland.jpg" alt="Daniels Rowland" /></div>
               <div class="col-lg-7 col-md-12 pt-3">
-                <div class="h5">Patrick Harry</div>
-                <p class="text-muted">Web Developer</p>
+                <div class="h5">Rowland Daniels</div>
+                <p class="text-muted">Student</p>
               </div>
             </div>
           </div>
         </div>
         <div class="col-md-4 mb-3">
           <div class="aa-testimonials-body">
-            <p>Awesome App is awesome and I can't imagine working on my projects without it. It has saved me countless hours of time and has increased my productivity.</p>
+              <blockquote><strong>"After recieving my second winning here on <?php echo  $website_details->SiteName?> What else can i say than , You guys are awesome!"</strong></blockquote>
             <div class="row pt-3">
-              <div class="col-lg-5 col-md-12"><img class="img-fluid" src="https://s3.amazonaws.com/uifaces/faces/twitter/jsa/128.jpg" alt="Face 2"/></div>
+              <div class="col-lg-5 col-md-12"><img class="testimonial-images" src="<?php echo $website_details->IMG_FOLDER;?>loveth.png" alt="Loveth Nwokonkwo" /></div>
               <div class="col-lg-7 col-md-12 pt-3">
-                <div class="h5">Andrew Riley</div>
-                <p class="text-muted">Web Developer</p>
+                <div class="h5">Loveth Nwokonkwo</div>
+                <p class="text-muted">Youth Corper</p>
               </div>
             </div>
           </div>
         </div>
         <div class="col-md-4 mb-3">
           <div class="aa-testimonials-body">
-            <p>Awesome App is awesome and I can't imagine working on my projects without it. It has saved me countless hours of time and has increased my productivity.</p>
+<blockquote><strong>"This is actually my 3rd time of Winning here on <?php echo $website_details->SiteName; ?> i've only played 5 times. it's genuine. if you win, you get paid immediately."</strong></blockquote>
             <div class="row pt-3">
-              <div class="col-lg-5 col-md-12"><img class="img-fluid" src="https://s3.amazonaws.com/uifaces/faces/twitter/chadengle/128.jpg" alt="Face 3"/></div>
+              <div class="col-lg-5 col-md-12"><img class="testimonial-images" src="<?php echo $website_details->IMG_FOLDER;?>francis.jpg" alt="Francis Nwokeure"/></div>
               <div class="col-lg-7 col-md-12 pt-3">
-                <div class="h5">Ralph Jordan</div>
-                <p class="text-muted">Web Developer</p>
+                <div class="h5">Francis Nwokeure</div>
+                <p class="text-muted">Worker</p>
               </div>
             </div>
           </div>
@@ -274,9 +280,9 @@
 </div>
 <div class="aa-download-section section bg-gradient" id="download">         
   <div class="container">
-    <div class="h2 text-center text-title text-white pb-5">Download Awesome App Now </div>
+    <div class="h2 text-center text-title text-white pb-5">Our Android App Coming Soon.</div>
     <div class="row">
-      <div class="col-md-4 col-sm-12"><a class="aa-apple" href="#">
+      <!--div class="col-md-4 col-sm-12"><a class="aa-apple" href="#">
           <div class="card">
             <div class="row pb-3">
               <div class="col-lg-3 col-md-12 aa-download-icon"><i class="pt-4 fa fa-apple fa-4x" aria-hidden="true"></i></div>
@@ -285,18 +291,19 @@
                 <p class="text-muted">Download from App Store</p>
               </div>
             </div>
-          </div></a></div>
-      <div class="col-md-4 col-sm-12"><a class="aa-android" href="#">
+          </div></a></div -->
+
+      <div class="col-md-4 col-sm-12" id="google-playstore-download"><a class="aa-android" href="#">
           <div class="card">
             <div class="row pb-3">
               <div class="col-lg-3 col-md-12 aa-download-icon"><i class="pt-4 fa fa-android fa-4x" aria-hidden="true"></i></div>
               <div class="col-lg-9 col-md-12 aa-download-icon-detail">
                 <div class="h4 pb-1">Download</div>
-                <p class="text-muted">Download from Play Store</p>
+                <p class="text-muted">Coming soon on Google Play Store</p>
               </div>
             </div>
           </div></a></div>
-      <div class="col-md-4 col-sm-12"><a class="aa-windows" href="#">
+      <!--div class="col-md-4 col-sm-12"><a class="aa-windows" href="#">
           <div class="card">
             <div class="row pb-3">
               <div class="col-lg-3 col-md-12 aa-download-icon"><i class="pt-4 fa fa-windows fa-4x" aria-hidden="true"></i></div>
@@ -305,7 +312,7 @@
                 <p class="text-muted">Download from Microsoft Store</p>
               </div>
             </div>
-          </div></a></div>
+          </div></a></div -->
     </div>
   </div>
 </div></div>
@@ -313,9 +320,11 @@
     <footer class="footer-black aa-footer">
       <div class="container py-5">
         <div class="row text-center">
-          <div class="col-md-12"><a class="btn btn-link btn-neutral" href="#"><i class="fa fa-facebook fa-2x" aria-hidden="true"></i></a><a class="btn btn-link btn-neutral" href="#"><i class="fa fa-twitter fa-2x" aria-hidden="true"></i></a><a class="btn btn-link btn-neutral" href="#"><i class="fa fa-google-plus fa-2x" aria-hidden="true"></i></a><a class="btn btn-link btn-neutral" href="#"><i class="fa fa-instagram fa-2x" aria-hidden="true"></i></a></div>
+          <div class="col-md-12"><a class="btn btn-link btn-neutral" target="_blank" href="<?php echo  $website_details->FacebookHandle; ?>"><i class="fa fa-facebook fa-2x" aria-hidden="true"></i></a>
+              <a target="_blank" class="btn btn-link btn-neutral" href="<?php echo  $website_details->TwitterHandle; ?>"><i class="fa fa-twitter fa-2x" aria-hidden="true"></i></a>
+              <a class="btn btn-link btn-neutral" target="_blank" href="<?php echo  $website_details->InstagramHandle; ?>"><i class="fa fa-instagram fa-2x" aria-hidden="true"></i></a></div>
           <div class="col-md-12">
-            <p class="mt-3">Copyright &copy; Awesome App. All rights reserved.<br>Design - <a class="credit" href="https://templateflip.com" target="_blank">TemplateFlip</a></p>
+            <p class="mt-3">Copyright &copy; <?php echo $website_details->SiteName; ?> Inc. All rights reserved.<!--br>Design - <a class="credit" href="https://templateflip.com" target="_blank">TemplateFlip</a--></p>
           </div>
         </div>
       </div>

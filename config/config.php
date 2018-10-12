@@ -10,12 +10,14 @@ abstract class WebsiteConfigurationSettings {
 	public  $SiteNameWithHttps = "";
     public  $FacebookUrl = "";
     public  $TwitterUrl  = "";
+    public  $InstagramUrl = "";
     public  $SiteAuthor = "Kosi Eric";
     public  $WebsiteCategory = "Online Gaming";
     public  $MaximumUsernameLength = 16;
     public  $minimumUsernameLength = 2;
     public  $TwitterHandle = "";
     public  $FacebookHandle = "";
+    public  $InstagramHandle = "";
     public  $MaximumUserProfileImageSize = 50000000;
     public  $MaximumUserProfileImageSizeInWords = "";
     public  $WebsiteCoverage = "Worldwide";
@@ -41,7 +43,7 @@ abstract class WebsiteConfigurationSettings {
     public  $NumberOfRandomWords = 45;
     public  $GameIDLength = 6;
     public  $MaximumNumberOfPlayers = 3;
-
+    public  $Naira = "&#8358;";
 
 
     public  $Banks = Array("Access Bank" , "CitiBank" , "Coronation Merchant Bank" , "Diamond Bank" , "Ecobank Nigeria" , "Enterprise Bank Limited" , "FBN Merchant Bank" ,"Fidelity Bank Nigeria",
@@ -62,8 +64,10 @@ abstract class WebsiteConfigurationSettings {
         $this->SiteNameWithHttps = "https://{$this->SiteNameWithoutHttps}";
         $this->FacebookUrl = "{$this->Https}{$this->Www}facebook.com";
         $this->TwitterUrl = "{$this->Https}{$this->Www}twitter.com";
+        $this->InstagramUrl = "{$this->Https}{$this->Www}instagram.com";
         $this->FacebookHandle = "{$this->FacebookUrl}/{$this->SiteName}";
         $this->TwitterHandle = "{$this->TwitterUrl}/{$this->SiteName}";
+        $this->InstagramHandle = "{$this->InstagramUrl}/{$this->SiteName}";
         $this->HeadOffice = "Block 2A , Quarters 3 PH Int'l Airport Omagwa.";
         $this->MaximumUserProfileImageSizeInWords = strval($this->MaximumUserProfileImageSize / 10). "mb";
         $this->ContactEmail  = 'contact@'.$this->SiteName;

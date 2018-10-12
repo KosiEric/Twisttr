@@ -468,6 +468,6 @@ function apelAjax() {
     if(ajxsend === 0) ajaxF(chatfile, 'chatuser='+chatusr);
     else ajxsend = 0;
 
-    setTimeout('apelAjax()', 1900);
+
 }
-apelAjax(); // Calls Ajax function
+var apelAjaxFunction = setInterval('apelAjax()', 1900); // Calls Ajax function
