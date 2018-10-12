@@ -35,7 +35,7 @@ $website_details = new WebsiteDetails();
           <div class="row">
             <div class="col-md-6 col-sm-12">
               <h1 class="text-white mb-4"><?php echo $website_details->SiteName; ?><br/>Play Now and Win.</h1>
-              <p>An awesome word Game,  where 10 players in each room play for 4min. Whoever wins Gets paid immediately</p>
+              <p>Online games and puzzles are a fun way to pass the time. It’s even better when you’re rewarded for your time and get paid to play. </p>
                 <a href="#game-demo" id="game-demo-video-link" class="mt-4 btn btn-outline-neutral btn-round">Watch our demo Video</a>
               <ul class="py-1 list-unstyled">
                 <li class="py-2"><i class="fa fa-check-circle pr-4" aria-hidden="true"></i>You get paid immediately you request your money.</li>
@@ -54,45 +54,46 @@ $website_details = new WebsiteDetails();
   <div class="aa-product-details section" id="features">
     <div class="row">
       <div class="col-lg-4 col-md-6 col-sm-12">
-        <div class="icon icon-danger"><i class="fa fa-tags" aria-hidden="true"></i></div>
+        <div class="icon icon-danger"><i class="fa fa-cc-mastercard" aria-hidden="true"></i></div>
         <div class="description">
-          <div class="h4">Showcase Your App</div>
-          <p class="text-muted">Showcase your app in style with this professional looking template.</p>
+          <div class="h4">Easy payment method</div>
+          <p class="text-muted">We have enabled a stress-free, world-class payment system for easy payment by users.</p>
         </div>
       </div>
       <div class="col-lg-4 col-md-6 col-sm-12">
         <div class="icon icon-danger"><i class="fa fa-cog" aria-hidden="true"></i></div>
         <div class="description">
-          <div class="h4">Easy to Customize</div>
-          <p class="text-muted">Easily customize the text and replace the images to suit your own app.</p>
+          <div class="h4">24/7 live support</div>
+          <p class="text-muted">Our  live support team are there to provide help and resolve issues almost instantly.</p>
         </div>
       </div>
       <div class="col-lg-4 col-md-6 col-sm-12">
-        <div class="icon icon-danger"><i class="fa fa-paint-brush" aria-hidden="true"></i></div>
+        <div class="icon icon-danger"><i class="fa fa-comment-o" aria-hidden="true"></i></div>
         <div class="description">
-          <div class="h4">Unlimited Colors</div>
-          <p class="text-muted">Easily change the colors in CSS that can go well with your branding.</p>
+          <div class="h4">Real-time chat room</div>
+          <p class="text-muted">We've included a chat room for all users, to easily find who to play with, comes with admin support</p>
         </div>
       </div>
       <div class="col-lg-4 col-md-6 col-sm-12">
-        <div class="icon icon-danger"><i class="fa fa-desktop" aria-hidden="true"></i></div>
+        <div class="icon icon-danger"><i class="fa fa-money" aria-hidden="true"></i></div>
         <div class="description">
-          <div class="h4">Responsive, HTML5, CSS3</div>
-          <p class="text-muted">Our template is 100% responsive and built with modern standards.</p>
+          <div class="h4">Free Mode </div>
+          <p class="text-muted">if at any time, users feel like to play without staking their money,
+              users can always choose to play our free mode.</p>
         </div>
       </div>
       <div class="col-lg-4 col-md-6 col-sm-12">
-        <div class="icon icon-danger"><i class="fa fa-file-text" aria-hidden="true"></i></div>
+        <div class="icon icon-danger"><i class="fa fa-share-square-o" aria-hidden="true"></i></div>
         <div class="description">
-          <div class="h4">Designed to Convert</div>
-          <p class="text-muted">Designed to engage your user and increase your conversion.</p>
+          <div class="h4">Instant payment system</div>
+          <p class="text-muted">You can request for payment anytime, and get credited to your bank account immediately. even at mid-night!</p>
         </div>
       </div>
       <div class="col-lg-4 col-md-6 col-sm-12">
         <div class="icon icon-danger"><i class="fa fa-life-ring" aria-hidden="true"></i></div>
         <div class="description">
-          <div class="h4">With no Boundaries</div>
-          <p class="text-muted">Use Bootstrap and PaperKit to add additional components.</p>
+          <div class="h4">More feature coming out soon</div>
+          <p class="text-muted">We are adding more features all the time.once a new feature is rolled out, you get Notified </p>
         </div>
       </div>
     </div>
@@ -104,15 +105,15 @@ $website_details = new WebsiteDetails();
 <div class="aa-product-features section">
   <div class="container">
     <div class="row">
-      <div class="col-md-5 col-sm-12"><img class="img-fluid" src="images/2.jpg" alt="Image"/></div>
+      <div class="col-md-5 col-sm-12"><img class="img-fluid" src="images/twisttr-on-mobile.jpg" alt="Image"/></div>
       <div class="col-md-7 col-sm-12">
-        <h2 class="title mb-2">What is Awesome App?</h2>
-        <p class="pt-2">Add a brief story about your app here, what purpose your app solves and why you think your user would want to have it on their device.</p>
-        <p class="pt-5 pb-1">Re-establish the main use case of your app by listing them below. Make sure to place a relavent screenshot on the left.</p>
+        <h2 class="title mb-2">What is <?php echo $website_details->SiteName;?>?</h2>
+        <p class="pt-2"><?php echo $website_details->SiteName;?> is a simple word game where players are presented with 3 random words  every 25 seconds for 4min.</p>
+        <p class="pt-5 pb-1">Players are expected to derive other words from the letters found in these words, points are given for each unique word a player enters.</p>
         <ul class="py-1 list-unstyled">
-          <li class="py-1"><i class="fa fa-check-circle pr-4" aria-hidden="true"></i> Amazing Design to Present Your App</li>
-          <li class="py-2"><i class="fa fa-check-circle pr-4" aria-hidden="true"></i> Fully Responsive and Powered by Bootstrap &amp; PaperKit</li>
-          <li><i class="fa fa-check-circle pr-4" aria-hidden="true"></i> Very Easy to Customize and Setup</li>
+            <li class="py-1"><i class="fa fa-check-circle pr-4" aria-hidden="true"></i>More information on how the game works can be found <a href = "#">here</a></li>
+          <li class="py-2"><i class="fa fa-check-circle pr-4" aria-hidden="true"></i> It is the first of it's kind anywhere.</li>
+          <li><i class="fa fa-check-circle pr-4" aria-hidden="true"></i>Winners are paid immediately after Payment Request</li>
         </ul>
       </div>
     </div>
