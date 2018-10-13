@@ -63,7 +63,7 @@ HomePage;
 
 $HomePage = new HomePage();
 //echo $HomePage->DisplayWholePage();
-
+$refresh = false;
 ?>
 
 <!DOCTYPE html>
@@ -73,7 +73,23 @@ $HomePage = new HomePage();
 
 
 <head>
-    <?php echo $HomePage->DefaultHeaders->GetDefaultPageHeadTags(); ?>
+
+    <?php
+
+    if($HomePage->UserFunctions->isLoggedInUser()){
+        $HomePage->executeSQL("UPDATE $HomePage->users_table_name SET account_balance = cast(last_amount_won as int) + cast(account_balance as int) , last_amount_won = '0' WHERE user_id = '{$HomePage->loggedInUserDetails['user_id']}'");
+
+//        $HomePage->update_record($HomePage->users_table_name , 'last_amount_won' , '0' ,'user_id' , "{$HomePage->loggedInUserDetails['user_id']}");
+        if($HomePage->loggedInUserDetails['last_amount_won'] != '0'){$refresh = true;}
+
+    }
+    ?>
+    <?php if($refresh){ ?>
+    <script type="text/javascript">
+        window.location.reload();
+    </script>
+
+    <?php }  echo $HomePage->DefaultHeaders->GetDefaultPageHeadTags(); ?>
     <link rel="stylesheet" type="text/css" href="<?php echo $HomePage->WebsiteDetails->CSS_FOLDER ?>profile.css" />
     <link rel="stylesheet" type="text/css" href="<?php echo $HomePage->WebsiteDetails->CSS_FOLDER ?>new-profile.css" />
 
@@ -118,7 +134,6 @@ if(!isset($_SESSION['username'])){
 ?>
 
 <div id="chat-container">
-    <?php     require_once 'chat.php'; ?>
 
     <div id="chat-wrapper">
 
@@ -139,6 +154,8 @@ $about_to_be_recovered_user="";
 $about_to_change_bank_details = false;
 $about_to_be_changed_bank_details_user = "";
 $about_to_be_changed_bank_details_user_details = "";
+
+
 if (isset($_GET['action']) && !empty($_GET['action'])){
 
     $action = $_GET['action'];
@@ -155,7 +172,6 @@ if (isset($_GET['action']) && !empty($_GET['action'])){
             $HomePage->update_record($HomePage->users_table_name , 'email_verified' , '1' , 'email_verification_code' , $code);
             $new_email_verification_code = str_shuffle($HomePage->generateID($HomePage->email_verification_code_length));
             $HomePage->update_record($HomePage->users_table_name , 'email_verification_code' , $new_email_verification_code , 'email_verification_code' , $code);
-
             $email_about_to_be_verified = true;
 
 

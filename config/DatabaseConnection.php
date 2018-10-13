@@ -263,7 +263,8 @@ class DatabaseConnection {
     start_time VARCHAR (100) NOT  NULL , 
     current_word VARCHAR (100) NOT NULL ,
     number_of_players VARCHAR (100) NOT  NULL DEFAULT '0',
-    game_ended VARCHAR (100) NOT  NULL  DEFAULT  '0'
+    game_ended VARCHAR (100) NOT  NULL  DEFAULT  '0',
+    winner VARCHAR (150) NOT NULL  DEFAULT  '0'
     )";
 
         try {
@@ -435,9 +436,9 @@ class DatabaseConnection {
     }
 
 
-    public  final  function  update_record (string  $table_name , string  $row_name , string $new_value , string $row_to_searc_for , string $old_value) {
+    public  final  function  update_record (string  $table_name , string  $row_name , string $new_value , string $row_to_searc_for , string $old_value , $lowercase = true) {
 
-        $new_value = strtolower($new_value);
+        $new_value = ($lowercase)?strtolower($new_value):$new_value;
         $old_value = strtolower($old_value);
         $sql = "UPDATE {$table_name} SET {$row_name} = '{$new_value}' WHERE {$row_to_searc_for} = '{$old_value}'";
         $result = $this->conn->prepare($sql);

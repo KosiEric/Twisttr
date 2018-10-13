@@ -3,8 +3,53 @@
   <component name="ChangeListManager">
     <list default="true" id="f4d7fd38-af9c-4203-adef-906fb572f635" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chattxt/New members.txt" beforeDir="false" afterPath="$PROJECT_DIR$/chattxt/New members.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/chat.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/chatex/0.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/chatex/1.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/chatex/2.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/chatex/3.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/chatex/4.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/chatex/5.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/chatex/6.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/chatex/7.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/chatex/8.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/chatex/9.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/chatex/beep1.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/chatex/beep2.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/chatex/beep3.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/chatex/bold.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/chatex/index.htm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/chatex/italic.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/chatex/playbeep1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/chatex/playbeep2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/chatex/underline.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/chatex/url.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/chatfiles/chat_form.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/chatfiles/chatfunctions.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/chatfiles/chatstyle.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/chatfiles/chatstyle_mini.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/chatfiles/class.ChatSimple.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/chatfiles/emptychat_form.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/chatfiles/index.htm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/chatfiles/main.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/chatfiles/setchat.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/chatfiles/texts.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/chattxt/Ask admin.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/chattxt/English.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/chattxt/General.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/chattxt/Nature.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/chattxt/New members.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/chattxt/index.htm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/DatabaseConnection.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/DatabaseConnection.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/WordsGenerator.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/WordsGenerator.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/home.php" beforeDir="false" afterPath="$PROJECT_DIR$/home.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/processors/game-control.php" beforeDir="false" afterPath="$PROJECT_DIR$/processors/game-control.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/incs/game.php" beforeDir="false" afterPath="$PROJECT_DIR$/static/incs/game.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/js/control.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/control.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/js/start.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/start.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/js/workers/game_countdown.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/workers/game_countdown.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/js/workers/get_game_ranking.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/workers/get_game_ranking.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -33,12 +78,13 @@
     <session id="1210718074">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="2" />
+          <entry key="project.closed" value="3" />
           <entry key="project.open.time.100" value="1" />
           <entry key="project.open.time.101" value="1" />
           <entry key="project.open.time.134" value="1" />
           <entry key="project.open.time.150" value="1" />
           <entry key="project.open.time.165" value="1" />
+          <entry key="project.open.time.199" value="1" />
           <entry key="project.open.time.38" value="1" />
           <entry key="project.open.time.56" value="1" />
           <entry key="project.open.time.64" value="1" />
@@ -46,16 +92,17 @@
           <entry key="project.open.time.73" value="1" />
           <entry key="project.open.time.80" value="1" />
           <entry key="project.open.time.82" value="1" />
-          <entry key="project.opened" value="12" />
+          <entry key="project.open.time.92" value="1" />
+          <entry key="project.opened" value="14" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="CSS" value="552" />
-          <entry key="HTML" value="56" />
-          <entry key="JavaScript" value="21155" />
-          <entry key="PHP" value="20142" />
-          <entry key="SQL" value="6" />
+          <entry key="HTML" value="57" />
+          <entry key="JavaScript" value="21971" />
+          <entry key="PHP" value="22739" />
+          <entry key="SQL" value="14" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.js.language.service.starts" />
@@ -67,8 +114,8 @@
           <entry key="CSS" value="33" />
           <entry key="HTML" value="1" />
           <entry key="Image" value="1" />
-          <entry key="JavaScript" value="85" />
-          <entry key="PHP" value="136" />
+          <entry key="JavaScript" value="92" />
+          <entry key="PHP" value="143" />
           <entry key="PLAIN_TEXT" value="4" />
         </counts>
       </usages-collector>
@@ -77,16 +124,16 @@
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="css" value="552" />
-          <entry key="js" value="21155" />
-          <entry key="php" value="20204" />
+          <entry key="js" value="21971" />
+          <entry key="php" value="22810" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="css" value="33" />
           <entry key="html" value="1" />
-          <entry key="js" value="85" />
-          <entry key="php" value="136" />
+          <entry key="js" value="92" />
+          <entry key="php" value="143" />
           <entry key="png" value="1" />
           <entry key="txt" value="4" />
         </counts>
@@ -97,28 +144,46 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/config/config.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1173">
-              <caret line="69" column="54" selection-start-line="69" selection-start-column="54" selection-end-line="69" selection-end-column="54" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/static/js/workers/get_words.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="357">
-              <caret line="21" selection-start-line="21" selection-end-line="21" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/static/incs/game.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="425">
-              <caret line="25" column="154" selection-start-line="25" selection-start-column="147" selection-end-line="25" selection-end-column="154" />
+            <state relative-caret-position="506">
+              <caret line="38" column="46" selection-start-line="38" selection-start-column="46" selection-end-line="38" selection-end-column="46" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/processors/game-control.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="239">
+              <caret line="244" column="157" selection-start-line="244" selection-start-column="157" selection-end-line="244" selection-end-column="157" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/static/js/main.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="319">
+              <caret line="266" selection-start-line="266" selection-end-line="266" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/home.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="578">
+              <caret line="229" column="6" lean-forward="true" selection-start-line="229" selection-start-column="6" selection-end-line="229" selection-end-column="6" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/config/DatabaseConnection.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="387">
+              <caret line="440" column="57" selection-start-line="440" selection-start-column="57" selection-end-line="440" selection-end-column="57" />
             </state>
           </provider>
         </entry>
@@ -126,62 +191,53 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/static/js/GameControl.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="34">
-              <caret line="2" selection-start-line="2" selection-end-line="2" />
+            <state relative-caret-position="51">
+              <caret line="3" lean-forward="true" selection-start-line="3" selection-end-line="3" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/static/js/start.js">
+        <entry file="file://$PROJECT_DIR$/config/config.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="6154">
-              <caret line="362" column="6" selection-start-line="362" selection-start-column="6" selection-end-line="362" selection-end-column="6" />
+            <state relative-caret-position="404">
+              <caret line="62" column="56" lean-forward="true" selection-start-line="62" selection-start-column="56" selection-end-line="62" selection-end-column="56" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/static/js/workers/get_game_ranking.js">
+        <entry file="file://$PROJECT_DIR$/index.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="221">
-              <caret line="13" column="11" lean-forward="true" selection-start-line="13" selection-start-column="11" selection-end-line="13" selection-end-column="11" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/static/js/control.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1377">
-              <caret line="81" column="9" selection-start-line="81" selection-start-column="9" selection-end-line="81" selection-end-column="9" />
+            <state relative-caret-position="340">
+              <caret line="81" column="2" selection-start-line="81" selection-start-column="2" selection-end-line="81" selection-end-column="2" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/home.php">
+        <entry file="file://$PROJECT_DIR$/static/js/start.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="591">
-              <caret line="94" column="26" lean-forward="true" selection-start-line="94" selection-start-column="26" selection-end-line="94" selection-end-column="44" />
+            <state relative-caret-position="527">
+              <caret line="100" column="61" lean-forward="true" selection-start-line="100" selection-start-column="61" selection-end-line="100" selection-end-column="61" />
+              <folding>
+                <element signature="e#5397#5582#0" />
+                <element signature="e#5627#5866#0" />
+                <element signature="e#5933#6122#0" />
+                <element signature="e#6172#6366#0" />
+                <element signature="e#6413#6488#0" />
+                <element signature="e#9763#9810#0" />
+                <element signature="e#9859#9987#0" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/styles/main.css">
+        <entry file="file://$PROJECT_DIR$/static/js/workers/end_game.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="4658">
-              <caret line="274" column="1" selection-start-line="274" selection-start-column="1" selection-end-line="274" selection-end-column="1" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/chatfiles/chatfunctions.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="8024">
-              <caret line="472" column="14" selection-start-line="472" selection-start-column="14" selection-end-line="472" selection-end-column="14" />
+            <state relative-caret-position="187">
+              <caret line="11" lean-forward="true" selection-start-line="11" selection-end-line="11" />
             </state>
           </provider>
         </entry>
@@ -190,8 +246,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>addC</find>
-      <find>this.headerNa</find>
       <find>data</find>
       <find>no chat</find>
       <find>number-of-us</find>
@@ -219,7 +273,9 @@
       <find>game</find>
       <find>game_ended</find>
       <find>endGa</find>
+      <find>total_poi</find>
       <find>console</find>
+      <find>get_to</find>
     </findStrings>
     <replaceStrings>
       <replace>public</replace>
@@ -274,28 +330,28 @@
         <option value="$PROJECT_DIR$/static/css/start.css" />
         <option value="$PROJECT_DIR$/static/incs/header.php" />
         <option value="$PROJECT_DIR$/static/css/control.css" />
-        <option value="$PROJECT_DIR$/index.php" />
         <option value="$PROJECT_DIR$/static/css/game.css" />
         <option value="$PROJECT_DIR$/static/css/start2.css" />
-        <option value="$PROJECT_DIR$/static/js/workers/game_countdown.js" />
-        <option value="$PROJECT_DIR$/static/incs/game.php" />
         <option value="$PROJECT_DIR$/static/incs/default-user.php" />
         <option value="$PROJECT_DIR$/static/js/defaults.js" />
-        <option value="$PROJECT_DIR$/static/js/main.js" />
         <option value="$PROJECT_DIR$/static/js/workers/end_game.js" />
-        <option value="$PROJECT_DIR$/config/WordsGenerator.php" />
         <option value="$PROJECT_DIR$/static/js/GameControl.js" />
-        <option value="$PROJECT_DIR$/config/DatabaseConnection.php" />
         <option value="$PROJECT_DIR$/static/js/workers/change_game_words.js" />
-        <option value="$PROJECT_DIR$/processors/game-control.php" />
         <option value="$PROJECT_DIR$/chatfiles/chatfunctions.js" />
-        <option value="$PROJECT_DIR$/static/js/control.js" />
-        <option value="$PROJECT_DIR$/config/config.php" />
         <option value="$PROJECT_DIR$/styles/main.css" />
         <option value="$PROJECT_DIR$/static/js/workers/get_words.js" />
-        <option value="$PROJECT_DIR$/static/js/start.js" />
+        <option value="$PROJECT_DIR$/static/js/control.js" />
         <option value="$PROJECT_DIR$/static/js/workers/get_game_ranking.js" />
+        <option value="$PROJECT_DIR$/config/WordsGenerator.php" />
+        <option value="$PROJECT_DIR$/static/js/workers/game_countdown.js" />
+        <option value="$PROJECT_DIR$/static/incs/game.php" />
         <option value="$PROJECT_DIR$/home.php" />
+        <option value="$PROJECT_DIR$/config/config.php" />
+        <option value="$PROJECT_DIR$/config/DatabaseConnection.php" />
+        <option value="$PROJECT_DIR$/index.php" />
+        <option value="$PROJECT_DIR$/processors/game-control.php" />
+        <option value="$PROJECT_DIR$/static/js/main.js" />
+        <option value="$PROJECT_DIR$/static/js/start.js" />
       </list>
     </option>
   </component>
@@ -330,28 +386,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope">
-        <subPane subId="Scope 'Project Files'; set:Project Files; class com.intellij.psi.search.scope.ProjectFilesScope">
-          <expand>
-            <path>
-              <item name="twisttr" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
-            </path>
-            <path>
-              <item name="twisttr" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
-              <item name="static" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-            </path>
-            <path>
-              <item name="twisttr" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
-              <item name="static" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="incs" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -362,28 +396,12 @@
             <path>
               <item name="twisttr" type="b2602c69:ProjectViewProjectNode" />
               <item name="twisttr" type="462c0819:PsiDirectoryNode" />
-              <item name="chatfiles" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="twisttr" type="b2602c69:ProjectViewProjectNode" />
-              <item name="twisttr" type="462c0819:PsiDirectoryNode" />
               <item name="config" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="twisttr" type="b2602c69:ProjectViewProjectNode" />
               <item name="twisttr" type="462c0819:PsiDirectoryNode" />
-              <item name="processors" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="twisttr" type="b2602c69:ProjectViewProjectNode" />
-              <item name="twisttr" type="462c0819:PsiDirectoryNode" />
               <item name="static" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="twisttr" type="b2602c69:ProjectViewProjectNode" />
-              <item name="twisttr" type="462c0819:PsiDirectoryNode" />
-              <item name="static" type="462c0819:PsiDirectoryNode" />
-              <item name="css" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="twisttr" type="b2602c69:ProjectViewProjectNode" />
@@ -419,12 +437,34 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope">
+        <subPane subId="Scope 'Project Files'; set:Project Files; class com.intellij.psi.search.scope.ProjectFilesScope">
+          <expand>
+            <path>
+              <item name="twisttr" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
+            </path>
+            <path>
+              <item name="twisttr" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
+              <item name="static" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+            <path>
+              <item name="twisttr" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
+              <item name="static" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="incs" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/static/js" />
-    <property name="settings.editor.selected.configurable" value="JavaScript.Libraries" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -503,18 +543,20 @@
       <workItem from="1539022080779" duration="15233000" />
       <workItem from="1539076637674" duration="43953000" />
       <workItem from="1539159178214" duration="45252000" />
-      <workItem from="1539374622063" duration="4782000" />
+      <workItem from="1539374622063" duration="5345000" />
+      <workItem from="1539417785273" duration="5068000" />
+      <workItem from="1539425966013" duration="26899000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="631069000" />
+    <option name="totallyTimeSpent" value="663599000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1456" height="876" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24641834" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25358167" />
       <window_info id="Structure" order="1" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -549,27 +591,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/chatfiles/chat_form.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="118">
-          <caret line="20" column="6" lean-forward="true" selection-start-line="20" selection-start-column="6" selection-end-line="20" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/chatfiles/texts.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" column="20" selection-start-line="11" selection-start-column="20" selection-end-line="11" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/chatfiles/main.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="591">
-          <caret line="168" lean-forward="true" selection-start-line="168" selection-end-line="168" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/chatfiles/chat_form.php" />
+    <entry file="file://$PROJECT_DIR$/chatfiles/texts.php" />
+    <entry file="file://$PROJECT_DIR$/chatfiles/main.css" />
     <entry file="file://$PROJECT_DIR$/test.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="34">
@@ -599,13 +623,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/chat.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="13" column="6" lean-forward="true" selection-start-line="13" selection-start-column="6" selection-end-line="13" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/chat.php" />
     <entry file="file://$PROJECT_DIR$/static/incs/footer.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="170">
@@ -702,20 +720,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/index.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="80" column="73" selection-start-line="80" selection-start-column="73" selection-end-line="80" selection-end-column="73" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/js/workers/game_countdown.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="319">
-          <caret line="45" column="29" selection-start-line="45" selection-start-column="29" selection-end-line="45" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/static/incs/default-user.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="374">
@@ -737,27 +741,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/static/js/workers/end_game.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="22" selection-start-line="22" selection-end-line="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/chatfiles/class.ChatSimple.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="88" column="39" lean-forward="true" selection-start-line="88" selection-start-column="39" selection-end-line="88" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/config/DatabaseConnection.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="322">
-          <caret line="474" column="20" selection-start-line="474" selection-start-column="20" selection-end-line="474" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/chatfiles/class.ChatSimple.php" />
     <entry file="file://$PROJECT_DIR$/static/js/workers/send_word.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
@@ -769,13 +753,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
           <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/config/WordsGenerator.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="288">
-          <caret line="18" column="17" selection-start-line="18" selection-start-column="17" selection-end-line="18" selection-end-column="17" />
         </state>
       </provider>
     </entry>
@@ -793,27 +770,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/processors/game-control.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-819">
-          <caret line="121" column="40" lean-forward="true" selection-start-line="121" selection-start-column="40" selection-end-line="121" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/js/main.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-4029">
-          <caret line="6" selection-start-line="6" selection-end-line="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/config/config.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1173">
-          <caret line="69" column="54" selection-start-line="69" selection-start-column="54" selection-end-line="69" selection-end-column="54" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/chatfiles/chatfunctions.js" />
     <entry file="file://$PROJECT_DIR$/static/js/workers/get_words.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="357">
@@ -821,31 +778,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/static/incs/game.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="25" column="154" selection-start-line="25" selection-start-column="147" selection-end-line="25" selection-end-column="154" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/js/GameControl.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" selection-start-line="2" selection-end-line="2" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/js/start.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="6154">
-          <caret line="362" column="6" selection-start-line="362" selection-start-column="6" selection-end-line="362" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/static/js/control.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1377">
-          <caret line="81" column="9" selection-start-line="81" selection-start-column="9" selection-end-line="81" selection-end-column="9" />
+        <state relative-caret-position="1241">
+          <caret line="73" column="40" selection-start-line="73" selection-start-column="40" selection-end-line="73" selection-end-column="40" />
         </state>
       </provider>
     </entry>
@@ -856,24 +792,103 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/chatfiles/chatfunctions.js">
+    <entry file="file://$PROJECT_DIR$/config/WordsGenerator.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="8024">
-          <caret line="472" column="14" selection-start-line="472" selection-start-column="14" selection-end-line="472" selection-end-column="14" />
+        <state relative-caret-position="374">
+          <caret line="22" lean-forward="true" selection-start-line="22" selection-end-line="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/js/workers/game_countdown.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="65">
+          <caret line="13" column="17" selection-start-line="13" selection-start-column="17" selection-end-line="13" selection-end-column="17" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/static/js/workers/get_game_ranking.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="13" column="11" lean-forward="true" selection-start-line="13" selection-start-column="11" selection-end-line="13" selection-end-column="11" />
+        <state relative-caret-position="272">
+          <caret line="16" column="10" selection-start-line="16" selection-start-column="10" selection-end-line="16" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/js/workers/end_game.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="11" lean-forward="true" selection-start-line="11" selection-end-line="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/js/GameControl.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" lean-forward="true" selection-start-line="3" selection-end-line="3" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/home.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="591">
-          <caret line="94" column="26" lean-forward="true" selection-start-line="94" selection-start-column="26" selection-end-line="94" selection-end-column="44" />
+        <state relative-caret-position="578">
+          <caret line="229" column="6" lean-forward="true" selection-start-line="229" selection-start-column="6" selection-end-line="229" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/config.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="404">
+          <caret line="62" column="56" lean-forward="true" selection-start-line="62" selection-start-column="56" selection-end-line="62" selection-end-column="56" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/incs/game.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="506">
+          <caret line="38" column="46" selection-start-line="38" selection-start-column="46" selection-end-line="38" selection-end-column="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/DatabaseConnection.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="387">
+          <caret line="440" column="57" selection-start-line="440" selection-start-column="57" selection-end-line="440" selection-end-column="57" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="81" column="2" selection-start-line="81" selection-start-column="2" selection-end-line="81" selection-end-column="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/processors/game-control.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="239">
+          <caret line="244" column="157" selection-start-line="244" selection-start-column="157" selection-end-line="244" selection-end-column="157" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/js/main.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="319">
+          <caret line="266" selection-start-line="266" selection-end-line="266" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/js/start.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="527">
+          <caret line="100" column="61" lean-forward="true" selection-start-line="100" selection-start-column="61" selection-end-line="100" selection-end-column="61" />
+          <folding>
+            <element signature="e#5397#5582#0" />
+            <element signature="e#5627#5866#0" />
+            <element signature="e#5933#6122#0" />
+            <element signature="e#6172#6366#0" />
+            <element signature="e#6413#6488#0" />
+            <element signature="e#9763#9810#0" />
+            <element signature="e#9859#9987#0" />
+          </folding>
         </state>
       </provider>
     </entry>

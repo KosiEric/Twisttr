@@ -40,7 +40,7 @@ $potential_winning;
     {
 
         $this->userID = $this->data["userID"];
-        $this->amount = $this->data["amount"];
+        $this->amount = (int)$this->data["amount"];
         $this->action = $this->data["action"];
         $this->user_details = $this->fetch_data_from_table($this->users_table_name, "user_id", $this->userID)[0];
 
@@ -105,46 +105,57 @@ $potential_winning;
 
     }
 
+    private function game_already_closed_before_now () : bool {
+
+        return $this->fetch_data_from_table($this->games_table_name , 'game_id' , $this->game_id)[0]['game_ended'] == '1';
+
+    }
+
 
     private function  endGame() : string {
 
         $this->game_id = $this->user_details["game_id_about_to_play"];
-        $players = $this->fetch_data_from_table_with_conditions($this->users_table_name , "game_id_about_to_play = '{$this->game_id}' ORDER BY current_point DESC");
+
+        $players = $this->fetch_data_from_table_with_conditions($this->users_table_name , "game_id_about_to_play = '{$this->game_id}' ORDER BY cast(current_point as int) DESC");
         $winner = $players[0];
         $winner_id = $winner['user_id'];
         $winner_current_point = $winner["current_point"];
-        $this->potential_winning = ($this->config->MaximumNumberOfPlayers -  1) * $this->amount;
+        $this->potential_winning = ($this->config->MaximumNumberOfPlayers - 1) * $this->amount;
         $date = date("l jS \of F Y h:i:s A");
-        $this->update_multiple_fields($this->users_table_name ,
-            ["total_wins" => "total_wins + 1" ,
-                "total_amount_won" => "total_amount_won + {$this->potential_winning}"
-            ,   "last_amount_won" => "{$this->potential_winning}" ,
-                "last_win_date" => $date
-            ]
-
-            , "user_id = '{$winner_id}'");
+        $win_date = $date." :N".$this->potential_winning;
         $count = 0;
         $user_position= 0;
 
-        $game_already_closed_before_now = $this->fetch_data_from_table($this->games_table_name , 'game_id' , $this->game_id)[0]['game_ended'] == '1';
-        if(!$game_already_closed_before_now)  $this->update_record($this->games_table_name , 'game_ended' , '1' , 'game_id' , $this->game_id);
+        if(!$this->game_already_closed_before_now()) {
+            $this->executeSQL("UPDATE $this->users_table_name SET  
+                            total_games_played = total_games_played + 1 , last_played_game_id = '{$date}' WHERE game_id_about_to_play =
+                            '{$this->game_id}'");
 
-
+        }
         foreach ($players as $player){
             $count++;
             if($player['user_id'] == $this->userID) $user_position = $count;
             $player_id = $player["user_id"];
             $current_point = $player["current_point"];
-        if(!$game_already_closed_before_now) {
-            $this->update_multiple_fields($this->users_table_name, [
-                "total_point" => "total_point + {$current_point}",
-                "total_games_played" => "total_games_played + 1",
-                "last_played_game_id" => "{$this->game_id}"
-                /*" last_played_date" => "{$date}" */
-            ] , "game_id_about_to_play = '{$this->game_id}'");
-        }
+        if(!$this->game_already_closed_before_now()) {
+             /*" last_played_date" => "{$date}" */
+
+
+            $this->executeSQL("UPDATE $this->users_table_name SET total_points = total_points + {$current_point} 
+                            WHERE user_id = '{$player['user_id']}'");
+           }
+
 
         }
+        if(!$this->game_already_closed_before_now()) {
+            $this->executeSQL("UPDATE $this->users_table_name  SET 
+last_amount_won = '{$this->potential_winning}' , total_amount_won = total_amount_won + $this->potential_winning , total_wins = total_wins + 1 WHERE user_id = '{$winner_id}'");
+            $this->update_multiple_fields($this->games_table_name , ['game_ended' => '1' , 'winner' => "{$winner_id}"] , "game_id = '{$this->game_id}'");
+            $this->delete_record($this->game_words_table_name , 'game_id' , $this->game_id);
+            $this->update_record($this->users_table_name , 'last_win_date' ,  $win_date , "user_id" , "{$winner_id}" , false);
+        }
+
+
 
         $user_position_string = "";
         switch ($user_position){
@@ -161,12 +172,19 @@ $potential_winning;
 
 
         }
+        $avatar = $this->config->IMG_FOLDER.'favicon.png';
+        $message=<<<MESSAGE
+<div class="message message-personal"><figure class="avatar"><img src="$avatar" /></figure><span class="word-sender-name"><span id="game-ranking-text">Game over</span><br />
 
-        $message = ($winner_id == $this->userID) ? "Congrats! you just won &#8358; {$this->potential_winning} with {$winner_current_point} points"
-            : "{$winner['username']} won, with  total  of {$winner_current_point} points, you came {$user_position_string} with {$this->user_details['current_point']} points";
-if(!$game_already_closed_before_now) {
-    $this->update_record($this->users_table_name, "account_balance", "account_balance + {$this->potential_winning}", "user_id", $winner_id);
-}
+
+MESSAGE;
+        $winner_current_point++;
+
+        $text= ($winner_id == $this->userID) ? "Congrats! <span class='word-sender-name'>you just won &#8358; {$this->potential_winning}</span> With <span class='points-earned-by-word' id='points-earned'>{$winner_current_point } points</span>"
+            : "<span class='word-sender-name'>{$winner['username']} won this game</span>, with  total  of <span id='points-earned' class='points-earned-by-word'>{$winner_current_point} points </span>, <span class='word-sender-name'>you came</span>  <span class='points-earned-by-word' id='points-earned'> {$user_position_string} with {$this->user_details['current_point']} points</span>";
+$message.=$text."</div>";
+
+
         return json_encode(["message" => $message , "end" => true]);
 
     }
@@ -208,9 +226,9 @@ if(!$game_already_closed_before_now) {
             /* update current_game_id for all users in game */
             $this->update_record($this->users_table_name , 'current_game_id' , $this->gameIDUserCanPlay , 'game_id_about_to_play' , $this->gameIDUserCanPlay );
             /* Subtract the amount for all players */
-            //$this->update_multiple_fields($this->users_table_name , ['account_balance' => " account_balance - {$this->amount}"] , "game_id_about_to_play = '{$this->gameIDUserCanPlay}'");
+             //$this->update_multiple_fields($this->users_table_name , ['account_balance' => " account_balance - {$this->amount}"] , "game_id_about_to_play = '{$this->gameIDUserCanPlay}'");
             /* Make sure all users point is set to 0  immediately game starts and ends*/
-            $this->executeSQL("UPDATE {$this->users_table_name} SET account_balance = account_balance - {$this->amount} WHERE game_id_about_to_play = '{$this->game_id}'");
+            $this->executeSQL("UPDATE {$this->users_table_name} SET account_balance = cast(account_balance as int) - {$this->amount} WHERE game_id_about_to_play = '{$this->gameIDUserCanPlay}'");
             $this->update_record($this->users_table_name , 'current_point' , 0 , 'game_id_about_to_play' , $this->gameIDUserCanPlay);
             $this->start_time = time() * 1000;
             $this->update_record($this->games_table_name , 'start_time' , $this->start_time , 'game_id' , $this->gameIDUserCanPlay);
@@ -224,12 +242,12 @@ if(!$game_already_closed_before_now) {
 
 
     private function get_total_number_of_players_playing_now () {
-        $total_number_of_users_playing = count($this->fetch_data_from_table_with_conditions($this->games_table_name , "started='1'"));
+        $total_number_of_users_playing = count($this->fetch_data_from_table_with_conditions($this->games_table_name , "started=1 AND game_ended = 0 AND number_of_players = {$this->config->MaximumNumberOfPlayers}"));
         $total_number_of_users_playing = $total_number_of_users_playing * $this->config->MaximumNumberOfPlayers;
 
         $total_number_of_players_waiting = 0;
 
-        $all_awaiting_games = $this->fetch_data_from_table_with_conditions($this->games_table_name , "started='0'");
+        $all_awaiting_games = $this->fetch_data_from_table_with_conditions($this->games_table_name , "started=0 AND number_of_players < {$this->config->MaximumNumberOfPlayers}");
 
         foreach ($all_awaiting_games as $awaiting_game){
 
@@ -322,13 +340,13 @@ DATA;
 
         if($this->userCurrentGameDetail['game_ended'] == '1') return $this->endGame();
 
-        $players = $this->fetch_data_from_table_with_conditions($this->users_table_name , "game_id_about_to_play = '{$this->game_id}' ORDER BY current_point DESC");
+        $players = $this->fetch_data_from_table_with_conditions($this->users_table_name , "game_id_about_to_play = '{$this->game_id}' ORDER BY cast(current_point as int)  DESC LIMIT {$this->config->MaximumNumberOfPlayers}");
 
         $message = "";
         if(!empty($players)) {
             $message = <<<MESSAGE
-            <div class="message new"><figure class="avatar"><img src="{$this->config->IMG_FOLDER}favicon.png" /></figure><span id="game-ranking-text">ranking</span>
-
+            <div class="message message-personal"><figure class="avatar"><img src="{$this->config->IMG_FOLDER}favicon.png" /></figure><span id="game-ranking-text">ranking</span>
+ 
 
 MESSAGE;
 

@@ -1,4 +1,4 @@
-
+//success ochu
 function GameRoom(webPage , defaults , playAmount , gameDetails , gameClass) {
     parent = this;
 
@@ -11,6 +11,7 @@ function GameRoom(webPage , defaults , playAmount , gameDetails , gameClass) {
 
     this.gameDetails = gameDetails;
 
+    this.gameEnded = false;
 
     this.potentialWinning = $('#potential-winning');
     this.potentialWinningAmount = (Number(parent.gameDetails.players) - 1) * playAmount;
@@ -22,7 +23,7 @@ function GameRoom(webPage , defaults , playAmount , gameDetails , gameClass) {
     this.endTime = 1000 * 60 * /*Minutes */ 3;
     this.endTime += this.startTime;
 
-
+   this.favicon = parent.defaults.imgFolder+'favicon.png';
 
 
 
@@ -32,7 +33,7 @@ function GameRoom(webPage , defaults , playAmount , gameDetails , gameClass) {
 
 
     this.messages = $('.messages-content');
-    this.messageInput = $('.message-input');
+    this.messageInput = $('#game-text.message-input');
     this.gameHintContainer = $('#game-hint-container');
     this.gameHints = $('#game-hints');
     var msg = "";
@@ -56,44 +57,55 @@ function GameRoom(webPage , defaults , playAmount , gameDetails , gameClass) {
 
 
 
-    this.gameAvatar = {'m' : parent.webPage.defaults.imgFolder + 'avatar.png' , 'f' : parent.webPage.defaults.imgFolder + 'avatar2.png'};
-    this.lastTimeUpdated = new Date().getTime();
-
 
 
     var     d, h, m,
         i = 0;
     this.messages.mCustomScrollbar();
 
-      parent.endGame = function() {
-
-          parent.messageInput.blur(function (t) {
-
-              parent.messageInput.prop("disabled" , true);
-              var endGameWorker = new Worker(parent.defaults.workersFolder + 'end_game.js');
-              data = {"userID" : parent.webPage.userDetails.user_id ,
-                      "amount" : playAmount ,
-                  "action" : parent.gameClass.gameActions.endGame
-               };
-
-              data = JSON.stringify(data);
-
-              endGameWorker.postMessage(data);
-
-              endGameWorker.onmessage = function (ev) {
-
-                  console.log(ev.data);
-              }
-
-          });
+      this.endGame = function() {
 
 
+          parent.messageInput.focusout();
+          parent.messageInput.val("");
+          parent.messageInput.prop("disabled", true);
+          var endGameWorker = new Worker(parent.defaults.workersFolder + 'end_game.js');
+          data = {
+              "userID": parent.webPage.userDetails.user_id,
+              "amount": playAmount,
+              "action": parent.gameClass.gameActions.endGame,
+              "file": parent.defaults.files.gameControlFile
 
-      };
+          };
 
+
+          data = JSON.stringify(data);
+
+          endGameWorker.postMessage(data);
+
+          endGameWorker.onmessage = function (ev) {
+
+              console.log(ev.data);
+              resp = JSON.parse(ev.data);
+              //    console.log(ev.data);
+
+              //$('<div class="message loading new"><figure class="avatar"><img src="' + parent.favicon + '" /></figure><span></span></div>').appendTo($('.mCSB_container'));
+              //parent.updateScrollbar();
+
+
+//                  $('.message.loading').remove();
+  //                parent.updateScrollbar();
+                  $(resp.message).appendTo($('.mCSB_container')).addClass('new');
+                  parent.setDate();
+                  parent.updateScrollbar();
+                  setTimeout('window.location.reload()' , 11000);
+
+          };
+      }
       parent.getGameCurrentRankings = function () {
 
           var getGameRankingWorker = new Worker(parent.defaults.workersFolder + 'get_game_ranking.js');
+
           data = {"amount" : playAmount ,
                   "userID" : parent.webPage.userDetails.user_id,
               "action" : parent.gameClass.gameActions.getCurrentRanking ,
@@ -105,19 +117,16 @@ function GameRoom(webPage , defaults , playAmount , gameDetails , gameClass) {
           getGameRankingWorker.postMessage(data);
 
           getGameRankingWorker.onmessage = function (ev) {
-
+              if(parent.gameEnded)return getGameRankingWorker.terminate();
               resp = JSON.parse(ev.data);
 
-              $('<div class="message loading new"><figure class="avatar"><img src="/static/img/favicon.png" /></figure><span></span></div>').appendTo($('.mCSB_container'));
               parent.updateScrollbar();
 
-              setTimeout(function () {
-                  $('.message.loading').remove();
+
                   $(resp.message).appendTo($('.mCSB_container')).addClass('new');
                   parent.setDate();
                   parent.updateScrollbar();
-                  i++;
-              }, 1300);
+
 
 
           }
@@ -142,13 +151,14 @@ function GameRoom(webPage , defaults , playAmount , gameDetails , gameClass) {
 
            data = JSON.stringify(data);
            var getWordsWebWorker = new Worker(parent.defaults.workersFolder + 'get_words.js');
+
            getWordsWebWorker.postMessage(data);
 
            getWordsWebWorker.onmessage = function (ev) {
-
+               if(parent.gameEnded) return getWordsWebWorker.terminate();
              var wordDetails = JSON.parse(ev.data);
 if(wordDetails.data != "") {
-    $('<div class="message loading new"><figure class="avatar"><img src="/static/img/favicon.png" /></figure><span></span></div>').appendTo($('.mCSB_container'));
+    $('<div class="message loading new"><figure class="avatar"><img src="'+parent.favicon+'" /></figure><span></span></div>').appendTo($('.mCSB_container'));
     parent.updateScrollbar();
 
 
@@ -196,7 +206,7 @@ if(wordDetails.data != "") {
 
 
         changeGameWordsWorker.onmessage = function (ev) {
-
+if(parent.gameEnded) return changeGameWordsWorker.terminate();
 
 
             resp = JSON.parse(ev.data);
@@ -263,11 +273,11 @@ if(wordDetails.data != "") {
              parent.gameHintContainer.css('display' , 'none');
          };
 
-         this.showWordWarning = function (warningText) {
+         this.showWordWarning = function (warningText , secconds = 3) {
                    if(warningText == null) {warningText = parent.gameClass.gameWords.tryAnotherWord;}
                    parent.gameHints.html(warningText);
                    parent.gameHintContainer.css('display' , 'block');
-                   setTimeout('parent.hideWordWarning()' , 3000);
+                   setTimeout('parent.hideWordWarning()' , secconds * 1000);
          };
 
 
@@ -320,7 +330,6 @@ if(wordDetails.data != "") {
              sendWordWorker.postMessage(data);
 
             sendWordWorker.onmessage = function (ev) {
-                  console.log(ev.data);
                  var reply  = JSON.parse(ev.data);
 
                  parent.messageInput.val("");
@@ -357,7 +366,8 @@ if(wordDetails.data != "") {
         getCounter.onmessage = function (ev) {
             resp = JSON.parse(ev.data);
             parent.gameCountdown.text(resp.time);
-            if (resp.end){getCounter.terminate(); parent.endGame()};
+
+            if (resp.end){parent.gameEnded = true; getCounter.terminate(); parent.endGame()};
         }
 
     };

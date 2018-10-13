@@ -85,7 +85,7 @@ $website_details = new WebsiteDetails();
       <div class="col-lg-4 col-md-6 col-sm-12">
         <div class="icon icon-danger"><i class="fa fa-share-square-o" aria-hidden="true"></i></div>
         <div class="description">
-          <div class="h4">Instant payment system</div>
+          <div class="h4">Instant payout</div>
           <p class="text-muted">You can request for payment anytime, and get credited to your bank account immediately. even at mid-night!</p>
         </div>
       </div>
@@ -164,7 +164,7 @@ $website_details = new WebsiteDetails();
             <ul class="list-unstyled text-muted">
               <li class="pt-3">10 players</li>
               <li>Game lasts for 4mins</li>
-              <li>Winner is rewarded with <?php echo  $website_details->Naira ?>900</li>
+              <li>Winner is rewarded with <?php echo  $website_details->Naira ?>1000</li>
               <li><?php echo  $website_details->Naira ?>100 will be charged for Transfer fee</li>
             </ul>
           </div>
@@ -181,7 +181,7 @@ $website_details = new WebsiteDetails();
             <ul class="list-unstyled text-muted">
               <li class="pt-3">10 players</li>
               <li>Game lasts for 4mins</li>
-              <li>Winner is rewarded with <?php echo  $website_details->Naira ?>1800</li>
+              <li>Winner is rewarded with <?php echo  $website_details->Naira ?>2000</li>
               <li><?php echo  $website_details->Naira ?>100 will be charged for Transfer fee</li>
             </ul>
           </div>
@@ -198,7 +198,7 @@ $website_details = new WebsiteDetails();
             <ul class="list-unstyled text-muted">
               <li class="pt-3">10 players</li>
               <li>Game lasts for 4min.</li>
-              <li>Winner is rewarded with <?php echo  $website_details->Naira ?>4500</li>
+              <li>Winner is rewarded with <?php echo  $website_details->Naira ?>5000</li>
               <li><b><?php echo  $website_details->Naira ?>100 will be charged for Transfer fee</b></li>
             </ul>
           </div>
@@ -215,7 +215,7 @@ $website_details = new WebsiteDetails();
                     <ul class="list-unstyled text-muted">
                         <li class="pt-3">10 members</li>
                         <li>Game lasts for 4min.</li>
-                        <li>Winner is rewarded with <?php echo $website_details->Naira; ?>9000</li>
+                        <li>Winner is rewarded with <?php echo $website_details->Naira; ?>10000</li>
                         <li><b><?php echo  $website_details->Naira ?>100 will be charged for Transfer fee</b></li>
                     </ul>
                 </div>

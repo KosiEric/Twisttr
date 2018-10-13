@@ -11,8 +11,8 @@ if (!String.format) {
 }
 
 
-self.seconds = 35;
-self.minutes = 3;
+self.seconds = 02;
+self.minutes = 1;
 self.end = false;
 
 self.data = "";
