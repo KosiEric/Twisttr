@@ -10,7 +10,7 @@ function  GameClass () {
         exitUserFromGame : "exit_user_from_game"  , addNewUserToGame: "add_new_user_to_game" ,
         updateNumberOfPlayers: 'update_number_of_players' , getAllWords : 'get_all_words'   ,
         getCurrentRanking : 'get_current_ranking' , sendWord : 'send_word' , endGame : 'end_game' ,  getWinner : "get_winner"};
-        this.userID = this.webPage.userDetails.user_id;
+    this.userID = this.webPage.userDetails.user_id;
     this.gameWords = [];
     this.gameDetails = "";
     this.gameStartTime = "";
@@ -22,7 +22,7 @@ function  GameClass () {
             return String.format("The letter <strong>{0}</strong> is not listed in words , try another word" , letter);
         },  tryAnotherWord : 'try using another word' , youWon :'Congratulations! , you are the winner' ,   someoneElseWon : function (username) {
 
-        return String.format("{0} won, try improving on your speed next time" , username);
+            return String.format("{0} won, try improving on your speed next time" , username);
         } , tooManyInstances : function (letter) {
             return String.format("Too many instances of <strong>{0}</strong> , try another word" , letter);
         }};
@@ -97,8 +97,8 @@ function  GameClass () {
                 resp = JSON.parse(ev.data);
 
 
-               var gameMembersText = (resp.players > 1) ? "users" : "user";
-               parent.gameUsersPluralText.text(gameMembersText);
+                var gameMembersText = (resp.players > 1) ? "users" : "user";
+                parent.gameUsersPluralText.text(gameMembersText);
 
                 if(resp.start !== "1") {
 
@@ -112,17 +112,17 @@ function  GameClass () {
 
                     getNumberOfJoinedPlayers.terminate();
 
-                   $.getScript(webPageObject.defaults.jsFolder + 'jquery.mCustomScrollbar.concat.min.js' , function () {
-                       $.getScript(webPageObject.defaults.jsFolder + 'start.js' , function () {
-                           webPageObject.gamePage.hide();
-                           if(!$('<link>').appendTo('head').attr({'rel' : 'stylesheet' , 'type' : 'text/css' , 'href' : webPageObject.defaults.cssFolder+'jquery.mCustomScrollbar.min.css'})) return;
+                    $.getScript(webPageObject.defaults.jsFolder + 'jquery.mCustomScrollbar.concat.min.js' , function () {
+                        $.getScript(webPageObject.defaults.jsFolder + 'start.js' , function () {
+                            webPageObject.gamePage.hide();
+                            if(!$('<link>').appendTo('head').attr({'rel' : 'stylesheet' , 'type' : 'text/css' , 'href' : webPageObject.defaults.cssFolder+'jquery.mCustomScrollbar.min.css'})) return;
 
-                           if(!$('<link>').appendTo('head').attr({'rel' : 'stylesheet' , 'type' : 'text/css' , 'href' : webPageObject.defaults.cssFolder+'start2.css'})) return;
+                            if(!$('<link>').appendTo('head').attr({'rel' : 'stylesheet' , 'type' : 'text/css' , 'href' : webPageObject.defaults.cssFolder+'start2.css'})) return;
 
-                           gameRoom = new GameRoom(parent.webPage , parent.webPage.defaults , parent.playAmount , resp , parent);
-                       });
+                            gameRoom = new GameRoom(parent.webPage , parent.webPage.defaults , parent.playAmount , resp , parent);
+                        });
 
-                   });
+                    });
 
                 }
 

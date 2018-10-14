@@ -26,6 +26,7 @@
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="fa fa-money"></i> </span>
                                 <select name="play-amount-options" id="play-amount-options" class="form-control selectpicker">
+                                    <option value="0">&#8358; 0.00 Free Mode</option>
                                     <option value="100">&#8358; 100</option>
                                     <option value="200">&#8358; 200</option>
                                     <option value="500">&#8358; 500</option>
