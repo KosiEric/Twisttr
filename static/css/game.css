@@ -11,7 +11,6 @@
 
 }
 
-
 .circle::before,
 .circle::after {
     position: absolute;
@@ -32,11 +31,14 @@
 .circle {
     position: relative;
     z-index: 2;
-    background-color: #fff;
-    border: 2px solid #5c5eae;
+    background-color: green;
+    border: 1px solid green;
     color: #5c5eae;
     line-height: 50px;
     overflow: hidden;
+}
+#game-start-users-text{
+    color : #fff;
 }
 
 .circle:hover {
@@ -72,7 +74,7 @@
 
 .circle a {
     text-decoration: none;
-    color: #1d2087;
+    color: #fff;
 }
 
 .circle h2 {
@@ -92,6 +94,10 @@
     text-align: center;
     margin-top : 5em;
     font-family: Cairo;
+}
+
+#number-of-players-count{
+    color: red;
 }
 
 #game-hint-container{
@@ -163,4 +169,14 @@
     color : #fff;
     font-family: Cairo;
     font-size: 14px;
+}
+p#game-start-warning-text{
+    text-align: center;
+    position:relative;
+    top : 10px;
+    font-family: Cairo;
+    color : #000;
+    font-size: 15px;
+    margin-top: 10px;
+    display: block;
 }

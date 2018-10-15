@@ -98,7 +98,7 @@ function GameRoom(webPage , defaults , playAmount , gameDetails , gameClass) {
                   $(resp.message).appendTo($('.mCSB_container')).addClass('new');
                   parent.setDate();
                   parent.updateScrollbar();
-                  setTimeout('window.location.reload()' , 11000);
+               //   setTimeout('window.location.reload()' , 11000);
 
           };
       }
@@ -285,7 +285,7 @@ if(parent.gameEnded) return changeGameWordsWorker.terminate();
             msg = $.trim(parent.messageInput.val()).toLowerCase();
 
              var isValidWord = $Spelling.BinSpellCheck(msg);
-            if(msg == '' || !parent.defaults.regularExpressions.gameWordsRegEx.test(msg) || !isValidWord){ parent.showWordWarning(); return false;}
+            if(msg == '' || !parent.defaults.regularExpressions.gameWordsRegEx.test(msg) || !$.inArray(msg, parent.currentlyUsedWords) < 0 || !isValidWord){ parent.showWordWarning(); return false;}
 
             for(var i = 0; i < msg.length; i++){
 

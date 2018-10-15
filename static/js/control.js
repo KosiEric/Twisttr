@@ -1,7 +1,8 @@
 $(document).ready(function () {
     webPageObject = new WebPage();
-
+    parent = this;
     var playAmount =0;
+    var gamePlayAmount = $('#game-play-amount');
     function payWithPaystack(email , amount , name , originalAmount){
         var handler = PaystackPop.setup({
             key: 'pk_test_6e24123adb39a373e1fb9f978dc287e5a7e626c3',
@@ -88,7 +89,7 @@ if(webPageObject.isLoggedInUser){
                var gameClass = new GameClass();
                playAmount = Number($('#'+playAmountOptions.attr('id') + " option:selected").attr("value"));
                gameClass.addUserToGame(playAmount);
-
+               gamePlayAmount.text(playAmount);
            });
 
 

@@ -42,8 +42,10 @@ abstract class WebsiteConfigurationSettings {
     public  $transferFee = 100;
     public  $NumberOfRandomWords = 45;
     public  $GameIDLength = 6;
-    public  $MaximumNumberOfPlayers = 1;
+    public  $MaximumNumberOfPlayers = 2;
     public  $Naira = "&#8358;";
+    public  $ChatPage = "/chat";
+    public $BlogPage = "/blog";
 
 
     public  $Banks = Array("Access Bank" , "CitiBank" , "Coronation Merchant Bank" , "Diamond Bank" , "Ecobank Nigeria" , "Enterprise Bank Limited" , "FBN Merchant Bank" ,"Fidelity Bank Nigeria",

@@ -6,8 +6,8 @@
             <a href="#section_1"><h2><span id="game-number-of-players-start-count">1</span><small id="game-start-users-text" class="game-users-plural">user</small><br /><p>Joined</p></h2></a>        </div>
     </div>
 
-
-    <button type="button" id="exit-game-button" class="btn btn-warning btn-circle btn-xl">Exit</button>
+    <p id="game-start-warning-text">Please do not refresh this page, wait for the game to start or click the button below to exit the game, else  <strong style="color: green"><?php echo $HomePage->WebsiteDetails->Naira; ?><span id="game-play-amount"></span></strong>  will be deducted when game starts,even without you playing</p>
+    <button type="button" id="exit-game-button" class="btn btn-warning btn-circle btn-xl">Exit Game</button>
 
 
 </div>
