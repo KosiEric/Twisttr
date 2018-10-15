@@ -60,6 +60,13 @@ Chat
     justify-content: space-between;
     flex-direction: column;
 }
+@media only screen and (min-width:600px){
+    .chat {
+
+        width : 600px;
+        height : 100vh;
+    }
+}
 
 /*--------------------
 Chat Title

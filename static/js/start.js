@@ -285,7 +285,7 @@ if(parent.gameEnded) return changeGameWordsWorker.terminate();
             msg = $.trim(parent.messageInput.val()).toLowerCase();
 
              var isValidWord = $Spelling.BinSpellCheck(msg);
-            if(msg == '' || !parent.defaults.regularExpressions.gameWordsRegEx.test(msg) || !$.inArray(msg, parent.currentlyUsedWords) < 0 || !isValidWord){ parent.showWordWarning(); return false;}
+            if(msg == '' || !parent.defaults.regularExpressions.gameWordsRegEx.test(msg) || $.inArray(msg, parent.currentlyUsedWords) >= 0 || !isValidWord){ parent.showWordWarning(); return false;}
 
             for(var i = 0; i < msg.length; i++){
 
