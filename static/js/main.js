@@ -110,11 +110,9 @@ containing the DOM objects and second the new value of the css "display" propert
 
 
 
-               $.getScript(parent.defaults.files.chatfunctions , function (t) {
 
                    $('#chat-container').fadeIn('slow' , function () {
                        /* Makes sure the chat window is fixed even on user scroll */parent.chatContainer.css('position' , 'fixed');
-                   });
 
                });
 

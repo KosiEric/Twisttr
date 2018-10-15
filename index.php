@@ -99,7 +99,14 @@ $refresh = false;
 
     <link rel="stylesheet" type="text/css" href="<?php echo  $HomePage->WebsiteDetails->CSS_FOLDER; ?>defaults.css" />
     <link rel="stylesheet" type="text/css" href="<?php echo  $HomePage->WebsiteDetails->CSS_FOLDER; ?>footer.css" />
-
+    <script type="text/javascript">
+        (function(d) {
+            var cwjs, id='chatwing-js';  if(d.getElementById(id)) {return;}
+            cwjs = d.createElement('script'); cwjs.type = 'text/javascript'; cwjs.async = true; cwjs.id = id
+            cwjs.src = "//chatwing.com/code/2d678d60-ce65-11e8-ab30-8d005bebebc5/embedded";
+            d.getElementsByTagName('head')[0].appendChild(cwjs);
+        })(document);
+    </script>
 
 
     <link rel="stylesheet" type="text/css" href="<?php echo  $HomePage->WebsiteDetails->CSS_FOLDER; ?>control.css" />
@@ -136,7 +143,7 @@ if(!isset($_SESSION['username'])){
 <div id="chat-container">
 
     <div id="chat-wrapper">
-
+        <div id="chatwing-embedded-2d678d60-ce65-11e8-ab30-8d005bebebc5" class="chatwing-chat"></div>
 </div>
 </div>
 

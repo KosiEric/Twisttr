@@ -14,8 +14,8 @@ $website_details = new WebsiteDetails();
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/paper-kit.css?v=2.1.0" rel="stylesheet">
-    <link href="styles/main.css" rel="stylesheet">
-  </head>
+    <link href="styles/main.css" rel="stylesheet" />
+   </head>
   <body id="top">
     <header>
       <div class="aa-header">
@@ -164,7 +164,7 @@ $website_details = new WebsiteDetails();
             <ul class="list-unstyled text-muted">
               <li class="pt-3">10 players</li>
               <li>Game lasts for 4mins</li>
-              <li>Winner is rewarded with <?php echo  $website_details->Naira ?>1000</li>
+              <li>Winner is rewarded with <?php echo  $website_details->Naira ?>900</li>
               <li><?php echo  $website_details->Naira ?>100 will be charged for Transfer fee</li>
             </ul>
           </div>
@@ -181,7 +181,7 @@ $website_details = new WebsiteDetails();
             <ul class="list-unstyled text-muted">
               <li class="pt-3">10 players</li>
               <li>Game lasts for 4mins</li>
-              <li>Winner is rewarded with <?php echo  $website_details->Naira ?>2000</li>
+              <li>Winner is rewarded with <?php echo  $website_details->Naira ?>1800</li>
               <li><?php echo  $website_details->Naira ?>100 will be charged for Transfer fee</li>
             </ul>
           </div>
@@ -198,7 +198,7 @@ $website_details = new WebsiteDetails();
             <ul class="list-unstyled text-muted">
               <li class="pt-3">10 players</li>
               <li>Game lasts for 4min.</li>
-              <li>Winner is rewarded with <?php echo  $website_details->Naira ?>5000</li>
+              <li>Winner is rewarded with <?php echo  $website_details->Naira ?>4500</li>
               <li><b><?php echo  $website_details->Naira ?>100 will be charged for Transfer fee</b></li>
             </ul>
           </div>
@@ -215,7 +215,7 @@ $website_details = new WebsiteDetails();
                     <ul class="list-unstyled text-muted">
                         <li class="pt-3">10 members</li>
                         <li>Game lasts for 4min.</li>
-                        <li>Winner is rewarded with <?php echo $website_details->Naira; ?>10000</li>
+                        <li>Winner is rewarded with <?php echo $website_details->Naira; ?>9000</li>
                         <li><b><?php echo  $website_details->Naira ?>100 will be charged for Transfer fee</b></li>
                     </ul>
                 </div>
@@ -241,7 +241,7 @@ $website_details = new WebsiteDetails();
       <div class="row">
         <div class="col-md-4 mb-3">
           <div class="aa-testimonials-body">
-              <blockquote><strong>"<?php echo $website_details->SiteName?> is awesome and I can't believe how easily i won <?php echo $website_details->Naira; ?>9000 Just like that. I wish i had known this platform before now"</strong></blockquote>
+              <blockquote><strong>"<?php echo $website_details->SiteName?> is awesome and I can't believe how easily i won <?php echo $website_details->Naira; ?>9000 Just like that. I wish this kind of platform existed before now"</strong></blockquote>
             <div class="row pt-3">
               <div class="col-lg-5 col-md-12"><img class="testimonial-images" src="<?php echo $website_details->IMG_FOLDER;?>rowland.jpg" alt="Daniels Rowland" /></div>
               <div class="col-lg-7 col-md-12 pt-3">
