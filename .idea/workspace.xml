@@ -3,7 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="f4d7fd38-af9c-4203-adef-906fb572f635" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/config/config.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/config.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/css/start2.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/start2.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/home.php" beforeDir="false" afterPath="$PROJECT_DIR$/home.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/processors/game-control.php" beforeDir="false" afterPath="$PROJECT_DIR$/processors/game-control.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/static/js/start.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/start.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -48,9 +49,9 @@
           <entry key="project.open.time.73" value="2" />
           <entry key="project.open.time.79" value="1" />
           <entry key="project.open.time.80" value="1" />
-          <entry key="project.open.time.82" value="1" />
+          <entry key="project.open.time.82" value="2" />
           <entry key="project.open.time.92" value="1" />
-          <entry key="project.opened" value="17" />
+          <entry key="project.opened" value="18" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
@@ -58,7 +59,7 @@
           <entry key="CSS" value="568" />
           <entry key="HTML" value="57" />
           <entry key="JavaScript" value="22155" />
-          <entry key="PHP" value="23755" />
+          <entry key="PHP" value="23966" />
           <entry key="SQL" value="14" />
         </counts>
       </usages-collector>
@@ -72,7 +73,7 @@
           <entry key="HTML" value="1" />
           <entry key="Image" value="2" />
           <entry key="JavaScript" value="100" />
-          <entry key="PHP" value="152" />
+          <entry key="PHP" value="154" />
           <entry key="PLAIN_TEXT" value="5" />
         </counts>
       </usages-collector>
@@ -82,7 +83,7 @@
         <counts>
           <entry key="css" value="568" />
           <entry key="js" value="22155" />
-          <entry key="php" value="23826" />
+          <entry key="php" value="24037" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -91,7 +92,7 @@
           <entry key="html" value="1" />
           <entry key="jpg" value="1" />
           <entry key="js" value="100" />
-          <entry key="php" value="152" />
+          <entry key="php" value="154" />
           <entry key="png" value="1" />
           <entry key="txt" value="5" />
         </counts>
@@ -102,33 +103,10 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/static/js/GameControl.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="225">
-              <caret line="92" lean-forward="true" selection-start-line="92" selection-end-line="92" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/processors/game-control.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="500">
-              <caret line="260" column="5" lean-forward="true" selection-start-line="260" selection-start-column="5" selection-end-line="260" selection-end-column="5" />
-              <folding>
-                <element signature="n#get_total_number_of_players_playing_now#0;n#GameControl#0;n#!!top" />
-                <element signature="n#getAllWords#0;n#GameControl#0;n#!!top" />
-                <element signature="n#get_current_players_joined#0;n#GameControl#0;n#!!top" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/static/js/control.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="659">
-              <caret line="125" column="3" lean-forward="true" selection-start-line="125" selection-start-column="3" selection-end-line="125" selection-end-column="3" />
+            <state relative-caret-position="144">
+              <caret line="68" lean-forward="true" selection-start-line="68" selection-end-line="68" />
             </state>
           </provider>
         </entry>
@@ -136,8 +114,17 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/config/config.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="198">
-              <caret line="34" column="45" lean-forward="true" selection-start-line="34" selection-start-column="45" selection-end-line="34" selection-end-column="45" />
+            <state relative-caret-position="659">
+              <caret line="72" column="40" lean-forward="true" selection-start-line="72" selection-start-column="40" selection-end-line="72" selection-end-column="40" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/home.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="352">
+              <caret line="35" column="41" selection-start-line="35" selection-start-column="41" selection-end-line="35" selection-end-column="41" />
             </state>
           </provider>
         </entry>
@@ -145,8 +132,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/static/incs/game.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="200">
-              <caret line="20" column="19" lean-forward="true" selection-start-line="20" selection-start-column="19" selection-end-line="20" selection-end-column="19" />
+            <state relative-caret-position="251">
+              <caret line="23" column="33" lean-forward="true" selection-start-line="23" selection-start-column="33" selection-end-line="23" selection-end-column="33" />
             </state>
           </provider>
         </entry>
@@ -155,7 +142,7 @@
         <entry file="file://$PROJECT_DIR$/static/css/start2.css">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="455">
-              <caret line="454" column="45" lean-forward="true" selection-start-line="454" selection-start-column="45" selection-end-line="454" selection-end-column="45" />
+              <caret line="454" column="45" selection-start-line="454" selection-start-column="45" selection-end-line="454" selection-end-column="45" />
             </state>
           </provider>
         </entry>
@@ -163,8 +150,17 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/static/js/start.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="470">
-              <caret line="295" column="13" lean-forward="true" selection-start-line="295" selection-start-column="13" selection-end-line="295" selection-end-column="13" />
+            <state relative-caret-position="449">
+              <caret line="100" column="21" lean-forward="true" selection-start-line="100" selection-start-column="21" selection-end-line="100" selection-end-column="21" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/index.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="459">
+              <caret line="116" lean-forward="true" selection-start-line="116" selection-end-line="116" />
             </state>
           </provider>
         </entry>
@@ -173,8 +169,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>footer</find>
-      <find>images.u</find>
       <find>this.defa</find>
       <find>count</find>
       <find>notif</find>
@@ -203,6 +197,8 @@
       <find>getS</find>
       <find>twisttr</find>
       <find>exit</find>
+      <find>add_cu</find>
+      <find>get_curre</find>
     </findStrings>
     <replaceStrings>
       <replace>public</replace>
@@ -262,13 +258,11 @@
         <option value="$PROJECT_DIR$/static/js/workers/get_game_ranking.js" />
         <option value="$PROJECT_DIR$/config/WordsGenerator.php" />
         <option value="$PROJECT_DIR$/config/DatabaseConnection.php" />
-        <option value="$PROJECT_DIR$/processors/game-control.php" />
         <option value="$PROJECT_DIR$/static/js/workers/game_countdown.js" />
         <option value="$PROJECT_DIR$/static/incs/choose-play-amount-modal.php" />
         <option value="$PROJECT_DIR$/static/js/GameControl.js" />
         <option value="$PROJECT_DIR$/scripts/use.fontawesome.js" />
         <option value="$PROJECT_DIR$/styles/testimonials.css" />
-        <option value="$PROJECT_DIR$/home.php" />
         <option value="$PROJECT_DIR$/static/js/main.js" />
         <option value="$PROJECT_DIR$/chat.php" />
         <option value="$PROJECT_DIR$/index.php" />
@@ -276,8 +270,10 @@
         <option value="$PROJECT_DIR$/static/incs/game.php" />
         <option value="$PROJECT_DIR$/static/css/game.css" />
         <option value="$PROJECT_DIR$/static/incs/header.php" />
-        <option value="$PROJECT_DIR$/config/config.php" />
         <option value="$PROJECT_DIR$/static/css/start2.css" />
+        <option value="$PROJECT_DIR$/home.php" />
+        <option value="$PROJECT_DIR$/config/config.php" />
+        <option value="$PROJECT_DIR$/processors/game-control.php" />
         <option value="$PROJECT_DIR$/static/js/start.js" />
       </list>
     </option>
@@ -368,6 +364,12 @@
               <item name="twisttr" type="462c0819:PsiDirectoryNode" />
               <item name="static" type="462c0819:PsiDirectoryNode" />
               <item name="incs" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="twisttr" type="b2602c69:ProjectViewProjectNode" />
+              <item name="twisttr" type="462c0819:PsiDirectoryNode" />
+              <item name="static" type="462c0819:PsiDirectoryNode" />
+              <item name="js" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -463,17 +465,18 @@
       <workItem from="1539505074117" duration="2082000" />
       <workItem from="1539532664406" duration="7135000" />
       <workItem from="1539608981395" duration="6312000" />
+      <workItem from="1539690782697" duration="2810000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="679721000" />
+    <option name="totallyTimeSpent" value="682531000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1456" height="876" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.260745" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.26432666" />
       <window_info id="Structure" order="1" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -697,13 +700,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/home.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" column="23" lean-forward="true" selection-start-line="9" selection-start-column="23" selection-end-line="9" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/styles/testimonials.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="166">
@@ -711,9 +707,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/static/help-modal.css">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
+    <entry file="file://$PROJECT_DIR$/static/help-modal.css" />
     <entry file="file://$PROJECT_DIR$/chat.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="272">
@@ -732,13 +726,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="272">
           <caret line="16" column="22" lean-forward="true" selection-start-line="16" selection-start-column="22" selection-end-line="16" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/js/GameControl.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="92" lean-forward="true" selection-start-line="92" selection-end-line="92" />
         </state>
       </provider>
     </entry>
@@ -763,57 +750,77 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/index.php">
+    <entry file="file://$PROJECT_DIR$/static/js/GameControl.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="101" selection-start-line="101" selection-end-line="101" />
+        <state relative-caret-position="225">
+          <caret line="92" selection-start-line="92" selection-end-line="92" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/static/css/start2.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="455">
-          <caret line="454" column="45" lean-forward="true" selection-start-line="454" selection-start-column="45" selection-end-line="454" selection-end-column="45" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/js/control.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="659">
-          <caret line="125" column="3" lean-forward="true" selection-start-line="125" selection-start-column="3" selection-end-line="125" selection-end-column="3" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/config/config.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="34" column="45" lean-forward="true" selection-start-line="34" selection-start-column="45" selection-end-line="34" selection-end-column="45" />
+          <caret line="454" column="45" selection-start-line="454" selection-start-column="45" selection-end-line="454" selection-end-column="45" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/static/incs/game.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="200">
-          <caret line="20" column="19" lean-forward="true" selection-start-line="20" selection-start-column="19" selection-end-line="20" selection-end-column="19" />
+        <state relative-caret-position="251">
+          <caret line="23" column="33" lean-forward="true" selection-start-line="23" selection-start-column="33" selection-end-line="23" selection-end-column="33" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/static/js/start.js">
+    <entry file="file://$PROJECT_DIR$/home.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="470">
-          <caret line="295" column="13" lean-forward="true" selection-start-line="295" selection-start-column="13" selection-end-line="295" selection-end-column="13" />
+        <state relative-caret-position="352">
+          <caret line="35" column="41" selection-start-line="35" selection-start-column="41" selection-end-line="35" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/config.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="659">
+          <caret line="72" column="40" lean-forward="true" selection-start-line="72" selection-start-column="40" selection-end-line="72" selection-end-column="40" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/processors/game-control.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="500">
-          <caret line="260" column="5" lean-forward="true" selection-start-line="260" selection-start-column="5" selection-end-line="260" selection-end-column="5" />
+        <state relative-caret-position="426">
+          <caret line="327" column="9" lean-forward="true" selection-start-line="327" selection-start-column="9" selection-end-line="327" selection-end-column="9" />
           <folding>
+            <element signature="n#add_word_to_game#0;n#GameControl#0;n#!!top" />
+            <element signature="n#game_already_closed_before_now#0;n#GameControl#0;n#!!top" />
+            <element signature="n#endGame#0;n#GameControl#0;n#!!top" />
+            <element signature="n#any_existing_game_user_can_play#0;n#GameControl#0;n#!!top" />
+            <element signature="n#add_user_to_existing_game#0;n#GameControl#0;n#!!top" />
             <element signature="n#get_total_number_of_players_playing_now#0;n#GameControl#0;n#!!top" />
             <element signature="n#getAllWords#0;n#GameControl#0;n#!!top" />
-            <element signature="n#get_current_players_joined#0;n#GameControl#0;n#!!top" />
+            <element signature="n#exit_user_from_game#0;n#GameControl#0;n#!!top" />
+            <element signature="n#getGameRanking#0;n#GameControl#0;n#!!top" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/js/control.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="144">
+          <caret line="68" lean-forward="true" selection-start-line="68" selection-end-line="68" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/js/start.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="449">
+          <caret line="100" column="21" lean-forward="true" selection-start-line="100" selection-start-column="21" selection-end-line="100" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="459">
+          <caret line="116" lean-forward="true" selection-start-line="116" selection-end-line="116" />
         </state>
       </provider>
     </entry>

@@ -61,8 +61,10 @@ $potential_winning;
         $this->game_10_words = $words;
         $this->start_time = time() * 1000;
 
+        $started = ($this->amount ==0)?"1" : "0";
+        if($started == "1")$this->showGameChat = true;
         $this->insert_into_table($this->games_table_name, ["game_id" => $this->game_id, "words" => $words_to_json, "amount" => $this->amount,
-            "started" => "0", "start_time" => $this->start_time, "number_of_players" => "1", "current_word" => $words[0]]);
+            "started" => "{$started}", "start_time" => $this->start_time, "number_of_players" => "1", "current_word" => $words[0]]);
         $this->update_multiple_fields($this->users_table_name, ["game_id_about_to_play" => $this->game_id], "user_id='{$this->userID}'");
 
     }
@@ -259,6 +261,7 @@ $message.=$text."</div>";
     }
     private function add_current_user_to_game()
     {
+        if($this->amount != 0){
         if ($this->any_existing_game_user_can_play()) {
             $this->add_user_to_existing_game();
             if ($this->showGameChat)
@@ -269,9 +272,14 @@ $message.=$text."</div>";
         } else {
 
             $this->create_a_new_game();
-            return json_encode(Array("start" => "0", "players" => "1" , "words" => $this->game_10_words));
+            return json_encode(Array("start" => "0", "players" => "1", "words" => $this->game_10_words));
 
         }
+    }
+    else {
+        $this->create_a_new_game();
+        return json_encode(Array("start" => "1", "players" => "1", "words" => $this->game_10_words));
+    }
 
 
     }
@@ -315,7 +323,10 @@ DATA;
         $this->game_10_words = $this->userCurrentGameDetail["words"];
         $this->start_time = $this->userCurrentGameDetail["start_time"];
 
-        if ($number_of_players == $this->config->MaximumNumberOfPlayers) {
+        if($this->amount ==0){
+            $this->showGameChat = true;
+        }
+        elseif ($number_of_players == $this->config->MaximumNumberOfPlayers) {
             $this->showGameChat = true;
         }
 
@@ -345,7 +356,7 @@ DATA;
         $message = "";
         if(!empty($players)) {
             $message = <<<MESSAGE
-            <div class="message message-personal"><figure class="avatar"><img src="{$this->config->IMG_FOLDER}favicon.png" /></figure><span id="game-ranking-text">ranking</span>
+            <div class="message message-personal"><figure class="avatar"><img src="{$this->config->IMG_FOLDER}favicon.png" /></figure><span id="game-ranking-text">Scoreboard</span>
  
 
 MESSAGE;

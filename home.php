@@ -43,7 +43,7 @@ $website_details = new WebsiteDetails();
                 <li class="py-2"><i class="fa fa-check-circle pr-4" aria-hidden="true"></i>24/7 live support for any Questions</li>
               </ul><a class="mt-4 btn btn-outline-neutral btn-round" href="#features">Start Exploring</a>
             </div>
-            <div class="col-md-6 col-sm-12 text-right"><img class="img-fluid" src="images/1.jpg" alt="Image"></div>
+            <div class="col-md-6 col-sm-12 text-right"><img class="img-fluid" src="<?php echo $website_details->IMG_FOLDER; ?>twisttr-on-phone.png" alt="Image"></div>
           </div>
         </div>
       </div>
