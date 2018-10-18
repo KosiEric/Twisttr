@@ -338,7 +338,7 @@ if(parent.gameEnded) return changeGameWordsWorker.terminate();
                 parent.setDate();
                 parent.messageInput.val(null);
                 parent.updateScrollbar();
-
+                if(reply.bonus != "")parent.potentialWinning.text(reply.bonus);
                 if(reply.end) return parent.endGame();
 
 

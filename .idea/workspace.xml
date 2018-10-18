@@ -2,21 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f4d7fd38-af9c-4203-adef-906fb572f635" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/DatabaseConnection.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/DatabaseConnection.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/config.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/config.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/functions.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/functions.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/processors/game-control.php" beforeDir="false" afterPath="$PROJECT_DIR$/processors/game-control.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/processors/withdraw-amount.php" beforeDir="false" afterPath="$PROJECT_DIR$/processors/withdraw-amount.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/css/control.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/control.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/css/start.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/start.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/incs/fund-account-modal.php" beforeDir="false" afterPath="$PROJECT_DIR$/static/incs/fund-account-modal.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/incs/header.php" beforeDir="false" afterPath="$PROJECT_DIR$/static/incs/header.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/GameControl.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/GameControl.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/control.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/control.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/defaults.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/defaults.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/main.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/static/js/start.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/start.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -71,8 +57,8 @@
         <counts>
           <entry key="CSS" value="581" />
           <entry key="HTML" value="62" />
-          <entry key="JavaScript" value="22866" />
-          <entry key="PHP" value="26711" />
+          <entry key="JavaScript" value="22927" />
+          <entry key="PHP" value="26859" />
           <entry key="SQL" value="15" />
         </counts>
       </usages-collector>
@@ -86,7 +72,7 @@
           <entry key="HTML" value="1" />
           <entry key="Image" value="2" />
           <entry key="JavaScript" value="106" />
-          <entry key="PHP" value="167" />
+          <entry key="PHP" value="168" />
           <entry key="PLAIN_TEXT" value="5" />
         </counts>
       </usages-collector>
@@ -95,8 +81,8 @@
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="css" value="581" />
-          <entry key="js" value="22866" />
-          <entry key="php" value="26788" />
+          <entry key="js" value="22927" />
+          <entry key="php" value="26936" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -105,7 +91,7 @@
           <entry key="html" value="1" />
           <entry key="jpg" value="1" />
           <entry key="js" value="106" />
-          <entry key="php" value="167" />
+          <entry key="php" value="168" />
           <entry key="png" value="1" />
           <entry key="txt" value="5" />
         </counts>
@@ -134,15 +120,6 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/static/js/main.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret column="21" selection-start-column="21" selection-end-column="21" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/static/incs/header.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="89">
@@ -154,11 +131,20 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/static/js/start.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-834">
-              <caret line="196" lean-forward="true" selection-start-line="196" selection-end-line="196" />
+            <state relative-caret-position="529">
+              <caret line="340" column="79" selection-start-line="340" selection-start-column="79" selection-end-line="340" selection-end-column="79" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/static/incs/game.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="260">
+              <caret line="23" column="33" selection-start-line="23" selection-start-column="33" selection-end-line="23" selection-end-column="33" />
             </state>
           </provider>
         </entry>
@@ -175,20 +161,18 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/processors/game-control.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="409">
-              <caret line="130" column="57" lean-forward="true" selection-start-line="130" selection-start-column="57" selection-end-line="130" selection-end-column="57" />
+            <state relative-caret-position="659">
+              <caret line="129" column="30" lean-forward="true" selection-start-line="129" selection-start-column="30" selection-end-line="129" selection-end-column="30" />
               <folding>
                 <element signature="n#isReady#0;n#GameControl#0;n#!!top" />
                 <element signature="n#setDetails#0;n#GameControl#0;n#!!top" />
                 <element signature="n#create_a_new_game#0;n#GameControl#0;n#!!top" />
-                <element signature="n#add_word_to_game#0;n#GameControl#0;n#!!top" />
                 <element signature="n#game_already_closed_before_now#0;n#GameControl#0;n#!!top" />
                 <element signature="n#any_existing_game_user_can_play#0;n#GameControl#0;n#!!top" />
                 <element signature="n#add_user_to_existing_game#0;n#GameControl#0;n#!!top" />
                 <element signature="n#get_total_number_of_players_playing_now#0;n#GameControl#0;n#!!top" />
                 <element signature="n#getAllWords#0;n#GameControl#0;n#!!top" />
                 <element signature="n#exit_user_from_game#0;n#GameControl#0;n#!!top" />
-                <element signature="n#Processor#0;n#GameControl#0;n#!!top" />
               </folding>
             </state>
           </provider>
@@ -329,8 +313,8 @@
         <option value="$PROJECT_DIR$/index.php" />
         <option value="$PROJECT_DIR$/static/js/GameControl.js" />
         <option value="$PROJECT_DIR$/static/js/control.js" />
-        <option value="$PROJECT_DIR$/processors/game-control.php" />
         <option value="$PROJECT_DIR$/config/config.php" />
+        <option value="$PROJECT_DIR$/processors/game-control.php" />
         <option value="$PROJECT_DIR$/static/js/start.js" />
       </list>
     </option>
@@ -387,6 +371,12 @@
               <item name="twisttr" type="462c0819:PsiDirectoryNode" />
               <item name="static" type="462c0819:PsiDirectoryNode" />
               <item name="css" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="twisttr" type="b2602c69:ProjectViewProjectNode" />
+              <item name="twisttr" type="462c0819:PsiDirectoryNode" />
+              <item name="static" type="462c0819:PsiDirectoryNode" />
+              <item name="incs" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="twisttr" type="b2602c69:ProjectViewProjectNode" />
@@ -517,12 +507,12 @@
       <workItem from="1539608981395" duration="6312000" />
       <workItem from="1539690782697" duration="2928000" />
       <workItem from="1539868834034" duration="13189000" />
-      <workItem from="1539890140783" duration="763000" />
+      <workItem from="1539890140783" duration="1437000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="696601000" />
+    <option name="totallyTimeSpent" value="697275000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1456" height="876" extended-state="6" />
@@ -725,13 +715,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/static/incs/game.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="251">
-          <caret line="23" column="33" selection-start-line="23" selection-start-column="33" selection-end-line="23" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/home.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="352">
@@ -851,10 +834,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/static/incs/game.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="260">
+          <caret line="23" column="33" selection-start-line="23" selection-start-column="33" selection-end-line="23" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/static/js/start.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-834">
-          <caret line="196" lean-forward="true" selection-start-line="196" selection-end-line="196" />
+        <state relative-caret-position="529">
+          <caret line="340" column="79" selection-start-line="340" selection-start-column="79" selection-end-line="340" selection-end-column="79" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
           </folding>
@@ -863,20 +853,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/processors/game-control.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="409">
-          <caret line="130" column="57" lean-forward="true" selection-start-line="130" selection-start-column="57" selection-end-line="130" selection-end-column="57" />
+        <state relative-caret-position="659">
+          <caret line="129" column="30" lean-forward="true" selection-start-line="129" selection-start-column="30" selection-end-line="129" selection-end-column="30" />
           <folding>
             <element signature="n#isReady#0;n#GameControl#0;n#!!top" />
             <element signature="n#setDetails#0;n#GameControl#0;n#!!top" />
             <element signature="n#create_a_new_game#0;n#GameControl#0;n#!!top" />
-            <element signature="n#add_word_to_game#0;n#GameControl#0;n#!!top" />
             <element signature="n#game_already_closed_before_now#0;n#GameControl#0;n#!!top" />
             <element signature="n#any_existing_game_user_can_play#0;n#GameControl#0;n#!!top" />
             <element signature="n#add_user_to_existing_game#0;n#GameControl#0;n#!!top" />
             <element signature="n#get_total_number_of_players_playing_now#0;n#GameControl#0;n#!!top" />
             <element signature="n#getAllWords#0;n#GameControl#0;n#!!top" />
             <element signature="n#exit_user_from_game#0;n#GameControl#0;n#!!top" />
-            <element signature="n#Processor#0;n#GameControl#0;n#!!top" />
           </folding>
         </state>
       </provider>

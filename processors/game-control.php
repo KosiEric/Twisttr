@@ -11,7 +11,7 @@ class GameControl extends  Functions
 
     private $config, $data, $userID, $amount, $action, $game_id, $gameUserCanPlay, $gameIDUserCanPlay,
         $userCurrentGameDetail, $user_details, $showGameChat = false, $number_of_players_in_current_user_game , $gameFile,
-    $point , $time , $username , $gender , $game_10_words , $start_time , $word_sent , $game_ended = false ,
+    $point , $time , $username , $gender , $game_10_words , $start_time , $word_sent , $game_ended = false  , $bonus = "",
 $potential_winning;
 
 
@@ -106,6 +106,10 @@ $potential_winning;
         ]);
 
         $this->executeSQL("UPDATE {$this->users_table_name} SET current_point = current_point + {$this->point} WHERE user_id = '{$this->userID}'");
+        if($this->amount == 0) {
+            $this->bonus = $this->calculateBonus(intval($this->point) + intval($this->user_details['current_point']));
+
+        }
         return true;
 
 
@@ -445,7 +449,7 @@ MESSAGE;
                      break;
                 case 'send_word' :
                     $this->add_word_to_game();
-                    return json_encode(['success' => "1" , 'end' => $this->game_ended , 'point' => $this->point]);
+                    return json_encode(['success' => "1" , 'end' => $this->game_ended , 'point' => $this->point , 'bonus' => $this->bonus]);
                    break;
                 case 'get_all_words':
                     return $this->getAllWords();
