@@ -112,17 +112,18 @@ function  GameClass () {
 
                     getNumberOfJoinedPlayers.terminate();
 
-                    $.getScript(webPageObject.defaults.jsFolder + 'jquery.mCustomScrollbar.concat.min.js' , function () {
-                        $.getScript(webPageObject.defaults.jsFolder + 'start.js' , function () {
+                  //  $.getScript(webPageObject.defaults.jsFolder + 'jquery.mCustomScrollbar.concat.min.js' , function () {
+                      //  $.getScript(webPageObject.defaults.jsFolder + 'start.js' , function () {
                             webPageObject.gamePage.hide();
-                            if(!$('<link>').appendTo('head').attr({'rel' : 'stylesheet' , 'type' : 'text/css' , 'href' : webPageObject.defaults.cssFolder+'jquery.mCustomScrollbar.min.css'})) return;
+                        //    if(!$('<link>').appendTo('head').attr({'rel' : 'stylesheet' , 'type' : 'text/css' , 'href' : webPageObject.defaults.cssFolder+'jquery.mCustomScrollbar.min.css'})) return;
 
-                            if(!$('<link>').appendTo('head').attr({'rel' : 'stylesheet' , 'type' : 'text/css' , 'href' : webPageObject.defaults.cssFolder+'start2.css'})) return;
+                    webPageObject.startCSS.removeAttr('media');
+                          //  if(!$('<link>').appendTo('head').attr({'rel' : 'stylesheet' , 'type' : 'text/css' , 'href' : webPageObject.defaults.cssFolder+'start2.css'})) return;
 
                             gameRoom = new GameRoom(parent.webPage , parent.webPage.defaults , parent.playAmount , resp , parent);
-                        });
+                    //    });
 
-                    });
+                    // });
 
                 }
 

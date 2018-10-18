@@ -82,7 +82,6 @@ if(webPageObject.isLoggedInUser){
            webPageObject.gamePage.css('display' , 'block');
            webPageObject.mainGameContainer.css('display' , 'block');
            webPageObject.updateNumOfPlayersWorker.terminate();
-          // clearInterval(apelAjaxFunction);
 
            $.getScript(webPageObject.defaults.jsFolder+'GameControl.js' , function () {
 

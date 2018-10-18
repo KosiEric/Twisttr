@@ -19,7 +19,7 @@ function  WebPage() {
     this.mainGameChat = $('.main-game-chat');
     this.mainGameContainer = $('#main-game-container');
 
-
+    this.startCSS = $('#start-css');
    //Warning //
 
    //Remember to create a default user on line 177
@@ -395,10 +395,12 @@ containing the DOM objects and second the new value of the css "display" propert
         withdrawSuccessMessage = $('#withdraw-success-message');
         withdrawErrorMessage = $('#withdraw-error-message');
         withdrawAmountErrorMessage = $('#withdraw-amount-error-message');
-
+        withdrawType = $('#withdraw-type');
         withdrawForm.on('submit' , function (e) {
 
             parent.defaults.preventFormSubmission(e);
+
+            var withdrawTypeSelected = $('#' + withdrawType.attr('id') + " option:selected").attr("value");
 
             if(parent.defaults.isEmptyField(withdrawAmount.val()) ||  isNaN(withdrawAmount.val())){
                 withdrawAmountErrorMessage.text(parent.defaults.words.enterValidWithdrawalAmountText);
@@ -412,18 +414,23 @@ containing the DOM objects and second the new value of the css "display" propert
             withdrawAmount.val(withdrawAmountValue);
 
 
+            var minimumAmountExpected = parent.defaults.constants.minWithdrawalAmount[withdrawTypeSelected];
+            if(withdrawAmountValue < minimumAmountExpected) {
 
-            if(withdrawAmountValue < parent.defaults.constants.minWithdrawalAmount) {
-
-                withdrawAmountErrorMessage.html(parent.defaults.words.withdrawAmountIsLessThanMinimumText);
+                withdrawAmountErrorMessage.html(parent.defaults.words.withdrawAmountIsLessThanMinimumText(minimumAmountExpected));
                 return;
             }
-            else if(withdrawAmountValue > parent.userDetails.account_balance) {
+
+
+            else if(withdrawAmountValue > parent.userDetails[withdrawTypeSelected]) {
                 withdrawAmountErrorMessage.text(parent.defaults.words.withdrawAmountExceedAccountBalanceText);
+
             }
 
+
             else {
-                //withdrawFormFieldset.prop("disabled" , true);
+               // return true;
+                withdrawFormFieldset.prop("disabled" , true);
                 withdrawSeverMessages.css("display" , "none");
 
 
@@ -431,7 +438,7 @@ containing the DOM objects and second the new value of the css "display" propert
                 withdrawAmountErrorMessage.text("");
 
 
-                data = {"userID" : parent.userDetails.user_id , "amount" : withdrawAmountValue , "referenceCode" : Math.floor((Math.random() * 1000000000) + 1)};
+                data = {"userID" : parent.userDetails.user_id , "type" : withdrawTypeSelected, "amount" : withdrawAmountValue , "referenceCode" : Math.floor((Math.random() * 1000000000) + 1)};
                 data = JSON.stringify(data);
 
 
@@ -893,10 +900,12 @@ containing the DOM objects and second the new value of the css "display" propert
                         if(data[parent.defaults.jsonSuccessText] == "1") {
 
 
-                            bankDetailsSuccessMessage.css("display" , "block");
+                               bankDetailsSuccessMessage.css("display" , "block");
                             bankDetailsSuccessMessage.text(data[parent.defaults.jsonErrorText]);
 
-                            bankDetailsSuccessMessage.fadeOut(7000);
+                            bankDetailsSuccessMessage.fadeOut(7000 , function () {
+                                window.location.reload();
+                            });
 
                             return;
                         }

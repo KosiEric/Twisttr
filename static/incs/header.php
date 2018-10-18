@@ -3,7 +3,7 @@
 
 require_once $_SERVER['DOCUMENT_ROOT'].'/config/classes.php';
 require_once $_SERVER['DOCUMENT_ROOT'].'/config/functions.php';
-
+require_once $_SERVER['DOCUMENT_ROOT'].'/config/config.php';
 
 class Header extends WebsiteHeader {
          private $WebsiteDetails;
@@ -13,20 +13,31 @@ class Header extends WebsiteHeader {
          private $userManagementFunctions;
          private $isLoggedInUser;
 
-         private $funtions;
+         private $functions;
          private $tryDisableSearchForm; //Disabling the search Form for Non-logged users
-
-
+         private $userBonus = "";
+         private $bonus = "";
+         public $userBonusLI = "";
          private function getNumberOfUnreadNotifications () {
              $unread_notifications = 0;
              if($this->isLoggedInUser) {
-                 $total_notifications = $this->funtions->fetch_data_from_table_with_conditions($this->funtions->notifications_table_name,
+                 $total_notifications = $this->functions->fetch_data_from_table_with_conditions($this->functions->notifications_table_name,
                      "id != 0");
                  $total_notifications = count($total_notifications);
                  $read_notifications = (int)$this->userManagementFunctions->user_details["number_of_read_notifications"];
                  $unread_notifications = $total_notifications - $read_notifications;
+                 $this->bonus = number_format($this->userManagementFunctions->user_details["bonus"]);
+                if($this->WebsiteDetails->AllowBonus) {
+                    $this->userBonusLI = <<<BONUS
+               <li class="header-more-action-li"><a href="#" class="header-list-links header-more-actions-icon"><i class="fa fa-money header-more-actions-icon"></i><span class="header-li-link-text more-actions-li-text" id="bonus-amount">{$this->Naira}{$this->bonus}</span> Bonus</a></li>
+BONUS;
+                }
+              }
+             else if($this->WebsiteDetails->AllowBonus){
+                 $this->userBonusLI = <<<BONUS
+               <li class="header-more-action-li"><a href="#" class="header-list-links header-more-actions-icon"><span class="header-li-link-text more-actions-li-text" id="bonus-amount">{$this->Naira} 0 </span>Bonus</a></li>
+BONUS;
              }
-
              return ($unread_notifications == 0) ? "" : $unread_notifications;
          }
 
@@ -40,8 +51,8 @@ class Header extends WebsiteHeader {
              $this->userManagementFunctions = new UserManagementFunctions();
              $this->isLoggedInUser = $this->userManagementFunctions->isLoggedInUser();
              $this->tryDisableSearchForm = (!$this->isLoggedInUser)?"disabled='disabled'" : "";
-
-             $this->funtions = new Functions();
+             $this->WebsiteDetails = new WebsiteDetails();
+             $this->functions = new Functions();
 
              $this->PageHeader = <<<FullHeader
 
@@ -126,7 +137,9 @@ class Header extends WebsiteHeader {
             <ul class="dropdown-menu" role="menu">
               <li class="header-more-action-li"><a href="{$this->ChatPage}" id="show-chat-window"><i class="fa fa-comment-o header-more-actions-icon"></i><span class="header-li-link-text more-actions-li-text">Chat</span></a></li>
               <li class="header-more-action-li"><a href="{$this->BlogPage}" class="header-list-links header-more-actions-icon"><i class="fa fa-bookmark header-more-actions-icon"></i><span class="header-li-link-text more-actions-li-text">Our Blog</span></a></li>
+              {$this->userBonusLI}
               <!--li class="header-more-action-li"><a href="#" class="header-list-links header-more-actions-icon"><i class="fa fa-share-alt header-more-actions-icon"></i><span class="header-li-link-text more-actions-li-text">Transfer to account</span></a></li>-->
+             
               <li class="divider"><a href="#"></a></li>
               <li><a href="#" class="header-list-links">Close <i class="fa fa-times header-close-icon"></i> </a></li>
             </ul>

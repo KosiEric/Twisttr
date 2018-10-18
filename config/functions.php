@@ -40,6 +40,11 @@ class Functions extends  DatabaseConnection {
         return $random_string;
     }
 
+    public function  calculateBonus(int $point) : int{
+
+        return round($point / 20);
+    }
+
     public  function  getNumberOfLinesOfFile(string  $filename) : int {
 
         $file= $filename;

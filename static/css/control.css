@@ -53,3 +53,11 @@ ul , li {
     display: none;
 }
 
+#withdraw-type-label{
+    margin-top: 10px;
+}
+#bonus-amount{
+    color : green;
+    font-weight: bold;
+ }
+

@@ -1,4 +1,5 @@
 //success ochu
+// *141*1500#
 function GameRoom(webPage , defaults , playAmount , gameDetails , gameClass) {
     parent = this;
 

@@ -45,9 +45,8 @@ abstract class WebsiteConfigurationSettings {
     public  $MaximumNumberOfPlayers = 10;
     public  $Naira = "&#8358;";
     public  $ChatPage = "/chat";
-    public $BlogPage = "/blog";
-
-
+    public  $BlogPage = "/blog";
+    public  $AllowBonus = true;
     public  $Banks = Array("Access Bank" , "CitiBank" , "Coronation Merchant Bank" , "Diamond Bank" , "Ecobank Nigeria" , "Enterprise Bank Limited" , "FBN Merchant Bank" ,"Fidelity Bank Nigeria",
         "First Bank of Nigeria" , "First City Monument Bank" , "FSDH Merchant Bank" , "Guarantee Trust Bank" , "Heritage Bank Plc" ,"Jaiz Bank Limited" ,
         "Keystone Bank Limited" ,"Providus Bank Plc" ,  "Rand Merchant Bank" , "Skye Bank" , "Stanbic IBTC Bank Nigeria Limited" , "Standard Chartered Bank" ,

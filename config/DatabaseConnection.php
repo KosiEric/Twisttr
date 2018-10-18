@@ -195,10 +195,10 @@ class DatabaseConnection {
     bank_name VARCHAR (100) DEFAULT '0' ,
     account_name VARCHAR (100) DEFAULT '0',
     account_number VARCHAR (100) DEFAULT '0', 
-  
+    bonus BIGINT NOT NULL DEFAULT  0 , 
     
     
-    account_balance VARCHAR (100) DEFAULT '0' , 
+    account_balance BIGINT NOT NULL DEFAULT 0 , 
     
     
     
@@ -220,15 +220,15 @@ class DatabaseConnection {
     
     
     game_id_about_to_play VARCHAR (100) DEFAULT '0', 
-    total_points VARCHAR (100) DEFAULT '0',
-    current_point VARCHAR (100) DEFAULT '0' ,
+    total_points BIGINT  DEFAULT 0,
+    current_point BIGINT  DEFAULT 0 ,
     current_game_id VARCHAR (100) DEFAULT '0'  , 
-    total_wins VARCHAR (100) NOT NULL DEFAULT  '0', 
-    total_games_played VARCHAR (100) DEFAULT '0' ,
-    total_amount_won VARCHAR (100) DEFAULT '0',
+    total_wins BIGINT  NOT NULL DEFAULT  0, 
+    total_games_played BIGINT  DEFAULT 0 ,
+    total_amount_won BIGINT NOT NULL DEFAULT 0,
     last_win_date VARCHAR (100) DEFAULT '0' ,
     last_played_game_id VARCHAR (100) DEFAULT '0' , 
-    last_amount_won VARCHAR (100)DEFAULT '0' ,
+    last_amount_won BIGINT NOT NULL DEFAULT 0 ,
     last_played_date VARCHAR (100) DEFAULT  '0' 
     
     
@@ -253,16 +253,16 @@ class DatabaseConnection {
 
     public final  function  create_games_table() : bool  {
 
-        $sql = "CREATE TABLE {$this->games_table_name}(
+        $sql = "CREATE TABLE IF NOT EXISTS {$this->games_table_name}(
         id INT UNSIGNED AUTO_INCREMENT PRIMARY  KEY,
         
     game_id VARCHAR (100) NOT NULL , 
     words VARCHAR (10000) NOT NULL  , 
-    amount VARCHAR (100) NOT  NULL,
+    amount BIGINT NOT  NULL,
     started VARCHAR (100) NOT  NULL  DEFAULT  '0' ,
-    start_time VARCHAR (100) NOT  NULL , 
+    start_time BIGINT NOT  NULL , 
     current_word VARCHAR (100) NOT NULL ,
-    number_of_players VARCHAR (100) NOT  NULL DEFAULT '0',
+    number_of_players INT NOT  NULL DEFAULT '0',
     game_ended VARCHAR (100) NOT  NULL  DEFAULT  '0',
     winner VARCHAR (150) NOT NULL  DEFAULT  '0'
     )";
@@ -348,7 +348,7 @@ class DatabaseConnection {
         user_id VARCHAR(100)  NOT NULL ,
         username VARCHAR (100) NOT NULL , 
         word VARCHAR (10000) NOT NULL , 
-        point VARCHAR (100) NOT NULL ,
+        point INT NOT NULL DEFAULT  0,
         gender VARCHAR (100) NOT  NULL ,
         time_stamp TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP 
         
@@ -377,10 +377,11 @@ class DatabaseConnection {
     user_id VARCHAR(100)  NOT NULL ,
     reference_code VARCHAR (100) NOT NULL , 
     time_stamp VARCHAR (100) NOT  NULL , 
-    amount VARCHAR (100) NOT  NULL,
+    amount BIGINT NOT  NULL DEFAULT  0,
     bank_name VARCHAR (100) NOT  NULL  , 
     account_name VARCHAR (100) NOT  NULL ,
-    account_number VARCHAR (100) NOT  NULL  
+    account_number VARCHAR (100) NOT  NULL ,
+    type VARCHAR (100) NOT  NULL  DEFAULT  '0'
     )";
 
 

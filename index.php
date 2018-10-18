@@ -95,12 +95,15 @@ $refresh = false;
 
 
    <script type="text/javascript" src="/JavaScriptSpellCheck/include.js"></script>
-
+    <script type="text/javascript" src="<?php echo  $HomePage->WebsiteDetails->JS_FOLDER; ?>jquery.mCustomScrollbar.concat.min.js"></script>
 
     <link rel="stylesheet" type="text/css" href="<?php echo  $HomePage->WebsiteDetails->CSS_FOLDER; ?>defaults.css" />
     <link rel="stylesheet" type="text/css" href="<?php echo  $HomePage->WebsiteDetails->CSS_FOLDER; ?>footer.css" />
 
     <link rel="stylesheet" type="text/css" href="<?php echo  $HomePage->WebsiteDetails->CSS_FOLDER; ?>control.css" />
+
+    <link rel="stylesheet" type="text/css" href="<?php echo  $HomePage->WebsiteDetails->CSS_FOLDER; ?>jquery.mCustomScrollbar.min.css" />
+    <link rel="stylesheet" type="text/css" id="start-css" href="<?php echo  $HomePage->WebsiteDetails->CSS_FOLDER; ?>start.css" media="screen and (min-width:2000px)" />
 
     <?php /*
      <script type='text/javascript' src='/JavaScriptSpellCheck/include.js'></script>
@@ -312,8 +315,8 @@ else {
     ?>
 </div>
 <script type="text/javascript" language="JavaScript" src="<?php echo $HomePage->WebsiteDetails->JS_FOLDER; ?>main.js"></script>
+<script type="text/javascript" src="<?php echo  $HomePage->WebsiteDetails->JS_FOLDER; ?>start.js"></script>
 <script type="text/javascript" src="<?php echo  $HomePage->WebsiteDetails->JS_FOLDER; ?>control.js"></script>
-
 
 </body>
 

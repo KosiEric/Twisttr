@@ -36,14 +36,18 @@ $potential_winning;
         return !empty($this->data = json_decode($_POST['data'], true));
     }
 
-    private function setDetails(): bool
+/* sets the details that were gotten from the ajax post request */    private function setDetails(): bool
     {
-
+        // userID
         $this->userID = $this->data["userID"];
+        // the Amount
         $this->amount = (int)$this->data["amount"];
+        // The action that wants to be performed list of actions will be found in GameControl.js
         $this->action = $this->data["action"];
+        //Gets and sets the user details gotten from the database using the user's id
         $this->user_details = $this->fetch_data_from_table($this->users_table_name, "user_id", $this->userID)[0];
 
+        //finally return true
         return true;
     }
 
@@ -66,7 +70,7 @@ $potential_winning;
         $this->insert_into_table($this->games_table_name, ["game_id" => $this->game_id, "words" => $words_to_json, "amount" => $this->amount,
             "started" => "{$started}", "start_time" => $this->start_time, "number_of_players" => "1", "current_word" => $words[0]]);
         $this->update_multiple_fields($this->users_table_name, ["game_id_about_to_play" => $this->game_id], "user_id='{$this->userID}'");
-
+        $this->update_record($this->users_table_name , "current_point" , "0" , "user_id" , $this->userID);
     }
 
     private function  add_word_to_game() : bool {
@@ -183,9 +187,19 @@ MESSAGE;
         $winner_current_point++;
 
         $text= ($winner_id == $this->userID) ? "Congrats! <span class='word-sender-name'>you just won &#8358; {$this->potential_winning}</span> With <span class='points-earned-by-word' id='points-earned'>{$winner_current_point } points</span>"
-            : "<span class='word-sender-name'>{$winner['username']} won this game</span>, with  total  of <span id='points-earned' class='points-earned-by-word'>{$winner_current_point} points </span>, <span class='word-sender-name'>you came</span>  <span class='points-earned-by-word' id='points-earned'> {$user_position_string} with {$this->user_details['current_point']} points</span>";
-$message.=$text."</div>";
 
+            : "<span class='word-sender-name'>{$winner['username']} won this game</span>, with  total  of <span id='points-earned' class='points-earned-by-word'>{$winner_current_point} points </span>, <span class='word-sender-name'>you came</span>  <span class='points-earned-by-word' id='points-earned'> {$user_position_string} with {$this->user_details['current_point']} points</span>";
+        if($this->amount == 0 and $this->config->AllowBonus){
+            $current_point = (int)$this->user_details["current_point"];
+            $bonus = $this->calculateBonus($current_point);
+            $this->executeSQL("UPDATE {$this->users_table_name} SET bonus = bonus + {$bonus} , game_id_about_to_play = '0' , current_game_id = '0' WHERE user_id = '{$this->userID}' ");
+            $text = "Congrats! <span class='word-sender-name'>you just received a bonus of  &#8358;$bonus</span> With <span class='points-earned-by-word' id='points-earned'>{$this->user_details['current_point']} points</span>";
+            $this->delete_record($this->games_table_name , 'game_id' , $this->user_details['game_id_about_to_play']);
+            $this->delete_record($this->game_words_table_name , 'game_id' , $this->user_details['game_id_about_to_play']);
+
+        }
+
+        $message.=$text."</div>";
 
         return json_encode(["message" => $message , "end" => true]);
 
@@ -334,13 +348,25 @@ DATA;
 
     }
 
+    /*
+     * The function below i.e 'exit_user_from_game()' deletes the user from the game when the user clicks the "Exit" button before the game starts
+     */
     private  function  exit_user_from_game() {
+        /*This gets the user current game details*/
         $this->userCurrentGameDetail = $this->fetch_data_from_table($this->games_table_name, 'game_id', $this->user_details["game_id_about_to_play"])[0];
-        $number_of_players = $this->userCurrentGameDetail["number_of_players"];
 
+        /* Gets the number of players in the game */
+        $number_of_players = (int)$this->userCurrentGameDetail["number_of_players"];
+
+        /* the new number of players will now be the previous number of players - 1*/
         $new_number_of_players = $number_of_players - 1;
+        /* if the new number of players is equal to 0; meaning that he is the only one about to play; the entire game details will be deleted from the database*/
+        if($new_number_of_players == 0){ $this->delete_record($this->games_table_name , "game_id" , $this->user_details["game_id_about_to_play"] ); return true;}
+        /* else set the new number of players to the one above */
         $this->update_record($this->games_table_name , "number_of_players" , $new_number_of_players , 'game_id' , $this->userCurrentGameDetail["game_id"]);
+        /* delete the game id from the user detail to avoid deduction from the when the game starts */
         $this->update_record($this->users_table_name , "game_id_about_to_play" , "0" , 'user_id' , $this->userID);
+        /* finally return true */
         return true;
     }
 

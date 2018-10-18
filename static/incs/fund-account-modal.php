@@ -64,9 +64,23 @@
                                 <input type="text" name="withdraw-fund-amount" id="withdraw-amount" class="form-control" />
 
                             </div>
+           <?php if ($HomePage->WebsiteDetails->AllowBonus) { ?>
+
+               <label for="withdraw-type" id="withdraw-type-label">Withdraw from</label>
+
+           <?php } ?>
+
+           <select style="<?php echo ($HomePage->WebsiteDetails->AllowBonus)? '': 'display:none'; ?>" name="withdraw-type" id="withdraw-type" class="form-control selectpicker">
+               <option value="account_balance">Account Balance</option>
+             <?php if ($HomePage->WebsiteDetails->AllowBonus) { ?>
+               <option value="bonus">Bonus</option>
+<?php } ?>
+
+           </select>
 
            <div class="alert alert-success withdraw-server-messages" role="alert" id="withdraw-success-message"></div>
            <div class="alert alert-info withdraw-server-messages" role="alert" id="withdraw-error-message"></div>
+
 
            <span class="error-mgs" id="withdraw-amount-error-message"><?php echo ($can_withdraw && $HomePage->loggedInUserDetails["bank_name"] == '0')? "Please enter your bank details first" : "" ?><?php echo (!$can_withdraw)? "Sorry, minimum withdrawal amount is &#8358;{$HomePage->WebsiteDetails->minimumWithdrawalAmount}" : "";?></span>
            <!-- Button
@@ -78,6 +92,7 @@
                                 </div>
                             </div>
            <span class="error-mgs" id="note-withdraw-charge-message">Note: Transfer fee of  &#8358;<?php echo $HomePage->WebsiteDetails->transferFee?> will be charged for the transfer.</span>
+
 
        </fieldset>
 

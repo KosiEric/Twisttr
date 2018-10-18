@@ -7,7 +7,7 @@ require_once '../config/functions.php';
 
 class FundAccount extends  Functions{
 
-    private  $data , $amount , $userID , $reference_code , $date , $user_details , $currentAccountBalance , $newAccountBalance;
+    private  $data , $amount , $userID , $type , $reference_code , $date , $user_details , $currentAccountBalance , $newAccountBalance;
 
 
     private $successText = "success" , $errorText = "error" , $error , $success_message = "Payment will be made to the account details you provided in less than 15min.";
@@ -37,10 +37,11 @@ class FundAccount extends  Functions{
     private function setDetails () : bool  {
         $this->amount = $this->data["amount"];
         $this->userID= $this->data["userID"];
+        $this->type = $this->data["type"];
         $this->reference_code =  $this->data["referenceCode"];
         $this->date = date("d-M-Y h:i:s A");
         $this->user_details = $this->fetch_data_from_table($this->users_table_name , "user_id" , $this->userID)[0];
-        $this->currentAccountBalance = intval($this->user_details["account_balance"]);
+        $this->currentAccountBalance = intval($this->user_details[$this->type]);
         $this->newAccountBalance = $this->currentAccountBalance - intval($this->amount);;
 
         return true;
@@ -49,12 +50,12 @@ class FundAccount extends  Functions{
 
     private function  update_account_balance () : bool {
 
-        return $this->update_record($this->users_table_name , "account_balance" , $this->newAccountBalance , 'user_id' , $this->userID);
+        return $this->update_record($this->users_table_name , $this->type , $this->newAccountBalance , 'user_id' , $this->userID);
     }
 
     private function store_in_records () : bool  {
 
-        return $this->insert_into_table($this->withdrawals_table_name , ["user_id" => $this->userID , "reference_code" => $this->reference_code , "time_stamp" => $this->date , "amount" => $this->amount , "bank_name" => $this->user_details["bank_name"] , "account_name" => $this->user_details["account_name"] , "account_number" => $this->user_details["account_number"]]);
+        return $this->insert_into_table($this->withdrawals_table_name , ["user_id" => $this->userID , "reference_code" => $this->reference_code , "time_stamp" => $this->date , "amount" => $this->amount , "bank_name" => $this->user_details["bank_name"] , "account_name" => $this->user_details["account_name"] , "account_number" => $this->user_details["account_number"] , "type" => $this->type]);
     }
 
     public final function Processor() {
