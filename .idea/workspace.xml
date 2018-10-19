@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f4d7fd38-af9c-4203-adef-906fb572f635" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/processors/game-control.php" beforeDir="false" afterPath="$PROJECT_DIR$/processors/game-control.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/start.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/start.js" afterDir="false" />
-    </list>
+    <list default="true" id="f4d7fd38-af9c-4203-adef-906fb572f635" name="Default" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,7 +29,7 @@
     <session id="1210718074">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="5" />
+          <entry key="project.closed" value="6" />
           <entry key="project.open.time.100" value="1" />
           <entry key="project.open.time.101" value="1" />
           <entry key="project.open.time.118" value="1" />
@@ -162,7 +159,7 @@
         <entry file="file://$PROJECT_DIR$/processors/game-control.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="659">
-              <caret line="129" column="30" lean-forward="true" selection-start-line="129" selection-start-column="30" selection-end-line="129" selection-end-column="30" />
+              <caret line="140" column="44" lean-forward="true" selection-start-line="140" selection-start-column="44" selection-end-line="140" selection-end-column="44" />
               <folding>
                 <element signature="n#isReady#0;n#GameControl#0;n#!!top" />
                 <element signature="n#setDetails#0;n#GameControl#0;n#!!top" />
@@ -507,16 +504,15 @@
       <workItem from="1539608981395" duration="6312000" />
       <workItem from="1539690782697" duration="2928000" />
       <workItem from="1539868834034" duration="13189000" />
-      <workItem from="1539890140783" duration="1437000" />
+      <workItem from="1539890140783" duration="1894000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="697275000" />
+    <option name="totallyTimeSpent" value="697732000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1456" height="876" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.27148998" />
       <window_info id="Structure" order="1" weight="0.25" />
@@ -854,7 +850,7 @@
     <entry file="file://$PROJECT_DIR$/processors/game-control.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="659">
-          <caret line="129" column="30" lean-forward="true" selection-start-line="129" selection-start-column="30" selection-end-line="129" selection-end-column="30" />
+          <caret line="140" column="44" lean-forward="true" selection-start-line="140" selection-start-column="44" selection-end-line="140" selection-end-column="44" />
           <folding>
             <element signature="n#isReady#0;n#GameControl#0;n#!!top" />
             <element signature="n#setDetails#0;n#GameControl#0;n#!!top" />
