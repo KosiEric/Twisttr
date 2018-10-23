@@ -49,7 +49,7 @@ abstract class WebsiteConfigurationSettings {
     public  $AllowBonus = true;
     public  $Banks = Array("Access Bank" , "CitiBank" , "Coronation Merchant Bank" , "Diamond Bank" , "Ecobank Nigeria" , "Enterprise Bank Limited" , "FBN Merchant Bank" ,"Fidelity Bank Nigeria",
         "First Bank of Nigeria" , "First City Monument Bank" , "FSDH Merchant Bank" , "Guarantee Trust Bank" , "Heritage Bank Plc" ,"Jaiz Bank Limited" ,
-        "Keystone Bank Limited" ,"Providus Bank Plc" ,  "Rand Merchant Bank" , "Skye Bank" , "Stanbic IBTC Bank Nigeria Limited" , "Standard Chartered Bank" ,
+        "Keystone Bank Limited" , "Polaris Bank" , "Providus Bank Plc" ,  "Rand Merchant Bank" , "Stanbic IBTC Bank Nigeria Limited" , "Standard Chartered Bank" ,
         "Sterling Bank" , "Suntrust Bank Nigeria Limited" ,  "Union Bank of Nigeria" , "United Bank for Africa Plc" , "Unity Bank Plc" , "Wema Bank" , "Zenith Bank");
 
     abstract function setPageTitleDescriptionKeywords(string  $title, string $description , string $keywords);
