@@ -23,7 +23,7 @@ console.log(sentence)
 
 //prints
 
-My name is Kosi Eric i am a programmer from Nigeria and i am 19 years old;
+My name is Kosi Eric i am a programmer from Nigeria and i am 20 years old;
 
 */
 
@@ -158,7 +158,7 @@ this.preventFormSubmission = function (e) {
         minEmailLength : 1,
         maxEmailLength : 10000000,
         bankAccountNumberLength : 10,
-        minBanAccountNumberLength : 10,
+        minBankAccountNumberLength : 10,
         maxBankAccountNumberLength : 10,
         minTwitterUsernameLenght : 2,
         maxTwitteUsernameLength : 100,

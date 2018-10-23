@@ -876,7 +876,7 @@ containing the DOM objects and second the new value of the css "display" propert
                     , parent.defaults.constants.fullnameMaxLength , parent.defaults.regularExpressions.fullnameRegEx , bankAccountNameErrorSpan , true);
 
 
-                isBankAccountNumber = parent.defaults.fieldValidator(bankAccountNumber , parent.defaults.words.bankAccountNumberText , bankAccountNumber.val() , parent.defaults.constants.minBanAccountNumberLength , parent.defaults.constants.maxBankAccountNumberLength , parent.defaults.regularExpressions.bankAccountNumberRegEx , bankAccountNumberErrorSpan , true , parent.defaults.defaultInputParentClass);
+                isBankAccountNumber = parent.defaults.fieldValidator(bankAccountNumber , parent.defaults.words.bankAccountNumberText , bankAccountNumber.val() , parent.defaults.constants.minBankAccountNumberLength , parent.defaults.constants.maxBankAccountNumberLength , parent.defaults.regularExpressions.bankAccountNumberRegEx , bankAccountNumberErrorSpan , true , parent.defaults.defaultInputParentClass);
 
 
                 isValidBankDetails = isBankAccountName && isBankAccountNumber && isBankAccountNumber;
