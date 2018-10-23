@@ -27,12 +27,12 @@ $(document).ready(function () {
 
                     if(data[webPageObject.defaults.jsonSuccessText] == "1"){
 
-                        window.location.href = "/";
+                        window.location.reload();
                     }
 
                     else {
 
-                        window.location.href = "/";
+                        window.location.reload();
                     }
 
 

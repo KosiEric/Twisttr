@@ -140,7 +140,7 @@
 
                                     <div class="profile-info-value">
                                         <?php  echo ($HomePage->loggedInUserDetails["twitter_account"] == '0')?
-                                            "<a href='{$HomePage->WebsiteDetails->TwitterHandle}'>Follow us on Twitter</a>" : "<a href='{$HomePage->loggedInUserDetails['twitter_account']}>Twitter handle</a>"; ?>
+                                            "<a href='{$HomePage->WebsiteDetails->TwitterHandle}'>Follow us on Twitter</a>" : "<a href='{$HomePage->loggedInUserDetails['twitter_account']}'>Twitter handle</a>"; ?>
 
 
 

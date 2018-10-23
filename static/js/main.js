@@ -415,9 +415,10 @@ containing the DOM objects and second the new value of the css "display" propert
 
 
             var minimumAmountExpected = parent.defaults.constants.minWithdrawalAmount[withdrawTypeSelected];
+            var forBonus = (withdrawTypeSelected == "bonus");
             if(withdrawAmountValue < minimumAmountExpected) {
 
-                withdrawAmountErrorMessage.html(parent.defaults.words.withdrawAmountIsLessThanMinimumText(minimumAmountExpected));
+                withdrawAmountErrorMessage.html(parent.defaults.words.withdrawAmountIsLessThanMinimumText(minimumAmountExpected , forBonus));
                 return;
             }
 
@@ -695,7 +696,7 @@ containing the DOM objects and second the new value of the css "display" propert
                         signupErrorMessage.text(data.error);
                         setTimeout(function () {
 
-                            window.location.href = "/";
+                           window.location.reload();
 
                         } , 5000);
 
@@ -734,7 +735,7 @@ containing the DOM objects and second the new value of the css "display" propert
 
                 if(data[parent.defaults.jsonSuccessText] == "1"){
 
-                    window.location.href = "/";
+                    window.location.reload();
                 }
 
 
@@ -1067,7 +1068,7 @@ containing the DOM objects and second the new value of the css "display" propert
 
                         setTimeout(function () {
 
-                            window.location.href =  "/";
+                            window.location.reload();
 
                         }, 3000);
 
@@ -1182,7 +1183,7 @@ containing the DOM objects and second the new value of the css "display" propert
 
                                         setTimeout(function () {
 
-                                            window.location.href =  "/";
+                                            window.location.reload();
 
                                         }, 5000);
                                         return;
@@ -1458,7 +1459,7 @@ containing the DOM objects and second the new value of the css "display" propert
                                   parent.signupSuccessMessage.text(data.error);
                                   setTimeout(function () {
 
-                                      window.location.href = "/";
+                                      window.location.reload();
 
                                   } , 5000);
 
@@ -1494,7 +1495,7 @@ containing the DOM objects and second the new value of the css "display" propert
 
         bankDetailsChangedContainer.fadeOut(5000 , function () {
 
-            window.location.href = "/";
+            window.location.reload();
         });
     }
 
@@ -1505,7 +1506,7 @@ containing the DOM objects and second the new value of the css "display" propert
 
         emailVerifiedWarningContainer.fadeOut(6000 , function () {
 
-            window.location.href = "/";
+            window.location.reload();
 
         });
 
@@ -1624,7 +1625,7 @@ containing the DOM objects and second the new value of the css "display" propert
 
                         setTimeout(function () {
 
-                            window.location.href = "/";
+                            window.location.reload();
                         } , 5000);
 
                         return
