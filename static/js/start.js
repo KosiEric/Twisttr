@@ -99,7 +99,7 @@ function GameRoom(webPage , defaults , playAmount , gameDetails , gameClass) {
                   $(resp.message).appendTo($('.mCSB_container')).addClass('new');
                   parent.setDate();
                   parent.updateScrollbar();
-                 setTimeout('window.location.reload()' , 11000);
+                 // setTimeout('window.location.reload()' , 11000);
 
           };
       }

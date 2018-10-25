@@ -25,9 +25,11 @@
 
 <!--Password Twisttr@p1 -->
 <!--paystack key sk_test_fbced60e604b7a4bcdf0cea2aea7c9a77f535914 -->
-
+<form name = "fund-account-form" id="fund-account-form">
+    <fieldset id="fund-account-fieldset">
     <div class="input-group">
         <span class="input-group-addon"><i class="fa fa-money"></i> </span>
+
         <select name="fund-account-amount-options" id="fund-account-amount-options" class="form-control selectpicker">
             <option value="100">&#8358; 100</option>
             <option value="200">&#8358; 200</option>
@@ -47,6 +49,8 @@
             <button id="fund-account-action-button" name="signin" class="btn btn-success">Pay</button>
         </div>
     </div>
+    </fieldset>
+</form>
 
 
 

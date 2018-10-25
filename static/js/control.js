@@ -3,7 +3,8 @@ $(document).ready(function () {
     parent = this;
     var playAmount =0;
     var gamePlayAmount = $('#game-play-amount');
-    function payWithPaystack(email , amount , name , originalAmount){
+    function payWithPaystack(email , amount , name , originalAmount , fieldset){
+        fieldset.prop("disabled"  , false);
         var handler = PaystackPop.setup({
             key: 'pk_test_6e24123adb39a373e1fb9f978dc287e5a7e626c3',
             email: email,
@@ -56,7 +57,8 @@ if(webPageObject.isLoggedInUser){
     playAmountModal  = $('#play-amount-modal');
     playAmountActionButtun = $('#play-amount-action-button');
     playAmountOptions = $('#play-amount-options');
-
+    fundAccountForm = $('#fund-account-form');
+    fundAccoutFieldset = $('#fund-account-fieldset');
     playAmountErrorMessage = $('#play-amount-error-message');
     playAmountActionButtun.on('click' , function (e) {
 
@@ -99,15 +101,16 @@ if(webPageObject.isLoggedInUser){
     });
 
 
-    fundAccountActionButton.on('click' , function (e) {
+    fundAccountForm.on('submit' , function (e) {
         webPageObject.defaults.preventFormSubmission(e);
+        fundAccoutFieldset.prop("disabled" , true);
         originalAmountInNaira = Number($('#'+fundAccountAmountOptions.attr('id') + " option:selected").attr("value"));
         fundAmount = originalAmountInNaira * 100;
         fundAmount = fundAmount + ((1.5/100) * fundAmount);
 
         $.getScript(webPageObject.defaults.files.paystackScript , function () {
 
-            payWithPaystack(webPageObject.userDetails.email , fundAmount , webPageObject.userDetails.fullname , originalAmountInNaira);
+            payWithPaystack(webPageObject.userDetails.email , fundAmount , webPageObject.userDetails.fullname , originalAmountInNaira , fundAccoutFieldset);
         });
 
 
