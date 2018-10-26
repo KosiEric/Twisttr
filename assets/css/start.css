@@ -5,6 +5,8 @@ body {
     font-size: 12px;
     line-height: 1.3;
     overflow: hidden;
+    background-position: center;
+    
 }
 
 .bg {
@@ -48,14 +50,14 @@ Chat
     left: 50%;
     -webkit-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
-    width: 300px;
-    height: 80vh;
+    width: 100%;
+    height: 100vh;
     max-height: 500px;
     z-index: 2;
     overflow: hidden;
     box-shadow: 0 5px 30px rgba(0, 0, 0, 0.2);
     background: rgba(0, 0, 0, 0.5);
-    border-radius: 20px;
+    border-radius: 0px;
     display: flex;
     justify-content: space-between;
     flex-direction: column;
@@ -63,8 +65,10 @@ Chat
 @media only screen and (min-width:600px){
     .chat {
 
-        width : 600px;
-        height : 100vh;
+        min-width : 600px;
+        max-width: 700px;
+        height : 140vh;
+        border-radius: 20px;
     }
 }
 

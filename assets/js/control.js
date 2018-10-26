@@ -6,7 +6,7 @@ $(document).ready(function () {
     function payWithPaystack(email , amount , name , originalAmount , fieldset){
         fieldset.prop("disabled"  , false);
         var handler = PaystackPop.setup({
-            key: 'pk_test_6e24123adb39a373e1fb9f978dc287e5a7e626c3',
+            key: webPageObject.defaults.constants.paystackKey,
             email: email,
             amount: amount,
             ref: ''+Math.floor((Math.random() * 1000000000) + 1), // generates a pseudo-unique reference. Please replace with a reference you generated. Or remove the line entirely so our API will generate one for you

@@ -165,8 +165,8 @@ this.preventFormSubmission = function (e) {
         minInstagramUsernameLength : 2,
         maxInstagramUsernameLength : 100,
         minStatusMessageLength : 5 ,
-        maxStatusMessageLength : 140
-        
+        maxStatusMessageLength : 140,
+        paystackKey : 'pk_test_6e24123adb39a373e1fb9f978dc287e5a7e626c3'
     };
 
     //Some(if not all) Strings (words) necessary for validation.
