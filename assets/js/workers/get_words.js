@@ -1,4 +1,4 @@
-importScripts('/static/js/request.js');
+importScripts('/assets/js/request.js');
 
 
 self.start = 0;

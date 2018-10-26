@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-     <link rel = "stylesheet" type = "text/css" href = '/static/css/404.css' />
+     <link rel = "stylesheet" type = "text/css" href = '/assets/css/404.css' />
     <title>Page Not Found</title>
 </head>
 <body>

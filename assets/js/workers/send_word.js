@@ -1,10 +1,10 @@
-importScripts('/static/js/request.js');
+importScripts('/assets/js/request.js');
 
 
 
 self.onmessage = function (ev) {
 
-    setInterval(function () {
+
 
 
         req = JSON.parse(ev.data);
@@ -14,7 +14,6 @@ self.onmessage = function (ev) {
         });
 
 
-    } , 2000);
 
 }
 

@@ -13,7 +13,7 @@ body {
     top: 0;
     left: 0;
     z-index: 1;
-    background: url("/static/img/game-background.jpg") no-repeat 0 0;
+    background: url("/assets/img/game-background.jpg") no-repeat 0 0;
     -webkit-filter: blur(80px);
     filter: blur(80px);
     -webkit-transform: scale(1.2);

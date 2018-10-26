@@ -57,7 +57,7 @@ abstract class WebsiteConfigurationSettings {
     public function __construct() {
 
         $this->DOCUMENT_ROOT = $_SERVER['DOCUMENT_ROOT'];
-        $this->STATIC_FOLDER = "/static/";
+        $this->STATIC_FOLDER = "/assets/";
         $this->JS_FOLDER = $this->STATIC_FOLDER."js/";
         $this->CSS_FOLDER = $this->STATIC_FOLDER."css/";
         $this->INCS_FOLDER = $_SERVER['DOCUMENT_ROOT'].$this->STATIC_FOLDER."incs/";

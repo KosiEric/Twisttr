@@ -105,7 +105,7 @@ this.preventFormSubmission = function (e) {
 
    //All the files necessary for processing requests
     this.processorsFolder = '/processors/';
-    this.staticFolder = '/static/';
+    this.staticFolder = '/assets/';
     this.incsFolder = this.staticFolder + 'incs/';
     this.chatFiles = '/chatfiles/';
     this.cssFolder = this.staticFolder + 'css/';
@@ -136,7 +136,7 @@ this.preventFormSubmission = function (e) {
        chatFile : 'chat.php',
        browserWarningFile : parent.incsFolder + 'browser-warning.php' ,
        notificationsFile : parent.processorsFolder + 'notifications.php',
-       javascriptFolder : '/static/js/',
+       javascriptFolder : parent.staticFolder + 'js/',
        chatfunctions : parent.chatFiles + 'chatfunctions.js',
        paystackScript : "https://js.paystack.co/v1/inline.js" ,
        spellcheckScript : "/JavaScriptSpellCheck/include.js"
