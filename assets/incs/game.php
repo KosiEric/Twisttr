@@ -36,7 +36,7 @@ Hope you like it :)
         <span id="game-hint-arrow" class="arrow-down"></span>
     </div>
     <div class="message-box">
-        <textarea type="text" id= "game-text" style="" class="message-input" placeholder="Type word..."></textarea>
+        <input type="text" id= "game-text" style="" class="message-input" placeholder="Type word..." />
         <button type="submit" class="message-submit"><i class="fa fa-send"></i> </button>
     </div>
 
