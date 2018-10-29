@@ -12,15 +12,15 @@ $website_details = new WebsiteDetails();
     <meta name="description" content="Play word game online and stand a chance of winning <?php echo  $website_details->Naira; ?>10000"/>
     <link href="https://fonts.googleapis.com/css?family=Dosis:600|Roboto:400,700" rel="stylesheet">
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/paper-kit.css?v=2.1.0" rel="stylesheet">
-    <link href="styles/main.css" rel="stylesheet" />
+    <link href="<?php echo  $website_details->CSS_FOLDER ?>bootstrap4.min.css" rel="stylesheet" type="text/css" />
+    <link href="<?php echo  $website_details->CSS_FOLDER ?>paper-kit.css?v=2.1.0" rel="stylesheet" type="text/css">
+    <link href="<?php echo  $website_details->CSS_FOLDER ?>main.css" rel="stylesheet" type="text/css"/>
    </head>
   <body id="top">
     <header>
       <div class="aa-header">
         <nav class="navbar navbar-expand-md navbar-transparent">
-          <div class="container"><img class="img-fluid pr-3 aa-logo-img" src="images/logo.png" alt="logo"><a class="navbar-brand px-0 py-0" href="#"><?php echo $website_details->SiteName; ?></a>
+          <div class="container"><img class="img-fluid pr-3 aa-logo-img" src="<?php echo $website_details->IMG_FOLDER; ?>home-logo.png" alt="logo"><a class="navbar-brand px-0 py-0" href="#"><?php echo $website_details->SiteName; ?></a>
             <div class="collapse navbar-collapse">
               <ul class="navbar-nav ml-auto">
                 <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
@@ -105,7 +105,7 @@ $website_details = new WebsiteDetails();
 <div class="aa-product-features section">
   <div class="container">
     <div class="row">
-      <div class="col-md-5 col-sm-12"><img class="img-fluid" src="images/twisttr-on-mobile.jpg" alt="Image"/></div>
+      <div class="col-md-5 col-sm-12"><img class="img-fluid" src="<?php echo $website_details->IMG_FOLDER; ?>twisttr-on-mobile.jpg" alt="Image"/></div>
       <div class="col-md-7 col-sm-12">
         <h2 class="title mb-2">What is <?php echo $website_details->SiteName;?>?</h2>
         <p class="pt-2"><?php echo $website_details->SiteName;?> is a simple word game where players are presented with 3 random words  every 25 seconds for 4min.</p>
@@ -330,11 +330,11 @@ $website_details = new WebsiteDetails();
         </div>
       </div>
     </footer>
-    <script src="js/jquery-3.2.1.min.js"></script>
-    <script src="js/jquery-ui-1.12.1.custom.min.js"></script>
-    <script src="js/popper.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/paper-kit.js?v=2.1.0"></script>
-    <script src="scripts/main.js"></script>
+    <script src="<?php echo  $website_details->JS_FOLDER ?>jquery-3.2.1.min.js"></script>
+    <script src="<?php echo  $website_details->JS_FOLDER ?>jquery-ui-1.12.1.custom.min.js"></script>
+    <script src="<?php echo  $website_details->JS_FOLDER ?>popper2.js"></script>
+    <script src="<?php echo  $website_details->JS_FOLDER ?>bootstrap4.min.js"></script>
+    <script src="<?php echo  $website_details->JS_FOLDER ?>paper-kit.js?v=2.1.0"></script>
+    <script src="<?php echo  $website_details->JS_FOLDER ?>main2.js"></script>
   </body>
 </html>

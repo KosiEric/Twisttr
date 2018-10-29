@@ -14,9 +14,10 @@ class WordsGenerator extends Functions {
         "starting" , "start" , "started" , "camera" , "commercial" , "treatment" , "received" , "change" , "chapter" ,
         "christmas" , "england" , "wednesday" , "potential" , "cancer" , "founder" , "around" , "everyone" , "developer" ,
         "envelope" , "street" , "everyone" , "weight", "time" , "domain" , "ethics" , "method" , "police" , "soldier" , "monday"
-    , "archive" , "domain" , "choose" , "amongst" , "customer" , "practice" , "death" , "capital" , "culture" , "brand" ,
+    ,   "archive" , "domain" , "choose" , "amongst" , "customer" , "practice" , "death" , "capital" , "culture" , "brand" ,
         "length" , "modified" , "string" , "background" , "approve" , "engage" , "internal" , "organ" , "economy" , "worse" ,
-        "partner" , "generate" , "encourage" , "sniper" , "anatomy" , "astronaut" ,  "made" , "arena" , "stadium");
+        "partner" , "generate" , "encourage" , "sniper" , "anatomy" , "astronaut" ,  "made" , "arena" , "stadium" , "large" , "relative"
+    ,   "aged" , "manner" , "seattle");
 
 
     function __construct()

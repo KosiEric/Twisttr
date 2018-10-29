@@ -12,7 +12,7 @@ if (!String.format) {
 
 
 self.seconds = 05;
-self.minutes = 3;
+self.minutes = 1;
 self.end = false;
 
 self.data = "";

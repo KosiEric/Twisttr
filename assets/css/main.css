@@ -20,7 +20,7 @@ h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6,
 
 /* Header Section */
 .aa-header {
-  background-image: url("../images/home-image.jpg");
+  background-image: url("/assets/img/home-image.jpg");
   position: relative;
   background-size: cover;
   min-height: 600px;
