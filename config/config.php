@@ -42,7 +42,7 @@ abstract class WebsiteConfigurationSettings {
     public  $transferFee = 100;
     public  $NumberOfRandomWords = 45;
     public  $GameIDLength = 6;
-    public  $MaximumNumberOfPlayers = 2;
+    public  $MaximumNumberOfPlayers = 10;
     public  $Naira = "&#8358;";
     public  $ChatPage = "/chat";
     public  $BlogPage = "/blog";

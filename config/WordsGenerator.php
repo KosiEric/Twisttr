@@ -17,7 +17,7 @@ class WordsGenerator extends Functions {
     ,   "archive" , "domain" , "choose" , "amongst" , "customer" , "practice" , "death" , "capital" , "culture" , "brand" ,
         "length" , "modified" , "string" , "background" , "approve" , "engage" , "internal" , "organ" , "economy" , "worse" ,
         "partner" , "generate" , "encourage" , "sniper" , "anatomy" , "astronaut" ,  "made" , "arena" , "stadium" , "large" , "relative"
-    ,   "aged" , "manner" , "seattle");
+    ,   "aged" , "manner" , "seattle" , "ranger" , "aftermath");
 
 
     function __construct()
