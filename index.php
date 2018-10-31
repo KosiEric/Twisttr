@@ -35,7 +35,7 @@ $website_details = new WebsiteDetails();
           <div class="row">
             <div class="col-md-6 col-sm-12">
               <h1 class="text-white mb-4"><?php echo $website_details->SiteName; ?><br/>Play Now and Win.</h1>
-              <p>Online games and puzzles are a fun way to pass the time. It’s even better when you’re rewarded for your time and get paid to play. </p>
+              <p>Online word games and puzzles are a fun way to pass the time. It’s even better when you’re rewarded for your time and get paid to play. </p>
                 <a href="#game-demo" id="game-demo-video-link" class="mt-4 btn btn-outline-neutral btn-round">Watch our demo Video</a>
               <ul class="py-1 list-unstyled">
                 <li class="py-2"><i class="fa fa-check-circle pr-4" aria-hidden="true"></i>You get paid immediately you request your money.</li>
