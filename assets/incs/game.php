@@ -12,14 +12,7 @@
 
 </div>
 
-<!--
-Follow me on
-Dribbble: https://dribbble.com/supahfunk
-Twitter: https://twitter.com/supahfunk
-Codepen: https://codepen.io/supah/
-It's just a concept, a fake chat to design a new daily UI for direct messaging.
-Hope you like it :)
--->
+
 
 <div class="chat main-game-chat">
     <div class="chat-title">
