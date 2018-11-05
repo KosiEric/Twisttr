@@ -11,7 +11,7 @@ $website_details = new WebsiteDetails();
     <title>Play <?php echo  $website_details->SiteName; ?> Now and Win</title>
     <meta name="description" content="Play word game online and stand a chance of winning <?php echo  $website_details->Naira; ?>10000"/>
     <!--link href="https://fonts.googleapis.com/css?family=Dosis:600|Roboto:400,700" rel="stylesheet" -->
-    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
+    <link href="<?php echo  $website_details->CSS_FOLDER.'font-awesome.min.css'?>" rel="stylesheet">
     <link href="<?php echo  $website_details->CSS_FOLDER ?>bootstrap4.min.css" rel="stylesheet" type="text/css" />
     <link href="<?php echo  $website_details->CSS_FOLDER ?>paper-kit.css?v=2.1.0" rel="stylesheet" type="text/css">
     <link href="<?php echo  $website_details->CSS_FOLDER ?>main.css" rel="stylesheet" type="text/css"/>
@@ -239,11 +239,11 @@ $website_details = new WebsiteDetails();
     </div>
     <div class="aa-testimonials">
       <div class="row">
-        <div class="col-md-4 mb-3">
+        <div class="col-md-4 mb-3 first-testimonial">
           <div class="aa-testimonials-body">
-              <blockquote><strong>"<?php echo $website_details->SiteName?> is awesome and I can't believe how easily i won <?php echo $website_details->Naira; ?>9000 Just like that. I wish this kind of platform existed before now"</strong></blockquote>
+              <blockquote  style="padding-bottom: 10px;"><strong>"<?php echo $website_details->SiteName?> is awesome , in less than 3min. i won <?php echo $website_details->Naira; ?>9000 Just like that. i wish this site existed long before now.I'm loving it here."</strong></blockquote>
             <div class="row pt-3">
-              <div class="col-lg-5 col-md-12"><img class="testimonial-images" src="<?php echo $website_details->IMG_FOLDER;?>rowland.jpg" alt="Daniels Rowland" /></div>
+              <div class="col-lg-5 col-md-12"><img class="testimonial-images first-testimonial" src="<?php echo $website_details->IMG_FOLDER;?>roland.jpg" alt="Daniels Rowland" /></div>
               <div class="col-lg-7 col-md-12 pt-3">
                 <div class="h5">Rowland Daniels</div>
                 <p class="text-muted">Student</p>
@@ -265,7 +265,7 @@ $website_details = new WebsiteDetails();
         </div>
         <div class="col-md-4 mb-3">
           <div class="aa-testimonials-body">
-<blockquote><strong>"This is actually my 3rd time of Winning here on <?php echo $website_details->SiteName; ?> i've only played 5 times. it's genuine. if you win, you get paid immediately."</strong></blockquote>
+<blockquote><strong>"This is actually my 3rd time of Winning here on <?php echo $website_details->SiteName; ?> i've only played 5 times. it's genuine. if you win, you get paid."</strong></blockquote>
             <div class="row pt-3">
               <div class="col-lg-5 col-md-12"><img class="testimonial-images" src="<?php echo $website_details->IMG_FOLDER;?>francis.jpg" alt="Francis Nwokeure"/></div>
               <div class="col-lg-7 col-md-12 pt-3">
