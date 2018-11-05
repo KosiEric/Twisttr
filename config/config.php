@@ -47,6 +47,7 @@ abstract class WebsiteConfigurationSettings {
     public  $ChatPage = "/chat";
     public  $BlogPage = "/blog";
     public  $AllowBonus = true;
+    public  $DefaultAdminUserID;
     public  $Banks = Array("Access Bank" , "CitiBank" , "Coronation Merchant Bank" , "Diamond Bank" , "Ecobank Nigeria" , "Enterprise Bank Limited" , "FBN Merchant Bank" ,"Fidelity Bank Nigeria",
         "First Bank of Nigeria" , "First City Monument Bank" , "FSDH Merchant Bank" , "Guarantee Trust Bank" , "Heritage Bank Plc" ,"Jaiz Bank Limited" ,
         "Keystone Bank Limited" , "Polaris Bank" , "Providus Bank Plc" ,  "Rand Merchant Bank" , "Stanbic IBTC Bank Nigeria Limited" , "Standard Chartered Bank" ,
@@ -72,6 +73,7 @@ abstract class WebsiteConfigurationSettings {
         $this->HeadOffice = "Block 2A , Quarters 3 PH Int'l Airport Omagwa.";
         $this->MaximumUserProfileImageSizeInWords = strval($this->MaximumUserProfileImageSize / 10). "mb";
         $this->ContactEmail  = 'contact@'.$this->SiteName;
+        $this->DefaultAdminUserID = "Jvli";
         $this->AboutUs = <<<AboutUs
 <p>
                                        Welcome to {$this->SiteName} an online word game where everybody gets to be a winner.  
