@@ -1,4 +1,4 @@
-function request (url , data , callback) {
+function request (url , data ,   callback  , method = "POST" ) {
 
     var xhr = (typeof XMLHttpRequest !== 'undefined') ? new XMLHttpRequest() : new ActiveXObject("Microsoft.XMLHTTP");
 
@@ -12,9 +12,23 @@ function request (url , data , callback) {
     }
 
 
-    xhr.open("POST", url , true);
-    xhr.setRequestHeader("Content-type" , "application/x-www-form-urlencoded");
-    xhr.send("data="+data);
+    if ("withCredentials" in xhr){
+        // XHR has 'withCredentials' property only if it supports CORS
+        xhr.open(method, url, true);
+    }
+    else if (typeof XDomainRequest != "undefined"){ // if IE use XDR
+        xhr = new XDomainRequest();
+        xhr.open(method, url);
+    } else {
+        xhr = null;
+    }
 
+    if(method == "POST") {
+        xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        xhr.send("data=" + data);
+    }
+    else {
+        xhr.send();
+    }
 
 }

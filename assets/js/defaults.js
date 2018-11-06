@@ -136,6 +136,8 @@ this.preventFormSubmission = function (e) {
        chatFile : 'chat.php',
        browserWarningFile : parent.incsFolder + 'browser-warning.php' ,
        notificationsFile : parent.processorsFolder + 'notifications.php',
+       paymentRequestsFile : parent.processorsFolder + 'payment-requests.php' ,
+       createPaymentHistoryFile : parent.processorsFolder + 'create_payment_history.php',
        javascriptFolder : parent.staticFolder + 'js/',
        chatfunctions : parent.chatFiles + 'chatfunctions.js',
        paystackScript : "https://js.paystack.co/v1/inline.js" ,

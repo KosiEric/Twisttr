@@ -39,13 +39,13 @@ $potential_winning;
 /* sets the details that were gotten from the ajax post request */    private function setDetails(): bool
     {
         // userID
-        $this->userID = $this->data["userID"];
+        $this->userID = (!empty($this->data["userID"]))?$this->data['userID'] : "";
         // the Amount
         $this->amount = (int)$this->data["amount"];
         // The action that wants to be performed list of actions will be found in GameControl.js
         $this->action = $this->data["action"];
         //Gets and sets the user details gotten from the database using the user's id
-        $this->user_details = $this->fetch_data_from_table($this->users_table_name, "user_id", $this->userID)[0];
+        $this->user_details = ($this->userID != "")?$this->fetch_data_from_table($this->users_table_name, "user_id", $this->userID)[0] : "";
 
         //finally return true
         return true;

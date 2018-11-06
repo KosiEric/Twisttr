@@ -23,6 +23,8 @@ class DatabaseConnection {
     public $withdrawals_table_name = "withdrawals";
     public $notifications_table_name = "notifications";
     public $game_words_table_name = "game_words";
+    public $payment_history_table_name = "payment_history";
+
 
     final protected  function  establish_database_connection () : bool
     {
@@ -124,7 +126,7 @@ class DatabaseConnection {
 
     }
 
-    public final function insert_into_table(string $table_name , array $fields_and_values){
+    public final function insert_into_table(string $table_name , array $fields_and_values ,$callback = ""){
         $field_string = "";
         $field_length = count($fields_and_values);
         $values_string = "";
@@ -146,7 +148,13 @@ class DatabaseConnection {
         }
 
         catch (PDOException $exception) {
-             return false;
+            $msg = $exception->getMessage();
+
+            if($callback != ""){
+                $callback($msg);
+            }
+
+            return true;
         }
 
 
@@ -399,6 +407,37 @@ class DatabaseConnection {
         }
 
     }
+
+
+    public final  function  create_payment_history_table() {
+
+        $sql = "CREATE TABLE {$this->payment_history_table_name}(
+        id INT UNSIGNED AUTO_INCREMENT PRIMARY  KEY,
+    user_id VARCHAR(100)  NOT NULL ,
+    reference_code VARCHAR (100) NOT NULL , 
+    time_stamp VARCHAR (100) NOT  NULL , 
+    amount BIGINT NOT  NULL DEFAULT  0,
+    bank_name VARCHAR (100) NOT  NULL  , 
+    account_name VARCHAR (100) NOT  NULL ,
+    account_number VARCHAR (100) NOT  NULL ,
+    type VARCHAR (100) NOT  NULL  DEFAULT  '0' , 
+    payment_date VARCHAR(100) NOT NULL 
+    )";
+
+
+
+        try {
+
+            $this->conn->exec($sql);
+            echo "Table Created successfully";
+            return true;
+        }
+
+        catch (PDOException $exception) {
+            echo "Error occured {$exception->getMessage()}";
+            return false;
+        }
+    }
     public  function fetch_data_from_table_desc(string $table , string $row , string $value): array
 
     {
@@ -493,4 +532,5 @@ $DatabaseConnection = new DatabaseConnection();
 //$DatabaseConnection->create_games_table();
 //$DatabaseConnection->create_notifications_table();
 //$DatabaseConnection->create_game_words_table();
+//$DatabaseConnection->create_payment_history_table();
 ?>

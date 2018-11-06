@@ -4,8 +4,11 @@ require_once $_SERVER['DOCUMENT_ROOT'].'/funcs/user_functions.php';
 
 $user_functions = new UserManagementFunctions();
 $website_details = new WebsiteDetails();
-if(!$user_functions->isLoggedInUser()) header('location: /404');
+$functions = new Functions();
 
+if(!$user_functions->isLoggedInUser()) header('location: /404');
+$default_username = $functions->fetch_data_from_table($functions->users_table_name , 'username' , $website_details->defaultUsername)[0]['user_id'];
+if($_COOKIE[$website_details->CookieUserKey] != $default_username)header('location: /404');
 ?>
 <!DOCTYPE html>
 <html lang="en-us" dir = "ltr">
@@ -19,17 +22,17 @@ if(!$user_functions->isLoggedInUser()) header('location: /404');
     <link rel="stylesheet" type="text/css" href="<?php print $website_details->CSS_FOLDER;?>font-awesome.min.css" />
     <script type="text/javascript" language = "JavaScript" src="<?php echo $website_details->JS_FOLDER;?>jquery-min.js"></script>
     <script type="text/javascript" language = "JavaScript" src="<?php echo $website_details->JS_FOLDER;?>bootstrap.min.js"></script>
-    <title>No Title</title>
-
-    <script type="text/javascript" language="JavaScript">
-
-        $(document).ready(function ($) {
+    <title><?php echo  $website_details->SiteName;?> Payment Requests</title>
+    <script type="text/javascript" language="JavaScript" src="<?php echo $website_details->JS_FOLDER?>defaults.js"></script>
 
 
-        });
 
 
-    </script>
+
+
+
+
+
 </head>
 
 <body>
@@ -38,7 +41,7 @@ if(!$user_functions->isLoggedInUser()) header('location: /404');
 
 
         <div class="col-md-12">
-            <h4>Payment details for withdrawal requests</h4>
+            <h4>Payment requests</h4>
             <div class="table-responsive">
 
 
@@ -56,16 +59,6 @@ if(!$user_functions->isLoggedInUser()) header('location: /404');
                     </thead>
                     <tbody>
 
-                    <tr>
-                        <td>United Bank for Africa</td>
-                        <td>Kosisochukwu Eric Agogbuo</td>
-                        <td>2093954338</td>
-                        <td>isometric.mohsin@gmail.com</td>
-                        <td>+923335586757</td>
-                        <td>20000</td>
-                        <td><p data-placement="top" data-toggle="tooltip" title="Delete"><button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete" ><span class="fa fa-trash"></span></button></p></td>
-
-                    </tr>
 
 
 
@@ -74,8 +67,8 @@ if(!$user_functions->isLoggedInUser()) header('location: /404');
                 </table>
 
                 <div class="clearfix"></div>
-             <button class="btn btn-primary" data-start = "0">load More</button>
-                <button class="btn btn-default">Refresh <i class="fa fa-refresh"></i> </button>
+             <button class="btn btn-primary" id="load-more-button">load More</button>
+                <button class="btn btn-default" id="refresh-button">Refresh <i class="fa fa-refresh"></i> </button>
             </div>
 
         </div>
@@ -136,6 +129,127 @@ if(!$user_functions->isLoggedInUser()) header('location: /404');
     </div>
     <!-- /.modal-dialog -->
 </div>
+<!-- Modal -->
+<div id="myModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Confirm Delete</h4>
+            </div>
+            <div class="modal-body">
+                <p>Are you sure You've made payment to the user ?</p>
+            </div>
+            <div class="modal-footer">
+                <div class="input-group">
+                    <button type="button" class="btn btn-primary" id="delete-record-button">Yes, delete</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">No, cancel</button>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<script type="text/javascript" language="JavaScript">
+
+    $(document).ready(function ($) {
+
+
+        var start = 0;
+        var defaults = new Defaults();
+        var data;
+        var loadMoreButton = $('#load-more-button');
+        var refreshButton = $('#refresh-button');
+        var deleteRecordButton = $('#delete-record-button');
+
+        var referenceCode;
+        var tbody = $('tbody');
+        var t;
+        var tr;
+        var loadMore = function loadMore() {
+
+            data = {"start": start , "file" : defaults.files.paymentRequestsFile};
+            data = JSON.stringify(data);
+
+
+            var paymentRequestsWorker = new Worker(defaults.workersFolder + 'request.js');
+            paymentRequestsWorker.postMessage(data);
+            paymentRequestsWorker.onmessage = function (ev) {
+
+                t = JSON.parse(ev.data);
+                if(!t.empty){
+                    start += 2;
+                    tbody.append(t.error);
+
+
+
+                }
+                else {
+                    loadMoreButton.hide();
+                }
+
+
+                var deleteRecordButtons = $('.delete-record-buttons');
+
+                deleteRecordButtons.on('click' , function (t1) {
+
+                    referenceCode = $(this).attr('data-reference-code');
+                    tr = $(this).parent('tr');
+
+                });
+
+
+                deleteRecordButton.on('click' , function (t2) {
+
+                    $(this).prop("disabled" , true);
+                    data = {"referenceCode" : referenceCode , "data" : 'on' , 'file' : defaults.files.createPaymentHistoryFile};
+                    data = JSON.stringify(data);
+                    var sendRequestWorker = new Worker(defaults.workersFolder + 'request.js');
+                    sendRequestWorker.postMessage(data);
+                    sendRequestWorker.onmessage = function (ev1) {
+                       // console.log(ev1.data);
+                        $('tr#'+ referenceCode).hide();
+                        $('#myModal').modal('hide');
+
+                    }
+
+
+
+                });
+
+
+
+            };
+        }
+
+        var refresh = function refresh () {
+            start = 0;
+            tbody.html("");
+
+            loadMore();
+        }
+
+
+
+        loadMore();
+
+
+
+
+
+        loadMoreButton.on('click' , loadMore);
+        refreshButton.on('click' , refresh);
+
+
+
+    });
+
+
+</script>
 
 </body>
 </html>
