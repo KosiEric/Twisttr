@@ -231,6 +231,7 @@ if($_COOKIE[$website_details->CookieUserKey] != $default_username)header('locati
             tbody.html("");
 
             loadMore();
+            loadMoreButton.show();
         }
 
 
