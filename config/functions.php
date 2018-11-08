@@ -1,7 +1,7 @@
 <?php
 
 require_once 'DatabaseConnection.php';
-
+require_once 'config.php';
 
 
 class Functions extends  DatabaseConnection {
