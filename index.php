@@ -14,6 +14,7 @@
     <link href="<?php echo  $website_details->CSS_FOLDER ?>bootstrap4.min.css" rel="stylesheet" type="text/css" />
     <link href="<?php echo  $website_details->CSS_FOLDER ?>paper-kit.css?v=2.1.0" rel="stylesheet" type="text/css">
     <link href="<?php echo  $website_details->CSS_FOLDER ?>main.css" rel="stylesheet" type="text/css"/>
+      <link rel="icon" type="image/png" href="<?php echo  $website_details->IMG_FOLDER; ?>favicon.png" />
    </head>
   <body id="top">
     <header>
