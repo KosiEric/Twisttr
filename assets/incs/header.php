@@ -2,8 +2,8 @@
 
 
 require_once $_SERVER['DOCUMENT_ROOT'].'/config/classes.php';
-require_once $_SERVER['DOCUMENT_ROOT'].'/config/functions.php';
-require_once $_SERVER['DOCUMENT_ROOT'].'/config/config.php';
+require_once  $_SERVER['DOCUMENT_ROOT'].'/funcs/user_functions.php';
+
 
 class Header extends WebsiteHeader {
          private $WebsiteDetails;

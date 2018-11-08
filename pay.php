@@ -2,9 +2,6 @@
 require_once $_SERVER['DOCUMENT_ROOT'].'/config/config.php';
 require_once $_SERVER['DOCUMENT_ROOT'].'/funcs/user_functions.php';
 
-$user_functions = new UserManagementFunctions();
-$website_details = new WebsiteDetails();
-$functions = new Functions();
 
 if(!$user_functions->isLoggedInUser()) header('location: /404');
 $default_username = $functions->fetch_data_from_table($functions->users_table_name , 'username' , $website_details->defaultUsername)[0]['user_id'];

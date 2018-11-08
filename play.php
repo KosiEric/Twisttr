@@ -2,7 +2,7 @@
 
 session_start();
 require_once  $_SERVER['DOCUMENT_ROOT'].'/assets/incs/header.php';
-require_once  $_SERVER['DOCUMENT_ROOT'].'/funcs/user_functions.php';
+
 
 
 class HomePage extends  Functions {

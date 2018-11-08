@@ -94,4 +94,5 @@ class Functions extends  DatabaseConnection {
 
 }
 
+$functions = new Functions();
 ?>

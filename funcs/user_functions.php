@@ -70,5 +70,6 @@ class UserManagementFunctions extends  Functions {
 
 }
 
+$user_functions = new UserManagementFunctions();
 
 ?>

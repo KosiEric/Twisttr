@@ -97,5 +97,8 @@ class WebsiteDetails extends WebsiteConfigurationSettings {
 
 }
 
+$website_details = new WebsiteDetails();
+
+
 
 ?>

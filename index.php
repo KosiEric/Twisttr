@@ -1,5 +1,4 @@
 <?php require_once $_SERVER["DOCUMENT_ROOT"].'/config/config.php';
-$website_details = new WebsiteDetails();
 ?>
 
 <!DOCTYPE html>
@@ -108,7 +107,7 @@ $website_details = new WebsiteDetails();
       <div class="col-md-5 col-sm-12"><img class="img-fluid" src="<?php echo $website_details->IMG_FOLDER; ?>twisttr-on-mobile.jpg" alt="Image"/></div>
       <div class="col-md-7 col-sm-12">
         <h2 class="title mb-2">What is <?php echo $website_details->SiteName;?>?</h2>
-        <p class="pt-2"><?php echo $website_details->SiteName;?> is a simple word game where players are presented with 3 random words  every 25 seconds for 4min.</p>
+        <p class="pt-2"><?php echo $website_details->SiteName;?> is a simple word game where players are presented with 3 random words  every 25 seconds for 2min.</p>
         <p class="pt-5 pb-1">Players are expected to derive other words from the letters found in these words, points are given for each unique word a player enters.</p>
         <ul class="py-1 list-unstyled">
             <li class="py-1"><i class="fa fa-check-circle pr-4" aria-hidden="true"></i>More information on how the game works can be found <a href = "#">here</a></li>
@@ -163,7 +162,7 @@ $website_details = new WebsiteDetails();
             <div class="aa-price-section bg-gradient text-white"><sup><?php echo  $website_details->Naira ?></sup><span>100.0</span><small>/game</small></div>
             <ul class="list-unstyled text-muted">
               <li class="pt-3">10 players</li>
-              <li>Game lasts for 4mins</li>
+              <li>duration : 2:05 mins.</li>
               <li>Winner is rewarded with <?php echo  $website_details->Naira ?>900</li>
               <li><?php echo  $website_details->Naira ?>100 will be charged for Transfer fee</li>
             </ul>
@@ -180,7 +179,7 @@ $website_details = new WebsiteDetails();
             <div class="aa-price-section"><sup><?php echo  $website_details->Naira ?></sup><span>200.0</span><small>/game</small></div>
             <ul class="list-unstyled text-muted">
               <li class="pt-3">10 players</li>
-              <li>Game lasts for 4mins</li>
+              <li>duration : 2:05 mins.</li>
               <li>Winner is rewarded with <?php echo  $website_details->Naira ?>1800</li>
               <li><?php echo  $website_details->Naira ?>100 will be charged for Transfer fee</li>
             </ul>
@@ -197,7 +196,7 @@ $website_details = new WebsiteDetails();
             <div class="aa-price-section"><sup><?php echo  $website_details->Naira ?></sup><span>500.0</span><small>/game</small></div>
             <ul class="list-unstyled text-muted">
               <li class="pt-3">10 players</li>
-              <li>Game lasts for 4min.</li>
+              <li>duration 2:05 mins.</li>
               <li>Winner is rewarded with <?php echo  $website_details->Naira ?>4500</li>
               <li><b><?php echo  $website_details->Naira ?>100 will be charged for Transfer fee</b></li>
             </ul>
@@ -214,7 +213,7 @@ $website_details = new WebsiteDetails();
                     <div class="aa-price-section"><sup><?php echo $website_details->Naira;?></sup><span>1000.0</span><small><?php /*/*/?>game</small></div>
                     <ul class="list-unstyled text-muted">
                         <li class="pt-3">10 members</li>
-                        <li>Game lasts for 4min.</li>
+                        <li>duration 2:05 mins.</li>
                         <li>Winner is rewarded with <?php echo $website_details->Naira; ?>9000</li>
                         <li><b><?php echo  $website_details->Naira ?>100 will be charged for Transfer fee</b></li>
                     </ul>
