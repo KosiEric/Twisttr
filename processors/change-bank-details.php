@@ -55,10 +55,9 @@ class changeBankDetails extends  Functions {
         $this->verification_code = $this->generateID($this->bank_details_verification_code_length);
         $this->user_details = $this->fetch_data_from_table($this->users_table_name , "user_id" , $this->userID)[0];
 
-        if(!$this->record_exists_in_table($this->pending_bank_details_table_name , 'verification_code' , $this->verification_code))
-            return true;
-        $this->setDetails();
+        $action = (!$this->record_exists_in_table($this->pending_bank_details_table_name , 'verification_code' , $this->verification_code))?true : $this->setDetails();
 
+        return $action;
     }
 
 
