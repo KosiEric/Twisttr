@@ -58,7 +58,7 @@ class ResetUserPassword extends  Functions{
 
             $new_password_reset_code = str_shuffle($this->generateID($this->password_reset_code_length));
 
-           // $this->update_record($this->users_table_name , "password_reset_code" , $new_password_reset_code ,"username" , $this->username );
+           $this->update_record($this->users_table_name , "password_reset_code" , $new_password_reset_code ,"username" , $this->username );
 
 
             $time = time();

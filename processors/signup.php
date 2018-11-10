@@ -391,7 +391,7 @@ BASIC_EMAIL_BODY;
 
                    if($this->phone_doesnt_exist()){
 
-                       if (2 or $this->send_welcome_email()) {
+                       if ($this->send_welcome_email()) {
                            $this->create_user_account();
                            $thirty_days_from_now = (86400 * 30) + $this->registration_timestamp;
                            setcookie($this->config->CookieUserKey , $this->user_id , $thirty_days_from_now , "/");
