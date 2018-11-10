@@ -211,7 +211,7 @@ Confirm your email address to complete your  account <strong>{$this->email}</str
 
 </p>
 
-<a href = "{$this->config->SiteNameWithHttps}?action=verify_account&code={$this->email_verification_code}" title='Complete registration' id = 'confirmation-link'>Confirm now</a>
+<a href = "{$this->config->SiteNameWithHttps}/play?action=verify_account&code={$this->email_verification_code}" title='Complete registration' id = 'confirmation-link'>Confirm now</a>
 
 <p id = 'not-user-message'>
 
@@ -250,7 +250,7 @@ to activate your account.
 <br />
 <br/>
 <strong>Activation Link</strong><br>
-<a href = "{$this->config->SiteNameWithHttps}?action=verify_account&code={$this->email_verification_code}" title='Complete registration' id = 'confirmation-link'>Confirm now</a>
+<a href = "{$this->config->SiteNameWithHttps}/play?action=verify_account&code={$this->email_verification_code}" title='Complete registration' id = 'confirmation-link'>Confirm now</a>
 
 <br /><br />
 

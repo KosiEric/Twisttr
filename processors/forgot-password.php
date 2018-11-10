@@ -262,7 +262,7 @@ You recently requested for an account recovery for your email  <strong>{$this->u
 
 </p>
 
-<a href = "{$this->config->SiteNameWithHttps}/?action=account_recovery&code={$this->user_details['password_reset_code']}" title='Recover your account' id = 'confirmation-link'>Recover account</a>
+<a href = "{$this->config->SiteNameWithHttps}/play?action=account_recovery&code={$this->user_details['password_reset_code']}" title='Recover your account' id = 'confirmation-link'>Recover account</a>
 
 <p id = 'not-user-message'>
 
@@ -302,7 +302,7 @@ You recently requested for an account recovery for your email  <strong>{$this->u
 <br />
 <br/>
 <strong>Recovery Link</strong><br>
-<a href = "{$this->config->SiteNameWithHttps}?/action=account_recovery&code={$this->user_details['password_reset_code']}" title='Recover your account' id = 'confirmation-link'>Recover account</a>
+<a href = "{$this->config->SiteNameWithHttps}/play?action=account_recovery&code={$this->user_details['password_reset_code']}" title='Recover your account' id = 'confirmation-link'>Recover account</a>
 
 <br /><br />
 

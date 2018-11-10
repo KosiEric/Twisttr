@@ -235,7 +235,7 @@ You recently requested to change your bank account details  <strong>{$this->user
 
 </p>
 
-<a href = "{$this->config->SiteNameWithHttps}/?action=update_bank_details&code={$this->verification_code}" title='Confirm change' id = 'confirmation-link'>Confirm Bank Details</a>
+<a href = "{$this->config->SiteNameWithHttps}/play?action=update_bank_details&code={$this->verification_code}" title='Confirm change' id = 'confirmation-link'>Confirm Bank Details</a>
 
 <p id = 'not-user-message'>
 
@@ -275,7 +275,7 @@ You recently requested to change your bank account details  <strong>{$this->user
 <br />
 <br/>
 <strong>Bank Details Reset Link</strong><br>
-<a href = "{$this->config->SiteNameWithHttps}/?action=update_bank_details&code={$this->verification_code}" title='Confirm change' id = 'confirmation-link'>Confirm Bank Details</a>
+<a href = "{$this->config->SiteNameWithHttps}/play?action=update_bank_details&code={$this->verification_code}" title='Confirm change' id = 'confirmation-link'>Confirm Bank Details</a>
 
 <br /><br />
 
