@@ -249,7 +249,7 @@ containing the DOM objects and second the new value of the css "display" propert
 
     data = {
         "action": 'get_total_number_of_players',
-        "userID": 'pvo8ka',
+        /*"userID": 'pvo8ka',*/
         "amount": 1000,
         "file": parent.defaults.files.gameControlFile
     };
