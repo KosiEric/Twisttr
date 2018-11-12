@@ -105,27 +105,7 @@ if($_COOKIE[$website_details->CookieUserKey] != $default_username)header('locati
 
 
 
-<div class="modal fade" id="delete" tabindex="-1" role="dialog" aria-labelledby="edit" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
-                <h4 class="modal-title custom_align" id="Heading">Delete this entry</h4>
-            </div>
-            <div class="modal-body">
 
-                <div class="alert alert-danger"><span class="glyphicon glyphicon-warning-sign"></span> Are you sure you want to delete this Record?</div>
-
-            </div>
-            <div class="modal-footer ">
-                <button type="button" class="btn btn-success" ><span class="glyphicon glyphicon-ok-sign"></span> Yes</button>
-                <button type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> No</button>
-            </div>
-        </div>
-        <!-- /.modal-content -->
-    </div>
-    <!-- /.modal-dialog -->
-</div>
 <!-- Modal -->
 <div id="myModal" class="modal fade" role="dialog">
     <div class="modal-dialog">
@@ -137,7 +117,7 @@ if($_COOKIE[$website_details->CookieUserKey] != $default_username)header('locati
                 <h4 class="modal-title">Confirm Delete</h4>
             </div>
             <div class="modal-body">
-                <p>Are you sure You've made payment to the user ?</p>
+                <p id="delete-confirmation-text">Are you sure You've made payment to this user (<strong><span id = "account-username"></span></strong>)?</p>
             </div>
             <div class="modal-footer">
                 <div class="input-group">
@@ -162,9 +142,11 @@ if($_COOKIE[$website_details->CookieUserKey] != $default_username)header('locati
         var loadMoreButton = $('#load-more-button');
         var refreshButton = $('#refresh-button');
         var deleteRecordButton = $('#delete-record-button');
-
+        var accountName;
         var referenceCode;
         var tbody = $('tbody');
+        var deleteConfirmationText = $('#delete-confirmation-text');
+        var accountUsername = $('#account-username');
         var t;
         var tr;
         var loadMore = function loadMore() {
@@ -178,6 +160,7 @@ if($_COOKIE[$website_details->CookieUserKey] != $default_username)header('locati
             paymentRequestsWorker.onmessage = function (ev) {
 
                 t = JSON.parse(ev.data);
+
                 if(!t.empty){
                     start += 2;
                     tbody.append(t.error);
@@ -196,7 +179,8 @@ if($_COOKIE[$website_details->CookieUserKey] != $default_username)header('locati
 
                     referenceCode = $(this).attr('data-reference-code');
                     tr = $(this).parent('tr');
-
+                    accountName = $(this).attr('data-account-name');
+                    accountUsername.text(accountName);
                 });
 
 
@@ -205,10 +189,11 @@ if($_COOKIE[$website_details->CookieUserKey] != $default_username)header('locati
                     $(this).prop("disabled" , true);
                     data = {"referenceCode" : referenceCode , "data" : 'on' , 'file' : defaults.files.createPaymentHistoryFile};
                     data = JSON.stringify(data);
+
                     var sendRequestWorker = new Worker(defaults.workersFolder + 'request.js');
                     sendRequestWorker.postMessage(data);
                     sendRequestWorker.onmessage = function (ev1) {
-                       // console.log(ev1.data);
+                       console.log(ev1.data);
                         $('tr#'+ referenceCode).hide();
                         $('#myModal').modal('hide');
 
@@ -221,7 +206,7 @@ if($_COOKIE[$website_details->CookieUserKey] != $default_username)header('locati
 
 
             };
-        }
+        };
 
         var refresh = function refresh () {
             start = 0;
@@ -229,7 +214,7 @@ if($_COOKIE[$website_details->CookieUserKey] != $default_username)header('locati
 
             loadMore();
             loadMoreButton.show();
-        }
+        };
 
 
 

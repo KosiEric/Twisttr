@@ -1,5 +1,6 @@
-function request (url , data ,   callback  , method = "POST" ) {
+function request (url , data ,   callback  , method) {
 
+    method = (!method)?"POST":method;
     var xhr = (typeof XMLHttpRequest !== 'undefined') ? new XMLHttpRequest() : new ActiveXObject("Microsoft.XMLHTTP");
 
 
