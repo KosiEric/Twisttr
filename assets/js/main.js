@@ -308,9 +308,9 @@ containing the DOM objects and second the new value of the css "display" propert
         this.userDetails = JSON.parse(this.userDetails);
 
 
-        withdrawForm = $('#withdraw-form');
+        this.withdrawForm = $('#withdraw-form');
 
-        withdrawFormFieldset = $('#withdraw-amount-fieldset');
+        this.withdrawFormFieldset = $('#withdraw-amount-fieldset');
 
         parent.loadMoreNotificationsAction.on('click' , loadMoreNotifications);
 
@@ -396,7 +396,7 @@ containing the DOM objects and second the new value of the css "display" propert
         withdrawErrorMessage = $('#withdraw-error-message');
         withdrawAmountErrorMessage = $('#withdraw-amount-error-message');
         withdrawType = $('#withdraw-type');
-        withdrawForm.on('submit' , function (e) {
+        this.withdrawForm.on('submit' , function (e) {
 
             parent.defaults.preventFormSubmission(e);
 
@@ -431,7 +431,7 @@ containing the DOM objects and second the new value of the css "display" propert
 
             else {
                // return true;
-                withdrawFormFieldset.prop("disabled" , true);
+                parent.withdrawFormFieldset.prop("disabled" , true);
                 withdrawSeverMessages.css("display" , "none");
 
 
@@ -460,7 +460,7 @@ containing the DOM objects and second the new value of the css "display" propert
                         return;
                     }
 
-                    withdrawFormFieldset.prop("disabled" , false);
+                    //withdrawFormFieldset.prop("disabled" , false);
                     withdrawErrorMessage.css("display" , "block");
                     withdrawErrorMessage.text(data[parent.defaults.jsonErrorText]);
 
