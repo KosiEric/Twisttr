@@ -18,6 +18,7 @@ class Header extends WebsiteHeader {
          private $userBonus = "";
          private $bonus = "";
          public $userBonusLI = "";
+         public $WhatsAppContactNumber;
          private function getNumberOfUnreadNotifications () {
              $unread_notifications = 0;
              if($this->isLoggedInUser) {
@@ -53,18 +54,18 @@ BONUS;
              $this->tryDisableSearchForm = (!$this->isLoggedInUser)?"disabled='disabled'" : "";
              $this->WebsiteDetails = new WebsiteDetails();
              $this->functions = new Functions();
-
+             $this->WhatsAppContactNumber = str_replace(" " , "" , $this->WebsiteDetails->WhatsAppContact);
              $this->PageHeader = <<<FullHeader
 
  <div class="header-nav-container" id="main-site-header">
-  <nav class="navbar navbar-default header-nav-white-bg">
+  <nav class="navbar navbar-default header-nav-white-bg" id="header-navbar">
     <div class="container-fluid">
       <div class="navbar-header">
         <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar1">
           <span class="sr-only">Toggle navigation</span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
+          <span class="icon-bar" style="color:#fff;background-color:#fff;" ></span>
+          <span class="icon-bar" style="color:#fff;background-color:#fff;"></span>
+          <span class="icon-bar" style="color:#fff;background-color:#fff;"></span>
         </button>
         <ul class="nav navbar-nav navbar-left">
         <li><a class="navbar-brand header-logo" href="/">
@@ -124,16 +125,15 @@ BONUS;
 </div>
           </li>          
 
-          <li class="border-down-shown inactive-header-li"><a href="#play-amount-modal" id="play-action-link" data-toggle="modal" class="header-list-links"><i class="fa fa-location-arrow  header-play-icon header-icons"></i>Play <span class="badge game-play-count" id="number-of-players-count"></span></a></li>
-<li class="border-down-shown inactive-header-li" id="header-search-form-li"><form class="form-inline header-search-user-form"><fieldset {$this->tryDisableSearchForm}>
-    <input class="form-control form-control-sm ml-3 w-75 search-user-input" style="background-image: url({$this->SearchIcon})" type="text" placeholder="Search for  user" aria-label="Search">
-</fieldset></form></li>          
+          <li class="border-down-shown inactive-header-li"><a href="#play-amount-modal" id="play-action-link" data-toggle="modal" class="header-list-links"><i class="fa fa-play-circle  header-play-icon header-icons"></i>Play <span class="badge game-play-count" id="number-of-players-count"></span></a></li>
+          <li class="border-down-shown inactive-header-li"><a href="https://wa.me/{$this->WhatsAppContactNumber}?text=Hello%20{$this->WebsiteDetails->SiteName}" id="contact-action-link" data-toggle="modals" class="header-list-links"><span id = "whatsapp-contact"><i class = "fa fa-whatsapp" id = "whatsapp-logo"></i><span id = "whatsapp-number">{$this->WebsiteDetails->WhatsAppContact}</span></span></a></li>
+          
           </ul>
 
           <ul class="nav navbar-nav navbar-right">
          
           <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">More <span class="caret"></span></a>
+            <a href="#" class="dropdown-toggle header-more-text" data-toggle="dropdown" role="button" aria-expanded="false">More <span class="caret"></span></a>
             <ul class="dropdown-menu" role="menu">
               <li class="header-more-action-li"><a href="{$this->ChatPage}" target="_blank" id="show-chat-window"><i class="fa fa-comment-o header-more-actions-icon"></i><span class="header-li-link-text more-actions-li-text">Chat</span></a></li>
               <li class="header-more-action-li"><a href="{$this->BlogPage}" class="header-list-links header-more-actions-icon"><i class="fa fa-bookmark header-more-actions-icon"></i><span class="header-li-link-text more-actions-li-text">Our Blog</span></a></li>
@@ -141,7 +141,7 @@ BONUS;
               <!--li class="header-more-action-li"><a href="#" class="header-list-links header-more-actions-icon"><i class="fa fa-share-alt header-more-actions-icon"></i><span class="header-li-link-text more-actions-li-text">Transfer to account</span></a></li>-->
              
               <li class="divider"><a href="#"></a></li>
-              <li><a href="#" class="header-list-links">Close <i class="fa fa-times header-close-icon"></i> </a></li>
+              <li><a href="#" class="header-list-links close-more-action">Close <i class="fa fa-times header-close-icon"></i> </a></li>
             </ul>
           </li>
         </ul>

@@ -14,6 +14,7 @@ abstract class WebsiteConfigurationSettings {
     public  $SiteAuthor = "Kosi Eric";
     public  $WebsiteCategory = "Online Gaming";
     public  $MaximumUsernameLength = 16;
+    public  $WhatsAppContact = "+234 708 441 9530";
     public  $minimumUsernameLength = 2;
     public  $TwitterHandle = "";
     public  $FacebookHandle = "";

@@ -178,7 +178,7 @@ line height is 20px by default so add 30px top and bottom to equal the new .navb
 }
 
 .active-header-li{
-    border-bottom: 2px solid #b92b27;
+    border-bottom: 2px solid #fff;
 }
 
 .active-header-li > a {
@@ -196,7 +196,7 @@ line height is 20px by default so add 30px top and bottom to equal the new .navb
     position: relative;
     top : 10px;
     font-size: 25px;
-    color : #b92b27 !important;
+    color : #ffff !important;
     font-family: Cairo;
     font-weight: bold;
     border : 0px solid green;
@@ -351,4 +351,43 @@ label:hover:before {
 
 #bank-details-changed-container{
     display: block;
+}
+#whatsapp-logo{
+    position: relative;
+    top : 5px;
+    font-size: 28px;
+}
+#whatsapp-contact {
+    position: relative;
+    
+}
+@media only screen and (min-width:767px){
+    #whatsapp-contact{
+     top : 1px;
+    }
+    #whatsapp-number{
+        text-decoration: underline;
+    }
+}
+#whatsapp-number{
+    position: relative;
+    top : 2px;
+    left : 5px;
+    font-weight: normal;
+ }
+
+#header-navbar{
+    background-color: rgba(9, 93, 119 , .6);
+    border : none;
+}
+nav#header-navbar li.border-down-shown a.header-list-links {
+  color : #fff;
+}
+.dropdown-toggle.header-more-text{
+    color : #fff !important;
+}
+@media only screen and (max-width:767px){
+    .header-more-action-li a , .close-more-action{
+        color : #fff !important;
+    }
 }
