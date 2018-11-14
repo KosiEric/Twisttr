@@ -1376,7 +1376,7 @@
 }
 
 .profile-account-balance{
-    color : green;
+    color : rgba(9, 93, 119 , .6);
     position: relative;
 
     float: right;

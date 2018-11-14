@@ -1,10 +1,12 @@
 .footer {
-    background-color: rgba(9, 93, 119 , .6);;
+    background-color: rgba(9, 93, 119);
     position: fixed;
     bottom: 0;
     height: 70px;
     display: block;
-    width : 100%
+    width : 100%;
+    border : none !important;
+        
 }
 .img-responsive.app-download-logo{
     width: 100px;

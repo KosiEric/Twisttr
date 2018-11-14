@@ -18,6 +18,7 @@
     font-weight: bold;
     font-family: Cairo;
     font-size: 15px;
+    background-color : rgba(9, 93, 119 , .6);
 }
 .btn.btn-default.login-warning-modal-button{
 
