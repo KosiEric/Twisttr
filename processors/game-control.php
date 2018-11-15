@@ -299,6 +299,7 @@ MESSAGE;
     }
     else {
         $this->create_a_new_game();
+        $this->update_record($this->users_table_name , 'last_free_mode_id' , $this->game_id , 'user_id' , $this->userID);
         return json_encode(Array("start" => "1", "players" => "1", "words" => $this->game_10_words));
     }
 

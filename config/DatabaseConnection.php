@@ -166,7 +166,7 @@ class DatabaseConnection {
     You can add a new column at the end of your table
 
     ALTER TABLE assessment ADD q6 VARCHAR( 255 )
-
+ALTER TABLE users ADD last_free_mode_time VARCHAR( 255 ) NOT NULL DEFAULT '0';
     Add column to the begining of table
 
     ALTER TABLE assessment ADD q6 VARCHAR( 255 ) FIRST
@@ -237,7 +237,10 @@ class DatabaseConnection {
     last_win_date VARCHAR (100) DEFAULT '0' ,
     last_played_game_id VARCHAR (100) DEFAULT '0' , 
     last_amount_won BIGINT NOT NULL DEFAULT 0 ,
-    last_played_date VARCHAR (100) DEFAULT  '0' 
+    last_played_date VARCHAR (100) DEFAULT  '0' ,
+    last_free_mode_id VARCHAR (255) DEFAULT  '0', 
+    last_free_mode_time VARCHAR (255) DEFAULT  '0'
+     
     
     
     

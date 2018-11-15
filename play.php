@@ -288,13 +288,16 @@ elseif ($account_about_to_be_recovered){
 if(!$HomePage->UserFunctions->isLoggedInUser()) {
 
     require_once $HomePage->WebsiteDetails->INCS_FOLDER.'default-user.php';
+
     require_once $HomePage->WebsiteDetails->INCS_FOLDER.'login-warning.php';
 }
 
 else {
    //echo($HomePage->UserFunctions->getLoggedInUserDetails());
+    $HomePage->delete_record($HomePage->games_table_name , 'game_id' , $HomePage->UserFunctions->user_details["last_free_mode_id"]);
+    $HomePage->delete_record($HomePage->game_words_table_name , 'game_id' , $HomePage->UserFunctions->user_details["last_free_mode_id"]);
 
-       require_once $HomePage->WebsiteDetails->INCS_FOLDER.'user.php';
+    require_once $HomePage->WebsiteDetails->INCS_FOLDER.'user.php';
    // require_once $HomePage->WebsiteDetails->INCS_FOLDER.'settings.php';
 
 

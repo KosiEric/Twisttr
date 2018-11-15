@@ -170,7 +170,19 @@
     font-family: Cairo;
     font-size: 14px;
 }
-p#game-start-warning-text{
+p#for-your-own-good{
+    display: block;
+    border: 0px solid grey;
+    width : 79%;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: left;
+    font-weight: bold;
+    font-size: 20px;
+    font-family: cairo;
+    margin-top: 5px;
+}
+p#game-start-warning-text {
     text-align: center;
     position:relative;
     top : 10px;
