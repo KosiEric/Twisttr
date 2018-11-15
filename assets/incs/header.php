@@ -76,10 +76,7 @@ BONUS;
        <div id="navbar1" class="navbar-collapse collapse">
         <ul class="nav navbar-nav navbar-left">
           <li class="border-down-shown active-header-li"><a href="#" class="header-list-links"><i class="fa fa-home  header-home-icon header-icons"></i> Home</a></li>
-          <li class="border-down-shown inactive-header-li" id="main-notification-li"><a id="toggle-notifications-action-link" href="#" class="header-list-links"><i class="fa fa-bell  header-notification-icon header-icons"></i>Notifications<span id = "notifications-header-count" class="badge game-play-count">{$this->getNumberOfUnreadNotifications()}</span></a>
-
-          
-          </li>          
+          <li class="border-down-shown inactive-header-li" id="main-notification-li"><a id="toggle-notifications-action-link" href="#" class="header-list-links"><i class="fa fa-bell  header-notification-icon header-icons"></i>Notifications<span id = "notifications-header-count" class="badge game-play-count">{$this->getNumberOfUnreadNotifications()}</span></a></li>          
 
           <li class="border-down-shown inactive-header-li" data-loaded = "0" data-start = "0" id="notifications-header-container">
          <div class="container" id="notifs-container">
@@ -126,7 +123,7 @@ BONUS;
           </li>          
 
           <li class="border-down-shown inactive-header-li"><a href="#play-amount-modal" id="play-action-link" data-toggle="modal" class="header-list-links"><i class="fa fa-play-circle  header-play-icon header-icons"></i>Play <span class="badge game-play-count" id="number-of-players-count"></span></a></li>
-          <li class="border-down-shown inactive-header-li"><a href="https://wa.me/{$this->WhatsAppContactNumber}?text=Hello%20{$this->WebsiteDetails->SiteName}" id="contact-action-link" data-toggle="modals" class="header-list-links"><span id = "whatsapp-contact"><i class = "fa fa-whatsapp" id = "whatsapp-logo"></i><span id = "whatsapp-number">{$this->WebsiteDetails->WhatsAppContact}</span></span></a></li>
+          <li class="border-down-shown inactive-header-li"><a target = "_blank" href="https://wa.me/{$this->WhatsAppContactNumber}?text=Hello%20{$this->WebsiteDetails->SiteName}" id="contact-action-link" data-toggle="modals" class="header-list-links"><span id = "whatsapp-contact"><i class = "fa fa-whatsapp" id = "whatsapp-logo"></i><span id = "whatsapp-number">{$this->WebsiteDetails->WhatsAppContact}</span></span></a></li>
           
           </ul>
 

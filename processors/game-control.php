@@ -248,7 +248,7 @@ MESSAGE;
             /* Subtract the amount for all players */
              //$this->update_multiple_fields($this->users_table_name , ['account_balance' => " account_balance - {$this->amount}"] , "game_id_about_to_play = '{$this->gameIDUserCanPlay}'");
             /* Make sure all users point is set to 0  immediately game starts and ends*/
-            $this->executeSQL("UPDATE {$this->users_table_name} SET account_balance = cast(account_balance as int) - {$this->amount} WHERE game_id_about_to_play = '{$this->gameIDUserCanPlay}'");
+          //  $this->executeSQL("UPDATE {$this->users_table_name} SET account_balance = cast(account_balance as int) - {$this->amount} WHERE game_id_about_to_play = '{$this->gameIDUserCanPlay}'");
             $this->update_record($this->users_table_name , 'current_point' , 0 , 'game_id_about_to_play' , $this->gameIDUserCanPlay);
             $this->start_time = time() * 1000;
             $this->update_record($this->games_table_name , 'start_time' , $this->start_time , 'game_id' , $this->gameIDUserCanPlay);
@@ -280,6 +280,9 @@ MESSAGE;
     private function add_current_user_to_game()
     {
         if($this->amount != 0){
+
+            //Deducts the money immediately the user wants to play the game
+            $this->executeSQL("UPDATE {$this->users_table_name} SET account_balance = cast(account_balance as int) - {$this->amount} WHERE user_id = '{$this->userID}'");
         if ($this->any_existing_game_user_can_play()) {
             $this->add_user_to_existing_game();
             if ($this->showGameChat)
@@ -356,6 +359,9 @@ DATA;
      * The function below i.e 'exit_user_from_game()' deletes the user from the game when the user clicks the "Exit" button before the game starts
      */
     private  function  exit_user_from_game() {
+        //increments the user account_balance, since the amount was already deducted at game start
+        $this->executeSQL("UPDATE {$this->users_table_name} SET account_balance = cast(account_balance as int) + {$this->amount} WHERE user_id = '{$this->userID}'");
+
         /*This gets the user current game details*/
         $this->userCurrentGameDetail = $this->fetch_data_from_table($this->games_table_name, 'game_id', $this->user_details["game_id_about_to_play"])[0];
 
