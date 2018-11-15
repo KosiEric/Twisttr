@@ -52,17 +52,18 @@ class CreatePaymentHistory extends Functions {
 
             $this->debug_data = $msg;
 
-            $this->delete_record($this->withdrawals_table_name , "reference_code" , $this->referenceCode);
-        });
-
+          });
+          $this->delete_record($this->withdrawals_table_name , "reference_code" , $this->referenceCode);
+      
 
         return true;
     }
 
 
     final  public  function Processor () : string  {
-        if(!($this->isReady() and $this->setDetails())) return json_encode([$this->successText => "0" , "error" => $this->error]);
-        $this->performAction();
+        if(!$this->isReady())return json_encode([$this->successText => "0" , "error" => $this->error]);
+         if(!$this->setDetails())return json_encode([$this->successText => "0" , "error" => $this->error]);
+         if(!$this->performAction()) return json_encode([$this->successText => "0" , "error" => $this->error]);
         return json_encode(["success" => "1" , "error" => "null" , "data" => $this->debug_data]);
 
     }

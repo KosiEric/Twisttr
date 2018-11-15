@@ -7,7 +7,7 @@ class SendPaymentRequests extends  Functions {
 
     private $data;
     private $start;
-    private $number_of_requests_to_load = 2;
+    private $number_of_requests_to_load = 10;
     private $results;
     private $error = "unable to connect to database";
     private $successText = "success";

@@ -83,7 +83,7 @@ BONUS;
 
           <li class="border-down-shown inactive-header-li" data-loaded = "0" data-start = "0" id="notifications-header-container">
          <div class="container" id="notifs-container">
-    <div class="arrow-up"></div>
+    <div class="arrow-up" id="notifications-arrow-up"></div>
 
     <div class="row">
         <div class="col-md-5">

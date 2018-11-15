@@ -162,7 +162,7 @@ if($_COOKIE[$website_details->CookieUserKey] != $default_username)header('locati
                 t = JSON.parse(ev.data);
 
                 if(!t.empty){
-                    start += 2;
+                    start += 10;
                     tbody.append(t.error);
 
 
@@ -185,7 +185,7 @@ if($_COOKIE[$website_details->CookieUserKey] != $default_username)header('locati
 
 
                 deleteRecordButton.on('click' , function (t2) {
-
+                    
                     $(this).prop("disabled" , true);
                     data = {"referenceCode" : referenceCode , "data" : 'on' , 'file' : defaults.files.createPaymentHistoryFile};
                     data = JSON.stringify(data);
@@ -193,10 +193,11 @@ if($_COOKIE[$website_details->CookieUserKey] != $default_username)header('locati
                     var sendRequestWorker = new Worker(defaults.workersFolder + 'request.js');
                     sendRequestWorker.postMessage(data);
                     sendRequestWorker.onmessage = function (ev1) {
-                       console.log(ev1.data);
+                          
                         $('tr#'+ referenceCode).hide();
                         $('#myModal').modal('hide');
-
+                        data = JSON.parse(ev1.data);
+                        if(data.success == "1")deleteRecordButton.prop("disabled" , false);
                     }
 
 

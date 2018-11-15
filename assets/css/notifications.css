@@ -109,13 +109,20 @@ text-decoration: none;
 #notifications-panel-body , .even-message , .even-time , .odd-timestamp{
     font-family: Cairo
 }
-.arrow-up {
+
+@media only screen and (max-width:767px){
+    .arrow-up#notifications-arrow-up {
+        //border-bottom: 8px solid rgba(9, 93, 119 , .6) !important;
+    }
+}
+.arrow-up#notifications-arrow-up {
     width: 0;
     height: 0;
     border-left: 10px solid transparent;
     border-right: 10px solid transparent;
 
-    border-bottom: 8px solid #337ab7 ;
+    border-bottom: 8px solid rgba(9, 93, 119 , .6) !important;
+    
     left : 40px;
     position: relative;
 }
@@ -166,4 +173,12 @@ text-decoration: none;
     font-family: Cairo;
     cursor: pointer;
     font-size: 15px;
+}
+.panel.panel-primary{
+    border:none !important;
+}
+.panel-heading{
+    background-color: rgba(9, 93, 119 , .6) !important;
+    border-color: rgba(9, 93, 119 , .6) !important;
+    border-bottom : none !important;
 }
