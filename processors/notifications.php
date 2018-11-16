@@ -44,7 +44,7 @@ class Notifications extends  Functions{
                 $notification_html .= <<<NOTIFIATION_HTML
                         
                         <li class="left clearfix">
-                           <a href="{$notification['link']}">
+                           <a target="_blank" href="{$notification['link']}">
                             <span class="chat-img pull-left">
               <img src="{$this->config->IMG_FOLDER}favicon.png" alt="{$this->config->SiteName}" class="img-circle notifis-favicon" />
             </span>
