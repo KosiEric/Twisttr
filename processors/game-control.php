@@ -196,8 +196,14 @@ MESSAGE;
         if($this->amount == 0 and $this->config->AllowBonus){
             $current_point = (int)$this->user_details["current_point"];
             $bonus = $this->calculateBonus($current_point);
-            $this->executeSQL("UPDATE {$this->users_table_name} SET bonus = bonus + {$bonus} , game_id_about_to_play = '0' , current_game_id = '0' WHERE user_id = '{$this->userID}' ");
-            $text = "Congrats! <span class='word-sender-name'>you just received a bonus of  &#8358;$bonus</span> With <span class='points-earned-by-word' id='points-earned'>{$this->user_details['current_point']} points</span>";
+            if($current_point > $this->data['botPoint']) {
+                $this->executeSQL("UPDATE {$this->users_table_name} SET bonus = bonus + {$bonus} , game_id_about_to_play = '0' , current_game_id = '0' WHERE user_id = '{$this->userID}' ");
+                $text = "Congrats! <span class='word-sender-name'>you just received a bonus of  &#8358;$bonus</span> With <span class='points-earned-by-word' id='points-earned'>{$this->user_details['current_point']} points</span>";
+            }
+            else {
+
+                $text = "Sorry ):  <span class='word-sender-name'>{$this->config->defaultUsername} won with <span class='points-earned-by-word' id='points-earned'>{$this->data['botPoint']} points<br/>you just missed a bonus of  &#8358;$bonus</span><br />you came second with <span class='points-earned-by-word' id='points-earned'>{$this->user_details['current_point']} points</span>";
+            }
             $this->delete_record($this->games_table_name , 'game_id' , $this->user_details['game_id_about_to_play']);
             $this->delete_record($this->game_words_table_name , 'game_id' , $this->user_details['game_id_about_to_play']);
 
@@ -279,7 +285,7 @@ MESSAGE;
     }
     private function add_current_user_to_game()
     {
-        if($this->amount != 0){
+        if($this->amount != "0"){
 
             //Deducts the money immediately the user wants to play the game
             $this->executeSQL("UPDATE {$this->users_table_name} SET account_balance = cast(account_balance as int) - {$this->amount} WHERE user_id = '{$this->userID}'");
@@ -300,7 +306,7 @@ MESSAGE;
     else {
         $this->create_a_new_game();
         $this->update_record($this->users_table_name , 'last_free_mode_id' , $this->game_id , 'user_id' , $this->userID);
-        return json_encode(Array("start" => "1", "players" => "1", "words" => $this->game_10_words));
+        return json_encode(Array("botName" => $this->config->defaultUsername , "botProfilePicture" => $this->config->defaultBotProfilePicture ,"start" => "1", "players" => "1", "name" => "Kosi" ,  "words" => $this->game_10_words));
     }
 
 
@@ -388,6 +394,7 @@ DATA;
 
         if($this->userCurrentGameDetail['game_ended'] == '1') return $this->endGame();
 
+
         $players = $this->fetch_data_from_table_with_conditions($this->users_table_name , "game_id_about_to_play = '{$this->game_id}' ORDER BY cast(current_point as int)  DESC LIMIT {$this->config->MaximumNumberOfPlayers}");
 
         $message = "";
@@ -399,20 +406,39 @@ DATA;
 MESSAGE;
 
             $count = 0;
-            foreach ($players as $player) {
-                $count++;
+if((int)$this->amount != 0) {
+    foreach ($players as $player) {
+        $count++;
 
-                $message .= <<<MESSAGE
+        $message .= <<<MESSAGE
 
 <span class="word-sender-name">{$count}. {$player['username']} - <span id="points-earned" class="points-earned-by-word">{$player['current_point']} points</span> </span>
 MESSAGE;
 
 
-            }
+    }
 
+}
+else if((int)$this->user_details['current_point'] > (int)$this->data['botPoint']){
 
+    $message .= <<<MESSAGE
+
+<span class="word-sender-name">1. {$this->user_details['username']} - <span id="points-earned" class="points-earned-by-word">{$this->user_details['current_point']} points</span> </span>
+<span class="word-sender-name">2. {$this->config->defaultUsername} - <span id="points-earned" class="points-earned-by-word">{$this->data['botPoint']} points</span> </span>
+MESSAGE;
+}
+
+else {
+    $message .= <<<MESSAGE
+<span class="word-sender-name">1. {$this->config->defaultUsername} - <span id="points-earned" class="points-earned-by-word">{$this->data['botPoint']} points</span> </span>
+<span class="word-sender-name">2. {$this->user_details['username']} - <span id="points-earned" class="points-earned-by-word">{$this->user_details['current_point']} points</span> </span>
+
+MESSAGE;
+
+}
             $message .= "</div>";
         }
+
 
         return json_encode(["end" => false , "message" => $message]);
 
@@ -440,7 +466,7 @@ MESSAGE;
                         $start = "1";
                     }
                     return json_encode(Array("start" => $start, "players" => $players , "words" => $this->game_10_words ,
-                        "start_time" => $this->start_time));
+                        "start_time" => $this->start_time , "botName" => $this->config->defaultUsername , "botProfilePicture" => $this->config->defaultBotProfilePicture));
                     break;
 
                 case 'get_total_number_of_players' :

@@ -112,7 +112,7 @@ this.preventFormSubmission = function (e) {
     this.imgFolder = this.staticFolder + 'img/';
     this.jsFolder = this.staticFolder + 'js/';
     this.workersFolder = this.jsFolder + 'workers/';
-
+    this.botName = "Spider";
 
         //Json success and error
 
@@ -141,7 +141,8 @@ this.preventFormSubmission = function (e) {
        javascriptFolder : parent.staticFolder + 'js/',
        chatfunctions : parent.chatFiles + 'chatfunctions.js',
        paystackScript : "https://js.paystack.co/v1/inline.js" ,
-       spellcheckScript : "/JavaScriptSpellCheck/include.js"
+       spellcheckScript : "/JavaScriptSpellCheck/include.js",
+       botProfilePics : parent.imgFolder + 'spider.png'
    };
 
 

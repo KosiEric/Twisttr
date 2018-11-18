@@ -6,6 +6,7 @@ function  WebPage() {
    //Load certain scripts that ain't required immediately
 
 
+
     this.gameFilesLoaded = false;
     this.chatFilesLoaded = false;
     this.notificationsFilesLoaded = false;

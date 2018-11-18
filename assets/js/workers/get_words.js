@@ -20,7 +20,7 @@ self.onmessage = function (ev) {
 
     } , 4000);
 
-}
+};
 
 
 

@@ -1,4 +1,35 @@
-<?php
+<!DOCTYPE html>
+    <html>
+
+    <head>
+
+         <meta charset="utf-8" />
+        <script type="text/javascript" language="JavaScript" src="/assets/js/words.js">
+
+        </script>
+        <script type="text/javascript" language="JavaScript">
 
 
-echo number_format("6000000.989004");
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        </script>
+    </head>
+    <body>
+
+    </body>
+    </html>
