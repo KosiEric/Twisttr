@@ -41,8 +41,8 @@ function GameRoom(webPage , defaults , playAmount , gameDetails , gameClass) {
     this.messageInput = $('#game-text.message-input');
     this.gameHintContainer = $('#game-hint-container');
     this.gameHints = $('#game-hints');
-    var msg = "";
-
+    var msg1 = "";
+    var msg2 = "";
 
 
     this.gameWords = JSON.parse(this.gameDetails.words);
@@ -138,38 +138,43 @@ function GameRoom(webPage , defaults , playAmount , gameDetails , gameClass) {
           };
       };
       parent.getGameCurrentRankings = function () {
-
-          var updateGameRankingTimerWorker = new Worker(parent.defaults.workersFolder + 'send_bot_word.js');
+          var requestSent = false;
+          var updateGameRankingTimerWorker = new Worker(parent.defaults.workersFolder + 'timer.js');
           var getGameRankingWorker = new Worker(parent.defaults.workersFolder + 'get_game_ranking.js');
 
-          updateGameRankingTimerWorker.postMessage(JSON.stringify({"start" : true , "seconds" : 11}));
+              updateGameRankingTimerWorker.postMessage(JSON.stringify({"start" : true , "seconds" : 60}));
 
-          updateGameRankingTimerWorker.onmessage = function (ev) {
+              updateGameRankingTimerWorker.onmessage = function (ev) {
 
-              data = {"amount" : playAmount ,
-                  "userID" : parent.webPage.userDetails.user_id,
-                  "action" : parent.gameClass.gameActions.getCurrentRanking ,
-                  "file" :  parent.defaults.files.gameControlFile ,
-                  "botPoint" : parent.totalBotPoint
-              };
-              data = JSON.stringify(data);
-              getGameRankingWorker.postMessage(data);
+                  data = {"amount" : playAmount ,
+                      "userID" : parent.webPage.userDetails.user_id,
+                      "action" : parent.gameClass.gameActions.getCurrentRanking ,
+                      "file" :  parent.defaults.files.gameControlFile ,
+                      "botPoint" : parent.totalBotPoint
+                  };
+                 data = JSON.stringify(data);
+                  getGameRankingWorker.postMessage(data);
 
-              getGameRankingWorker.onmessage = function (ev) {
-                  if(parent.gameEnded)return getGameRankingWorker.terminate();
-                  resp = JSON.parse(ev.data);
+                  getGameRankingWorker.onmessage = function (ev) {
+                      if(parent.gameEnded)return getGameRankingWorker.terminate();
+                      resp = JSON.parse(ev.data);
 
-                  parent.updateScrollbar();
-
-
-                  $(resp.message).appendTo($('.mCSB_container')).addClass('new');
-                  parent.setDate();
-                  parent.updateScrollbar();
+                      parent.updateScrollbar();
 
 
+                      $(resp.message).appendTo($('.mCSB_container')).addClass('new');
+                      parent.setDate();
+                      parent.updateScrollbar();
 
 
-              }
+
+
+                  };
+
+
+
+          //
+
 
 
           };
@@ -237,7 +242,7 @@ if(wordDetails.data != "") {
        };
 
 
-      parent.getAllWordsTyped();
+     if(!this.isFreeMode)parent.getAllWordsTyped();
 
 
 
@@ -338,25 +343,25 @@ if(parent.gameEnded) return changeGameWordsWorker.terminate();
 
          this.insertMessage =  function() {
 
-            msg = $.trim(parent.messageInput.val()).replace(/\s+/g, '').toLowerCase();
-             parent.wordsTypedByUser.push(msg);
-             var isValidWord = $Spelling.BinSpellCheck(msg);
-            if(msg == '' || !parent.defaults.regularExpressions.gameWordsRegEx.test(msg) || $.inArray(msg, parent.currentlyUsedWords) >= 0 || !isValidWord){ parent.showWordWarning(); return false;}
+            msg1 = $.trim(parent.messageInput.val()).replace(/\s+/g, '').toLowerCase();
+            parent.wordsTypedByUser.push(msg1);
+             var isValidWord = $Spelling.BinSpellCheck(msg1);
+            if(msg1 == '' || !parent.defaults.regularExpressions.gameWordsRegEx.test(msg1) || $.inArray(msg1, parent.currentlyUsedWords) >= 0 || !isValidWord){ parent.showWordWarning(); return false;}
 
-            for(i = 0; i < msg.length; i++){
+            for(i = 0; i < msg1.length; i++){
 
-                if($.inArray(msg[i] , parent.gameWordsToLetterArray) < 0){
-                    parent.showWordWarning(parent.gameClass.gameWords.letterNotFoundInWords(msg[i]));
+                if($.inArray(msg1[i] , parent.gameWordsToLetterArray) < 0){
+                    parent.showWordWarning(parent.gameClass.gameWords.letterNotFoundInWords(msg1[i]));
                     return ;
                 }
             }
 
 
-            for (var i = 0; i < msg.length; i++){
+            for (var i = 0; i < msg1.length; i++){
 
-                if(parent.letterInWord(msg[i] , msg) > parent.getNumberOfElementAppearance(msg[i] , parent.gameWordsToLetterArray)){
+                if(parent.letterInWord(msg1[i] , msg1) > parent.getNumberOfElementAppearance(msg1[i] , parent.gameWordsToLetterArray)){
 
-                    parent.showWordWarning(parent.gameClass.gameWords.tooManyInstances(msg[i]));
+                    parent.showWordWarning(parent.gameClass.gameWords.tooManyInstances(msg1[i]));
                     return;
 
                 }
@@ -364,14 +369,14 @@ if(parent.gameEnded) return changeGameWordsWorker.terminate();
             }
               var sendWordWorker = new Worker(parent.defaults.workersFolder + 'send_word.js');
 
-           point = (parent.wordsTypedByBot.indexOf(msg) >= 0)?0:Math.round((msg.length / parent.averageWordLength) * 10);
+           point = (parent.wordsTypedByBot.indexOf(msg1) >= 0)?0:Math.round((msg1.length / parent.averageWordLength) * 10);
 
 
 
 
             data = {"userID" : parent.webPage.userDetails.user_id ,
                     "amount" : playAmount ,
-                     "word" : msg ,
+                     "word" : msg1 ,
                      "point" : point ,
                       "file" : parent.defaults.files.gameControlFile ,
                       "action" : this.gameClass.gameActions.sendWord ,
@@ -389,7 +394,7 @@ if(parent.gameEnded) return changeGameWordsWorker.terminate();
                  var reply  = JSON.parse(ev.data);
 
                  parent.messageInput.val("");
-                $('<div class="message message-personal">' + msg + ' <span class="word-sender-name">' + parent.webPage.userDetails.username + ' - <span id="points-earned" class="points-earned-by-word">'+ reply.point + ' point</span> </span></div>').appendTo($('.mCSB_container')).addClass('new');
+                $('<div class="message message-personal">' + msg1 + ' <span class="word-sender-name">' + parent.webPage.userDetails.username + ' - <span id="points-earned" class="points-earned-by-word">'+ reply.point + ' point</span> </span></div>').appendTo($('.mCSB_container')).addClass('new');
                 parent.setDate();
                 parent.messageInput.val(null);
                 parent.updateScrollbar();
@@ -415,16 +420,16 @@ if(parent.gameEnded) return changeGameWordsWorker.terminate();
 
          this.insertBotMessage = function insertBotMessage() {
 
-             msg = parent.currentValidWordsForBot[parent.currentBotWordsPosition].toLowerCase();
-             parent.wordsTypedByBot.push(msg);
-             if (!msg) return;
+             msg2 = parent.currentValidWordsForBot[parent.currentBotWordsPosition].toLowerCase();
+             parent.wordsTypedByBot.push(msg2);
+             if (!msg2) return;
 
              parent.currentBotWordsPosition++;
 
 
              var sendWordWorker = new Worker(parent.defaults.workersFolder + 'send_word.js');
 
-             point = (!$Spelling.BinSpellCheck(msg) || parent.wordsTypedByUser.indexOf(msg) >= 0) ? 0 : Math.round((msg.length / parent.averageWordLength) * 10);
+             point = (!$Spelling.BinSpellCheck(msg2) || parent.wordsTypedByUser.indexOf(msg2) >= 0) ? 0 : Math.round((msg2.length / parent.averageWordLength) * 10);
 
 
              parent.totalBotPoint += point;
@@ -436,7 +441,7 @@ if(parent.gameEnded) return changeGameWordsWorker.terminate();
 
              setTimeout(function () {
                  $('.message.loading').remove();
-                 $('<div class="message new"><figure class="avatar"><img src="' + parent.botProfilePicture + '" /></figure>' + msg + '<span class="word-sender-name">' + parent.botName + ' - <span id="points-earned" class="points-earned-by-word">' + point + ' points</span> </span></div>').appendTo($('.mCSB_container')).addClass('new');
+                 $('<div class="message new"><figure class="avatar"><img src="' + parent.botProfilePicture + '" /></figure>' + msg2 + '<span class="word-sender-name">' + parent.botName + ' - <span id="points-earned" class="points-earned-by-word">' + point + ' points</span> </span></div>').appendTo($('.mCSB_container')).addClass('new');
 
                  parent.setDate();
                  parent.updateScrollbar();
