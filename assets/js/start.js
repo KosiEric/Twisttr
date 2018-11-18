@@ -110,8 +110,6 @@ function GameRoom(webPage , defaults , playAmount , gameDetails , gameClass) {
               "action": parent.gameClass.gameActions.endGame,
               "file": parent.defaults.files.gameControlFile ,
               "botPoint" : parent.totalBotPoint
-
-
           };
 
 
@@ -137,16 +135,17 @@ function GameRoom(webPage , defaults , playAmount , gameDetails , gameClass) {
 
           };
       };
-      parent.getGameCurrentRankings = function () {
+      parent.getGameCurrentRankings = function getGameCurrentRankings ()  {
           var requestSent = false;
-          var updateGameRankingTimerWorker = new Worker(parent.defaults.workersFolder + 'timer.js');
+          //var updateGameRankingTimerWorker = new Worker(parent.defaults.workersFolder + 'timer.js');
           var getGameRankingWorker = new Worker(parent.defaults.workersFolder + 'get_game_ranking.js');
 
-              updateGameRankingTimerWorker.postMessage(JSON.stringify({"start" : true , "seconds" : 60}));
+             // updateGameRankingTimerWorker.postMessage(JSON.stringify({"start" : true , "seconds" : 60}));
 
-              updateGameRankingTimerWorker.onmessage = function (ev) {
+              //updateGameRankingTimerWorker.onmessage = function (ev) {
 
-                  data = {"amount" : playAmount ,
+                  data = {
+                      "amount" : playAmount ,
                       "userID" : parent.webPage.userDetails.user_id,
                       "action" : parent.gameClass.gameActions.getCurrentRanking ,
                       "file" :  parent.defaults.files.gameControlFile ,
@@ -165,7 +164,8 @@ function GameRoom(webPage , defaults , playAmount , gameDetails , gameClass) {
                       $(resp.message).appendTo($('.mCSB_container')).addClass('new');
                       parent.setDate();
                       parent.updateScrollbar();
-
+                      getGameRankingWorker.terminate();
+                      timeout = setTimeout('parent.getGameCurrentRankings()' , 6000);
 
 
 
@@ -177,7 +177,7 @@ function GameRoom(webPage , defaults , playAmount , gameDetails , gameClass) {
 
 
 
-          };
+          //};
 
 
 
