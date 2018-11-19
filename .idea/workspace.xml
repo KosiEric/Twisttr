@@ -2,7 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f4d7fd38-af9c-4203-adef-906fb572f635" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/assets/js/start.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/start.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/incs/ad.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/css/footer.css" beforeDir="false" afterPath="$PROJECT_DIR$/assets/css/footer.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/incs/choose-play-amount-modal.php" beforeDir="false" afterPath="$PROJECT_DIR$/assets/incs/choose-play-amount-modal.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/incs/user.php" beforeDir="false" afterPath="$PROJECT_DIR$/assets/incs/user.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/js/workers/get_number_of_joined_players.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/workers/get_number_of_joined_players.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/play.php" beforeDir="false" afterPath="$PROJECT_DIR$/play.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test.php" beforeDir="false" afterPath="$PROJECT_DIR$/test.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -72,10 +79,10 @@
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="CSS" value="666" />
+          <entry key="CSS" value="670" />
           <entry key="HTML" value="64" />
-          <entry key="JavaScript" value="28147" />
-          <entry key="PHP" value="38456" />
+          <entry key="JavaScript" value="28156" />
+          <entry key="PHP" value="39361" />
           <entry key="PLAIN_TEXT" value="4" />
           <entry key="RNG Compact" value="3" />
           <entry key="SQL" value="18" />
@@ -87,11 +94,11 @@
       <usages-collector id="statistics.vcs.git.usages" />
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="CSS" value="52" />
+          <entry key="CSS" value="53" />
           <entry key="HTML" value="1" />
           <entry key="Image" value="3" />
-          <entry key="JavaScript" value="172" />
-          <entry key="PHP" value="245" />
+          <entry key="JavaScript" value="173" />
+          <entry key="PHP" value="253" />
           <entry key="PLAIN_TEXT" value="6" />
           <entry key="RNG Compact" value="1" />
           <entry key="SQL" value="1" />
@@ -101,20 +108,20 @@
       <usages-collector id="statistics.php.new.class" />
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="css" value="666" />
+          <entry key="css" value="670" />
           <entry key="dummy" value="4" />
-          <entry key="js" value="28147" />
-          <entry key="php" value="38538" />
+          <entry key="js" value="28156" />
+          <entry key="php" value="39443" />
           <entry key="rnc" value="3" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="css" value="52" />
+          <entry key="css" value="53" />
           <entry key="html" value="1" />
           <entry key="jpg" value="2" />
-          <entry key="js" value="172" />
-          <entry key="php" value="245" />
+          <entry key="js" value="173" />
+          <entry key="php" value="253" />
           <entry key="png" value="1" />
           <entry key="rnc" value="1" />
           <entry key="sql" value="1" />
@@ -127,46 +134,90 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/assets/incs/game.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="391">
-              <caret line="23" column="26" selection-start-line="23" selection-start-column="26" selection-end-line="23" selection-end-column="26" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/processors/game-control.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="7497">
-              <caret line="441" selection-start-line="441" selection-end-line="441" />
+            <state relative-caret-position="200">
+              <caret line="424" lean-forward="true" selection-start-line="422" selection-end-line="424" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/assets/js/workers/timer.js">
+        <entry file="file://$PROJECT_DIR$/assets/incs/choose-play-amount-modal.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
-              <caret line="8" selection-start-line="8" selection-end-line="8" />
+            <state relative-caret-position="351">
+              <caret line="29" lean-forward="true" selection-start-line="29" selection-end-line="29" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/assets/js/workers/get_words.js">
+        <entry file="file://$PROJECT_DIR$/assets/incs/header.php">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/play.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="442">
-              <caret line="26" lean-forward="true" selection-start-line="26" selection-end-line="26" />
+            <state relative-caret-position="255">
+              <caret line="302" column="8" lean-forward="true" selection-start-line="302" selection-start-column="8" selection-end-line="302" selection-end-column="8" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/assets/js/workers/get_number_of_joined_players.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="272">
+              <caret line="16" column="38" selection-start-line="16" selection-start-column="38" selection-end-line="16" selection-end-column="38" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/assets/incs/ad.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="170">
+              <caret line="10" column="116" selection-start-line="10" selection-start-column="116" selection-end-line="10" selection-end-column="116" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/test.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="272">
+              <caret line="16" selection-start-line="16" selection-end-line="16" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/config/DatabaseConnection.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="34">
+              <caret line="2" lean-forward="true" selection-start-line="2" selection-end-line="3" />
+              <folding>
+                <element signature="n#establish_database_connection#0;n#DatabaseConnection#0;n#!!top" />
+                <element signature="n#__construct#0;n#DatabaseConnection#0;n#!!top" />
+                <element signature="n#__destruct#0;n#DatabaseConnection#0;n#!!top" />
+                <element signature="n#create_pending_bank_details_table#0;n#DatabaseConnection#0;n#!!top" />
+                <element signature="n#update_multiple_fields#0;n#DatabaseConnection#0;n#!!top" />
+                <element signature="n#create_games_table#0;n#DatabaseConnection#0;n#!!top" />
+                <element signature="n#create_fund_account_transactions_table#0;n#DatabaseConnection#0;n#!!top" />
+                <element signature="n#create_notifications_table#0;n#DatabaseConnection#0;n#!!top" />
+                <element signature="n#create_game_words_table#0;n#DatabaseConnection#0;n#!!top" />
+                <element signature="n#create_withdrawals_table#0;n#DatabaseConnection#0;n#!!top" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/assets/js/start.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="416">
-              <caret line="344" column="51" lean-forward="true" selection-start-line="344" selection-start-column="51" selection-end-line="344" selection-end-column="51" />
+            <state relative-caret-position="365">
+              <caret line="341" column="47" selection-start-line="341" selection-start-column="47" selection-end-line="341" selection-end-column="47" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
               </folding>
@@ -175,22 +226,10 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/play.php">
+        <entry file="file://$PROJECT_DIR$/assets/css/footer.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="492">
-              <caret line="323" column="104" selection-start-line="323" selection-start-column="104" selection-end-line="323" selection-end-column="104" />
-              <folding>
-                <element signature="n#style#0;n#img#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/assets/incs/user.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="283">
-              <caret line="45" column="37" selection-start-line="45" selection-start-column="37" selection-end-line="45" selection-end-column="37" />
+            <state relative-caret-position="179">
+              <caret line="39" column="24" lean-forward="true" selection-start-line="39" selection-start-column="24" selection-end-line="39" selection-end-column="24" />
             </state>
           </provider>
         </entry>
@@ -199,7 +238,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>new Website</find>
       <find>new Funct</find>
       <find>4min</find>
       <find>get_to</find>
@@ -229,6 +267,7 @@
       <find>msg</find>
       <find>timer</find>
       <find>var index</find>
+      <find>Time</find>
     </findStrings>
     <replaceStrings>
       <replace>public</replace>
@@ -247,6 +286,7 @@
       <replace>,&quot;</replace>
       <replace>msg1</replace>
       <replace>msg2</replace>
+      <replace>Hour</replace>
     </replaceStrings>
     <dirStrings>
       <dir>C:\xampp\htdocs\twisttr\static\js</dir>
@@ -258,9 +298,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/assets/js/control.js" />
-        <option value="$PROJECT_DIR$/assets/css/start.css" />
-        <option value="$PROJECT_DIR$/css/bootstrap4.min.css" />
         <option value="$PROJECT_DIR$/js/bootstrap4.min.js" />
         <option value="$PROJECT_DIR$/assets/js/workers/game_countdown.js" />
         <option value="$PROJECT_DIR$/assets/css/main.css" />
@@ -283,7 +320,6 @@
         <option value="$PROJECT_DIR$/processors/payment-requests.php" />
         <option value="$PROJECT_DIR$/pay.php" />
         <option value="$PROJECT_DIR$/assets/js/request.js" />
-        <option value="$PROJECT_DIR$/assets/incs/header.php" />
         <option value="$PROJECT_DIR$/config/DatabaseConnection.php" />
         <option value="$PROJECT_DIR$/assets/incs/game.php" />
         <option value="$PROJECT_DIR$/processors/notifications.php" />
@@ -294,7 +330,6 @@
         <option value="$PROJECT_DIR$/assets/js/workers/get-valid-words.js" />
         <option value="$PROJECT_DIR$/assets/js/words.js" />
         <option value="$PROJECT_DIR$/assets/js/main.js" />
-        <option value="$PROJECT_DIR$/test.php" />
         <option value="$PROJECT_DIR$/assets/js/workers/get_valid_words.js" />
         <option value="$PROJECT_DIR$/config/config.php" />
         <option value="$PROJECT_DIR$/assets/js/workers/send_bot_word.js" />
@@ -305,10 +340,15 @@
         <option value="$PROJECT_DIR$/assets/js/defaults.js" />
         <option value="$PROJECT_DIR$/assets/js/GameControl.js" />
         <option value="$PROJECT_DIR$/assets/js/workers/change_game_words.js" />
-        <option value="$PROJECT_DIR$/assets/js/workers/get_number_of_joined_players.js" />
-        <option value="$PROJECT_DIR$/play.php" />
-        <option value="$PROJECT_DIR$/assets/incs/user.php" />
         <option value="$PROJECT_DIR$/assets/js/start.js" />
+        <option value="$PROJECT_DIR$/assets/css/footer.css" />
+        <option value="$PROJECT_DIR$/assets/incs/user.php" />
+        <option value="$PROJECT_DIR$/test.php" />
+        <option value="$PROJECT_DIR$/assets/incs/ad.php" />
+        <option value="$PROJECT_DIR$/assets/incs/header.php" />
+        <option value="$PROJECT_DIR$/assets/incs/choose-play-amount-modal.php" />
+        <option value="$PROJECT_DIR$/play.php" />
+        <option value="$PROJECT_DIR$/assets/js/workers/get_number_of_joined_players.js" />
       </list>
     </option>
   </component>
@@ -375,12 +415,6 @@
               <item name="twisttr" type="b2602c69:ProjectViewProjectNode" />
               <item name="twisttr" type="462c0819:PsiDirectoryNode" />
               <item name="assets" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="twisttr" type="b2602c69:ProjectViewProjectNode" />
-              <item name="twisttr" type="462c0819:PsiDirectoryNode" />
-              <item name="assets" type="462c0819:PsiDirectoryNode" />
-              <item name="incs" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="twisttr" type="b2602c69:ProjectViewProjectNode" />
@@ -518,12 +552,12 @@
       <workItem from="1542293050804" duration="5924000" />
       <workItem from="1542409893297" duration="7271000" />
       <workItem from="1542469592072" duration="42465000" />
-      <workItem from="1542626158490" duration="3847000" />
+      <workItem from="1542626158490" duration="11516000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="825014000" />
+    <option name="totallyTimeSpent" value="832683000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1456" height="876" extended-state="6" />
@@ -592,27 +626,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/assets/sql/users.sql">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="455">
-          <caret line="80" column="165" selection-start-line="80" selection-start-column="161" selection-end-line="80" selection-end-column="165" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/assets/css/main.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4624">
-          <caret line="272" column="20" selection-start-line="272" selection-start-column="20" selection-end-line="272" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/assets/js/workers/end_game.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" lean-forward="true" selection-start-line="11" selection-end-line="11" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/assets/js/workers/payments.js" />
     <entry file="file://$PROJECT_DIR$/processors/withdraw-amount.php">
       <provider selected="true" editor-type-id="text-editor">
@@ -731,13 +744,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/assets/incs/header.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1836">
-          <caret line="108" column="22" selection-start-line="108" selection-start-column="22" selection-end-line="108" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/pay.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="659">
@@ -787,32 +793,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/config/DatabaseConnection.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="659">
-          <caret line="243" column="4" selection-start-line="243" selection-start-column="4" selection-end-line="243" selection-end-column="4" />
-          <folding>
-            <element signature="n#establish_database_connection#0;n#DatabaseConnection#0;n#!!top" />
-            <element signature="n#__construct#0;n#DatabaseConnection#0;n#!!top" />
-            <element signature="n#__destruct#0;n#DatabaseConnection#0;n#!!top" />
-            <element signature="n#create_pending_bank_details_table#0;n#DatabaseConnection#0;n#!!top" />
-            <element signature="n#update_multiple_fields#0;n#DatabaseConnection#0;n#!!top" />
-            <element signature="n#create_games_table#0;n#DatabaseConnection#0;n#!!top" />
-            <element signature="n#create_fund_account_transactions_table#0;n#DatabaseConnection#0;n#!!top" />
-            <element signature="n#create_notifications_table#0;n#DatabaseConnection#0;n#!!top" />
-            <element signature="n#create_game_words_table#0;n#DatabaseConnection#0;n#!!top" />
-            <element signature="n#create_withdrawals_table#0;n#DatabaseConnection#0;n#!!top" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" selection-start-line="11" selection-end-line="11" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/assets/js/main.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
@@ -846,20 +826,6 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/assets/js/workers/update_total_number_of_players.js">
       <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/assets/incs/game.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="23" column="26" selection-start-line="23" selection-start-column="26" selection-end-line="23" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/processors/game-control.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="7497">
-          <caret line="441" selection-start-line="441" selection-end-line="441" />
-        </state>
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/assets/js/defaults.js">
       <provider selected="true" editor-type-id="text-editor">
@@ -896,13 +862,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/assets/js/workers/get_number_of_joined_players.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="26" lean-forward="true" selection-start-line="8" selection-start-column="26" selection-end-line="8" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/assets/js/workers/get_words.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="442">
@@ -924,30 +883,98 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/play.php">
+    <entry file="file://$PROJECT_DIR$/assets/incs/user.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="492">
-          <caret line="323" column="104" selection-start-line="323" selection-start-column="104" selection-end-line="323" selection-end-column="104" />
-          <folding>
-            <element signature="n#style#0;n#img#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
+        <state relative-caret-position="362">
+          <caret line="172" selection-start-line="172" selection-end-line="172" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/assets/incs/user.php">
+    <entry file="file://$PROJECT_DIR$/assets/css/footer.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="283">
-          <caret line="45" column="37" selection-start-line="45" selection-start-column="37" selection-end-line="45" selection-end-column="37" />
+        <state relative-caret-position="179">
+          <caret line="39" column="24" lean-forward="true" selection-start-line="39" selection-start-column="24" selection-end-line="39" selection-end-column="24" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/assets/js/start.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="416">
-          <caret line="344" column="51" lean-forward="true" selection-start-line="344" selection-start-column="51" selection-end-line="344" selection-end-column="51" />
+        <state relative-caret-position="365">
+          <caret line="341" column="47" selection-start-line="341" selection-start-column="47" selection-end-line="341" selection-end-column="47" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/incs/game.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret lean-forward="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/DatabaseConnection.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" lean-forward="true" selection-start-line="2" selection-end-line="3" />
+          <folding>
+            <element signature="n#establish_database_connection#0;n#DatabaseConnection#0;n#!!top" />
+            <element signature="n#__construct#0;n#DatabaseConnection#0;n#!!top" />
+            <element signature="n#__destruct#0;n#DatabaseConnection#0;n#!!top" />
+            <element signature="n#create_pending_bank_details_table#0;n#DatabaseConnection#0;n#!!top" />
+            <element signature="n#update_multiple_fields#0;n#DatabaseConnection#0;n#!!top" />
+            <element signature="n#create_games_table#0;n#DatabaseConnection#0;n#!!top" />
+            <element signature="n#create_fund_account_transactions_table#0;n#DatabaseConnection#0;n#!!top" />
+            <element signature="n#create_notifications_table#0;n#DatabaseConnection#0;n#!!top" />
+            <element signature="n#create_game_words_table#0;n#DatabaseConnection#0;n#!!top" />
+            <element signature="n#create_withdrawals_table#0;n#DatabaseConnection#0;n#!!top" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="16" selection-start-line="16" selection-end-line="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/incs/ad.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" column="116" selection-start-line="10" selection-start-column="116" selection-end-line="10" selection-end-column="116" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/processors/game-control.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="200">
+          <caret line="424" lean-forward="true" selection-start-line="422" selection-end-line="424" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/incs/header.php">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/incs/choose-play-amount-modal.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="351">
+          <caret line="29" lean-forward="true" selection-start-line="29" selection-end-line="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/play.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="302" column="8" lean-forward="true" selection-start-line="302" selection-start-column="8" selection-end-line="302" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/js/workers/get_number_of_joined_players.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="16" column="38" selection-start-line="16" selection-start-column="38" selection-end-line="16" selection-end-column="38" />
         </state>
       </provider>
     </entry>

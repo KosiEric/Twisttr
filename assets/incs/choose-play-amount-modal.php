@@ -22,16 +22,27 @@
 
                             <!--Password Twisttr@p1 -->
                             <!--paystack key sk_test_fbced60e604b7a4bcdf0cea2aea7c9a77f535914 -->
+<?php
+$startHour = 15;
+$endHour = 17;
+$currentHour = date("H");
+$startHourString = date("g:i a", strtotime($startHour.":00:00"));
 
+$endHourString = date("g:i a", strtotime($endHour.":00:00"));
+$allowedPlayAmountOptions = [100 , 200];
+?>
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="fa fa-money"></i> </span>
                                 <select name="play-amount-options" id="play-amount-options" class="form-control selectpicker">
                                     <option value="0">&#8358; 0.00 Free Mode</option>
-                                    <option value="100">&#8358; 100</option>
-                                    <option value="200">&#8358; 200</option>
-                                    <option value="500">&#8358; 500</option>
-                                    <option value="1000">&#8358; 1,000</option>
+                    <?php if(($currentHour >= $startHour) and ($currentHour < $endHour)) { ?>
+                        <?php foreach ($allowedPlayAmountOptions as $allowedPlayAmountOption) { ?>
 
+
+                            <?php $allowedPlayAmountOptionFormat = number_format($allowedPlayAmountOption);
+                            echo "<option value='{$allowedPlayAmountOption}'>&#8358; {$allowedPlayAmountOptionFormat}</option>"; ?>
+                        <?php }
+                    }?>
 
                                 </select>
 

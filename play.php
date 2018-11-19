@@ -298,7 +298,9 @@ else {
     $HomePage->delete_record($HomePage->game_words_table_name , 'game_id' , $HomePage->UserFunctions->user_details["last_free_mode_id"]);
 
     require_once $HomePage->WebsiteDetails->INCS_FOLDER.'user.php';
-   // require_once $HomePage->WebsiteDetails->INCS_FOLDER.'settings.php';
+    require_once $HomePage->WebsiteDetails->INCS_FOLDER.'ad.php';
+
+    // require_once $HomePage->WebsiteDetails->INCS_FOLDER.'settings.php';
 
 
 }

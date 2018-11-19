@@ -4,32 +4,17 @@
     <head>
 
          <meta charset="utf-8" />
-        <script type="text/javascript" language="JavaScript" src="/assets/js/words.js">
-
-        </script>
-        <script type="text/javascript" language="JavaScript">
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        </script>
     </head>
     <body>
+<?php
+date_default_timezone_set("Africa/Lagos");
 
+
+$startTime = 18;
+$startTimeString = date("g:i a", strtotime($startTime.":00:00"));
+$endTime = 20;
+$endTimeString = date("g:i a", strtotime($endTime.":00:00"));
+
+ ?>
     </body>
     </html>

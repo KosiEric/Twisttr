@@ -10,7 +10,7 @@ function  WebPage() {
     this.gameFilesLoaded = false;
     this.chatFilesLoaded = false;
     this.notificationsFilesLoaded = false;
-
+    this.footerBanner = $('#footer-banner');
     this.loadedUnspportedBrowserFile = false;
 
 

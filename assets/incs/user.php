@@ -150,6 +150,7 @@
                                 </div>
                             </div>
                         </div><!-- /.col -->
+
                     </div><!-- /.row -->
 
                     <div class="space-20"></div>
@@ -167,12 +168,17 @@
                                 <div class="widget-body">
                                     <div class="widget-main" id="profile-status-message">
                                         <?php echo ($HomePage->loggedInUserDetails["status_text"] == '0') ? "Nothing here" : $HomePage->loggedInUserDetails["status_text"]?>
+
                                     </div>
+
                                 </div>
                             </div>
                         </div>
+
+
                     </div>
                 </div>
+
             </div><!-- /#home -->
 
             <div id="feed" class="tab-pane">

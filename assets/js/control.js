@@ -84,7 +84,8 @@ if(webPageObject.isLoggedInUser){
            webPageObject.gamePage.css('display' , 'block');
            webPageObject.mainGameContainer.css('display' , 'block');
            webPageObject.updateNumOfPlayersWorker.terminate();
-
+           webPageObject.footerBanner.hide();
+           webPageObject.mainSiteFooter.css("display" , "none");
            $.getScript(webPageObject.defaults.jsFolder+'GameControl.js' , function () {
 
                var gameClass = new GameClass();
