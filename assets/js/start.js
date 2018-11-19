@@ -337,9 +337,9 @@ if(parent.gameEnded) return changeGameWordsWorker.terminate();
 
             msg1 = $.trim(parent.messageInput.val()).replace(/\s+/g, '').toLowerCase();
             parent.wordsTypedByUser.push(msg1);
-            index = parent.wordsTypedByBot.indexOf(msg1);
+            index = parent.currentValidWordsForBot.indexOf(msg1);
              if (index > -1) {
-                 parent.wordsTypedByBot.splice(index, 1);
+                 parent.currentValidWordsForBot.splice(index, 1);
              }
              var isValidWord = $Spelling.BinSpellCheck(msg1);
             if(msg1 == '' || !parent.defaults.regularExpressions.gameWordsRegEx.test(msg1) || $.inArray(msg1, parent.currentlyUsedWords) >= 0 || !isValidWord){ parent.showWordWarning(); return false;}
