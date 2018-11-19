@@ -321,7 +321,7 @@ else {
 <script type="text/javascript" language="JavaScript" src="<?php echo $HomePage->WebsiteDetails->JS_FOLDER; ?>words.js"></script>
 <script type="text/javascript" src="<?php echo  $HomePage->WebsiteDetails->JS_FOLDER; ?>start.js"></script>
 <script type="text/javascript" src="<?php echo  $HomePage->WebsiteDetails->JS_FOLDER; ?>control.js"></script>
-
+<img src = "<?php echo $HomePage->WebsiteDetails->defaultBotProfilePicture; ?>" style="display:none;" />
 </body>
 
 </html>

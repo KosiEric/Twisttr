@@ -42,7 +42,9 @@
                     <div class="row">
                         <div class="col-xs-12 col-sm-3 center">
 							<span class="profile-picture" id="profile-container">
-								<img class="editable img-responsive" alt=" Avatar" id="avatar2" src='<?php echo  ($HomePage->loggedInUserDetails["gender"] == "m")?"{$HomePage->WebsiteDetails->IMG_FOLDER}avatar.png":"{$HomePage->WebsiteDetails->IMG_FOLDER}avatar2.png"; ?>' />
+								<img class="editable img-responsive" alt=" Avatar" id="avatar2" src='<?php $profileImage =  ($HomePage->loggedInUserDetails["gender"] == "m")?"{$HomePage->WebsiteDetails->IMG_FOLDER}avatar.png":"{$HomePage->WebsiteDetails->IMG_FOLDER}avatar2.png";
+								echo $profileImage = (strtolower($HomePage->loggedInUserDetails['username']) == strtolower($HomePage->WebsiteDetails->defaultUsername))?$HomePage->WebsiteDetails->defaultBotProfilePicture:$profileImage;
+								?>' />
 							</span>
 
                             <div class="space space-4"></div>

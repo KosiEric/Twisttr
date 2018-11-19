@@ -19,12 +19,12 @@ function  GameClass () {
 
 
     this.gameWords = {letterNotFoundInWords : function (letter) {
-            return String.format("The letter <strong>{0}</strong> is not listed in words , try another word" , letter);
+            return String.format("The letter <strong>{0}</strong> not found in any of those words , try another word" , letter);
         },  tryAnotherWord : 'try using another word' , youWon :'Congratulations! , you are the winner' ,   someoneElseWon : function (username) {
 
             return String.format("{0} won, try improving on your speed next time" , username);
         } , tooManyInstances : function (letter) {
-            return String.format("Too many instances of <strong>{0}</strong> , try another word" , letter);
+            return String.format("you have too many letter<strong>{0}</strong> on this word , try another word" , letter);
         }};
 
     this.exitGameButton.on('click' , function () {

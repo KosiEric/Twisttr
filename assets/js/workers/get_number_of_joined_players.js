@@ -1,22 +1,21 @@
 importScripts('/assets/js/request.js');
 
 
+self.getNumberOfJoinedPlayers = function getNumberOfJoinedPlayers () {
+
+    req = JSON.parse(ev.data);
+    request( req.file , JSON.stringify(req) , function (resp) {
+
+        postMessage(resp);
+    });
+
+    var timeout =setTimeout('self.getNumberOfJoinedPlayers()' , 2000);
+};
 
 self.onmessage = function (ev) {
 
-    setInterval(function () {
-
-
-        req = JSON.parse(ev.data);
-        request( req.file , JSON.stringify(req) , function (resp) {
-
-            postMessage(resp);
-        });
-
-
-    } , 2000);
-
-}
+    self.getNumberOfJoinedPlayers();
+};
 
 
 

@@ -182,7 +182,7 @@ this.preventFormSubmission = function (e) {
         } , passwordsDonotMatchText : "passwords do not match" , enterPasswordAgainText : "enter password again" ,
         usernameText : "username" , emptyBankNameText : "enter your bank name" , bankAccountNumberText : "account number" ,  nameText : "name" ,bankAccountNameText : "bank account name" , genderText : "gender" , birthdayText : "birthday" ,
         emailText : "email" , statusMessageText : "status message" , passwordText : "password" , instragramUsernameText : "Instagram username" , twitterUsernameText : "Twitter username" , passwordAgainText : "password again" , "contactText" : "contact" ,
-        emptyBirthDayText : "enter your date of birth" , usernameCannotBeDigitsOnlyText : "username can't be numbers only" , withdrawalAmount : "withdrawal amount" ,   enterValidWithdrawalAmountText : "enter a valid withdrawal amount" , invalidBirthdayText : "enter a valid birthday" , emptyGenderText : "select your gender" , birthdayIsLessThan18YearsText : "users must be 18 years or above to participate"};
+        emptyBirthDayText : "enter your date of birth" , usernameCannotBeDigitsOnlyText : "username can't be numbers only" , withdrawalAmount : "withdrawal amount" ,   enterValidWithdrawalAmountText : "enter a valid withdrawal amount" , invalidBirthdayText : "enter a valid birthday" , emptyGenderText : "select your gender" , birthdayIsLessThan18YearsText : "users must be 18 years or above to play."};
 
 
     //Necessary Regular expressions
