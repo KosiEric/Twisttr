@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 abstract class WebsiteConfigurationSettings {
 
@@ -50,6 +50,12 @@ abstract class WebsiteConfigurationSettings {
     public  $AllowBonus = true;
     public  $DefaultAdminUserID;
     public  $defaultUsername = "spider";
+    public $startHour = 15;
+    public $endHour = 17;
+    public $currentHour;
+    public $startHourString;
+    public $endHourString;
+    public $allowedPlayAmountOptions = [100 , 200];
 
     public  $defaultBotProfilePicture;
     public  $Banks = Array("Access Bank" , "CitiBank" , "Coronation Merchant Bank" , "Diamond Bank" , "Ecobank Nigeria" , "Enterprise Bank Limited" , "FBN Merchant Bank" ,"Fidelity Bank Nigeria",
@@ -60,7 +66,9 @@ abstract class WebsiteConfigurationSettings {
     abstract function setPageTitleDescriptionKeywords(string  $title, string $description , string $keywords);
 
     public function __construct() {
-
+        $this->currentHour = date("H");
+        $this->startHourString = date("g:i a", strtotime($this->startHour.":00:00"));
+        $this->endHourString = date("g:i a", strtotime($this->endHour.":00:00"));
         $this->DOCUMENT_ROOT = $_SERVER['DOCUMENT_ROOT'];
         $this->STATIC_FOLDER = "/assets/";
         $this->JS_FOLDER = $this->STATIC_FOLDER."js/";

@@ -3,18 +3,20 @@
         <div class="active bannerItem">
             <span class="banner-header display-1">NOTICE!!</span>
             <div class="banner-text">
-            <?php if(($currentHour >= $endHour) and ($endHour - 23) <= 12) { ?>
-            Today's game has ended.<br />Tomorrow's game starts by <?php echo $startHourString; ?> and ends by <?php echo $endHourString; ?> CAT
-            <?php }elseif (($currentHour >= $startHour) and ($currentHour < $endHour)) { ?>
-                Today's game has started, game ends <?php// echo $startHourString; ?> by <?php echo $endHourString; ?> CAT
+            <?php if(($HomePage->WebsiteDetails->currentHour >= $HomePage->WebsiteDetails->endHour) and ($HomePage->WebsiteDetails->endHour - 23) <= 12) { ?>
+            Today's game has ended.<br />Tomorrow's game starts by <?php echo $HomePage->WebsiteDetails->startHourString; ?> and ends by <?php echo $HomePage->WebsiteDetails->endHourString; ?> CAT
+            <?php }elseif (($HomePage->WebsiteDetails->currentHour >= $HomePage->WebsiteDetails->startHour) and ($HomePage->WebsiteDetails->currentHour < $HomePage->WebsiteDetails->endHour)) { ?>
+                Today's game has started, game ends <?php// echo $HomePage->WebsiteDetails->startHourString; ?> by <?php echo $HomePage->WebsiteDetails->endHourString; ?> CAT
                 <?php } else { ?>
-                Today's game starts by <?php echo $startHourString; ?> and ends by <?php echo $endHourString; ?> CAT
+                Today's game starts by <?php echo $HomePage->WebsiteDetails->startHourString; ?> and ends by <?php echo $HomePage->WebsiteDetails->endHourString; ?> CAT
 
            <?php  }?>
 
             </div>
 
-            <a class="btn btn-outline btn-lg" href="#play-amount-modal" data-toggle="modal">Play Now</a>
+            <a class="btn btn-outline btn-lg" href="#play-amount-modal" data-toggle="modal">
+                <?php echo
+                ((($HomePage->WebsiteDetails->currentHour >= $HomePage->WebsiteDetails->endHour) and ($HomePage->WebsiteDetails->endHour - 23)) or (($HomePage->WebsiteDetails->currentHour >= $HomePage->WebsiteDetails->startHour) and ($HomePage->WebsiteDetails->currentHour < $HomePage->WebsiteDetails->endHour)) <= 12)?"Play Bonus Mode" : "Play Now"; ?></a>
         </div>
     </div>
     </span>
