@@ -3,6 +3,7 @@
 var i =0;
 var point = 0;
 var index = 0;
+
 function GameRoom(webPage , defaults , playAmount , gameDetails , gameClass) {
     parent = this;
 
@@ -98,143 +99,143 @@ function GameRoom(webPage , defaults , playAmount , gameDetails , gameClass) {
         i = 0;
     this.messages.mCustomScrollbar();
 
-      this.endGame = function() {
+    this.endGame = function() {
 
 
-          parent.messageInput.focusout();
-          parent.messageInput.val("");
-          parent.messageInput.prop("disabled", true);
-          var endGameWorker = new Worker(parent.defaults.workersFolder + 'end_game.js');
-          data = {
-              "userID": parent.webPage.userDetails.user_id,
-              "amount": playAmount,
-              "action": parent.gameClass.gameActions.endGame,
-              "file": parent.defaults.files.gameControlFile ,
-              "botPoint" : parent.totalBotPoint
-          };
+        parent.messageInput.focusout();
+        parent.messageInput.val("");
+        parent.messageInput.prop("disabled", true);
+        var endGameWorker = new Worker(parent.defaults.workersFolder + 'end_game.js');
+        data = {
+            "userID": parent.webPage.userDetails.user_id,
+            "amount": playAmount,
+            "action": parent.gameClass.gameActions.endGame,
+            "file": parent.defaults.files.gameControlFile ,
+            "botPoint" : parent.totalBotPoint
+        };
 
 
-          data = JSON.stringify(data);
+        data = JSON.stringify(data);
 
-          endGameWorker.postMessage(data);
+        endGameWorker.postMessage(data);
 
-          endGameWorker.onmessage = function (ev) {
+        endGameWorker.onmessage = function (ev) {
 
-              resp = JSON.parse(ev.data);
-              //    console.log(ev.data);
+            resp = JSON.parse(ev.data);
+            //    console.log(ev.data);
 
-              //$('<div class="message loading new"><figure class="avatar"><img src="' + parent.favicon + '" /></figure><span></span></div>').appendTo($('.mCSB_container'));
-              //parent.updateScrollbar();
+            //$('<div class="message loading new"><figure class="avatar"><img src="' + parent.favicon + '" /></figure><span></span></div>').appendTo($('.mCSB_container'));
+            //parent.updateScrollbar();
 
 
 //                  $('.message.loading').remove();
-  //                parent.updateScrollbar();
-                  $(resp.message).appendTo($('.mCSB_container')).addClass('new');
-                  parent.setDate();
-                  parent.updateScrollbar();
-                  setTimeout('window.location.reload()' , 11000);
+            //                parent.updateScrollbar();
+            $(resp.message).appendTo($('.mCSB_container')).addClass('new');
+            parent.setDate();
+            parent.updateScrollbar();
+            setTimeout('window.location.reload()' , 11000);
 
-          };
-      };
-      parent.getGameCurrentRankings = function getGameCurrentRankings ()  {
-          var requestSent = false;
-          var getGameRankingWorker = new Worker(parent.defaults.workersFolder + 'get_game_ranking.js');
-
-
-
-                  data = {
-                      "amount" : playAmount ,
-                      "userID" : parent.webPage.userDetails.user_id,
-                      "action" : parent.gameClass.gameActions.getCurrentRanking ,
-                      "file" :  parent.defaults.files.gameControlFile ,
-                      "botPoint" : parent.totalBotPoint
-                  };
-                 data = JSON.stringify(data);
-                  getGameRankingWorker.postMessage(data);
-
-                  getGameRankingWorker.onmessage = function (ev) {
-                      if(parent.gameEnded)return getGameRankingWorker.terminate();
-                      resp = JSON.parse(ev.data);
-
-                      parent.updateScrollbar();
-
-
-                      $(resp.message).appendTo($('.mCSB_container')).addClass('new');
-                      parent.setDate();
-                      parent.updateScrollbar();
-                      getGameRankingWorker.terminate();
-                      timeout = setTimeout('parent.getGameCurrentRankings()' , 6000);
+        };
+    };
+    parent.getGameCurrentRankings = function getGameCurrentRankings ()  {
+        var requestSent = false;
+        var getGameRankingWorker = new Worker(parent.defaults.workersFolder + 'get_game_ranking.js');
 
 
 
-                  };
+        data = {
+            "amount" : playAmount ,
+            "userID" : parent.webPage.userDetails.user_id,
+            "action" : parent.gameClass.gameActions.getCurrentRanking ,
+            "file" :  parent.defaults.files.gameControlFile ,
+            "botPoint" : parent.totalBotPoint
+        };
+        data = JSON.stringify(data);
+        getGameRankingWorker.postMessage(data);
+
+        getGameRankingWorker.onmessage = function (ev) {
+            if(parent.gameEnded)return getGameRankingWorker.terminate();
+            resp = JSON.parse(ev.data);
+
+            parent.updateScrollbar();
 
 
+            $(resp.message).appendTo($('.mCSB_container')).addClass('new');
+            parent.setDate();
+            parent.updateScrollbar();
+            getGameRankingWorker.terminate();
+            timeout = setTimeout('parent.getGameCurrentRankings()' , 6000);
+
+
+
+        };
 
 
 
 
 
 
-      };
 
 
-     parent.getGameCurrentRankings();
-
-       parent.getAllWordsTyped = function () {
+    };
 
 
-           data = {"userID" : parent.webPage.userDetails.user_id ,
-               "amount" : playAmount ,
+    parent.getGameCurrentRankings();
 
-               "file" : parent.defaults.files.gameControlFile ,
-               "action" : this.gameClass.gameActions.getAllWords ,
-               "username" : parent.webPage.userDetails.username,
-               "start" : parent.numberOfRequestsSent
-           };
-
-           data = JSON.stringify(data);
-           var getWordsWebWorker = new Worker(parent.defaults.workersFolder + 'get_words.js');
-if(parent.gameEnded){
-    getWordsWebWorker.terminate();
-    return;}
-           getWordsWebWorker.postMessage(data);
-
-           getWordsWebWorker.onmessage = function (ev) {
-               if(parent.gameEnded) return getWordsWebWorker.terminate();
-             var wordDetails = JSON.parse(ev.data);
-if(wordDetails.data != "") {
-    $('<div class="message loading new"><figure class="avatar"><img src="'+parent.favicon+'" /></figure><span></span></div>').appendTo($('.mCSB_container'));
-    parent.updateScrollbar();
+    parent.getAllWordsTyped = function () {
 
 
+        data = {"userID" : parent.webPage.userDetails.user_id ,
+            "amount" : playAmount ,
 
-    setTimeout(function () {
-        $('.message.loading').remove();
-        $(wordDetails.data).appendTo($('.mCSB_container')).addClass('new');
-        parent.setDate();
-        parent.updateScrollbar();
-        i++;
-    }, 1000);
+            "file" : parent.defaults.files.gameControlFile ,
+            "action" : this.gameClass.gameActions.getAllWords ,
+            "username" : parent.webPage.userDetails.username,
+            "start" : parent.numberOfRequestsSent
+        };
 
-    if(wordDetails.end){
+        data = JSON.stringify(data);
+        var getWordsWebWorker = new Worker(parent.defaults.workersFolder + 'get_words.js');
+        if(parent.gameEnded){
+            getWordsWebWorker.terminate();
+            return;}
+        getWordsWebWorker.postMessage(data);
 
-        getWordsWebWorker.terminate();
-        parent.endGame();
-    }
-
-}
-
-
-           };
+        getWordsWebWorker.onmessage = function (ev) {
+            if(parent.gameEnded) return getWordsWebWorker.terminate();
+            var wordDetails = JSON.parse(ev.data);
+            if(wordDetails.data != "") {
+                $('<div class="message loading new"><figure class="avatar"><img src="'+parent.favicon+'" /></figure><span></span></div>').appendTo($('.mCSB_container'));
+                parent.updateScrollbar();
 
 
 
+                setTimeout(function () {
+                    $('.message.loading').remove();
+                    $(wordDetails.data).appendTo($('.mCSB_container')).addClass('new');
+                    parent.setDate();
+                    parent.updateScrollbar();
+                    i++;
+                }, 1000);
 
-       };
+                if(wordDetails.end){
+
+                    getWordsWebWorker.terminate();
+                    parent.endGame();
+                }
+
+            }
 
 
-     if(!this.isFreeMode)parent.getAllWordsTyped();
+        };
+
+
+
+
+    };
+
+
+    if(!this.isFreeMode)parent.getAllWordsTyped();
 
 
 
@@ -252,7 +253,7 @@ if(wordDetails.data != "") {
 
 
         changeGameWordsWorker.onmessage = function (ev) {
-if(parent.gameEnded) return changeGameWordsWorker.terminate();
+            if(parent.gameEnded) return changeGameWordsWorker.terminate();
 
 
             resp = JSON.parse(ev.data);
@@ -260,8 +261,8 @@ if(parent.gameEnded) return changeGameWordsWorker.terminate();
 
 
             parent.currentlyUsedWords = resp.currentlyUsedWords;
-            action = (parent.isFreeMode)?parent.getCurrentValidEnglishWordsForBot():null;
             parent.gameWordsH2.text(parent.currentlyUsedWords.toString());
+            action = (parent.isFreeMode)?parent.getCurrentValidEnglishWordsForBot():null;
 
             parent.gameWordsToLetterArray = resp.gameWordsToLetterArray;
             parent.averageWordLength = Math.round(parent.gameWords.length / parent.gameWordsToLetterArray.length );
@@ -281,19 +282,19 @@ if(parent.gameEnded) return changeGameWordsWorker.terminate();
 
 
     this.updateScrollbar = function () {
-            parent.messages.mCustomScrollbar("update").mCustomScrollbar('scrollTo', 'bottom', {
-                scrollInertia: 10,
-                timeout: 0
-            });
-        };
+        parent.messages.mCustomScrollbar("update").mCustomScrollbar('scrollTo', 'bottom', {
+            scrollInertia: 10,
+            timeout: 0
+        });
+    };
 
-        this.setDate = function setDate() {
-            d = new Date();
-            if (m != d.getMinutes()) {
-                m = d.getMinutes();
-                $('<div class="timestamp">' + d.getHours() + ':' + m + '</div>').appendTo($('.message:last'));
-            }
-        };
+    this.setDate = function setDate() {
+        d = new Date();
+        if (m != d.getMinutes()) {
+            m = d.getMinutes();
+            $('<div class="timestamp">' + d.getHours() + ':' + m + '</div>').appendTo($('.message:last'));
+        }
+    };
 
     this.getNumberOfElementAppearance = function (letter , arr) {
         var counter = 0;
@@ -316,149 +317,147 @@ if(parent.gameEnded) return changeGameWordsWorker.terminate();
         return count;
     };
 
-         this.hideWordWarning = function () {
-             parent.gameHintContainer.css('display' , 'none');
-         };
+    this.hideWordWarning = function () {
+        parent.gameHintContainer.css('display' , 'none');
+    };
 
-         this.showWordWarning = function (warningText , secconds = 3) {
-                   if(warningText == null) {warningText = parent.gameClass.gameWords.tryAnotherWord;}
-                   parent.gameHints.html(warningText);
-                   parent.gameHintContainer.css('display' , 'block');
-                   setTimeout('parent.hideWordWarning()' , secconds * 1000);
-         };
+    this.showWordWarning = function (warningText , secconds = 3) {
+        if(warningText == null) {warningText = parent.gameClass.gameWords.tryAnotherWord;}
+        parent.gameHints.html(warningText);
+        parent.gameHintContainer.css('display' , 'block');
+        setTimeout('parent.hideWordWarning()' , secconds * 1000);
+    };
 
-         this.messageInput.on('blur' , function () {
-           /* body... */
+    this.messageInput.on('blur' , function () {
+        /* body... */
 
-               $(this).focus();
-         });
+        $(this).focus();
+    });
 
-         this.insertMessage =  function() {
+    this.insertMessage =  function() {
 
-            msg1 = $.trim(parent.messageInput.val()).replace(/\s+/g, '').toLowerCase();
-            parent.wordsTypedByUser.push(msg1);
-            index = parent.currentValidWordsForBot.indexOf(msg1);
-             if (index > -1) {
-                 parent.currentValidWordsForBot.splice(index, 1);
-             }
-             var isValidWord = $Spelling.BinSpellCheck(msg1);
-            if(msg1 == '' || !parent.defaults.regularExpressions.gameWordsRegEx.test(msg1) || $.inArray(msg1, parent.currentlyUsedWords) >= 0 || !isValidWord){ parent.showWordWarning(); return false;}
+        msg1 = $.trim(parent.messageInput.val()).replace(/\s+/g, '').toLowerCase();
+        parent.wordsTypedByUser.push(msg1);
+        index = parent.currentValidWordsForBot.indexOf(msg1);
+        if (index > -1) {
+            parent.currentValidWordsForBot.splice(index, 1);
+        }
+        var isValidWord = $Spelling.BinSpellCheck(msg1);
+        if(msg1 == '' || !parent.defaults.regularExpressions.gameWordsRegEx.test(msg1) || $.inArray(msg1, parent.currentlyUsedWords) >= 0 || !isValidWord){ parent.showWordWarning(); return false;}
 
-            for(i = 0; i < msg1.length; i++){
+        for(i = 0; i < msg1.length; i++){
 
-                if($.inArray(msg1[i] , parent.gameWordsToLetterArray) < 0){
-                    parent.showWordWarning(parent.gameClass.gameWords.letterNotFoundInWords(msg1[i]));
-                    return ;
-                }
+            if($.inArray(msg1[i] , parent.gameWordsToLetterArray) < 0){
+                parent.showWordWarning(parent.gameClass.gameWords.letterNotFoundInWords(msg1[i]));
+                return ;
+            }
+        }
+
+
+        for (var i = 0; i < msg1.length; i++){
+
+            if(parent.letterInWord(msg1[i] , msg1) > parent.getNumberOfElementAppearance(msg1[i] , parent.gameWordsToLetterArray)){
+
+                parent.showWordWarning(parent.gameClass.gameWords.tooManyInstances(msg1[i]));
+                return;
+
             }
 
+        }
+        var sendWordWorker = new Worker(parent.defaults.workersFolder + 'send_word.js');
 
-            for (var i = 0; i < msg1.length; i++){
-
-                if(parent.letterInWord(msg1[i] , msg1) > parent.getNumberOfElementAppearance(msg1[i] , parent.gameWordsToLetterArray)){
-
-                    parent.showWordWarning(parent.gameClass.gameWords.tooManyInstances(msg1[i]));
-                    return;
-
-                }
-
-            }
-              var sendWordWorker = new Worker(parent.defaults.workersFolder + 'send_word.js');
-
-           point = (parent.wordsTypedByBot.indexOf(msg1) >= 0)?0:Math.round((msg1.length / parent.averageWordLength) * 10);
+        point = (parent.wordsTypedByBot.indexOf(msg1) >= 0)?0:Math.round((msg1.length / parent.averageWordLength) * 10);
 
 
 
 
-            data = {"userID" : parent.webPage.userDetails.user_id ,
-                    "amount" : playAmount ,
-                     "word" : msg1 ,
-                     "point" : point ,
-                      "file" : parent.defaults.files.gameControlFile ,
-                      "action" : this.gameClass.gameActions.sendWord ,
-                       "username" : parent.webPage.userDetails.username
-            };
-
-
-
-            data = JSON.stringify(data);
-
-
-             sendWordWorker.postMessage(data);
-
-            sendWordWorker.onmessage = function (ev) {
-                 var reply  = JSON.parse(ev.data);
-
-                 parent.messageInput.val("");
-                $('<div class="message message-personal">' + msg1 + ' <span class="word-sender-name">' + parent.webPage.userDetails.username + ' - <span id="points-earned" class="points-earned-by-word">'+ reply.point + ' point</span> </span></div>').appendTo($('.mCSB_container')).addClass('new');
-                parent.setDate();
-                parent.messageInput.val(null);
-                parent.updateScrollbar();
-                if(reply.bonus != "")parent.potentialWinning.text(reply.bonus);
-                if(reply.end) return parent.endGame();
-
-
-            } ;
-
-
-
-
-
-
-
-
-
-
-
-
-                        return;
+        data = {"userID" : parent.webPage.userDetails.user_id ,
+            "amount" : playAmount ,
+            "word" : msg1 ,
+            "point" : point ,
+            "file" : parent.defaults.files.gameControlFile ,
+            "action" : this.gameClass.gameActions.sendWord ,
+            "username" : parent.webPage.userDetails.username
         };
 
-         this.insertBotMessage = function insertBotMessage() {
-
-             msg2 = parent.currentValidWordsForBot[parent.currentBotWordsPosition].toLowerCase();
-             parent.wordsTypedByBot.push(msg2);
-             if (!msg2) return;
-
-             parent.currentBotWordsPosition++;
 
 
-             var sendWordWorker = new Worker(parent.defaults.workersFolder + 'send_word.js');
-
-             point = (!$Spelling.BinSpellCheck(msg2) || parent.wordsTypedByUser.indexOf(msg2) >= 0) ? 0 : Math.round((msg2.length / parent.averageWordLength) * 10);
+        data = JSON.stringify(data);
 
 
-             parent.totalBotPoint += point;
+        sendWordWorker.postMessage(data);
+
+        sendWordWorker.onmessage = function (ev) {
+            var reply  = JSON.parse(ev.data);
+
+            parent.messageInput.val("");
+            $('<div class="message message-personal">' + msg1 + ' <span class="word-sender-name">' + parent.webPage.userDetails.username + ' - <span id="points-earned" class="points-earned-by-word">'+ reply.point + ' point</span> </span></div>').appendTo($('.mCSB_container')).addClass('new');
+            parent.setDate();
+            parent.messageInput.val(null);
+            parent.updateScrollbar();
+            if(reply.bonus != "")parent.potentialWinning.text(reply.bonus);
+            if(reply.end) return parent.endGame();
 
 
-             $('<div class="message loading new"><figure class="avatar"><img src="' + parent.favicon + '" /></figure><span></span></div>').appendTo($('.mCSB_container'));
-             parent.updateScrollbar();
+        } ;
 
 
-             setTimeout(function () {
-                 $('.message.loading').remove();
-                 $('<div class="message new"><figure class="avatar"><img src="' + parent.botProfilePicture + '" /></figure>' + msg2 + '<span class="word-sender-name">' + parent.botName + ' - <span id="points-earned" class="points-earned-by-word">' + point + ' points</span> </span></div>').appendTo($('.mCSB_container')).addClass('new');
-
-                 parent.setDate();
-                 parent.updateScrollbar();
-                 i++;
-             }, 400);
 
 
-         };
+
+
+
+
+
+
+
+
+        return;
+    };
+
+    this.insertBotMessage = function insertBotMessage() {
+
+        msg2 = parent.currentValidWordsForBot[parent.currentBotWordsPosition].toLowerCase();
+        parent.wordsTypedByBot.push(msg2);
+        if (!msg2) return;
+
+        parent.currentBotWordsPosition++;
+
+
+
+        point = (!$Spelling.BinSpellCheck(msg2) || parent.wordsTypedByUser.indexOf(msg2) >= 0) ? 0 : Math.round((msg2.length / parent.averageWordLength) * 10);
+
+
+        parent.totalBotPoint += point;
+
+
+        $('<div class="message loading new"><figure class="avatar"><img src="' + parent.favicon + '" /></figure><span></span></div>').appendTo($('.mCSB_container'));
+        parent.updateScrollbar();
+
+
+        setTimeout(function () {
+            $('.message.loading').remove();
+            $('<div class="message new"><figure class="avatar"><img src="' + parent.botProfilePicture + '" /></figure>' + msg2 + '<span class="word-sender-name">' + parent.botName + ' - <span id="points-earned" class="points-earned-by-word">' + point + ' points</span> </span></div>').appendTo($('.mCSB_container')).addClass('new');
+
+            parent.setDate();
+            parent.updateScrollbar();
+            i++;
+        }, 400);
+
+
+    };
 
 
     this.sendWordFromBot = function () {
-          var sendWordTimerWorker = new Worker(parent.defaults.workersFolder+'send_bot_word.js');
-          sendWordTimerWorker.postMessage(JSON.stringify({"start" : true , "seconds" : 4.5}));
-          sendWordTimerWorker.onmessage = function (ev) {
-           if(parent.gameEnded)sendWordTimerWorker.terminate();
-
-            if(!parent.gameEnded)parent.insertBotMessage();
-          };
+        var sendWordTimerWorker = new Worker(parent.defaults.workersFolder+'send_bot_word.js');
+        sendWordTimerWorker.postMessage(JSON.stringify({"start" : true , "seconds" : 3}));
+        sendWordTimerWorker.onmessage = function (ev) {
+            if(parent.gameEnded)return sendWordTimerWorker.terminate();
+            parent.insertBotMessage();
+        };
     };
 
-    if(this.isFreeMode)this.sendWordFromBot();
+    action = (this.isFreeMode)?this.sendWordFromBot(): null;
 
 
     this.startCounter = function () {
@@ -479,16 +478,15 @@ if(parent.gameEnded) return changeGameWordsWorker.terminate();
 
 
     $('.message-submit').on('click' , function () {
-            parent.insertMessage();
-        });
+        parent.insertMessage();
+    });
 
-        $(window).on('keydown', function (e) {
-            if (e.which == 13) {
-                parent.insertMessage();
-                return false;
-            }
-        });
+    $(window).on('keydown', function (e) {
+        if (e.which == 13) {
+            parent.insertMessage();
+            return false;
+        }
+    });
 
 
 }
-
