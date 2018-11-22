@@ -445,7 +445,7 @@ function GameRoom(webPage , defaults , playAmount , gameDetails , gameClass) {
         getValidEnglishWordsWorker.postMessage(data);
         getValidEnglishWordsWorker.onmessage = function (ev) {
             data = JSON.parse(ev.data);
-           
+
             parent.currentValidWordsForBot = data.words;
             parent.currentBotWordsPosition = 0;
             if(callback)callback();
@@ -457,9 +457,7 @@ function GameRoom(webPage , defaults , playAmount , gameDetails , gameClass) {
 
     };
 
-    action = (this.isFreeMode)?this.getCurrentValidEnglishWordsForBot(function () {
-        parent.sendWordFromBot();
-    }):null;
+    action = (this.isFreeMode)?this.getCurrentValidEnglishWordsForBot(parent.sendWordFromBot):null;
 
    // action = (this.isFreeMode)?this.sendWordFromBot(): null;
 
