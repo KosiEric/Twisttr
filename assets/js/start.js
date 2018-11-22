@@ -73,25 +73,6 @@ function GameRoom(webPage , defaults , playAmount , gameDetails , gameClass) {
     this.currentValidWordsForBot = [];
     this.wordsTypedByUser = [];
     this.wordsTypedByBot = [];
-    this.getCurrentValidEnglishWordsForBot = function getCurrentValidEnglishWordsForBot(callback) {
-        var getValidEnglishWordsWorker = new Worker(parent.defaults.workersFolder +'get_valid_words.js');
-        data = {"words" : parent.currentlyUsedWords , "currentlyUsedWords" : parent.currentlyUsedWords};
-        data = JSON.stringify(data);
-        getValidEnglishWordsWorker.postMessage(data);
-        getValidEnglishWordsWorker.onmessage = function (ev) {
-            data = JSON.parse(ev.data);
-            parent.currentValidWordsForBot = data.words;
-            parent.currentBotWordsPosition = 0;
-            if(callback)callback(data);
-
-            getValidEnglishWordsWorker.terminate();
-
-        };
-
-
-    };
-
-    action = (this.isFreeMode)?this.getCurrentValidEnglishWordsForBot():null;
 
 
 
@@ -418,9 +399,8 @@ function GameRoom(webPage , defaults , playAmount , gameDetails , gameClass) {
     this.insertBotMessage = function insertBotMessage() {
 
         msg2 = parent.currentValidWordsForBot[parent.currentBotWordsPosition].toLowerCase();
-        parent.wordsTypedByBot.push(msg2);
         if (!msg2) return;
-
+        parent.wordsTypedByBot.push(msg2);
         parent.currentBotWordsPosition++;
 
 
@@ -442,13 +422,14 @@ function GameRoom(webPage , defaults , playAmount , gameDetails , gameClass) {
             parent.setDate();
             parent.updateScrollbar();
             i++;
+
         }, 400);
 
 
     };
 
 
-    this.sendWordFromBot = function () {
+    this.sendWordFromBot = function (data) {
         var sendWordTimerWorker = new Worker(parent.defaults.workersFolder+'send_bot_word.js');
         sendWordTimerWorker.postMessage(JSON.stringify({"start" : true , "seconds" : 3}));
         sendWordTimerWorker.onmessage = function (ev) {
@@ -457,7 +438,30 @@ function GameRoom(webPage , defaults , playAmount , gameDetails , gameClass) {
         };
     };
 
-    action = (this.isFreeMode)?this.sendWordFromBot(): null;
+    this.getCurrentValidEnglishWordsForBot = function getCurrentValidEnglishWordsForBot(callback) {
+        var getValidEnglishWordsWorker = new Worker(parent.defaults.workersFolder +'get_valid_words.js');
+        data = {"words" : parent.currentlyUsedWords , "currentlyUsedWords" : parent.currentlyUsedWords};
+        data = JSON.stringify(data);
+        getValidEnglishWordsWorker.postMessage(data);
+        getValidEnglishWordsWorker.onmessage = function (ev) {
+            data = JSON.parse(ev.data);
+           
+            parent.currentValidWordsForBot = data.words;
+            parent.currentBotWordsPosition = 0;
+            if(callback)callback();
+
+            getValidEnglishWordsWorker.terminate();
+
+        };
+
+
+    };
+
+    action = (this.isFreeMode)?this.getCurrentValidEnglishWordsForBot(function () {
+        parent.sendWordFromBot();
+    }):null;
+
+   // action = (this.isFreeMode)?this.sendWordFromBot(): null;
 
 
     this.startCounter = function () {

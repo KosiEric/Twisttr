@@ -24,7 +24,7 @@ Object.defineProperty(Array.prototype, 'chunk_inefficient', {
 self.validWords = [];
 self.wordsSent = [];
 self.currentlyUsedWords = [];
-
+self.other = [];
 
 self.shuffle =  function shuffle(array) {
     var counter = array.length;
@@ -50,7 +50,8 @@ self.shuffle =  function shuffle(array) {
 
 
 
-self.combine = function combine(str){
+self.combine = function combine(str , other){
+    var other = !other ? false : other;
     var result = [];
     var pushWord;
     var i;
@@ -60,10 +61,12 @@ self.combine = function combine(str){
     for(i = 1; i < Math.pow(2, strLength) - 1; i++){
         word = [...str].filter((_ , pos) => (i >> pos) & 1).join("");
 
-        action = (englishWords.indexOf(word) >= 0 && self.currentlyUsedWords.indexOf(word) < 0 && self.validWords.indexOf(word) < 0 && result.indexOf(word) < 0 )?result.push(word) : null;
+
+        action = (englishWords.indexOf(word) >= 0 && self.currentlyUsedWords.indexOf(word) < 0 && self.validWords.indexOf(word) < 0 && result.indexOf(word) < 0 )?result.push(word)  : null;
+
     }
     self.validWords = self.validWords.concat(result);
-
+    self.other = other ? self.other.concat(result):self.other;
 };
 
 
@@ -81,7 +84,8 @@ self.onmessage = function (ev) {
     }
 
     for(const wordsLetters of wordsDivided){
-        self.combine(wordsLetters.join(""));
+
+        self.combine(wordsLetters.join("") , true);
     }
 
 
@@ -93,7 +97,7 @@ self.onmessage = function (ev) {
 
 
 
-    self.data = {"words" : self.validWords};
+    self.data = {words : self.validWords , other : self.other};
     self.data = JSON.stringify(self.data);
     self.postMessage(self.data);
 
