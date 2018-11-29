@@ -194,8 +194,8 @@ MESSAGE;
 
             : "<span class='word-sender-name'>{$winner['username']} won this game</span>, with  total  of <span id='points-earned' class='points-earned-by-word'>{$winner_current_point} points </span>, <span class='word-sender-name'>you came</span>  <span class='points-earned-by-word' id='points-earned'> {$user_position_string} with {$this->user_details['current_point']} points</span>";
         if($this->amount == 0 and $this->config->AllowBonus){
-            $current_point = (int)$this->user_details["current_point"];
-            $bonus = $this->calculateBonus($current_point);
+            $current_point = (int)$this->data["totalUserPoints"];
+            $bonus = (int)$this->data["userBonus"];
             if($current_point > $this->data['botPoint']) {
                 $this->executeSQL("UPDATE {$this->users_table_name} SET bonus = bonus + {$bonus} , game_id_about_to_play = '0' , current_game_id = '0' WHERE user_id = '{$this->userID}' ");
                 $text = "Congrats! <span class='word-sender-name'>you just received a bonus of  &#8358;$bonus</span> With <span class='points-earned-by-word' id='points-earned'>{$this->user_details['current_point']} points</span>";

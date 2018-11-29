@@ -88,6 +88,7 @@ function  Defaults() {
 
     };
 
+    this.defaultUsername  = "spider";
 
 this.preventFormSubmission = function (e) {
 

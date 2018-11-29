@@ -192,3 +192,6 @@ p#game-start-warning-text {
     margin-top: 10px;
     display: block;
 }
+#game-text{
+    width : 100%;
+}

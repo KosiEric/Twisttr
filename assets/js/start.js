@@ -3,11 +3,13 @@
 var i =0;
 var point = 0;
 var index = 0;
+var newAction;
 
 function GameRoom(webPage , defaults , playAmount , gameDetails , gameClass) {
     parent = this;
 
-
+    var timeout;
+    var resp;
 
 
     this.gameCountdown = $('#game-countdown');
@@ -30,15 +32,32 @@ function GameRoom(webPage , defaults , playAmount , gameDetails , gameClass) {
     this.endTime = 1000 * 60 * /*Minutes */ 3;
     this.endTime += this.startTime;
 
+    this.bonus = 0;
 
+    this.totalUserPoints = 0;
     this.favicon = parent.defaults.imgFolder+'favicon.png';
 
 
     this.numberOfRequestsSent = 0;
 
+    this.totalBotPoint = 0;
 
 
+    this.getDefaultRankingMessage = function getDefaultRankingMessage() {
+        var rankingMessage = `<div class="message message-personal"><figure class="avatar"><img src="${parent.favicon}" /></figure><span id="game-ranking-text">Scoreboard</span>`
+     rankingMessage +=  (parent.totalUserPoints > parent.totalBotPoint) ? `     
+     <span class="word-sender-name">1. ${parent.webPage.userDetails.username} - <span id="points-earned" class="points-earned-by-word">${parent.totalUserPoints} points</span> </span>
+<span class="word-sender-name">2. ${parent.defaults.defaultUsername} - <span id="points-earned" class="points-earned-by-word">${parent.totalBotPoint} points</span> </span>
+     ` : `
+  <span class="word-sender-name">1. ${parent.defaults.defaultUsername} - <span id="points-earned" class="points-earned-by-word">${parent.totalBotPoint} points</span> </span>
+    <span class="word-sender-name">2. ${parent.webPage.userDetails.username} - <span id="points-earned" class="points-earned-by-word">${parent.totalUserPoints} points</span> </span>
+     `;
 
+     rankingMessage += "</div>";
+
+     return rankingMessage;
+
+    };
     this.messages = $('.messages-content');
     this.messageInput = $('#game-text.message-input');
     this.gameHintContainer = $('#game-hint-container');
@@ -61,11 +80,25 @@ function GameRoom(webPage , defaults , playAmount , gameDetails , gameClass) {
 
     this.averageWordLength = Math.round(this.gameWords.length / this.gameWordsToLetterArray.length  );
 
+    this.updateScrollbar = function () {
+        parent.messages.mCustomScrollbar("update").mCustomScrollbar('scrollTo', 'bottom', {
+            scrollInertia: 15,
+            timeout: 0
+        });
+    };
+
+    this.setDate = function setDate() {
+        d = new Date();
+        if (m != d.getMinutes()) {
+            m = d.getMinutes();
+            $('<div class="timestamp">' + d.getHours() + ':' + m + '</div>').appendTo($('.message:last'));
+        }
+    };
 
 
     this.isFreeMode = (playAmount == 0);
 
-    this.totalBotPoint = 0;
+
     this.currentBotWordsPosition= 0;
 
     this.botProfilePicture = this.gameDetails.botProfilePicture;
@@ -92,7 +125,9 @@ function GameRoom(webPage , defaults , playAmount , gameDetails , gameClass) {
             "amount": playAmount,
             "action": parent.gameClass.gameActions.endGame,
             "file": parent.defaults.files.gameControlFile ,
-            "botPoint" : parent.totalBotPoint
+            "botPoint" : parent.totalBotPoint , 
+            "totalUserPoints" : parent.totalUserPoints,
+            "userBonus" : parent.bonus
         };
 
 
@@ -119,10 +154,13 @@ function GameRoom(webPage , defaults , playAmount , gameDetails , gameClass) {
         };
     };
     parent.getGameCurrentRankings = function getGameCurrentRankings ()  {
+
+        if(parent.gameEnded) return;
         var requestSent = false;
-        var getGameRankingWorker = new Worker(parent.defaults.workersFolder + 'get_game_ranking.js');
 
 
+        if(!parent.isFreeMode){
+            var getGameRankingWorker = new Worker(parent.defaults.workersFolder + 'get_game_ranking.js');
 
         data = {
             "amount" : playAmount ,
@@ -131,11 +169,12 @@ function GameRoom(webPage , defaults , playAmount , gameDetails , gameClass) {
             "file" :  parent.defaults.files.gameControlFile ,
             "botPoint" : parent.totalBotPoint
         };
+
         data = JSON.stringify(data);
         getGameRankingWorker.postMessage(data);
 
         getGameRankingWorker.onmessage = function (ev) {
-            if(parent.gameEnded)return getGameRankingWorker.terminate();
+            if (parent.gameEnded) return getGameRankingWorker.terminate();
             resp = JSON.parse(ev.data);
 
             parent.updateScrollbar();
@@ -145,11 +184,24 @@ function GameRoom(webPage , defaults , playAmount , gameDetails , gameClass) {
             parent.setDate();
             parent.updateScrollbar();
             getGameRankingWorker.terminate();
-            timeout = setTimeout('parent.getGameCurrentRankings()' , 6000);
+
+        }
+
+        }
+
+        else {
+
+            $(parent.getDefaultRankingMessage()).appendTo($('.mCSB_container')).addClass('new');
 
 
 
-        };
+        }
+
+        parent.setDate();
+        parent.updateScrollbar();
+
+
+        timeout = setTimeout('parent.getGameCurrentRankings()', 6000);
 
 
 
@@ -262,20 +314,6 @@ function GameRoom(webPage , defaults , playAmount , gameDetails , gameClass) {
 
 
 
-    this.updateScrollbar = function () {
-        parent.messages.mCustomScrollbar("update").mCustomScrollbar('scrollTo', 'bottom', {
-            scrollInertia: 10,
-            timeout: 0
-        });
-    };
-
-    this.setDate = function setDate() {
-        d = new Date();
-        if (m != d.getMinutes()) {
-            m = d.getMinutes();
-            $('<div class="timestamp">' + d.getHours() + ':' + m + '</div>').appendTo($('.message:last'));
-        }
-    };
 
     this.getNumberOfElementAppearance = function (letter , arr) {
         var counter = 0;
@@ -318,7 +356,11 @@ function GameRoom(webPage , defaults , playAmount , gameDetails , gameClass) {
     this.insertMessage =  function() {
 
         msg1 = $.trim(parent.messageInput.val()).replace(/\s+/g, '').toLowerCase();
-        parent.wordsTypedByUser.push(msg1);
+
+       newAction = parent.wordsTypedByUser.indexOf(msg1) < 0 ? parent.wordsTypedByUser.push(msg1) : "x";
+
+
+
         index = parent.currentValidWordsForBot.indexOf(msg1);
         if (index > -1) {
             parent.currentValidWordsForBot.splice(index, 1);
@@ -345,48 +387,58 @@ function GameRoom(webPage , defaults , playAmount , gameDetails , gameClass) {
             }
 
         }
-        var sendWordWorker = new Worker(parent.defaults.workersFolder + 'send_word.js');
+            var sendWordWorker = new Worker(parent.defaults.workersFolder + 'send_word.js');
 
-        point = (parent.wordsTypedByBot.indexOf(msg1) >= 0)?0:Math.round((msg1.length / parent.averageWordLength) * 10);
+            point = (parent.wordsTypedByBot.indexOf(msg1) >= 0 || newAction == "x") ? 0 : Math.round((msg1.length / parent.averageWordLength) * 10);
 
+            parent.totalUserPoints += point;
 
+        if(!parent.isFreeMode) {
 
-
-        data = {"userID" : parent.webPage.userDetails.user_id ,
-            "amount" : playAmount ,
-            "word" : msg1 ,
-            "point" : point ,
-            "file" : parent.defaults.files.gameControlFile ,
-            "action" : this.gameClass.gameActions.sendWord ,
-            "username" : parent.webPage.userDetails.username
-        };
-
-
-
-        data = JSON.stringify(data);
+            data = {
+                "userID": parent.webPage.userDetails.user_id,
+                "amount": playAmount,
+                "word": msg1,
+                "point": point,
+                "file": parent.defaults.files.gameControlFile,
+                "action": this.gameClass.gameActions.sendWord,
+                "username": parent.webPage.userDetails.username
+            };
 
 
-        sendWordWorker.postMessage(data);
+            data = JSON.stringify(data);
 
-        sendWordWorker.onmessage = function (ev) {
-            var reply  = JSON.parse(ev.data);
+
+            sendWordWorker.postMessage(data);
+
+            sendWordWorker.onmessage = function (ev) {
+                var reply = JSON.parse(ev.data);
+
+                parent.messageInput.val("");
+                $('<div class="message message-personal">' + msg1 + ' <span class="word-sender-name">' + parent.webPage.userDetails.username + ' - <span id="points-earned" class="points-earned-by-word">' + reply.point + ' point</span> </span></div>').appendTo($('.mCSB_container')).addClass('new');
+                parent.setDate();
+                parent.messageInput.val(null);
+                parent.updateScrollbar();
+                if (reply.bonus != "") parent.potentialWinning.text(reply.bonus);
+                if (reply.end) return parent.endGame();
+
+
+            };
+
+
+        }
+
+
+        else {
 
             parent.messageInput.val("");
-            $('<div class="message message-personal">' + msg1 + ' <span class="word-sender-name">' + parent.webPage.userDetails.username + ' - <span id="points-earned" class="points-earned-by-word">'+ reply.point + ' point</span> </span></div>').appendTo($('.mCSB_container')).addClass('new');
+            $('<div class="message message-personal">' + msg1 + ' <span class="word-sender-name">' + parent.webPage.userDetails.username + ' - <span id="points-earned" class="points-earned-by-word">' + point + ' point</span> </span></div>').appendTo($('.mCSB_container')).addClass('new');
             parent.setDate();
             parent.messageInput.val(null);
             parent.updateScrollbar();
-            if(reply.bonus != "")parent.potentialWinning.text(reply.bonus);
-            if(reply.end) return parent.endGame();
+            parent.calculateBonus(parent.totalUserPoints);
 
-
-        } ;
-
-
-
-
-
-
+        }
 
 
 
@@ -396,6 +448,13 @@ function GameRoom(webPage , defaults , playAmount , gameDetails , gameClass) {
         return;
     };
 
+    this.calculateBonus = function (point) {
+
+        parent.bonus = Math.round(point/20);
+
+        parent.potentialWinning.text(parent.bonus);
+
+    };
     this.insertBotMessage = function insertBotMessage() {
 
         msg2 = parent.currentValidWordsForBot[parent.currentBotWordsPosition].toLowerCase();

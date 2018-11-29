@@ -319,9 +319,10 @@ else {
     if($HomePage->UserFunctions->isLoggedInUser()) require_once $HomePage->WebsiteDetails->INCS_FOLDER.'game.php';
     ?>
 </div>
+<script type="text/javascript" language="JavaScript" src="<?php echo $HomePage->WebsiteDetails->JS_FOLDER; ?>babel.min.js"></script>
 <script type="text/javascript" language="JavaScript" src="<?php echo $HomePage->WebsiteDetails->JS_FOLDER; ?>main.js"></script>
 <script type="text/javascript" language="JavaScript" src="<?php echo $HomePage->WebsiteDetails->JS_FOLDER; ?>words.js"></script>
-<script type="text/javascript" src="<?php echo  $HomePage->WebsiteDetails->JS_FOLDER; ?>start.js"></script>
+<script type="text/babel" src="<?php echo  $HomePage->WebsiteDetails->JS_FOLDER; ?>start.js"></script>
 <script type="text/javascript" src="<?php echo  $HomePage->WebsiteDetails->JS_FOLDER; ?>control.js"></script>
 <img src = "<?php echo $HomePage->WebsiteDetails->defaultBotProfilePicture; ?>" style="display:none;" />
 </body>
