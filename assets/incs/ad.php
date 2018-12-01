@@ -6,7 +6,7 @@
             <?php if(($HomePage->WebsiteDetails->currentHour >= $HomePage->WebsiteDetails->endHour) and ($HomePage->WebsiteDetails->endHour - 23) <= 12) { ?>
             Today's game has ended.<br />Tomorrow's game starts by <?php echo $HomePage->WebsiteDetails->startHourString; ?> and ends by <?php echo $HomePage->WebsiteDetails->endHourString; ?> CAT
             <?php }elseif (($HomePage->WebsiteDetails->currentHour >= $HomePage->WebsiteDetails->startHour) and ($HomePage->WebsiteDetails->currentHour < $HomePage->WebsiteDetails->endHour)) { ?>
-                Today's game has started, game ends <?php// echo $HomePage->WebsiteDetails->startHourString; ?> by <?php echo $HomePage->WebsiteDetails->endHourString; ?> CAT
+                Today's game has started, game ends by  <?php echo $HomePage->WebsiteDetails->endHourString; ?> CAT
                 <?php } else { ?>
                 Today's game starts by <?php echo $HomePage->WebsiteDetails->startHourString; ?> and ends by <?php echo $HomePage->WebsiteDetails->endHourString; ?> CAT
 

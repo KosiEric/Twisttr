@@ -8,9 +8,9 @@ var newAction;
 function GameRoom(webPage , defaults , playAmount , gameDetails , gameClass) {
     parent = this;
 
-    var timeout;
+    var timeout , timeout2;
     var resp;
-
+    var sendWordWorker;
 
     this.gameCountdown = $('#game-countdown');
     this.webPage = webPage;
@@ -41,6 +41,8 @@ function GameRoom(webPage , defaults , playAmount , gameDetails , gameClass) {
     this.numberOfRequestsSent = 0;
 
     this.totalBotPoint = 0;
+    this.userHasTypedFirstWord = false;
+
 
 
     this.getDefaultRankingMessage = function getDefaultRankingMessage() {
@@ -106,6 +108,7 @@ function GameRoom(webPage , defaults , playAmount , gameDetails , gameClass) {
     this.currentValidWordsForBot = [];
     this.wordsTypedByUser = [];
     this.wordsTypedByBot = [];
+    this.words = [];
 
 
 
@@ -353,6 +356,61 @@ function GameRoom(webPage , defaults , playAmount , gameDetails , gameClass) {
         $(this).focus();
     });
 
+    this.sendWords = function sendWords () {
+
+
+
+            if(!(parent.isFreeMode)) {
+                if(!parent.words.length){
+                    timeout2 = setTimeout('parent.sendWords()' , 100);
+                    return;
+                }
+
+
+            data = {
+                "userID": parent.webPage.userDetails.user_id,
+                "amount": playAmount,
+                "word": parent.words[0].word,
+                "point": parent.words[0].point,
+                "file": parent.defaults.files.gameControlFile,
+                "action": this.gameClass.gameActions.sendWord,
+                "username": parent.webPage.userDetails.username
+            };
+
+
+
+            data = JSON.stringify(data);
+            sendWordWorker = new Worker(parent.defaults.workersFolder + 'send_word.js');
+
+
+            sendWordWorker.postMessage(data);
+
+            sendWordWorker.onmessage = function (ev) {
+                var reply = JSON.parse(ev.data);
+
+                parent.messageInput.val("");
+                $('<div class="message message-personal">' + msg1 + ' <span class="word-sender-name">' + parent.webPage.userDetails.username + ' - <span id="points-earned" class="points-earned-by-word">' + reply.point + ' point</span> </span></div>').appendTo($('.mCSB_container')).addClass('new');
+                parent.setDate();
+                parent.updateScrollbar();
+                if (reply.bonus != "") parent.potentialWinning.text(reply.bonus);
+                if (reply.end) return parent.endGame();
+
+                parent.words.shift();
+
+                timeout2 = setTimeout('parent.sendWords()' , 100);
+
+
+
+            };
+
+
+        }
+        else {
+            return;
+            }
+
+
+    };
     this.insertMessage =  function() {
 
         msg1 = $.trim(parent.messageInput.val()).replace(/\s+/g, '').toLowerCase();
@@ -387,49 +445,16 @@ function GameRoom(webPage , defaults , playAmount , gameDetails , gameClass) {
             }
 
         }
-            var sendWordWorker = new Worker(parent.defaults.workersFolder + 'send_word.js');
 
             point = (parent.wordsTypedByBot.indexOf(msg1) >= 0 || newAction == "x") ? 0 : Math.round((msg1.length / parent.averageWordLength) * 10);
 
             parent.totalUserPoints += point;
-
-        if(!parent.isFreeMode) {
-
-            data = {
-                "userID": parent.webPage.userDetails.user_id,
-                "amount": playAmount,
-                "word": msg1,
-                "point": point,
-                "file": parent.defaults.files.gameControlFile,
-                "action": this.gameClass.gameActions.sendWord,
-                "username": parent.webPage.userDetails.username
-            };
+            this.words.push({word : msg1 , point : point});
+            parent.messageInput.val(null);
 
 
-            data = JSON.stringify(data);
 
-
-            sendWordWorker.postMessage(data);
-
-            sendWordWorker.onmessage = function (ev) {
-                var reply = JSON.parse(ev.data);
-
-                parent.messageInput.val("");
-                $('<div class="message message-personal">' + msg1 + ' <span class="word-sender-name">' + parent.webPage.userDetails.username + ' - <span id="points-earned" class="points-earned-by-word">' + reply.point + ' point</span> </span></div>').appendTo($('.mCSB_container')).addClass('new');
-                parent.setDate();
-                parent.messageInput.val(null);
-                parent.updateScrollbar();
-                if (reply.bonus != "") parent.potentialWinning.text(reply.bonus);
-                if (reply.end) return parent.endGame();
-
-
-            };
-
-
-        }
-
-
-        else {
+        if(parent.isFreeMode) {
 
             parent.messageInput.val("");
             $('<div class="message message-personal">' + msg1 + ' <span class="word-sender-name">' + parent.webPage.userDetails.username + ' - <span id="points-earned" class="points-earned-by-word">' + point + ' point</span> </span></div>').appendTo($('.mCSB_container')).addClass('new');
@@ -439,7 +464,26 @@ function GameRoom(webPage , defaults , playAmount , gameDetails , gameClass) {
             parent.calculateBonus(parent.totalUserPoints);
 
         }
+        else if(!parent.isFreeMode){
 
+
+            if(!parent.userHasTypedFirstWord) {
+                parent.userHasTypedFirstWord = true;
+                parent.sendWords();
+
+            }
+
+
+
+        }
+        
+        
+        
+        
+                
+        
+        
+        
 
 
 
@@ -522,19 +566,16 @@ function GameRoom(webPage , defaults , playAmount , gameDetails , gameClass) {
 
 
     this.startCounter = function () {
-
         var getCounter = new Worker(parent.defaults.workersFolder + 'game_countdown.js');
-
         getCounter.postMessage(JSON.stringify({"start" : true}));
-
         getCounter.onmessage = function (ev) {
             resp = JSON.parse(ev.data);
             parent.gameCountdown.text(resp.time);
-
-            if (resp.end){parent.gameEnded = true; getCounter.terminate(); parent.endGame()};
+            if (resp.end){parent.gameEnded = true; getCounter.terminate(); parent.endGame()}
         }
-
     };
+
+
     this.startCounter();
 
 

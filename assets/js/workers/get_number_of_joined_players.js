@@ -1,10 +1,10 @@
 importScripts('/assets/js/request.js');
 
 
-self.getNumberOfJoinedPlayers = function getNumberOfJoinedPlayers (ev) {
+self.data = null;
+self.getNumberOfJoinedPlayers = function getNumberOfJoinedPlayers () {
 
-    req = JSON.parse(ev.data);
-    request( req.file , JSON.stringify(req) , function (resp) {
+    request( self.data.file , JSON.stringify(self.data) , function (resp) {
 
         postMessage(resp);
     });
@@ -14,7 +14,12 @@ self.getNumberOfJoinedPlayers = function getNumberOfJoinedPlayers (ev) {
 
 self.onmessage = function (ev) {
 
-    self.getNumberOfJoinedPlayers(ev);
+
+    self.data = JSON.parse(ev.data);
+
+   // postMessage(self.data);
+
+    self.getNumberOfJoinedPlayers();
 };
 
 

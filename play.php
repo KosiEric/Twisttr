@@ -101,7 +101,6 @@ $refresh = false;
     <link rel="stylesheet" type="text/css" href="<?php echo  $HomePage->WebsiteDetails->CSS_FOLDER; ?>footer.css" />
 
     <link rel="stylesheet" type="text/css" href="<?php echo  $HomePage->WebsiteDetails->CSS_FOLDER; ?>control.css" />
-
     <link rel="stylesheet" type="text/css" href="<?php echo  $HomePage->WebsiteDetails->CSS_FOLDER; ?>jquery.mCustomScrollbar.min.css" />
     <link rel="stylesheet" type="text/css" id="start-css" href="<?php echo  $HomePage->WebsiteDetails->CSS_FOLDER; ?>start.css" media="screen and (min-width:2000px)" />
 

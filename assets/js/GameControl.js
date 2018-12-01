@@ -78,7 +78,7 @@ function  GameClass () {
             parent.gamePage.css("display", "block");
 
 
-            data = {
+            var data1 = {
                 "action": parent.gameActions.updateNumberOfPlayers,
                 "userID": parent.webPage.userDetails.user_id,
                 "amount": parent.playAmount,
@@ -86,10 +86,14 @@ function  GameClass () {
             };
 
 
-            data = JSON.stringify(data);
+
+
+
+            data1 = JSON.stringify(data1);
+
             var getNumberOfJoinedPlayers = new Worker(parent.webPage.defaults.workersFolder + 'get_number_of_joined_players.js');
 
-            getNumberOfJoinedPlayers.postMessage(data);
+            getNumberOfJoinedPlayers.postMessage(data1);
 
             getNumberOfJoinedPlayers.onmessage = function (ev) {
 

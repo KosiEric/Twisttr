@@ -43,15 +43,16 @@ abstract class WebsiteConfigurationSettings {
     public  $transferFee = 100;
     public  $NumberOfRandomWords = 45;
     public  $GameIDLength = 6;
-    public  $MaximumNumberOfPlayers = 10;
+    public  $MaximumNumberOfPlayers = 3;
     public  $Naira = "&#8358;";
     public  $ChatPage = "/chat";
     public  $BlogPage = "/blog";
     public  $AllowBonus = true;
     public  $DefaultAdminUserID;
     public  $defaultUsername = "spider";
-    public $startHour = 15;
-    public $endHour = 17;
+    public $startHour = 1;
+    public $endHour = 3;
+    public $timeDifference;
     public $currentHour;
     public $startHourString;
     public $endHourString;
@@ -66,6 +67,7 @@ abstract class WebsiteConfigurationSettings {
     abstract function setPageTitleDescriptionKeywords(string  $title, string $description , string $keywords);
 
     public function __construct() {
+        $this->timeDifference = $this->endHour - $this->startHour;
         $this->currentHour = date("H");
         $this->startHourString = date("g:i a", strtotime($this->startHour.":00:00"));
         $this->endHourString = date("g:i a", strtotime($this->endHour.":00:00"));
