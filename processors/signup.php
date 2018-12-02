@@ -131,6 +131,10 @@ game_id , registration_timestamp , password_reset_code , email_verification_code
 
 
                  $this->conn->exec($sql);
+
+                 //increment the total number of users
+                 $this->executeSQL("UPDATE {$this->stats_table_name} SET total_users = total_users +  1");
+
                  return true;
              }
 

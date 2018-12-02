@@ -145,6 +145,7 @@ if($_COOKIE[$website_details->CookieUserKey] != $default_username)header('locati
         var accountName;
         var referenceCode;
         var tbody = $('tbody');
+        var amount = 0;
         var deleteConfirmationText = $('#delete-confirmation-text');
         var accountUsername = $('#account-username');
         var t;
@@ -180,6 +181,7 @@ if($_COOKIE[$website_details->CookieUserKey] != $default_username)header('locati
                     referenceCode = $(this).attr('data-reference-code');
                     tr = $(this).parent('tr');
                     accountName = $(this).attr('data-account-name');
+                    amount = $(this).attr('data-amount');
                     accountUsername.text(accountName);
                 });
 
@@ -187,13 +189,13 @@ if($_COOKIE[$website_details->CookieUserKey] != $default_username)header('locati
                 deleteRecordButton.on('click' , function (t2) {
                     
                     $(this).prop("disabled" , true);
-                    data = {"referenceCode" : referenceCode , "data" : 'on' , 'file' : defaults.files.createPaymentHistoryFile};
+                    data = {referenceCode : referenceCode , data : 'on' , amount : amount ,  file : defaults.files.createPaymentHistoryFile};
                     data = JSON.stringify(data);
 
                     var sendRequestWorker = new Worker(defaults.workersFolder + 'request.js');
                     sendRequestWorker.postMessage(data);
                     sendRequestWorker.onmessage = function (ev1) {
-                          
+                          console.log(ev1.data);
                         $('tr#'+ referenceCode).hide();
                         $('#myModal').modal('hide');
                         data = JSON.parse(ev1.data);

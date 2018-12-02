@@ -50,7 +50,7 @@ class SendPaymentRequests extends  Functions {
                         <td>{$user_details['email']}</td>
                         <td>{$user_details['phone']}</td>
                         <td>{$this->website_details->Naira}{$amount_formated}</td>
-                        <td><p data-placement="top" data-toggle="tooltip" title="Delete"><button data-account-name = "{$result['account_name']}" data-toggle="modal" data-target="#myModal" class="btn btn-danger btn-xs delete-record-buttons" data-reference-code = "{$result['reference_code']}" data-userid = "{$user_details['user_id']}" data-title="Delete" data-toggle="modal" data-target="#delete" ><span class="fa fa-trash"></span></button></p></td>
+                        <td><p data-placement="top" data-toggle="tooltip" title="Delete"><button data-account-name = "{$result['account_name']}" data-toggle="modal" data-target="#myModal" class="btn btn-danger btn-xs delete-record-buttons" data-reference-code = "{$result['reference_code']}" data-userid = "{$user_details['user_id']}" data-title="Delete" data-toggle="modal" data-target="#delete" data-amount = "{$result['amount']}"><span class="fa fa-trash"></span></button></p></td>
 
                     </tr>
 

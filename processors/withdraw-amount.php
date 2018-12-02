@@ -55,7 +55,21 @@ class FundAccount extends  Functions{
 
     private function store_in_records () : bool  {
 
-        return $this->insert_into_table($this->withdrawals_table_name , ["user_id" => $this->userID , "reference_code" => $this->reference_code , "time_stamp" => $this->date , "amount" => $this->amount , "bank_name" => $this->user_details["bank_name"] , "account_name" => $this->user_details["account_name"] , "account_number" => $this->user_details["account_number"] , "type" => $this->type]);
+        //Store record in table
+        $this->insert_into_table($this->withdrawals_table_name , ["user_id" => $this->userID , "reference_code" => $this->reference_code , "time_stamp" => $this->date , "amount" => $this->amount , "bank_name" => $this->user_details["bank_name"] , "account_name" => $this->user_details["account_name"] , "account_number" => $this->user_details["account_number"] , "type" => $this->type]);
+
+        //Decrement the total bonus
+        $action = ($this->type == "bonus")?$this->executeSQL("UPDATE {$this->stats_table_name} SET total_bonus = total_bonus +  {$this->amount}") : null;
+
+        //Increment the total withdrawal requests
+        $this->executeSQL("UPDATE {$this->stats_table_name} SET total_withdrawal_requests = total_withdrawal_requests +   1");
+
+        //Increment the total withdrawal requests amount
+        return $this->executeSQL("UPDATE {$this->stats_table_name} SET  total_withdrawal_requests_amount =  total_withdrawal_requests_amount + {$this->amount}");
+
+
+
+
     }
 
     public final function Processor() {

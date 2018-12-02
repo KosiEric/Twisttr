@@ -48,7 +48,11 @@ class FundAccount extends  Functions{
 
     private function  update_account_balance () : bool {
 
-        return $this->update_record($this->users_table_name , "account_balance" , $this->newAccountBalance , 'user_id' , $this->userID);
+        //Update the user account balance and the website account balance
+
+       $action = ($this->update_record($this->users_table_name , "account_balance" , $this->newAccountBalance , 'user_id' , $this->userID)) ? $this->executeSQL("UPDATE {$this->stats_table_name} SET total_amount_funded = total_amount_funded + {$this->amount}") : false;
+       return $this->executeSQL("UPDATE {$this->stats_table_name} SET account_balance = account_balance +  {$this->amount}");
+
     }
 
     private function store_in_records () : bool  {

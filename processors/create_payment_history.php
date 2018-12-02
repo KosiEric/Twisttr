@@ -8,7 +8,7 @@ require_once $_SERVER['DOCUMENT_ROOT'].'/config/functions.php';
 
 class CreatePaymentHistory extends Functions {
 
-    private $data , $referenceCode , $payment_date , $error = "unable to connect to database" , $successText = "success" , $debug_data;
+    private $data , $referenceCode , $payment_date , $error = "unable to connect to database" , $successText = "success" , $debug_data , $amount;
 
 
 
@@ -32,29 +32,41 @@ class CreatePaymentHistory extends Functions {
     private final function setDetails () : bool  {
 
         $this->referenceCode = $this->data['referenceCode'];
+        $this->amount = intval($this->data['amount']);
         return true;
     }
 
     private final function  performAction() : bool  {
         $this->payment_date = date("d-M-Y h:i:s A");
+        //Decrement the account balance
+
+        $this->executeSQL("UPDATE {$this->stats_table_name} SET account_balance = account_balance - {$this->amount}");
+
+        //Increment the total amount paid
+        $this->executeSQL("UPDATE {$this->stats_table_name} SET total_amount_paid = total_amount_paid + {$this->amount}");
+
+        //Decrement the total withdrawal requests;
+        $this->executeSQL("UPDATE {$this->stats_table_name} SET total_withdrawal_requests = total_withdrawal_requests -  1");
+
+        //Decrement the total withdrawal requests amount
+        $this->executeSQL("UPDATE {$this->stats_table_name} SET total_withdrawal_requests_amount = total_withdrawal_requests_amount -  {$this->amount}");
+
         $history = $this->fetch_data_from_table($this->withdrawals_table_name , "reference_code" , $this->referenceCode)[0];
         $this->insert_into_table($this->payment_history_table_name , [
             "user_id" => $history['user_id'] ,
             "reference_code" => $history['reference_code'] ,
             "time_stamp" => $history['time_stamp'] ,
             "payment_date" => $this->payment_date ,
-            "amount" =>  $history['amount'] ,
+            "amount" =>  $this->amount ,
             "bank_name" => $history['bank_name'] ,
             "account_name" => $history['account_name'] ,
             "account_number" => $history['account_number'] ,
             "type" => $history['type']
-            ] , function ($msg){
+            ]);
 
-            $this->debug_data = $msg;
 
-          });
           $this->delete_record($this->withdrawals_table_name , "reference_code" , $this->referenceCode);
-      
+
 
         return true;
     }
@@ -64,7 +76,9 @@ class CreatePaymentHistory extends Functions {
         if(!$this->isReady())return json_encode([$this->successText => "0" , "error" => $this->error]);
          if(!$this->setDetails())return json_encode([$this->successText => "0" , "error" => $this->error]);
          if(!$this->performAction()) return json_encode([$this->successText => "0" , "error" => $this->error]);
-        return json_encode(["success" => "1" , "error" => "null" , "data" => $this->debug_data]);
+
+
+        return json_encode(["success" => "1" , "error" => "null"  , "amount" => $this->amount]);
 
     }
 

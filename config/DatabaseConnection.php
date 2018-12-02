@@ -24,7 +24,8 @@ class DatabaseConnection {
     public $notifications_table_name = "notifications";
     public $game_words_table_name = "game_words";
     public $payment_history_table_name = "payment_history";
-
+    public $stats_table_name = "stats";
+    public $connected_to_database = false;
 
     final protected  function  establish_database_connection () : bool
     {
@@ -52,7 +53,8 @@ class DatabaseConnection {
 
             // Establish  connection with the Database
 
-            $this->establish_database_connection(); 
+
+            $this->establish_database_connection();
             return true;
 
 
@@ -95,6 +97,45 @@ class DatabaseConnection {
 
     }
 
+    public function create_stats_table () : bool {
+
+
+        $sql = "CREATE TABLE {$this->stats_table_name}(
+                        id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY NOT NULL,
+                        profit BIGINT NOT NULL UNIQUE ,
+                        total_profit BIGINT  NOT NULL , 
+                        total_users BIGINT NOT NULL , 
+                        account_balance BIGINT NOT NULL  ,
+                        total_amount_funded BIGINT NOT NULL , 
+                        total_amount_paid BIGINT NOT NULL , 
+                        total_games_played BIGINT NOT NULL ,
+                        total_amount_played BIGINT NOT NULL ,
+                        total_free_mode_played BIGINT NOT  NULL ,
+                        total_bonus BIGINT NOT  NULL , 
+                        total_withdrawal_requests BIGINT NOT NULL , 
+                        total_withdrawal_requests_amount BIGINT NOT NULL 
+                                                                )";
+
+
+        try {
+
+            $this->conn->exec($sql);
+            echo "Table Created successfully";
+            return true;
+        }
+
+        catch (PDOException $exception) {
+            echo "Error occured {$exception->getMessage()}";
+            return false;
+        }
+
+
+
+    }
+
+
+
+
    public final function update_multiple_fields (string $table_name , array  $fields_and_values , string $where_clause){
 
        $field_length = count($fields_and_values);
@@ -126,7 +167,7 @@ class DatabaseConnection {
 
     }
 
-    public final function insert_into_table(string $table_name , array $fields_and_values ,$callback = ""){
+    public final function insert_into_table(string $table_name , array $fields_and_values){
         $field_string = "";
         $field_length = count($fields_and_values);
         $values_string = "";
@@ -149,10 +190,6 @@ class DatabaseConnection {
 
         catch (PDOException $exception) {
             $msg = $exception->getMessage();
-
-            if($callback != ""){
-                $callback($msg);
-            }
 
             return true;
         }
@@ -536,4 +573,5 @@ $DatabaseConnection = new DatabaseConnection();
 //$DatabaseConnection->create_notifications_table();
 //$DatabaseConnection->create_game_words_table();
 //$DatabaseConnection->create_payment_history_table();
+//$DatabaseConnection->create_stats_table();
 ?>
