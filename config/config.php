@@ -50,8 +50,8 @@ abstract class WebsiteConfigurationSettings {
     public  $AllowBonus = true;
     public  $DefaultAdminUserID;
     public  $defaultUsername = "spider";
-    public $startHour = 19;
-    public $endHour = 21;
+    public $startHour = 19; // games starts by 7PM CAT
+    public $endHour = 21; // games ends by 9PM CAT
     public $timeDifference;
     public $currentHour;
     public $startHourString;
