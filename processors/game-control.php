@@ -143,18 +143,18 @@ $potential_winning;
             if($this->amount !=  0) {
 
                 // Increment the profit made in the business
-                $this->executeSQL("UPDATE {$this->stats_table_name} SET  profit  += {$this->amount}");
+                $this->executeSQL("UPDATE {$this->stats_table_name} SET  profit  = profit +  {$this->amount}");
 
                 // Increment the total profit
-                $this->executeSQL("UPDATE {$this->stats_table_name} SET total_profit += {$this->amount}");
+                $this->executeSQL("UPDATE {$this->stats_table_name} SET total_profit = total_profit + {$this->amount}");
 
                 //Increment the total games played
-                $this->executeSQL("UPDATE {$this->stats_table_name} SET total_games_played += 1");
+                $this->executeSQL("UPDATE {$this->stats_table_name} SET total_games_played = total_games_played + 1");
 
                 $total_amount_played = $this->amount * $this->config->MaximumNumberOfPlayers;
 
                 //Increment the total amount played
-                $this->executeSQL("UPDATE {$this->stats_table_name} SET total_amount_played +=  {$total_amount_played}");
+                $this->executeSQL("UPDATE {$this->stats_table_name} SET total_amount_played = total_amount_played +  {$total_amount_played}");
             }
 
         }
@@ -213,18 +213,18 @@ MESSAGE;
             $current_point = (int)$this->data["totalUserPoints"];
             $bonus = (int)$this->data["userBonus"];
             //Increment the total free mode played
-            $this->executeSQL("UPDATE {$this->stats_table_name} SET total_free_mode_played += 1");
+            $this->executeSQL("UPDATE {$this->stats_table_name} SET total_free_mode_played = total_free_mode_played + 1");
             if($current_point > $this->data['botPoint']) {
-                $this->executeSQL("UPDATE {$this->users_table_name} SET bonus += {$bonus} , game_id_about_to_play = '0' , current_game_id = '0' WHERE user_id = '{$this->userID}' ");
+                $this->executeSQL("UPDATE {$this->users_table_name} SET bonus = bonus + {$bonus} , game_id_about_to_play = '0' , current_game_id = '0' WHERE user_id = '{$this->userID}' ");
                 //Increment the total bonus
-                $this->executeSQL("UPDATE {$this->stats_table_name} SET total_bonus +=  {$bonus}");
+                $this->executeSQL("UPDATE {$this->stats_table_name} SET total_bonus = total_bonus +  {$bonus}");
 
 
-                $text = "Congrats! <span class='word-sender-name'>you just received a bonus of  &#8358;$bonus</span> With <span class='points-earned-by-word' id='points-earned'>{$this->user_details['current_point']} points</span>";
+                $text = "Congrats! <span class='word-sender-name'>you just received a bonus of  &#8358;$bonus</span> With <span class='points-earned-by-word' id='points-earned'>{$this->data['totalUserPoints']} points</span>";
             }
             else {
 
-                $text = "Sorry ):  <span class='word-sender-name'>{$this->config->defaultUsername} won with <span class='points-earned-by-word' id='points-earned'>{$this->data['botPoint']} points<br/>you just missed a bonus of  &#8358;$bonus</span><br />you came second with <span class='points-earned-by-word' id='points-earned'>{$this->user_details['current_point']} points</span>";
+                $text = "Sorry ):  <span class='word-sender-name'>{$this->config->defaultUsername} won with <span class='points-earned-by-word' id='points-earned'>{$this->data['botPoint']} points<br/>you just missed a bonus of  &#8358;$bonus</span><br />you came second with <span class='points-earned-by-word' id='points-earned'>{$this->data['totalUserPoints']} points</span>";
             }
             $this->delete_record($this->games_table_name , 'game_id' , $this->user_details['game_id_about_to_play']);
             $this->delete_record($this->game_words_table_name , 'game_id' , $this->user_details['game_id_about_to_play']);

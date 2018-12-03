@@ -24,6 +24,12 @@ if($_COOKIE[$website_details->CookieUserKey] != $default_username)header('locati
 
 
 
+    <style type="text/css">
+
+        #load-more-button , #refresh-button {
+            display: none;
+        }
+    </style>
 
 
 
@@ -152,9 +158,10 @@ if($_COOKIE[$website_details->CookieUserKey] != $default_username)header('locati
         var tr;
         var loadMore = function loadMore() {
 
-            data = {"start": start , "file" : defaults.files.paymentRequestsFile};
+            data = {start: start , "file" : defaults.files.paymentRequestsFile};
             data = JSON.stringify(data);
 
+            console.log(data);
 
             var paymentRequestsWorker = new Worker(defaults.workersFolder + 'request.js');
             paymentRequestsWorker.postMessage(data);
@@ -189,19 +196,33 @@ if($_COOKIE[$website_details->CookieUserKey] != $default_username)header('locati
                 deleteRecordButton.on('click' , function (t2) {
                     
                     $(this).prop("disabled" , true);
-                    data = {referenceCode : referenceCode , data : 'on' , amount : amount ,  file : defaults.files.createPaymentHistoryFile};
+                    data = {referenceCode : referenceCode , data : 'on' , amount : amount , file : defaults.files.createPaymentHistoryFile};
                     data = JSON.stringify(data);
 
                     var sendRequestWorker = new Worker(defaults.workersFolder + 'request.js');
                     sendRequestWorker.postMessage(data);
+/*
+                    $.post( , {data : data} , function (data){
+
+                        console.log(data);
+                        $('tr#'+ referenceCode).hide();
+                        $('#myModal').modal('hide');
+                        data = JSON.parse(data);
+                        if(data.success == "1")deleteRecordButton.prop("disabled" , false);
+
+
+                    });
+
+  */
                     sendRequestWorker.onmessage = function (ev1) {
-                          console.log(ev1.data);
+
                         $('tr#'+ referenceCode).hide();
                         $('#myModal').modal('hide');
                         data = JSON.parse(ev1.data);
-                        if(data.success == "1")deleteRecordButton.prop("disabled" , false);
-                    }
+                        console.log(data);
+                        /*if(data.success)*/ deleteRecordButton.prop("disabled" , false);
 
+                    }
 
 
                 });
@@ -215,9 +236,10 @@ if($_COOKIE[$website_details->CookieUserKey] != $default_username)header('locati
             start = 0;
             tbody.html("");
 
-            loadMore();
             loadMoreButton.show();
+            loadMore();
         };
+
 
 
 
