@@ -2,11 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f4d7fd38-af9c-4203-adef-906fb572f635" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/stats.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pay.php" beforeDir="false" afterPath="$PROJECT_DIR$/pay.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/processors/create_payment_history.php" beforeDir="false" afterPath="$PROJECT_DIR$/processors/create_payment_history.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/processors/game-control.php" beforeDir="false" afterPath="$PROJECT_DIR$/processors/game-control.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/config.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/config.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -86,7 +82,7 @@
           <entry key="CSS" value="670" />
           <entry key="HTML" value="69" />
           <entry key="JavaScript" value="30803" />
-          <entry key="PHP" value="44953" />
+          <entry key="PHP" value="45070" />
           <entry key="PLAIN_TEXT" value="4" />
           <entry key="RNG Compact" value="3" />
           <entry key="SQL" value="25" />
@@ -115,7 +111,7 @@
           <entry key="css" value="670" />
           <entry key="dummy" value="4" />
           <entry key="js" value="30808" />
-          <entry key="php" value="45042" />
+          <entry key="php" value="45159" />
           <entry key="rnc" value="3" />
         </counts>
       </usages-collector>
@@ -140,8 +136,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/processors/fund-account.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
-              <caret line="36" column="33" selection-start-line="36" selection-start-column="33" selection-end-line="36" selection-end-column="33" />
+            <state relative-caret-position="17">
+              <caret line="1" lean-forward="true" selection-start-line="1" selection-end-line="1" />
             </state>
           </provider>
         </entry>
@@ -176,11 +172,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/stats.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="459">
-              <caret line="74" column="86" selection-start-line="74" selection-start-column="86" selection-end-line="74" selection-end-column="86" />
+            <state relative-caret-position="357">
+              <caret line="21" column="55" selection-start-line="21" selection-start-column="55" selection-end-line="21" selection-end-column="55" />
             </state>
           </provider>
         </entry>
@@ -194,11 +190,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/config/config.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="526">
-              <caret line="114" lean-forward="true" selection-start-line="114" selection-end-line="114" />
+            <state relative-caret-position="608">
+              <caret line="60" column="38" lean-forward="true" selection-start-line="60" selection-start-column="38" selection-end-line="60" selection-end-column="38" />
             </state>
           </provider>
         </entry>
@@ -343,7 +339,6 @@
         <option value="$PROJECT_DIR$/assets/js/defaults.js" />
         <option value="$PROJECT_DIR$/play.php" />
         <option value="$PROJECT_DIR$/assets/js/workers/game_countdown.js" />
-        <option value="$PROJECT_DIR$/config/config.php" />
         <option value="$PROJECT_DIR$/assets/incs/ad.php" />
         <option value="$PROJECT_DIR$/assets/incs/choose-play-amount-modal.php" />
         <option value="$PROJECT_DIR$/assets/js/workers/get_number_of_joined_players.js" />
@@ -358,6 +353,7 @@
         <option value="$PROJECT_DIR$/processors/create_payment_history.php" />
         <option value="$PROJECT_DIR$/processors/game-control.php" />
         <option value="$PROJECT_DIR$/stats.php" />
+        <option value="$PROJECT_DIR$/config/config.php" />
       </list>
     </option>
   </component>
@@ -569,12 +565,12 @@
       <workItem from="1543616936899" duration="10441000" />
       <workItem from="1543761349835" duration="19255000" />
       <workItem from="1543801058240" duration="7703000" />
-      <workItem from="1543854684073" duration="8591000" />
+      <workItem from="1543854684073" duration="9363000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="904268000" />
+    <option name="totallyTimeSpent" value="905040000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1456" height="876" extended-state="6" />
@@ -942,13 +938,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/processors/fund-account.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="36" column="33" selection-start-line="36" selection-start-column="33" selection-end-line="36" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/pay.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="193">
@@ -975,13 +964,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/config/config.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="526">
-          <caret line="114" lean-forward="true" selection-start-line="114" selection-end-line="114" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/funcs/user_functions.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="786">
@@ -991,8 +973,22 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/stats.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="459">
-          <caret line="74" column="86" selection-start-line="74" selection-start-column="86" selection-end-line="74" selection-end-column="86" />
+        <state relative-caret-position="357">
+          <caret line="21" column="55" selection-start-line="21" selection-start-column="55" selection-end-line="21" selection-end-column="55" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/processors/fund-account.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="1" lean-forward="true" selection-start-line="1" selection-end-line="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/config.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="608">
+          <caret line="60" column="38" lean-forward="true" selection-start-line="60" selection-start-column="38" selection-end-line="60" selection-end-column="38" />
         </state>
       </provider>
     </entry>
