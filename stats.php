@@ -32,8 +32,9 @@ require_once $_SERVER['DOCUMENT_ROOT'].'/funcs/user_functions.php';
 
 <body>
 <div class="container">
-    <h2>Welcome to our site statistics page</h2>
-    <p>The table below contains our overall site statistics, the data below reflects exactly how users interact with this website.</p>
+    <h2>Welcome to our website statistics page</h2>
+    <p>The table below contains our overall site statistics therefore, reflects exactly how users interact with this website.</p>
+    <p>the data are auto-generated dynamically from our database and can not be altered by any of our admins.</p>
 
     <div class="table-responsive">
         <table class="table table-hover table-condensed">

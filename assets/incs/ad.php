@@ -10,7 +10,20 @@
                 <?php } else { ?>
                 Today's game starts by <?php echo $HomePage->WebsiteDetails->startHourString; ?> and ends by <?php echo $HomePage->WebsiteDetails->endHourString; ?> CAT
 
-           <?php  }?>
+                <p class = "prices">Amount : <?php } 
+                
+                $count = 1;
+                $payment_options = $HomePage->WebsiteDetails->allowedPlayAmountOptions;
+                $Naira = $HomePage->WebsiteDetails->Naira;
+                $amount = "";
+                foreach( $payment_options as $option){
+
+                    $amount.= ($count == count($payment_options)) ? "<span>{$Naira}$option </span>" : "<span>{$Naira}$option, </span>"; 
+
+                    $count ++;
+                    ?> 
+           <?php  } echo($amount); ?>
+           </p>
 
             </div>
 
