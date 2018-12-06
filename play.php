@@ -14,6 +14,9 @@ class HomePage extends  Functions {
     public  $loggedInUserDetails;
 
 
+    // Password Twisttr@p1 -->
+                            // paystack key sk_test_fbced60e604b7a4bcdf0cea2aea7c9a77f535914 
+                            
     function __construct()
     {
 
@@ -22,7 +25,7 @@ class HomePage extends  Functions {
         $this->UserFunctions = new UserManagementFunctions();
         $this->DefaultHeaders = new  WebsiteHeader($this->WebsiteDetails->SiteName." • Online Game Play Now and Win" ,
             "Online Game where you play with friends and Get paid for Winning." ,
-            "Space Invaders , Play Now , Win , ₦2000 , ₦5000 , ₦10000 Instantly");
+            "Twisttr word Game , Play Now , Win , ₦2000 , ₦5000 , ₦10000 Instantly");
         $this->Header = new Header();
 
             $this->loggedInUserDetails = ($this->UserFunctions->isLoggedInUser())? $this->UserFunctions->getLoggedInUserDetails() : $this->loggedInUserDetails;

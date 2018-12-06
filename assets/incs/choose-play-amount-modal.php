@@ -20,8 +20,6 @@
                     <div class="tab-content">
                         <div role="tabpanel" class="tab-pane active" id="fundTab">
 
-                            <!--Password Twisttr@p1 -->
-                            <!--paystack key sk_test_fbced60e604b7a4bcdf0cea2aea7c9a77f535914 -->
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="fa fa-money"></i> </span>
                                 <select name="play-amount-options" id="play-amount-options" class="form-control selectpicker">
