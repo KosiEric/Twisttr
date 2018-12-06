@@ -23,8 +23,6 @@
                     <div class="tab-content">
                         <div role="tabpanel" class="tab-pane active" id="fundTab">
 
-<!--Password Twisttr@p1 -->
-<!--paystack key sk_test_fbced60e604b7a4bcdf0cea2aea7c9a77f535914 -->
 <form name = "fund-account-form" id="fund-account-form">
     <fieldset id="fund-account-fieldset">
     <div class="input-group">
