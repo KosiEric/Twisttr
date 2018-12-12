@@ -24,7 +24,7 @@
                                 <span class="input-group-addon"><i class="fa fa-money"></i> </span>
                                 <select name="play-amount-options" id="play-amount-options" class="form-control selectpicker">
                                     <option value="0">&#8358; 0.00 Free Mode</option>
-                    <?php if(($HomePage->WebsiteDetails->currentHour - $HomePage->WebsiteDetails->endHour) <= $HomePage->WebsiteDetails->timeDifference) { ?>
+                    <?php if(!($HomePage->WebsiteDetails->currentHour > $HomePage->WebsiteDetails->endHour or $HomePage->WebsiteDetails->currentHour < $HomePage->WebsiteDetails->startHour)) { ?>
                         <?php foreach ($HomePage->WebsiteDetails->allowedPlayAmountOptions as $allowedPlayAmountOption) { ?>
 
 

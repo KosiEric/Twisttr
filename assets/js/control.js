@@ -21,7 +21,7 @@ $(document).ready(function () {
             },
             callback: function(response){
 
-                data = {"userID" : webPageObject.userDetails.user_id , "amount" : originalAmount , "referenceCode" : response.reference};
+                data = {userID : webPageObject.userDetails.user_id , amount : originalAmount , referenceCode : response.reference};
                 data = JSON.stringify(data);
 
                 $.post(webPageObject.defaults.files.fundAccountFile , {data: data}).done(function (data) {
@@ -70,7 +70,7 @@ if(webPageObject.isLoggedInUser){
 
 
 
-       $.post(webPageObject.defaults.files.getUserAccountBalanceFile , {'userID' : webPageObject.userDetails.user_id}).done(function (data) {
+       $.post(webPageObject.defaults.files.getUserAccountBalanceFile , {userID : webPageObject.userDetails.user_id}).done(function (data) {
 
            accountBalance = parseInt(data);
 
@@ -81,11 +81,11 @@ if(webPageObject.isLoggedInUser){
 
            if(!$('<link>').appendTo('head').attr({'rel' : 'stylesheet' , 'type' : 'text/css' , 'href' : webPageObject.defaults.cssFolder+'game.css'})) return;
            webPageObject.homePage.hide();
-           webPageObject.gamePage.css('display' , 'block');
-           webPageObject.mainGameContainer.css('display' , 'block');
+           webPageObject.gamePage.css(...displayBlock);
+           webPageObject.mainGameContainer.css(...displayBlock);
            webPageObject.updateNumOfPlayersWorker.terminate();
            webPageObject.footerBanner.hide();
-           webPageObject.mainSiteFooter.css("display" , "none");
+           webPageObject.mainSiteFooter.css(...displayNone);
            $.getScript(webPageObject.defaults.jsFolder+'GameControl.js' , function () {
 
                var gameClass = new GameClass();

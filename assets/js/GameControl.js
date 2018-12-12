@@ -1,7 +1,7 @@
 
 function  GameClass () {
 
-    parent = this;
+    let parent = this;
 
     this.webPage = new WebPage();
     this.gameControlFile = this.webPage.defaults.files.gameControlFile;
@@ -29,15 +29,11 @@ function  GameClass () {
 
     this.exitGameButton.on('click' , function () {
 
-        data = {"userID" : parent.userID , "amount" : parent.playAmount , "action" : parent.gameActions.exitUserFromGame};
+        data = {userID : parent.userID , amount : parent.playAmount , action : parent.gameActions.exitUserFromGame};
         data = JSON.stringify(data);
         $.post(parent.gameControlFile , {data:data}).done(function (resp) {
             var resp = JSON.parse(resp);
-            if(resp.success == "1"){
-                window.location.reload();
-            }
-
-
+           return  resp.success == "1"  ?  window.location.reload() : null;
         });
     });
 
@@ -59,7 +55,7 @@ function  GameClass () {
 
 
         parent.playAmount = amount;
-        data = {"action": parent.gameActions.addNewUserToGame, "userID": parent.userID, "amount": amount};
+        data = {action: parent.gameActions.addNewUserToGame, userID: parent.userID, amount};
 
         data = JSON.stringify(data);
 
@@ -74,15 +70,15 @@ function  GameClass () {
             var gameMembersText = (resp.players > 1) ? "users" : "user";
             parent.gameUsersPluralText.text(gameMembersText);
 
-            parent.pageClass.css("display", "none");
-            parent.gamePage.css("display", "block");
+            parent.pageClass.css(...displayNone);
+            parent.gamePage.css(...displayBlock);
 
 
             var data1 = {
-                "action": parent.gameActions.updateNumberOfPlayers,
-                "userID": parent.webPage.userDetails.user_id,
-                "amount": parent.playAmount,
-                "file": parent.webPage.defaults.files.gameControlFile
+                action: parent.gameActions.updateNumberOfPlayers,
+                userID: parent.webPage.userDetails.user_id,
+                amount: parent.playAmount,
+                file: parent.webPage.defaults.files.gameControlFile
             };
 
 
@@ -116,18 +112,11 @@ function  GameClass () {
 
                     getNumberOfJoinedPlayers.terminate();
 
-                  //  $.getScript(webPageObject.defaults.jsFolder + 'jquery.mCustomScrollbar.concat.min.js' , function () {
-                      //  $.getScript(webPageObject.defaults.jsFolder + 'start.js' , function () {
                             webPageObject.gamePage.hide();
-                        //    if(!$('<link>').appendTo('head').attr({'rel' : 'stylesheet' , 'type' : 'text/css' , 'href' : webPageObject.defaults.cssFolder+'jquery.mCustomScrollbar.min.css'})) return;
 
                     webPageObject.startCSS.removeAttr('media');
-                          //  if(!$('<link>').appendTo('head').attr({'rel' : 'stylesheet' , 'type' : 'text/css' , 'href' : webPageObject.defaults.cssFolder+'start2.css'})) return;
 
                             gameRoom = new GameRoom(parent.webPage , parent.webPage.defaults , parent.playAmount , resp , parent);
-                    //    });
-
-                    // });
 
                 }
 

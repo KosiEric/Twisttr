@@ -63,7 +63,7 @@ containing the DOM objects and second the new value of the css "display" propert
 
     this.closeNotificationsPanelAction.on('click' , function () {
 
-        parent.notificationsHeaderContainer.css('display' , 'none');
+        parent.notificationsHeaderContainer.css(...displayNone);
     });
 
 
@@ -249,10 +249,10 @@ containing the DOM objects and second the new value of the css "display" propert
 
 
     data = {
-        "action": 'get_total_number_of_players',
+        action: 'get_total_number_of_players',
         /*"userID": 'pvo8ka',*/
-        "amount": 1000,
-        "file": parent.defaults.files.gameControlFile
+        amount: 1000,
+        file : parent.defaults.files.gameControlFile
     };
 
 
@@ -343,7 +343,7 @@ containing the DOM objects and second the new value of the css "display" propert
                 var newStartPosition = start + t.start;
                 parent.toggleNotificationsActionLink.css('pointer-events' , "initial");
                 parent.notificationsList.append(t.data);
-                parent.notificationsHeaderContainer.css('display' , 'block');
+                parent.notificationsHeaderContainer.css(...displayBlock);
                 parent.notificationsHeaderContainer.attr({'data-loaded' : '1' , 'data-start' : newStartPosition});
                 parent.loadMoreNotificationsAction.css("pointer-events" , "all");
                 parent.notificationsHeaderCount.text("");
@@ -360,14 +360,14 @@ containing the DOM objects and second the new value of the css "display" propert
 
 
 
-            if(parent.notificationsHeaderContainer.css('display') == 'none' && parent.notificationsHeaderContainer.attr('data-loaded') == '0'){
+            if(parent.notificationsHeaderContainer.css('display').toLowerCase() == 'none' && parent.notificationsHeaderContainer.attr('data-loaded') == '0'){
 
                 loadMoreNotifications();
 
             }
             else {
 
-                parent.notificationsHeaderContainer.css('display' , 'block');
+                parent.notificationsHeaderContainer.css(...displayBlock);
             }
         });
 
@@ -432,15 +432,15 @@ containing the DOM objects and second the new value of the css "display" propert
 
             else {
                // return true;
-                parent.withdrawFormFieldset.prop("disabled" , true);
-                withdrawSeverMessages.css("display" , "none");
+                parent.withdrawFormFieldset.prop(...disabledTrue);
+                withdrawSeverMessages.css(...displayNone);
 
 
 
                 withdrawAmountErrorMessage.text("");
 
 
-                data = {"userID" : parent.userDetails.user_id , "type" : withdrawTypeSelected, "amount" : withdrawAmountValue , "referenceCode" : Math.floor((Math.random() * 1000000000) + 1)};
+                data = {userID : parent.userDetails.user_id , type : withdrawTypeSelected, amount : withdrawAmountValue , referenceCode : Math.floor((Math.random() * 1000000000) + 1)};
                 data = JSON.stringify(data);
 
 
@@ -450,7 +450,7 @@ containing the DOM objects and second the new value of the css "display" propert
                     data = JSON.parse(data);
                     if(data[parent.defaults.jsonSuccessText] == "1"){
 
-                        withdrawSuccessMessage.css("display" , "block");
+                        withdrawSuccessMessage.css(...displayBlock);
                         withdrawSuccessMessage.text(data[parent.defaults.jsonErrorText]);
 
                         setTimeout(function () {
@@ -462,7 +462,7 @@ containing the DOM objects and second the new value of the css "display" propert
                     }
 
                     //withdrawFormFieldset.prop("disabled" , false);
-                    withdrawErrorMessage.css("display" , "block");
+                    withdrawErrorMessage.css(...displayBlock);
                     withdrawErrorMessage.text(data[parent.defaults.jsonErrorText]);
 
 
@@ -526,9 +526,9 @@ containing the DOM objects and second the new value of the css "display" propert
 
 
                 if(isValidInputDetails)
-                   moreDetailsFormFieldSet.prop("disabled" , true);
-                    moreDetailsWaitText.css("display" , "block");
-                    data = {"userID" : parent.userDetails["user_id"], "instagramUsername" : instagramUsername.val() , "twitterUsername" : twitterUsername.val() , "statusMessage" : statusMessage.val()};
+                   moreDetailsFormFieldSet.prop(...disabledTrue);
+                    moreDetailsWaitText.css(...displayBlock);
+                    data = {userID : parent.userDetails["user_id"], instagramUsername : instagramUsername.val() , twitterUsername : twitterUsername.val() , statusMessage : statusMessage.val()};
                     data = JSON.stringify(data);
 
             $.post(parent.defaults.files.moreAccountDetailsFile, {data: data}).done(function (data, status) {
@@ -543,7 +543,7 @@ containing the DOM objects and second the new value of the css "display" propert
                 //No error will be triggered , the reason why i didn't check for any possible error(s) whatsoever
 
                 moreDetailsWaitText.hide();
-                moreDetailsSuccessMessage.css("display" , "block");
+                moreDetailsSuccessMessage.css(...displayBlock);
                 moreDetailsSuccessMessage.text(data[parent.defaults.jsonErrorText]);
 
 
@@ -664,7 +664,7 @@ containing the DOM objects and second the new value of the css "display" propert
             if(isValidDetails) {
                 signupWaitText.css('display' , 'initial');
 
-                signupErrorMessage.css('display' , 'none');
+                signupErrorMessage.css(...displayNone);
                 signupErrorMessage.text('');
 
                 data = {
@@ -678,22 +678,22 @@ containing the DOM objects and second the new value of the css "display" propert
                 data = JSON.stringify(data);
 
                 $.post(parent.defaults.files.editAccountDetailsFile, {data: data}).done(function (data, status) {
-                    signupWaitText.css('display' , 'none');
+                    signupWaitText.css(...displayNone);
 
 
                     data = JSON.parse(data);
 
                     if(data[parent.defaults.jsonSuccessText] == "0") {
-                        accountSettingsFieldset.prop('disabled' , false);
+                        accountSettingsFieldset.prop(...disabledFalse);
 
-                        signupErrorMessage.css("display" , 'block');
+                        signupErrorMessage.css(...displayBlock);
                         signupErrorMessage.text(data.error);
 
                     }
 
                     else {
 
-                        signupErrorMessage.css("display" , 'block');
+                        signupErrorMessage.css(...displayBlock);
                         signupErrorMessage.text(data.error);
                         setTimeout(function () {
 
@@ -727,11 +727,10 @@ containing the DOM objects and second the new value of the css "display" propert
 
 
 
-            data = {"logout" :"1"};
+            data = {logout :1};
             data = JSON.stringify(data);
 
             $.post(parent.defaults.files.logoutFile , {data : data}).done(function (data , status) {
-                console.log(data);
                 data = JSON.parse(data);
 
                 if(data[parent.defaults.jsonSuccessText] == "1"){
@@ -773,7 +772,7 @@ containing the DOM objects and second the new value of the css "display" propert
 
             resendVerificationLink = $('#resend-verification-link');
 
-            data = {'email' : verificationEmail , 'fullname' : verificationFullname , 'emailVerificationCode' : emailVerificationCode};
+            data = {email : verificationEmail , fullname : verificationFullname , emailVerificationCode : emailVerificationCode};
             data = JSON.stringify(data);
 
             resendVerificationLink.on('click' , function (e) {
@@ -885,9 +884,9 @@ containing the DOM objects and second the new value of the css "display" propert
 
                 if(isValidBankDetails) {
 
-                  bankDetailsFieldset.prop("disabled" , true);
-                    bankDetailsServerMessages.css("display" , "none");
-                    bankDetailsWaitText.css("display" , "block");
+                  bankDetailsFieldset.prop(...disabledTrue);
+                    bankDetailsServerMessages.css(...displayNone);
+                    bankDetailsWaitText.css(...displayBlock);
 
 
                     bankNameValue  = $('#' + bankName.attr('id') + ' option:selected').attr('value');
@@ -895,14 +894,14 @@ containing the DOM objects and second the new value of the css "display" propert
                     data = JSON.stringify(data);
 
                     $.post(parent.defaults.files.changeBankDetailsFile , {data : data}).done(function (data , status) {
-                        bankDetailsWaitText.css('display' , 'none');
+                        bankDetailsWaitText.css(...displayNone);
 
                         
                         data = JSON.parse(data);
                         if(data[parent.defaults.jsonSuccessText] == "1") {
 
 
-                               bankDetailsSuccessMessage.css("display" , "block");
+                               bankDetailsSuccessMessage.css(...displayBlock);
                             bankDetailsSuccessMessage.text(data[parent.defaults.jsonErrorText]);
 
                             bankDetailsSuccessMessage.fadeOut(7000 , function () {
@@ -913,9 +912,9 @@ containing the DOM objects and second the new value of the css "display" propert
                         }
 
 
-                        bankDetailsErrorMessage.css("display", "none");
+                        bankDetailsErrorMessage.css(...displayNone);
                         bankDetailsErrorMessage.text(data[parent.defaults.jsonErrorText]);
-                        bankDetailsFieldset.prop("diabled" , false);
+                        bankDetailsFieldset.prop(...disabledFalse);
                         return;
 
                         });
@@ -1047,24 +1046,24 @@ containing the DOM objects and second the new value of the css "display" propert
 
 
             if(isUsername){
-                parent.forgotPasswordWaitText.css('display' , 'block');
+                parent.forgotPasswordWaitText.css(...displayBlock);
 
-              parent.forgotPasswordFormFieldSet.prop("disabled" , true);
+              parent.forgotPasswordFormFieldSet.prop(...disabledTrue);
 
                 data = {"username" : parent.forgotPasswordUsername.val() , "loginType" : loginType};
                 data = JSON.stringify(data);
 
 
-                parent.formAlertMessages.css('display' , 'none');
+                parent.formAlertMessages.css(...displayNone);
 
                 $.post(parent.defaults.files.forgotPasswordFile , {data : data}).done(function (data , status) {
-                    parent.forgotPasswordWaitText.css('display' , 'none');
+                    parent.forgotPasswordWaitText.css(...displayNone);
 
                     data = JSON.parse(data);
 
                     if(data[parent.defaults.jsonSuccessText] == "1") {
 
-                        parent.forgotPasswordSuccessMessage.css('display' , 'block');
+                        parent.forgotPasswordSuccessMessage.css(...displayBlock);
                         parent.forgotPasswordSuccessMessage.html(data[parent.defaults.jsonErrorText]);
 
                         setTimeout(function () {
@@ -1077,8 +1076,8 @@ containing the DOM objects and second the new value of the css "display" propert
                     }
 
 
-                        parent.forgotPasswordFormFieldSet.prop("disabled" , false);
-                        parent.forgotPasswordErrorMessage.css("display" , "block");
+                        parent.forgotPasswordFormFieldSet.prop(...disabledFalse);
+                        parent.forgotPasswordErrorMessage.css(...displayBlock);
                         parent.forgotPasswordErrorMessage.text(data[parent.defaults.jsonErrorText]);
 
                         return;
@@ -1164,22 +1163,22 @@ containing the DOM objects and second the new value of the css "display" propert
 
                           if(isUsername && isPassword) {
 
-                              parent.formAlertMessages.css('display' , 'none');
-                              parent.loginFormFieldSet.prop('disabled' , true);
-                              parent.loginWaitText.css('display' , 'block');
+                              parent.formAlertMessages.css(...displayNone);
+                              parent.loginFormFieldSet.prop(...disabledTrue);
+                              parent.loginWaitText.css(...displayBlock);
 
                               rememberMe = (parent.rememberMe.prop('checked'))?"1" :"0";
-                              data = {'username' : parent.loginUsername.val() , 'rememberMe' : rememberMe , 'password' : parent.loginPassword.val(), 'loginType' : loginType};
+                              data = {username : parent.loginUsername.val() , rememberMe , password : parent.loginPassword.val(), loginType};
                               data = JSON.stringify(data);
 
 
                               $.post(parent.defaults.files.loginFile , {data : data}).done(function (data , status) {
-                                  parent.loginWaitText.css('display' , 'none');
+                                  parent.loginWaitText.css(...displayNone);
 
                                   data = JSON.parse(data);
                                   if(data[parent.defaults.jsonSuccessText] == "1") {
 
-                                      parent.loginSuccessMessage.css('display' , 'block');
+                                      parent.loginSuccessMessage.css(...displayBlock);
                                       parent.loginSuccessMessage.text(data[parent.defaults.jsonErrorText]);
 
                                         setTimeout(function () {
@@ -1192,8 +1191,8 @@ containing the DOM objects and second the new value of the css "display" propert
                                   }
 
 
-                                      parent.loginFormFieldSet.prop("disabled" , false);
-                                      parent.loginErrorMessage.css("display" , "block");
+                                      parent.loginFormFieldSet.prop(...disabledFalse);
+                                      parent.loginErrorMessage.css(...displayBlock);
                                       parent.loginErrorMessage.text(data[parent.defaults.jsonErrorText]);
 
 
@@ -1220,9 +1219,9 @@ containing the DOM objects and second the new value of the css "display" propert
                        this.toggleLoginForms.on('click' , function () {
 
                            formToShow = $(this).attr('data-show');
-                           parent.newUserForms.css('display' , 'none');
+                           parent.newUserForms.css(...displayNone);
 
-                           $(formToShow).css('display' , 'block')
+                           $(formToShow).css(...displayBlock)
 
                        });
 
@@ -1429,9 +1428,9 @@ containing the DOM objects and second the new value of the css "display" propert
 
                           parent.signupWaitText.css('display' , 'initial');
 
-                          parent.signupErrorMessage.css('display' , 'none');
+                          parent.signupErrorMessage.css(...displayNone);
                           parent.signupErrorMessage.text('');
-                          parent.signupFieldSet.prop('disabled' , true);
+                          parent.signupFieldSet.prop(...disabledTrue);
                           gender = $('#' + parent.gender.attr('id')+ " option:selected").attr('value');
                           data = {'fullname' : $.trim(parent.fullname.val()) , 'birthday' : parent.birthday.val() ,  'email' : $.trim(parent.email.val()) ,
                               'gender' : gender , 'username' : parent.username.val() , 'password' : parent.password.val() , 'phone' :
@@ -1441,22 +1440,22 @@ containing the DOM objects and second the new value of the css "display" propert
 
 
                           $.post(parent.defaults.files.registrationFile , {data : data}).done(function (data , status) {
-                              parent.signupWaitText.css('display' , 'none');
+                              parent.signupWaitText.css(...displayNone);
 
 
                               data = JSON.parse(data);
 
                               if(data[parent.defaults.jsonSuccessText] == "0") {
-                                  parent.signupFieldSet.prop('disabled' , false);
+                                  parent.signupFieldSet.prop(...disabledFalse);
 
-                                  parent.signupErrorMessage.css("display" , 'block');
+                                  parent.signupErrorMessage.css(...displayBlock);
                                   parent.signupErrorMessage.text(data.error);
 
                               }
 
                               else {
 
-                                  parent.signupSuccessMessage.css("display" , 'block');
+                                  parent.signupSuccessMessage.css(...displayBlock);
                                   parent.signupSuccessMessage.text(data.error);
                                   setTimeout(function () {
 
@@ -1550,8 +1549,8 @@ containing the DOM objects and second the new value of the css "display" propert
 
             parent.defaults.preventFormSubmission(e);
 
-            passwordResetFormFieldset.prop("disabled" , false);
-            passwordResetAlert.css("display" , "none");
+            passwordResetFormFieldset.prop(...disabledFalse);
+            passwordResetAlert.css(...displayNone);
 
 
 
@@ -1606,10 +1605,10 @@ containing the DOM objects and second the new value of the css "display" propert
 
 
             if(isPassword2) {
-                resetPasswordWaitText.css("display" , "block");
-                passwordResetFormFieldset.prop("disabled" , true);
+                resetPasswordWaitText.css(...displayBlock);
+                passwordResetFormFieldset.prop(...disabledTrue);
 
-                data = {"username" : passwordReset.attr("data-username") , "password" : passwordReset.val()};
+                data = {username : passwordReset.attr("data-username") , password : passwordReset.val()};
                 data = JSON.stringify(data);
 
 
@@ -1620,8 +1619,8 @@ containing the DOM objects and second the new value of the css "display" propert
                     if(data[parent.defaults.jsonSuccessText] == "1"){
 
 
-                        resetPasswordWaitText.css("display" , "none");
-                        resetPasswordSuccessMessage.css("display" , "block");
+                        resetPasswordWaitText.css(...displayNone);
+                        resetPasswordSuccessMessage.css(...displayBlock);
                         resetPasswordSuccessMessage.text(data[parent.defaults.jsonErrorText]);
 
                         setTimeout(function () {
@@ -1633,8 +1632,8 @@ containing the DOM objects and second the new value of the css "display" propert
                     }
 
 
-                    resetPasswordWaitText.css("display" , "none");
-                    resetPasswordErrorMessage.css("display" , "block");
+                    resetPasswordWaitText.css(...displayNone);
+                    resetPasswordErrorMessage.css(...displayBlock);
                     resetPasswordErrorMessage.text(data[parent.defaults.jsonErrorText]);
                     return;
 

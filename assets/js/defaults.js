@@ -1,6 +1,6 @@
-function useStrict() {
+let useStrict = () =>  {
     "use strict";
-}
+};
 
 /*
 $.ajaxSetup({
@@ -12,6 +12,10 @@ $.ajaxSetup({
 
 
 
+let displayNone = ["display" , "none"];
+let displayBlock = ["display" , "block"];
+let disabledTrue = ["disabled" , true];
+let disabledFalse = ["disabled" , false];
 
 
 useStrict();
@@ -50,29 +54,25 @@ if (!String.format) {
 
 
 function  Defaults() {
-
+/*
     $.ajaxSetup({
         cache: true
     });
+*/
 
 
 
 
 
-
-    var parent = this;
+    let  parent = this;
 
 
 
     this.errorMessage = "";
 
-    this.isEmptyField = function (value = "none") {
-        value = new String(value);
+    this.isEmptyField = (value) => {
 
-
-        if(value.length == 0)
-            return true;
-        return false;
+        return value.length == 0;
 
     };
 
