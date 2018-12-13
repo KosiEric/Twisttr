@@ -1,15 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f4d7fd38-af9c-4203-adef-906fb572f635" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/incs/choose-play-amount-modal.php" beforeDir="false" afterPath="$PROJECT_DIR$/assets/incs/choose-play-amount-modal.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/js/GameControl.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/GameControl.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/js/control.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/control.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/js/counter.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/js/defaults.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/defaults.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/js/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/main.js" afterDir="false" />
-    </list>
+    <list default="true" id="f4d7fd38-af9c-4203-adef-906fb572f635" name="Default" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,7 +29,7 @@
     <session id="1210718074">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="26" />
+          <entry key="project.closed" value="27" />
           <entry key="project.open.time.1" value="1" />
           <entry key="project.open.time.100" value="1" />
           <entry key="project.open.time.101" value="1" />
@@ -514,12 +506,12 @@
       <workItem from="1543761349835" duration="19255000" />
       <workItem from="1543801058240" duration="7703000" />
       <workItem from="1543854684073" duration="9560000" />
-      <workItem from="1544622978434" duration="5332000" />
+      <workItem from="1544622978434" duration="5931000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="910569000" />
+    <option name="totallyTimeSpent" value="911168000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1456" height="876" extended-state="6" />
