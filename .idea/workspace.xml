@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f4d7fd38-af9c-4203-adef-906fb572f635" name="Default" comment="" />
+    <list default="true" id="f4d7fd38-af9c-4203-adef-906fb572f635" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,7 +31,7 @@
     <session id="1210718074">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="27" />
+          <entry key="project.closed" value="28" />
           <entry key="project.open.time.1" value="1" />
           <entry key="project.open.time.100" value="1" />
           <entry key="project.open.time.101" value="1" />
@@ -39,6 +41,7 @@
           <entry key="project.open.time.134" value="1" />
           <entry key="project.open.time.14" value="1" />
           <entry key="project.open.time.150" value="1" />
+          <entry key="project.open.time.16" value="1" />
           <entry key="project.open.time.165" value="1" />
           <entry key="project.open.time.199" value="1" />
           <entry key="project.open.time.2" value="1" />
@@ -64,7 +67,7 @@
           <entry key="project.open.time.76" value="1" />
           <entry key="project.open.time.79" value="2" />
           <entry key="project.open.time.80" value="1" />
-          <entry key="project.open.time.81" value="1" />
+          <entry key="project.open.time.81" value="2" />
           <entry key="project.open.time.82" value="2" />
           <entry key="project.open.time.83" value="1" />
           <entry key="project.open.time.84" value="1" />
@@ -72,7 +75,7 @@
           <entry key="project.open.time.92" value="2" />
           <entry key="project.open.time.93" value="1" />
           <entry key="project.open.time.97" value="1" />
-          <entry key="project.opened" value="52" />
+          <entry key="project.opened" value="54" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
@@ -96,7 +99,7 @@
           <entry key="HTML" value="1" />
           <entry key="Image" value="3" />
           <entry key="JavaScript" value="203" />
-          <entry key="PHP" value="291" />
+          <entry key="PHP" value="292" />
           <entry key="PLAIN_TEXT" value="6" />
           <entry key="RNG Compact" value="1" />
           <entry key="SQL" value="1" />
@@ -134,7 +137,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/pay.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="193">
+            <state relative-caret-position="935">
               <caret line="55" column="30" selection-start-line="55" selection-start-column="30" selection-end-line="55" selection-end-column="30" />
             </state>
           </provider>
@@ -152,8 +155,17 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/assets/js/main.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="26713">
-              <caret line="1655" column="31" lean-forward="true" selection-start-line="1655" selection-start-column="31" selection-end-line="1655" selection-end-column="31" />
+            <state relative-caret-position="136">
+              <caret line="8" selection-start-line="8" selection-end-line="8" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/processors/change-bank-details.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="6698">
+              <caret line="394" column="2" selection-start-line="394" selection-start-column="2" selection-end-line="394" selection-end-column="2" />
             </state>
           </provider>
         </entry>
@@ -161,8 +173,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/assets/js/start.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1517">
-              <caret line="131" column="23" selection-start-line="131" selection-start-column="23" selection-end-line="131" selection-end-column="23" />
+            <state relative-caret-position="603">
+              <caret line="111" selection-start-line="111" selection-end-line="111" />
             </state>
           </provider>
         </entry>
@@ -507,17 +519,19 @@
       <workItem from="1543801058240" duration="7703000" />
       <workItem from="1543854684073" duration="9560000" />
       <workItem from="1544622978434" duration="5931000" />
+      <workItem from="1545102765361" duration="422000" />
+      <workItem from="1545128053069" duration="622000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="911168000" />
+    <option name="totallyTimeSpent" value="912212000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1456" height="876" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.4004298" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.39684814" />
       <window_info id="Structure" order="1" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -605,13 +619,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="463">
           <caret line="216" column="71" selection-start-line="216" selection-start-column="71" selection-end-line="216" selection-end-column="71" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/processors/change-bank-details.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="6326">
-          <caret line="394" column="2" lean-forward="true" selection-start-line="394" selection-start-column="2" selection-end-line="394" selection-end-column="2" />
         </state>
       </provider>
     </entry>
@@ -816,9 +823,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/assets/js/counter.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/js/counter.js" />
     <entry file="file://$PROJECT_DIR$/processors/create_payment_history.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="17">
@@ -859,13 +864,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pay.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="193">
-          <caret line="55" column="30" selection-start-line="55" selection-start-column="30" selection-end-line="55" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/processors/game-control.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="659">
@@ -894,13 +892,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/assets/js/main.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="26713">
-          <caret line="1655" column="31" lean-forward="true" selection-start-line="1655" selection-start-column="31" selection-end-line="1655" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/assets/js/defaults.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1">
@@ -915,6 +906,13 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/pay.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="935">
+          <caret line="55" column="30" selection-start-line="55" selection-start-column="30" selection-end-line="55" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/stats.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="357">
@@ -922,10 +920,24 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/assets/js/main.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" selection-start-line="8" selection-end-line="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/processors/change-bank-details.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="6698">
+          <caret line="394" column="2" selection-start-line="394" selection-start-column="2" selection-end-line="394" selection-end-column="2" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/assets/js/start.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1517">
-          <caret line="131" column="23" selection-start-line="131" selection-start-column="23" selection-end-line="131" selection-end-column="23" />
+        <state relative-caret-position="603">
+          <caret line="111" selection-start-line="111" selection-end-line="111" />
         </state>
       </provider>
     </entry>

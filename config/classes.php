@@ -57,7 +57,7 @@ class  WebsiteHeader extends WebsiteConfigurationSettings {
 <meta name="author" content = "{$this->SiteAuthor}" />
 <meta name="description" content="{$this->PageDescription}" />
 <link rel="icon" type="image/png" href="{$this->IMG_FOLDER}favicon.png"  />
-<script type="text/javascript" src="{$this->JS_FOLDER}jquery-min.js"></script>
+<script type="text/javascript" src="{$this->JS_FOLDER}jquery.min.js"></script>
 <script type="text/javascript" src="{$this->JS_FOLDER}popper.js"></script>
 <script type="text/javascript" src="{$this->JS_FOLDER}bootstrap.min.js"></script>
 <script type="text/javascript" src="{$this->JS_FOLDER}moment.js"></script>
