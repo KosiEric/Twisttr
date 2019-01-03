@@ -31,11 +31,13 @@
             </div>
           </div>
         </nav>
+
         <div class="container aa-header-content text-left text-white">
           <div class="row">
             <div class="col-md-6 col-sm-12">
               <h1 class="text-white mb-4"><?php echo $website_details->SiteName; ?><br/>Play Now and Win.</h1>
               <p>Online word games and puzzles are a fun way to pass the time. It’s even better when you’re rewarded for your time and get paid to play. </p>
+                <a class="btn btn-outline-neutral btn-round" href="/play" id = "home-play-now-button">Play Now</a>
                 <a href="#game-demo" id="game-demo-video-link" class="mt-4 btn btn-outline-neutral btn-round">Watch our demo Video</a>
               <ul class="py-1 list-unstyled">
                 <li class="py-2"><i class="fa fa-check-circle pr-4" aria-hidden="true"></i>You get paid immediately you request your money.</li>
