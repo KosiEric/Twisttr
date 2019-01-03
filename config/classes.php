@@ -90,6 +90,7 @@ body , html{
   //font-family: Cairo !important;
   position: relative;
   background-color : #fff;
+overflow-x: hidden;
 }
 
 * {
