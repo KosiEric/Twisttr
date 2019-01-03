@@ -62,12 +62,10 @@ class  WebsiteHeader extends WebsiteConfigurationSettings {
 <script type="text/javascript" src="{$this->JS_FOLDER}bootstrap.min.js"></script>
 <script type="text/javascript" src="{$this->JS_FOLDER}moment.js"></script>
 <script type="text/javascript" src="{$this->JS_FOLDER}livestamp.js"></script>
-<script type="text/javascript" src="{$this->JS_FOLDER}defaults.js"></script>
 <link rel="stylesheet" type="text/css" href="{$this->CSS_FOLDER}bootstrap.min.css" />
 <link rel="stylesheet" type="text/css"  href="{$this->CSS_FOLDER}css/font-awesome.min.css" />
 <link rel="stylesheet" type="text/css"  href="{$this->CSS_FOLDER}cairo.css" />
-<link rel="stylesheet" type="text/css"  href="{$this->CSS_FOLDER}header.css" />
-
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 <style type="text/css">
 ::-webkit-scrollbar-track {
       background-color: #b46868;

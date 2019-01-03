@@ -91,20 +91,25 @@ $refresh = false;
         window.location.reload();
     </script>
 
+
     <?php }  echo $HomePage->DefaultHeaders->GetDefaultPageHeadTags(); ?>
-    <link rel="stylesheet" type="text/css" href="<?php echo $HomePage->WebsiteDetails->CSS_FOLDER ?>profile.css" />
-    <link rel="stylesheet" type="text/css" href="<?php echo $HomePage->WebsiteDetails->CSS_FOLDER ?>new-profile.css" />
+
+    <?php
+
+    $stylesheets = array("header.css" , "profile.css" , "new-profile.css" , "defaults.css" , "footer.css" , "control.css" , "jquery.mCustomScrollbar.min.css");
 
 
-   <script type="text/javascript" src="/JavaScriptSpellCheck/include.js"></script>
+    echo $functions->printAssets($stylesheets , "css" , false);
+
+    $start_css = array("start.css");
+    echo $functions->printAssets($start_css , "css"  , false , null , "media='screen and (min-width:2000px)' id = 'start-css'");
+
+
+    ?>
+
+    <script type="text/javascript" src="/JavaScriptSpellCheck/include.js"></script>
     <script type="text/javascript" src="<?php echo  $HomePage->WebsiteDetails->JS_FOLDER; ?>jquery.mCustomScrollbar.concat.min.js"></script>
 
-    <link rel="stylesheet" type="text/css" href="<?php echo  $HomePage->WebsiteDetails->CSS_FOLDER; ?>defaults.css" />
-    <link rel="stylesheet" type="text/css" href="<?php echo  $HomePage->WebsiteDetails->CSS_FOLDER; ?>footer.css" />
-
-    <link rel="stylesheet" type="text/css" href="<?php echo  $HomePage->WebsiteDetails->CSS_FOLDER; ?>control.css" />
-    <link rel="stylesheet" type="text/css" href="<?php echo  $HomePage->WebsiteDetails->CSS_FOLDER; ?>jquery.mCustomScrollbar.min.css" />
-    <link rel="stylesheet" type="text/css" id="start-css" href="<?php echo  $HomePage->WebsiteDetails->CSS_FOLDER; ?>start.css" media="screen and (min-width:2000px)" />
 
     <?php /*
      <script type='text/javascript' src='/JavaScriptSpellCheck/include.js'></script>
@@ -320,11 +325,25 @@ else {
     if($HomePage->UserFunctions->isLoggedInUser()) require_once $HomePage->WebsiteDetails->INCS_FOLDER.'game.php';
     ?>
 </div>
+<?php
+
+$scripts = array("defaults.js" , "babel.min.js" , "main.js" , "words.js" , "control.js");
+
+echo $functions->printAssets($scripts);
+$start_js = array("start.js");
+echo  $functions->printAssets($start_js , "babel");
+
+
+
+/*
 <script type="text/javascript" language="JavaScript" src="<?php echo $HomePage->WebsiteDetails->JS_FOLDER; ?>babel.min.js"></script>
 <script type="text/javascript" language="JavaScript" src="<?php echo $HomePage->WebsiteDetails->JS_FOLDER; ?>main.js"></script>
 <script type="text/javascript" language="JavaScript" src="<?php echo $HomePage->WebsiteDetails->JS_FOLDER; ?>words.js"></script>
 <script type="text/babel" src="<?php echo  $HomePage->WebsiteDetails->JS_FOLDER; ?>start.js"></script>
 <script type="text/javascript" src="<?php echo  $HomePage->WebsiteDetails->JS_FOLDER; ?>control.js"></script>
+*/
+?>
+
 <img src = "<?php echo $HomePage->WebsiteDetails->defaultBotProfilePicture; ?>" style="display:none;" />
 </body>
 

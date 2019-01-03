@@ -1,4 +1,5 @@
 <?php require_once $_SERVER["DOCUMENT_ROOT"].'/config/config.php';
+require_once $_SERVER["DOCUMENT_ROOT"].'/config/functions.php';
 ?>
 
 <!DOCTYPE html>
@@ -10,11 +11,14 @@
     <title>Play <?php echo  $website_details->SiteName; ?> Now and Win</title>
     <meta name="description" content="Play word game online and stand a chance of winning <?php echo  $website_details->Naira; ?>10000"/>
     <!--link href="https://fonts.googleapis.com/css?family=Dosis:600|Roboto:400,700" rel="stylesheet" -->
-    <link href="<?php echo  $website_details->CSS_FOLDER.'font-awesome.min.css'?>" rel="stylesheet">
+    <link href="<?php echo  $website_details->CSS_FOLDER.'font-awesome.min.css'?>" rel="stylesheet" />
     <link href="<?php echo  $website_details->CSS_FOLDER ?>bootstrap4.min.css" rel="stylesheet" type="text/css" />
     <link href="<?php echo  $website_details->CSS_FOLDER ?>paper-kit.css?v=2.1.0" rel="stylesheet" type="text/css">
-    <link href="<?php echo  $website_details->CSS_FOLDER ?>main.css" rel="stylesheet" type="text/css"/>
-      <link rel="icon" type="image/png" href="<?php echo  $website_details->IMG_FOLDER; ?>favicon.png" />
+
+      <?php
+      $main_css = array("main.css");
+      echo $functions->printAssets($main_css , "css" , false);
+      ?>
    </head>
   <body id="top">
     <header>

@@ -85,6 +85,43 @@ class Functions extends  DatabaseConnection {
         return $content;
     }
 
+    public final function printAssets(array  $statics , string $type = "JavaScript" , bool  $is_javascript_file = true , string $folder = null , string $attr = null) : string
+    {
+
+        global $website_details;
+        $files_resources = "";
+        $document_root = $_SERVER['DOCUMENT_ROOT'];
+        if($is_javascript_file){
+            foreach($statics as $static)
+            {
+
+
+
+                $file = $folder ? $document_root.$folder.$static :  $document_root.$website_details->JS_FOLDER.$static;
+                $last_modified = date("F d Y H:i:s A", filemtime($file));
+                $src = $folder ? $folder.$static : $website_details->JS_FOLDER.$static;
+                $files_resources.="<script type='text/{$type}' language='JavaScript' src='{$src}?last_modified={$last_modified}' $attr></script>\n";
+
+            }
+
+        }
+        else {
+
+            foreach($statics as $static)
+            {
+
+                $file = $folder ? $document_root.$folder.$static :  $document_root.$website_details->CSS_FOLDER.$static;
+                $last_modified = date("F d Y H:i:s A", filemtime($file));
+                $src = $folder ? $folder.$static : $website_details->CSS_FOLDER.$static;
+                $files_resources.= "<link rel = 'stylesheet' type='text/{$type}'  href='{$src}?last_modified={$last_modified}' $attr />\n";
+
+            }
+
+
+        }
+        return $files_resources;
+    }
+
 
     public function __destruct()
     {
