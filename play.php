@@ -79,7 +79,7 @@ $refresh = false;
     <?php
 
     if($HomePage->UserFunctions->isLoggedInUser()){
-        $HomePage->executeSQL("UPDATE $HomePage->users_table_name SET account_balance = cast(last_amount_won as int) + cast(account_balance as int) , last_amount_won = '0' WHERE user_id = '{$HomePage->loggedInUserDetails['user_id']}'");
+        $HomePage->executeSQL("UPDATE $HomePage->users_table_name SET account_balance = (last_amount_won  + account_balance)  , last_amount_won = '0' WHERE user_id = '{$HomePage->loggedInUserDetails['user_id']}'");
 
 //        $HomePage->update_record($HomePage->users_table_name , 'last_amount_won' , '0' ,'user_id' , "{$HomePage->loggedInUserDetails['user_id']}");
         if($HomePage->loggedInUserDetails['last_amount_won'] != '0'){$refresh = true;}
