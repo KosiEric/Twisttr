@@ -3,7 +3,7 @@
 abstract class WebsiteConfigurationSettings {
 
     
-	public  $SiteName = "Twisttr";
+	public  $SiteName = "Sensima";
 	public  $Https = "https://";
 	public  $Www = "www.";
 	public  $SiteNameWithoutHttps = "www.twisttr.com";
